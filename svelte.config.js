@@ -1,5 +1,7 @@
 import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
+import path from 'path';
+import legacy from '@vitejs/plugin-legacy';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -23,28 +25,17 @@ const config = {
 		}
 	},
 	vite: {
-		optimizeDeps: {
-			esbuildOptions: {
-				// Node.js global to browser globalThis
-				define: {
-					global: 'globalThis'
-				},
-				// Enable esbuild polyfill plugins
-				plugins: []
-			}
+		alias: {
+			$lib: path.resolve('src/lib'),
+			$components: path.resolve('./src/components')
 		},
-		build: {
-			rollupOptions: {
-				plugins: []
-			}
-		}
-	},
-
-	onwarn(warning, defaultHandler) {
-		const warningCodeToIgnore = ['a11y-missing-content', 'a11y-missing-attribute'];
-		if (warningCodeToIgnore.includes(warning.code)) return;
-
-		defaultHandler(warning);
+		plugins: [
+			legacy({
+				targets: ['defaults', 'not IE 11'],
+				polyfills: true,
+				modernPolyfills: true
+			})
+		]
 	}
 };
 
