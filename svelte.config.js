@@ -16,7 +16,7 @@ const config = {
 		}),
 		paths: {
 			// YOUR github repository name
-			base: '/sveltekit-maplibre-boilerplate'
+			base: '/sveltekit-watergis-template'
 		},
 		prerender: {
 			default: true
