@@ -42,5 +42,5 @@ jobs:
           npm run build
           git config --global user.name "watergis+githubci"
           git config --global user.email "watergis+githubci@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${NODE_AUTH_TOKEN}@github.com/watergis/sveltekit-maplibre-boilerplate.git
+          git remote set-url origin https://x-access-token:${NODE_AUTH_TOKEN}@github.com/watergis/sveltekit-watergis-template.git
           npm run deploy
