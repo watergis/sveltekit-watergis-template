@@ -21,6 +21,30 @@ const config = {
 		prerender: {
 			default: true
 		}
+	},
+	vite: {
+		optimizeDeps: {
+			esbuildOptions: {
+				// Node.js global to browser globalThis
+				define: {
+					global: 'globalThis'
+				},
+				// Enable esbuild polyfill plugins
+				plugins: []
+			}
+		},
+		build: {
+			rollupOptions: {
+				plugins: []
+			}
+		}
+	},
+
+	onwarn(warning, defaultHandler) {
+		const warningCodeToIgnore = ['a11y-missing-content', 'a11y-missing-attribute'];
+		if (warningCodeToIgnore.includes(warning.code)) return;
+
+		defaultHandler(warning);
 	}
 };
 
