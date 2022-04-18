@@ -135,7 +135,9 @@
 	});
 </script>
 
-<div class="map" id="map" bind:this={mapContainer} />
+<div class="map-wrap">
+	<div class="map" id="map" bind:this={mapContainer} />
+</div>
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
@@ -148,11 +150,17 @@
 	@import '@watergis/mapbox-gl-area-switcher/css/styles.css';
 	@import '@watergis/mapbox-gl-popup/css/styles.css';
 
+	.map-wrap {
+		position: relative;
+		width: 100%;
+		height: calc(100vh - 64px);
+	}
 	.map {
 		position: absolute;
 		top: 0;
 		bottom: 0;
 		width: 100%;
+		height: 100%;
 		z-index: 1;
 	}
 </style>

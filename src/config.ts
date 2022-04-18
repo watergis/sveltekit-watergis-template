@@ -4,6 +4,9 @@ import type { Options as ElevationOptions } from '@watergis/maplibre-gl-elevatio
 import type { Options as ValhallaOptions } from '@watergis/mapbox-gl-valhalla';
 
 type Config = {
+	title: string;
+	url: string;
+	logo: string;
 	attribution: string;
 	styles: {
 		title: string;
@@ -44,6 +47,9 @@ type Config = {
 };
 
 export const config: Config = {
+	title: 'GIS for Water',
+	url: 'https://water-gis.com',
+	logo: 'https://raw.githubusercontent.com/watergis/logo/main/logo.svg',
 	// change attribution to yours
 	attribution: '©NARWASSCO',
 	// change stylefiles URLs to yours
