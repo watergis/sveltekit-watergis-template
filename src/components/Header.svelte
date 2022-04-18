@@ -37,7 +37,7 @@
 		<link rel="stylesheet" href="{config.basePath}/smui.css" media="print" />
 		<link rel="stylesheet" href="{config.basePath}/smui-dark.css" media="screen" />
 	{:else}
-		<link rel="stylesheet" href="/smui.css" />
+		<link rel="stylesheet" href="{config.basePath}/smui.css" />
 	{/if}
 </svelte:head>
 
