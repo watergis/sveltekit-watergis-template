@@ -5,6 +5,8 @@
 	import IconButton from '@smui/icon-button';
 	import { config } from '../config';
 
+	export let drawerOpen = false;
+
 	let darkTheme: boolean;
 	let topAppBar: TopAppBarComponentDev;
 
@@ -14,7 +16,7 @@
 	$: modeIcon = darkTheme ? 'light_mode' : 'dark_mode';
 
 	onMount(() => {
-		darkTheme = window.matchMedia('(prefers-color-scheme: light)').matches;
+		darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 	});
 	const toggleMode = () => (darkTheme = !darkTheme);
 </script>
@@ -42,7 +44,9 @@
 <TopAppBar bind:this={topAppBar} variant="fixed">
 	<Row>
 		<Section>
-			<IconButton class="material-icons">menu</IconButton>
+			<IconButton class="material-icons" on:click={() => (drawerOpen = !drawerOpen)}>
+				menu
+			</IconButton>
 			<a href={config.url}>
 				<img src={config.logo} alt="logo" class="logo" />
 			</a>

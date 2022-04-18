@@ -12,13 +12,14 @@
 	import MapboxPopupControl from '@watergis/mapbox-gl-popup';
 	import { MapboxStyleSwitcherControl } from '@watergis/mapbox-gl-style-switcher';
 	import { MapboxValhallaControl } from '@watergis/mapbox-gl-valhalla';
+	import { map, spriteImage } from '../stores';
+	import type { sprite } from '../lib/types';
 	import { config } from '../config';
 
-	let map: Map;
 	let mapContainer: HTMLDivElement;
 
 	onMount(async () => {
-		map = new Map({
+		const map2 = new Map({
 			container: mapContainer,
 			style: config.styles[0].uri,
 			center: config.center,
@@ -26,28 +27,28 @@
 			hash: true,
 			attributionControl: false
 		});
-		map.addControl(new NavigationControl({}), 'top-right');
-		map.addControl(
+		map2.addControl(new NavigationControl({}), 'top-right');
+		map2.addControl(
 			new GeolocateControl({
 				positionOptions: { enableHighAccuracy: true },
 				trackUserLocation: true
 			}),
 			'top-right'
 		);
-		map.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
-		map.addControl(new AttributionControl({ compact: true }), 'bottom-right');
+		map2.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
+		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
-		map.addControl(new MapboxStyleSwitcherControl(config.styles), 'top-right');
+		map2.addControl(new MapboxStyleSwitcherControl(config.styles), 'top-right');
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
-		map.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'top-right');
+		map2.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'top-right');
 
 		if (config.elevation) {
 			const MapboxElevationControl = await (
 				await import('@watergis/maplibre-gl-elevation')
 			).default;
-			map.addControl(
+			map2.addControl(
 				new MapboxElevationControl(config.elevation.url, config.elevation.options),
 				'top-right'
 			);
@@ -56,7 +57,7 @@
 		const { MaplibreExportControl, Size, PageOrientation, Format, DPI } = await import(
 			'@watergis/maplibre-gl-export'
 		);
-		map.addControl(
+		map2.addControl(
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			new MaplibreExportControl({
@@ -71,7 +72,7 @@
 		);
 
 		if (config.valhalla)
-			map.addControl(
+			map2.addControl(
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
 				new MapboxValhallaControl(config.valhalla.url, config.valhalla.options),
@@ -80,7 +81,7 @@
 
 		if (config.legend) {
 			const { MaplibreLegendControl } = await import('@watergis/maplibre-gl-legend');
-			map.addControl(
+			map2.addControl(
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				//@ts-ignore
 				new MaplibreLegendControl(config.legend.targets, config.legend.options),
@@ -88,51 +89,94 @@
 			);
 		}
 
-		if (config.popup) map.addControl(new MapboxPopupControl(config.popup.target));
+		if (config.popup) map2.addControl(new MapboxPopupControl(config.popup.target));
 
 		if (!config.search) return;
-		fetch(config.search.url)
-			.then((res) => res.json())
-			.then((data) => {
-				const customerData = data;
-				function forwardGeocoder(query) {
-					var matchingFeatures = [];
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					for (var i = 0; i < customerData.features.length; i++) {
-						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-						// @ts-ignore
-						var feature = customerData.features[i];
-						config.search.target.forEach((v) => {
-							var target = feature.properties[v];
-							if (!target) {
-								return;
-							}
-							// handle queries with different capitalization than the source data by calling toLowerCase()
-							if (target.toString().toLowerCase().search(query.toString().toLowerCase()) !== -1) {
-								feature['place_name'] = config.search.format(feature.properties);
-								feature['center'] = feature.geometry.coordinates;
-								feature['place_type'] = config.search.place_type;
-								matchingFeatures.push(feature);
-							}
-						});
+		const customerData = await fetch(config.search.url).then((res) => res.json());
+		function forwardGeocoder(query) {
+			var matchingFeatures = [];
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			for (var i = 0; i < customerData.features.length; i++) {
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				var feature = customerData.features[i];
+				config.search.target.forEach((v) => {
+					var target = feature.properties[v];
+					if (!target) {
+						return;
 					}
-					return matchingFeatures;
-				}
-				map.addControl(
-					new MapboxGeocoder({
-						localGeocoder: forwardGeocoder,
-						localGeocoderOnly: true,
-						zoom: config.search.zoom,
-						placeholder: config.search.placeholder,
-						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-						// @ts-ignore
-						mapboxgl: maplibregl
-					}),
-					'top-left'
-				);
-			});
+					// handle queries with different capitalization than the source data by calling toLowerCase()
+					if (target.toString().toLowerCase().search(query.toString().toLowerCase()) !== -1) {
+						feature['place_name'] = config.search.format(feature.properties);
+						feature['center'] = feature.geometry.coordinates;
+						feature['place_type'] = config.search.place_type;
+						matchingFeatures.push(feature);
+					}
+				});
+			}
+			return matchingFeatures;
+		}
+		map2.addControl(
+			new MapboxGeocoder({
+				localGeocoder: forwardGeocoder,
+				localGeocoderOnly: true,
+				zoom: config.search.zoom,
+				placeholder: config.search.placeholder,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				mapboxgl: maplibregl
+			}),
+			'top-left'
+		);
+
+		map2.on('load', () => {
+			const styleUrl = map2.getStyle().sprite;
+			const promise = Promise.all([
+				loadImage(`${styleUrl}@4x.png`),
+				fetchUrl(`${styleUrl}@4x.json`)
+			]);
+			promise
+				.then(([image, json]) => {
+					const sprite: sprite = {
+						image: image,
+						json: json
+					};
+					return sprite;
+				})
+				.then((sprite: sprite) => {
+					spriteImage.update(() => sprite);
+				});
+		});
+
+		map.update(() => map2);
 	});
+
+	const loadImage = (url: string): Promise<HTMLImageElement> => {
+		let cancelled = false;
+		const promise = new Promise<HTMLImageElement>((resolve, reject) => {
+			const img = new Image();
+			img.crossOrigin = 'Anonymous';
+			img.onload = () => {
+				if (!cancelled) resolve(img);
+			};
+			img.onerror = (e) => {
+				if (!cancelled) reject(e);
+			};
+			img.src = url;
+		});
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		//@ts-ignore
+		promise.cancel = () => {
+			cancelled = true;
+		};
+		return promise;
+	};
+
+	const fetchUrl = async (url: string) => {
+		const response = await fetch(url);
+		return response.json();
+	};
 </script>
 
 <div class="map-wrap">
