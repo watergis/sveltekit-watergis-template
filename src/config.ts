@@ -51,7 +51,7 @@ export const config: Config = {
 	title: 'GIS for Water',
 	url: 'https://water-gis.com',
 	logo: 'https://raw.githubusercontent.com/watergis/logo/main/logo.svg',
-	basePath: (process.env.NODE_ENV === 'production')?'/sveltekit-watergis-template': '',
+	basePath: process.env.NODE_ENV === 'production' ? '/sveltekit-watergis-template' : '',
 	// change attribution to yours
 	attribution: '©NARWASSCO',
 	// change stylefiles URLs to yours
