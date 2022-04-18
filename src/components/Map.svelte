@@ -133,8 +133,8 @@
 		map2.on('load', () => {
 			const styleUrl = map2.getStyle().sprite;
 			const promise = Promise.all([
-				loadImage(`${styleUrl}@4x.png`),
-				fetchUrl(`${styleUrl}@4x.json`)
+				loadImage(`${styleUrl}@2x.png`),
+				fetchUrl(`${styleUrl}@2x.json`)
 			]);
 			promise
 				.then(([image, json]) => {

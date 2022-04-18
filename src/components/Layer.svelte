@@ -19,8 +19,10 @@
 	};
 </script>
 
-<FormField>
-	<Checkbox bind:checked touch />
-	<span slot="label">{layer.id}</span>
-	<Legend bind:layer />
-</FormField>
+<div>
+	<FormField>
+		<Checkbox bind:checked touch />
+		<Legend {layer} />
+		<span slot="label">{layer.id}</span>
+	</FormField>
+</div>
