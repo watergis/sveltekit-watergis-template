@@ -21,11 +21,11 @@
 
 <svelte:head>
 	{#if darkTheme === undefined}
-		<link rel="stylesheet" href="/smui.css" media="(prefers-color-scheme: light)" />
-		<link rel="stylesheet" href="/smui-dark.css" media="screen and (prefers-color-scheme: dark)" />
+		<link rel="stylesheet" href="{config.basePath}/smui.css" media="(prefers-color-scheme: light)" />
+		<link rel="stylesheet" href="{config.basePath}/smui-dark.css" media="screen and (prefers-color-scheme: dark)" />
 	{:else if darkTheme}
-		<link rel="stylesheet" href="/smui.css" media="print" />
-		<link rel="stylesheet" href="/smui-dark.css" media="screen" />
+		<link rel="stylesheet" href="{config.basePath}/smui.css" media="print" />
+		<link rel="stylesheet" href="{config.basePath}/smui-dark.css" media="screen" />
 	{:else}
 		<link rel="stylesheet" href="/smui.css" />
 	{/if}
