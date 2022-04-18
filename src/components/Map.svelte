@@ -148,7 +148,6 @@
 					spriteImage.update(() => sprite);
 				});
 		});
-
 		map.update(() => map2);
 	});
 

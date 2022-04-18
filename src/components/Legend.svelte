@@ -4,13 +4,13 @@
 	import { map, spriteImage } from '../stores';
 
 	export let layer: LayerSpecification;
-	let container: HTMLElement;
+	let container: HTMLElement = document.createElement('div');
 	$: layer, update();
 
 	const update = () => {
 		const zoom = $map.getZoom();
 		const symbol = LegendSymbol({ zoom: zoom, sprite: $spriteImage, layer: layer });
-		container = document.createElement('div');
+		container.innerText = '';
 
 		if (!symbol) {
 			const iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');

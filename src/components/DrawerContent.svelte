@@ -1,33 +1,61 @@
 <script lang="ts">
 	import Drawer, { AppContent, Content, Header } from '@smui/drawer';
 	import List, { Item } from '@smui/list';
-	import type { StyleSpecification } from '@maplibre/maplibre-gl-style-spec/types';
+	import Checkbox from '@smui/checkbox';
+	import FormField from '@smui/form-field';
+	import type {
+		StyleSpecification,
+		LayerSpecification
+	} from '@maplibre/maplibre-gl-style-spec/types';
 	import { map } from '../stores';
 	import Layer from './Layer.svelte';
 
 	export let open = false;
-
 	let style: StyleSpecification = undefined;
+	let onlyRendered = true;
+
+	let allLayers: LayerSpecification[] = [];
+	let visibleLayerMap = {};
+
 	$: {
 		if ($map) {
 			style = $map.getStyle();
+			allLayers = style.layers;
+
+			$map.on('load', updateVisibleLayers);
+			$map.on('moveend', updateVisibleLayers);
 		}
 	}
+
+	const updateVisibleLayers = () => {
+		visibleLayerMap = {};
+		if ($map && $map.queryRenderedFeatures) {
+			const features = $map.queryRenderedFeatures();
+			for (let feature of features) {
+				visibleLayerMap[feature.layer.id] = feature.layer;
+			}
+		}
+	};
 </script>
 
 <div class="drawer-container">
 	<Drawer variant="dismissible" bind:open>
 		<div class="drawer-content">
-			<Header />
+			<Header>
+				<FormField>
+					<Checkbox bind:checked={onlyRendered} touch />
+					<span slot="label">Only rendered</span>
+				</FormField>
+			</Header>
 			<Content>
 				<List>
-					{#if style && style.layers}
-						{#each style.layers as layer}
+					{#each allLayers as layer}
+						{#if onlyRendered === false || (onlyRendered === true && visibleLayerMap[layer.id])}
 							<Item>
-								<Layer bind:layer />
+								<Layer {layer} />
 							</Item>
-						{/each}
-					{/if}
+						{/if}
+					{/each}
 				</List>
 			</Content>
 		</div>
