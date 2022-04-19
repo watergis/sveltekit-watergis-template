@@ -1,45 +1,21 @@
 <script lang="ts">
 	import Drawer, { AppContent, Content, Header } from '@smui/drawer';
 	import List, { Item } from '@smui/list';
-	import SegmentedButton, { Segment, Label } from '@smui/segmented-button';
+	import FormField from '@smui/form-field';
+	import Checkbox from '@smui/checkbox';
 	import type {
 		StyleSpecification,
 		LayerSpecification
 	} from '@maplibre/maplibre-gl-style-spec/types';
 	import { map } from '../stores';
 	import Layer from './Layer.svelte';
+	import StyleSwitcher from './StyleSwitcher.svelte';
 	import { config } from '../config';
 
 	export let open = false;
 	let style: StyleSpecification = undefined;
 	let onlyRendered = true;
 	let onlyRelative = true;
-
-	// let choices = ['Only rendered', 'Water'];
-	let choices = [
-		{
-			name: 'Rendered',
-			selected: true
-		},
-		{
-			name: 'Water',
-			selected: true
-		}
-	];
-
-	$: choices, setRenderFlags();
-	const setRenderFlags = () => {
-		onlyRendered = choices.find((choise) => {
-			return choise.name === 'Rendered' && choise.selected;
-		})
-			? true
-			: false;
-		onlyRelative = choices.find((choise) => {
-			return choise.name === 'Water' && choise.selected;
-		})
-			? true
-			: false;
-	};
 
 	let allLayers: LayerSpecification[] = [];
 	let visibleLayerMap = {};
@@ -48,17 +24,15 @@
 		relativeLayers = config.legend.targets;
 	}
 
-	$: {
-		if ($map) {
-			style = $map.getStyle();
-			allLayers = style.layers;
+	$: open, onOpened();
 
-			$map.on('load', updateVisibleLayers);
-			$map.on('moveend', updateVisibleLayers);
-		}
-	}
-
-	$: open, updateVisibleLayers();
+	const onOpened = () => {
+		if (!$map) return;
+		updateVisibleLayers();
+		style = $map.getStyle();
+		console.log(style.layers.length);
+		allLayers = style.layers;
+	};
 
 	const updateVisibleLayers = () => {
 		visibleLayerMap = {};
@@ -69,66 +43,62 @@
 			}
 		}
 	};
+
+	const onStyleChange = () => {
+		$map.on('styledata', () => {
+			const style = $map.getStyle();
+			console.log(style.layers.length);
+			allLayers = style.layers;
+		});
+	};
+
+	if ($map) {
+		style = $map.getStyle();
+		allLayers = style.layers;
+
+		$map.on('load', updateVisibleLayers);
+		$map.on('moveend', updateVisibleLayers);
+	}
 </script>
 
 <div class="drawer-container">
 	<Drawer variant="dismissible" bind:open>
 		<div class="drawer-content">
 			<Header>
-				<SegmentedButton segments={choices} let:segment key={(segment) => segment.name}>
-					<!--
-					  When the selected prop is provided, Segment will no longer fire a "selected"
-					  event.
-					-->
-					<Segment
-						{segment}
-						selected={segment.selected}
-						on:click={() => {
-							segment.selected = !segment.selected;
-							// Remember to do this so Svelte knows that `choices` has changed.
-							choices = choices;
-						}}
-					>
-						<Label>{segment.name}</Label>
-					</Segment>
-				</SegmentedButton>
-				<!-- <SegmentedButton segments={choices} let:segment bind:selected>
-					<Segment {segment}>
-					  <Label>{segment}</Label>
-					</Segment>
-				  </SegmentedButton> -->
-
-				<!-- <FormField>
-					<Checkbox bind:checked={onlyRendered} touch />
-					<span slot="label">Only rendered</span>
+				<StyleSwitcher on:change={onStyleChange} />
+				<FormField>
+					<Checkbox bind:checked={onlyRendered} />
+					<span slot="label">Show only rendered</span>
 				</FormField>
 				<FormField>
-					<Checkbox bind:checked={onlyRelative} touch />
-					<span slot="label">Only relative</span>
-				</FormField> -->
+					<Checkbox bind:checked={onlyRelative} />
+					<span slot="label">Show only water</span>
+				</FormField>
 				<hr />
 			</Header>
 			<Content>
 				<List>
-					{#each allLayers as layer}
-						{#if onlyRendered === true}
-							{#if visibleLayerMap[layer.id]}
-								{#if onlyRelative === true}
-									{#if relativeLayers[layer.id]}
+					{#key allLayers}
+						{#each allLayers as layer}
+							{#if onlyRendered === true}
+								{#if visibleLayerMap[layer.id]}
+									{#if onlyRelative === true}
+										{#if relativeLayers[layer.id]}
+											<Item><Layer {layer} /></Item>
+										{/if}
+									{:else}
 										<Item><Layer {layer} /></Item>
 									{/if}
-								{:else}
+								{/if}
+							{:else if onlyRelative === true}
+								{#if relativeLayers[layer.id]}
 									<Item><Layer {layer} /></Item>
 								{/if}
-							{/if}
-						{:else if onlyRelative === true}
-							{#if relativeLayers[layer.id]}
+							{:else}
 								<Item><Layer {layer} /></Item>
 							{/if}
-						{:else}
-							<Item><Layer {layer} /></Item>
-						{/if}
-					{/each}
+						{/each}
+					{/key}
 				</List>
 			</Content>
 		</div>

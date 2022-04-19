@@ -1,5 +1,4 @@
 import type { LngLatLike } from 'maplibre-gl';
-import type { LegendOptions } from '@watergis/maplibre-gl-legend';
 import type { Options as ElevationOptions } from '@watergis/maplibre-gl-elevation';
 import type { Options as ValhallaOptions } from '@watergis/mapbox-gl-valhalla';
 
@@ -35,7 +34,6 @@ type Config = {
 	};
 	legend?: {
 		targets: { [key: string]: string };
-		options: LegendOptions;
 	};
 	elevation?: {
 		url: string;
@@ -58,7 +56,7 @@ export const config: Config = {
 	styles: [
 		{ title: 'UNVT(Water)', uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style.json` },
 		{
-			title: 'UNVT(Sewer',
+			title: 'UNVT(Sewer)',
 			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-sewer.json`
 		}
 	],
@@ -121,13 +119,14 @@ export const config: Config = {
 			'dma-annotation': 'DMA Label',
 			'contour-line': 'Countour',
 			'contour-label': 'Contour Label',
-			hillshade: 'Hillshade'
-		},
-		options: {
-			showDefault: false,
-			showCheckbox: true,
-			reverseOrder: true,
-			onlyRendered: true
+			hillshade: 'Hillshade',
+			sewer_connection: 'Households (Sewer)',
+			sewer_commercial: 'Commecial (Sewer)',
+			sewer_institution: 'Institution (Sewer)',
+			sewer_public_toilet: 'Public Toilet (Sewer)',
+			manhole: 'Manhole',
+			sewer_pipeline: 'Sewer pipeline',
+			sewer_treatment_plant: 'Wastewater treatment plant'
 		}
 	},
 	elevation: {

@@ -10,17 +10,20 @@
 	import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 	import MapboxPopupControl from '@watergis/mapbox-gl-popup';
-	import { MapboxStyleSwitcherControl } from '@watergis/mapbox-gl-style-switcher';
 	import { MapboxValhallaControl } from '@watergis/mapbox-gl-valhalla';
 	import { map } from '../stores';
+	import StyleUrl from '../lib/styleUrl';
 	import { config } from '../config';
 
 	let mapContainer: HTMLDivElement;
 
 	onMount(async () => {
+		const styleUrl = new StyleUrl();
+		styleUrl.matchUrl(config.styles);
+
 		const map2 = new Map({
 			container: mapContainer,
-			style: config.styles[0].uri,
+			style: styleUrl.getStyleUrl(config.styles),
 			center: config.center,
 			zoom: config.zoom,
 			hash: true,
@@ -36,9 +39,6 @@
 		);
 		map2.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
 		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		map2.addControl(new MapboxStyleSwitcherControl(config.styles), 'top-right');
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		map2.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'top-right');
@@ -132,7 +132,6 @@
 	@import '@watergis/maplibre-gl-export/css/styles.css';
 	@import '@watergis/maplibre-gl-elevation/css/styles.css';
 	@import '@watergis/mapbox-gl-valhalla/css/styles.css';
-	@import '@watergis/mapbox-gl-style-switcher/styles.css';
 	@import '@watergis/mapbox-gl-area-switcher/css/styles.css';
 	@import '@watergis/mapbox-gl-popup/css/styles.css';
 

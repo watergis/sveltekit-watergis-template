@@ -29,8 +29,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: lint, format & build
         run: |
-          npm run format
           npm run lint
+          npm run format
           npm run build
       - name: deploy
         if: ${{ github.ref == 'refs/heads/main' }}

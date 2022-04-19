@@ -78,14 +78,16 @@
 					container.appendChild(divIcon);
 					break;
 				case 'svg':
-					dataUrl = $spriteLoaderObject.getIconDataUrl(layer);
-					if (dataUrl) {
-						const img = document.createElement('img');
-						img.src = dataUrl;
-						img.alt = layer.id;
-						img.style.cssText = `height: 24px;`;
-						container.appendChild(img);
-						break;
+					if ($spriteLoaderObject) {
+						dataUrl = $spriteLoaderObject.getIconDataUrl(layer);
+						if (dataUrl) {
+							const img = document.createElement('img');
+							img.src = dataUrl;
+							img.alt = layer.id;
+							img.style.cssText = `height: 24px;`;
+							container.appendChild(img);
+							break;
+						}
 					}
 					svgIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 					svgIcon.style.cssText = 'height: 24px;';

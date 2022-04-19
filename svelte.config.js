@@ -25,6 +25,9 @@ const config = {
 		}
 	},
 	vite: {
+		ssr: {
+			noExternal: [/^@material(?:-extra)?\//]
+		},
 		alias: {
 			$lib: path.resolve('src/lib'),
 			$components: path.resolve('./src/components')
