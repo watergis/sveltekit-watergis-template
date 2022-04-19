@@ -1,29 +1,25 @@
 <script lang="ts">
 	import Select, { Option } from '@smui/select';
 	import { createEventDispatcher } from 'svelte';
-	import StyleUrl from '../lib/styleUrl';
 	import { map } from '../stores';
 	import { config } from '../config';
 
 	const dispatch = createEventDispatcher();
 
 	let value = config.styles[0].title;
-	console.log(value);
-	let styleUrl = new StyleUrl();
-	styleUrl.matchUrl(config.styles);
-	value = styleUrl.get();
-	console.log(value);
-
 	$: value, setStyle();
 	const setStyle = () => {
 		if (!$map) return;
-		if (!styleUrl) return;
-		let uri = styleUrl.getStyleUrl(config.styles);
-		console.log(value);
+		let uri: string;
+		config.styles.forEach((style) => {
+			if (style.title === value) {
+				uri = style.uri;
+			}
+		});
+		// let uri = styleUrl.getStyleUrl(config.styles);
+		// console.log(value);
 		$map.setStyle(uri);
 		$map.on('styledata', () => {
-			styleUrl.set(value);
-			console.log($map.getStyle().length, uri);
 			dispatch('change');
 		});
 	};

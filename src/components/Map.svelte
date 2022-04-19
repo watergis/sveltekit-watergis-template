@@ -11,19 +11,17 @@
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 	import MapboxPopupControl from '@watergis/mapbox-gl-popup';
 	import { MapboxValhallaControl } from '@watergis/mapbox-gl-valhalla';
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
 	import { map } from '../stores';
-	import StyleUrl from '../lib/styleUrl';
 	import { config } from '../config';
 
 	let mapContainer: HTMLDivElement;
 
 	onMount(async () => {
-		const styleUrl = new StyleUrl();
-		styleUrl.matchUrl(config.styles);
-
 		const map2 = new Map({
 			container: mapContainer,
-			style: styleUrl.getStyleUrl(config.styles),
+			style: config.styles[0].uri,
 			center: config.center,
 			zoom: config.zoom,
 			hash: true,
@@ -118,6 +116,7 @@
 			}),
 			'top-left'
 		);
+
 		map.update(() => map2);
 	});
 </script>

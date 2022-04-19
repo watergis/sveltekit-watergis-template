@@ -24,13 +24,14 @@
 		relativeLayers = config.legend.targets;
 	}
 
-	$: open, onOpened();
+	$: open, updateLayers();
+	$: onlyRendered, updateLayers();
+	$: onlyRelative, updateLayers();
 
-	const onOpened = () => {
+	const updateLayers = () => {
 		if (!$map) return;
 		updateVisibleLayers();
 		style = $map.getStyle();
-		console.log(style.layers.length);
 		allLayers = style.layers;
 	};
 
@@ -44,21 +45,11 @@
 		}
 	};
 
-	const onStyleChange = () => {
-		$map.on('styledata', () => {
-			const style = $map.getStyle();
-			console.log(style.layers.length);
-			allLayers = style.layers;
-		});
+	const onStyleChange = (e) => {
+		$map.on('styledata', updateLayers);
 	};
 
-	if ($map) {
-		style = $map.getStyle();
-		allLayers = style.layers;
-
-		$map.on('load', updateVisibleLayers);
-		$map.on('moveend', updateVisibleLayers);
-	}
+	updateLayers();
 </script>
 
 <div class="drawer-container">
@@ -78,7 +69,7 @@
 			</Header>
 			<Content>
 				<List>
-					{#key allLayers}
+					{#key style}
 						{#each allLayers as layer}
 							{#if onlyRendered === true}
 								{#if visibleLayerMap[layer.id]}
