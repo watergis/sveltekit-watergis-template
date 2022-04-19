@@ -2,6 +2,7 @@
 	import Drawer, { AppContent, Content, Header } from '@smui/drawer';
 	import List, { Item } from '@smui/list';
 	import Checkbox from '@smui/checkbox';
+	import SegmentedButton, { Segment, Label } from '@smui/segmented-button';
 	import FormField from '@smui/form-field';
 	import type {
 		StyleSpecification,
@@ -9,13 +10,45 @@
 	} from '@maplibre/maplibre-gl-style-spec/types';
 	import { map } from '../stores';
 	import Layer from './Layer.svelte';
+	import { config } from '../config';
 
 	export let open = false;
 	let style: StyleSpecification = undefined;
 	let onlyRendered = true;
+	let onlyRelative = true;
+
+	// let choices = ['Only rendered', 'Water'];
+	let choices = [
+		{
+			name: 'Rendered',
+			selected: true
+		},
+		{
+			name: 'Water',
+			selected: true
+		}
+	];
+
+	$: choices, setRenderFlags();
+	const setRenderFlags = () => {
+		onlyRendered = choices.find((choise) => {
+			return choise.name === 'Rendered' && choise.selected;
+		})
+			? true
+			: false;
+		onlyRelative = choices.find((choise) => {
+			return choise.name === 'Water' && choise.selected;
+		})
+			? true
+			: false;
+	};
 
 	let allLayers: LayerSpecification[] = [];
 	let visibleLayerMap = {};
+	let relativeLayers = {};
+	if (config.legend && config.legend.targets) {
+		relativeLayers = config.legend.targets;
+	}
 
 	$: {
 		if ($map) {
@@ -44,18 +77,58 @@
 	<Drawer variant="dismissible" bind:open>
 		<div class="drawer-content">
 			<Header>
-				<FormField>
+				<SegmentedButton segments={choices} let:segment key={(segment) => segment.name}>
+					<!--
+					  When the selected prop is provided, Segment will no longer fire a "selected"
+					  event.
+					-->
+					<Segment
+						{segment}
+						selected={segment.selected}
+						on:click={() => {
+							segment.selected = !segment.selected;
+							// Remember to do this so Svelte knows that `choices` has changed.
+							choices = choices;
+						}}
+					>
+						<Label>{segment.name}</Label>
+					</Segment>
+				</SegmentedButton>
+				<!-- <SegmentedButton segments={choices} let:segment bind:selected>
+					<Segment {segment}>
+					  <Label>{segment}</Label>
+					</Segment>
+				  </SegmentedButton> -->
+
+				<!-- <FormField>
 					<Checkbox bind:checked={onlyRendered} touch />
 					<span slot="label">Only rendered</span>
 				</FormField>
+				<FormField>
+					<Checkbox bind:checked={onlyRelative} touch />
+					<span slot="label">Only relative</span>
+				</FormField> -->
+				<hr />
 			</Header>
 			<Content>
 				<List>
 					{#each allLayers as layer}
-						{#if onlyRendered === false || (onlyRendered === true && visibleLayerMap[layer.id])}
-							<Item>
-								<Layer {layer} />
-							</Item>
+						{#if onlyRendered === true}
+							{#if visibleLayerMap[layer.id]}
+								{#if onlyRelative === true}
+									{#if relativeLayers[layer.id]}
+										<Item><Layer {layer} /></Item>
+									{/if}
+								{:else}
+									<Item><Layer {layer} /></Item>
+								{/if}
+							{/if}
+						{:else if onlyRelative === true}
+							{#if relativeLayers[layer.id]}
+								<Item><Layer {layer} /></Item>
+							{/if}
+						{:else}
+							<Item><Layer {layer} /></Item>
 						{/if}
 					{/each}
 				</List>
@@ -105,6 +178,7 @@
 		overflow: auto;
 		padding: 0px;
 		height: 100%;
+		width: 100%;
 		box-sizing: border-box;
 	}
 </style>

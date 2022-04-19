@@ -4,6 +4,7 @@
 	import FormField from '@smui/form-field';
 	import { map } from '../stores';
 	import Legend from './Legend.svelte';
+	import { config } from '../config';
 
 	export let layer: LayerSpecification;
 	let visibility = 'visible';
@@ -23,6 +24,10 @@
 	<FormField>
 		<Checkbox bind:checked touch />
 		<Legend {layer} />
-		<span slot="label">{layer.id}</span>
+		<span slot="label"
+			>{config.legend && config.legend.targets && config.legend.targets[layer.id]
+				? config.legend.targets[layer.id]
+				: layer.id}</span
+		>
 	</FormField>
 </div>

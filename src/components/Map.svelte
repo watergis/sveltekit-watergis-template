@@ -78,16 +78,6 @@
 				'top-right'
 			);
 
-		if (config.legend) {
-			const { MaplibreLegendControl } = await import('@watergis/maplibre-gl-legend');
-			map2.addControl(
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				//@ts-ignore
-				new MaplibreLegendControl(config.legend.targets, config.legend.options),
-				'bottom-left'
-			);
-		}
-
 		if (config.popup) map2.addControl(new MapboxPopupControl(config.popup.target));
 
 		if (!config.search) return;
@@ -140,7 +130,6 @@
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 	@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 	@import '@watergis/maplibre-gl-export/css/styles.css';
-	@import '@watergis/maplibre-gl-legend/css/styles.css';
 	@import '@watergis/maplibre-gl-elevation/css/styles.css';
 	@import '@watergis/mapbox-gl-valhalla/css/styles.css';
 	@import '@watergis/mapbox-gl-style-switcher/styles.css';
