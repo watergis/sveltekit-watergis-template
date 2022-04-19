@@ -1,15 +1,23 @@
 <script lang="ts">
 	import type { LayerSpecification } from '@maplibre/maplibre-gl-style-spec/types';
 	import LegendSymbol from '@watergis/legend-symbol';
-	import { map, spriteImage } from '../stores';
+	import { map, spriteLoaderObject } from '../stores';
+	import SpriteLoader from '../lib/sprite';
 
 	export let layer: LayerSpecification;
 	let container: HTMLElement = document.createElement('div');
 	$: layer, update();
 
-	const update = () => {
+	const update = async () => {
+		if (!$spriteLoaderObject) {
+			const styleUrl = $map.getStyle().sprite;
+			const loader = new SpriteLoader(styleUrl);
+			await loader.load();
+			spriteLoaderObject.update(() => loader);
+		}
+
 		const zoom = $map.getZoom();
-		const symbol = LegendSymbol({ zoom: zoom, sprite: $spriteImage, layer: layer });
+		const symbol = LegendSymbol({ zoom: zoom, layer: layer });
 		container.innerText = '';
 
 		if (!symbol) {
@@ -46,6 +54,7 @@
 		} else {
 			let divIcon: HTMLElement;
 			let svgIcon: SVGSVGElement;
+			let dataUrl: string;
 			switch (symbol.element) {
 				case 'div':
 					if (
@@ -69,6 +78,15 @@
 					container.appendChild(divIcon);
 					break;
 				case 'svg':
+					dataUrl = $spriteLoaderObject.getIconDataUrl(layer);
+					if (dataUrl) {
+						const img = document.createElement('img');
+						img.src = dataUrl;
+						img.alt = layer.id;
+						img.style.cssText = `height: 24px;`;
+						container.appendChild(img);
+						break;
+					}
 					svgIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 					svgIcon.style.cssText = 'height: 24px;';
 					svgIcon.setAttributeNS(null, 'version', '1.1');
@@ -85,6 +103,7 @@
 						svgIcon.appendChild(group);
 					});
 					container.appendChild(svgIcon);
+
 					break;
 				default:
 					console.log(symbol.element);
@@ -92,6 +111,9 @@
 			}
 		}
 	};
+
+	$map.on('moveend', update);
+	$map.on('zoom', update);
 </script>
 
 <div class="legend">{@html container.innerHTML}</div>
@@ -100,6 +122,5 @@
 	.legend {
 		display: inline-flex;
 		height: 24px;
-		width: 24px;
 	}
 </style>

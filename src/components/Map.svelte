@@ -12,8 +12,7 @@
 	import MapboxPopupControl from '@watergis/mapbox-gl-popup';
 	import { MapboxStyleSwitcherControl } from '@watergis/mapbox-gl-style-switcher';
 	import { MapboxValhallaControl } from '@watergis/mapbox-gl-valhalla';
-	import { map, spriteImage } from '../stores';
-	import type { sprite } from '../lib/types';
+	import { map } from '../stores';
 	import { config } from '../config';
 
 	let mapContainer: HTMLDivElement;
@@ -129,53 +128,8 @@
 			}),
 			'top-left'
 		);
-
-		map2.on('load', () => {
-			const styleUrl = map2.getStyle().sprite;
-			const promise = Promise.all([
-				loadImage(`${styleUrl}@2x.png`),
-				fetchUrl(`${styleUrl}@2x.json`)
-			]);
-			promise
-				.then(([image, json]) => {
-					const sprite: sprite = {
-						image: image,
-						json: json
-					};
-					return sprite;
-				})
-				.then((sprite: sprite) => {
-					spriteImage.update(() => sprite);
-				});
-		});
 		map.update(() => map2);
 	});
-
-	const loadImage = (url: string): Promise<HTMLImageElement> => {
-		let cancelled = false;
-		const promise = new Promise<HTMLImageElement>((resolve, reject) => {
-			const img = new Image();
-			img.crossOrigin = 'Anonymous';
-			img.onload = () => {
-				if (!cancelled) resolve(img);
-			};
-			img.onerror = (e) => {
-				if (!cancelled) reject(e);
-			};
-			img.src = url;
-		});
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		//@ts-ignore
-		promise.cancel = () => {
-			cancelled = true;
-		};
-		return promise;
-	};
-
-	const fetchUrl = async (url: string) => {
-		const response = await fetch(url);
-		return response.json();
-	};
 </script>
 
 <div class="map-wrap">

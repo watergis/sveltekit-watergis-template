@@ -27,6 +27,8 @@
 		}
 	}
 
+	$: open, updateVisibleLayers();
+
 	const updateVisibleLayers = () => {
 		visibleLayerMap = {};
 		if ($map && $map.queryRenderedFeatures) {
