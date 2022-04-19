@@ -1,9 +1,7 @@
 <script lang="ts">
 	import Drawer, { AppContent, Content, Header } from '@smui/drawer';
 	import List, { Item } from '@smui/list';
-	import Checkbox from '@smui/checkbox';
 	import SegmentedButton, { Segment, Label } from '@smui/segmented-button';
-	import FormField from '@smui/form-field';
 	import type {
 		StyleSpecification,
 		LayerSpecification
