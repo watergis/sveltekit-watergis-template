@@ -1,4 +1,6 @@
-import { Map, Marker } from 'maplibre-gl';
+import type { Map } from 'maplibre-gl';
+import pkg from 'maplibre-gl';
+const { Marker } = pkg;
 
 export const Costing = {
 	Walking: 'pedestrian',
