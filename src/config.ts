@@ -41,7 +41,15 @@ export const config: Config = {
 			'washout',
 			'firehydrant',
 			'tank',
-			'pipeline' /**,'intake','wtp'*/
+			'pipeline',
+			'pg-building',
+			'sewer-connection',
+			'sewer_commercial',
+			'sewer_institution',
+			'sewer_public_toilet',
+			'sewer_pipeline',
+			'sewer_treatment_plant',
+			'manhole'
 		]
 	},
 	// please specify your covered area if you have multipul locations to do waterworks

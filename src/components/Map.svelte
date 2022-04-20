@@ -9,10 +9,10 @@
 	} from 'maplibre-gl';
 	import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
-	import MapboxPopupControl from '@watergis/mapbox-gl-popup';
 	import { MapboxValhallaControl } from '@watergis/mapbox-gl-valhalla';
-	import { map, selectedStyle } from '../stores';
+	import { map, selectedStyle, queriedFeatures } from '../stores';
 	import { config } from '../config';
+	import MaplibreIdentifyTools from '../lib/IdentifyTools';
 
 	let mapContainer: HTMLDivElement;
 
@@ -35,6 +35,13 @@
 		);
 		map2.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
 		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
+
+		map2.addControl(
+			new MaplibreIdentifyTools(config.popup.target, (features) => {
+				queriedFeatures.update(() => features);
+			})
+		);
+
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		map2.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'top-right');
@@ -73,8 +80,6 @@
 				new MapboxValhallaControl(config.valhalla.url, config.valhalla.options),
 				'top-right'
 			);
-
-		if (config.popup) map2.addControl(new MapboxPopupControl(config.popup.target));
 
 		if (!config.search) return;
 		const customerData = await fetch(config.search.url).then((res) => res.json());
@@ -129,7 +134,7 @@
 	@import '@watergis/maplibre-gl-elevation/css/styles.css';
 	@import '@watergis/mapbox-gl-valhalla/css/styles.css';
 	@import '@watergis/mapbox-gl-area-switcher/css/styles.css';
-	@import '@watergis/mapbox-gl-popup/css/styles.css';
+	@import '../css/IdentifyTools.css';
 
 	.map-wrap {
 		position: relative;

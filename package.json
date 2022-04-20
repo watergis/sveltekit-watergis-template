@@ -16,12 +16,17 @@
 		"deploy": "npx gh-pages -d build -t true"
 	},
 	"devDependencies": {
+		"@fortawesome/free-solid-svg-icons": "^6.1.1",
+		"@smui-extra/accordion": "^6.0.0-beta.16",
 		"@smui/checkbox": "^6.0.0-beta.16",
+		"@smui/data-table": "^6.0.0-beta.16",
 		"@smui/drawer": "^6.0.0-beta.16",
 		"@smui/form-field": "^6.0.0-beta.16",
 		"@smui/icon-button": "^6.0.0-beta.16",
 		"@smui/list": "^6.0.0-beta.16",
 		"@smui/select": "^6.0.0-beta.16",
+		"@smui/tab": "^6.0.0-beta.16",
+		"@smui/tab-bar": "^6.0.0-beta.16",
 		"@smui/top-app-bar": "^6.0.0-beta.16",
 		"@sveltejs/adapter-static": "next",
 		"@sveltejs/kit": "next",
@@ -38,6 +43,7 @@
 		"smui-theme": "^6.0.0-beta.16",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.2.6",
+		"svelte-fa": "^2.4.0",
 		"svelte-preprocess": "^4.10.1",
 		"tslib": "^2.3.1",
 		"typescript": "~4.6.2"
@@ -48,7 +54,6 @@
 		"@maplibre/maplibre-gl-style-spec": "^15.0.0",
 		"@watergis/legend-symbol": "^0.2.2",
 		"@watergis/mapbox-gl-area-switcher": "^1.0.1",
-		"@watergis/mapbox-gl-popup": "^1.0.4",
 		"@watergis/mapbox-gl-valhalla": "^0.0.2",
 		"@watergis/maplibre-gl-elevation": "^1.0.9",
 		"@watergis/maplibre-gl-export": "^1.3.0",

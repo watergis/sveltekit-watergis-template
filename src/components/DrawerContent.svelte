@@ -3,11 +3,14 @@
 	import List, { Item } from '@smui/list';
 	import FormField from '@smui/form-field';
 	import Checkbox from '@smui/checkbox';
+	import Tab, { Label } from '@smui/tab';
+	import TabBar from '@smui/tab-bar';
 	import type { StyleSpecification, LayerSpecification } from 'maplibre-gl';
 	import Layer from './Layer.svelte';
 	import StyleSwitcher from './StyleSwitcher.svelte';
-	import { map } from '../stores';
+	import { map, queriedFeatures } from '../stores';
 	import { config } from '../config';
+	import AttributesPanel from './AttributesPanel.svelte';
 
 	export let open = false;
 	let style: StyleSpecification = undefined;
@@ -17,8 +20,33 @@
 	let allLayers: LayerSpecification[] = [];
 	let visibleLayerMap = {};
 	let relativeLayers = {};
+	let tabs = ['Layers', 'Attributes'];
+	let activeTab = 'Layers';
+	let isLayersTabVisible = false;
+	let isAttributesTabVisible = false;
+
 	if (config.legend && config.legend.targets) {
 		relativeLayers = config.legend.targets;
+	}
+
+	$: {
+		switch (activeTab) {
+			case 'Layers':
+				isLayersTabVisible = true;
+				isAttributesTabVisible = false;
+				break;
+			case 'Attributes':
+				isLayersTabVisible = false;
+				isAttributesTabVisible = true;
+				break;
+		}
+	}
+
+	$: identifiedFeatures = $queriedFeatures;
+	$: {
+		if (identifiedFeatures && identifiedFeatures.length > 0) {
+			open = true;
+		}
 	}
 
 	$: {
@@ -63,42 +91,53 @@
 	<Drawer variant="dismissible" bind:open>
 		<div class="drawer-content">
 			<Header>
-				<StyleSwitcher on:change={onStyleChange} />
-				<FormField>
-					<Checkbox bind:checked={onlyRendered} />
-					<span slot="label">Show only rendered</span>
-				</FormField>
-				<FormField>
-					<Checkbox bind:checked={onlyRelative} />
-					<span slot="label">Show only water</span>
-				</FormField>
-				<hr />
+				<TabBar {tabs} let:tab bind:active={activeTab}>
+					<Tab {tab} minWidth>
+						<Label>{tab}</Label>
+					</Tab>
+				</TabBar>
 			</Header>
-			<Content>
-				<List>
-					{#key style}
-						{#each allLayers as layer}
-							{#if onlyRendered === true}
-								{#if visibleLayerMap[layer.id]}
-									{#if onlyRelative === true}
-										{#if relativeLayers[layer.id]}
+
+			{#if isLayersTabVisible}
+				<Header>
+					<StyleSwitcher on:change={onStyleChange} />
+					<FormField>
+						<Checkbox bind:checked={onlyRendered} />
+						<span slot="label">Show only rendered</span>
+					</FormField>
+					<FormField>
+						<Checkbox bind:checked={onlyRelative} />
+						<span slot="label">Show only water</span>
+					</FormField>
+					<hr />
+				</Header>
+				<Content>
+					<List>
+						{#key style}
+							{#each allLayers as layer}
+								{#if onlyRendered === true}
+									{#if visibleLayerMap[layer.id]}
+										{#if onlyRelative === true}
+											{#if relativeLayers[layer.id]}
+												<Item><Layer {layer} /></Item>
+											{/if}
+										{:else}
 											<Item><Layer {layer} /></Item>
 										{/if}
-									{:else}
+									{/if}
+								{:else if onlyRelative === true}
+									{#if relativeLayers[layer.id]}
 										<Item><Layer {layer} /></Item>
 									{/if}
-								{/if}
-							{:else if onlyRelative === true}
-								{#if relativeLayers[layer.id]}
+								{:else}
 									<Item><Layer {layer} /></Item>
 								{/if}
-							{:else}
-								<Item><Layer {layer} /></Item>
-							{/if}
-						{/each}
-					{/key}
-				</List>
-			</Content>
+							{/each}
+						{/key}
+					</List>
+				</Content>
+			{/if}
+			<AttributesPanel {isAttributesTabVisible} />
 		</div>
 	</Drawer>
 	<AppContent class="app-content">
