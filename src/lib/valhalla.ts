@@ -1,4 +1,4 @@
-import type { Map } from 'maplibre-gl';
+import type { Map, Marker as MapMarker } from 'maplibre-gl';
 import pkg from 'maplibre-gl';
 const { Marker } = pkg;
 
@@ -31,7 +31,7 @@ export default class Valhalla {
 
 	private contourLayers: string[] = [];
 
-	private contourMaker: Marker | undefined = undefined;
+	private contourMaker: MapMarker | undefined = undefined;
 
 	private contours: Contour[] = [
 		{
