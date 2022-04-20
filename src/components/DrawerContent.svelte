@@ -5,20 +5,21 @@
 	import { queriedFeatures } from '../stores';
 	import LayerListPanel from './LayerListPanel.svelte';
 	import AttributesPanel from './AttributesPanel.svelte';
+	import { TabNames } from '../lib/constants';
 
 	export let open = false;
-	let tabs = ['Layers', 'Attributes'];
-	let activeTab = 'Layers';
+	let tabs = [TabNames.LAYERS, TabNames.ATTRIBUTES];
+	let activeTab = TabNames.LAYERS;
 	let isLayersTabVisible = false;
 	let isAttributesTabVisible = false;
 
 	$: {
 		switch (activeTab) {
-			case 'Layers':
+			case TabNames.LAYERS:
 				isLayersTabVisible = true;
 				isAttributesTabVisible = false;
 				break;
-			case 'Attributes':
+			case TabNames.ATTRIBUTES:
 				isLayersTabVisible = false;
 				isAttributesTabVisible = true;
 				break;
