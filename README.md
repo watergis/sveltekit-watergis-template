@@ -1,4 +1,6 @@
 # svelte-maplibre-boilerplate
+[![build](https://github.com/watergis/sveltekit-watergis-template/actions/workflows/build.yml/badge.svg)](https://github.com/watergis/sveltekit-watergis-template/actions/workflows/build.yml)
+[![pages-build-deployment](https://github.com/watergis/sveltekit-watergis-template/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/watergis/sveltekit-watergis-template/actions/workflows/pages/pages-build-deployment)
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
@@ -23,6 +25,8 @@ vi .env
 
 Add your own API key `VITE_MAPTILER_KEY` for maptiler. The key can be created at maptiler website [here](https://cloud.maptiler.com/account/keys/). You probably need to sign up first.
 
+Furthermore, edit [config.ts](./src/config.ts) for your environment.
+
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
@@ -34,7 +38,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-open [http://localhost:3000/sveltekit-maplibre-boilerplate](http://localhost:3000/sveltekit-maplibre-boilerplate).
+open [http://localhost:3000](http://localhost:3000).
 
 The path of URL can be changed at [svelte.config.js](./svelte.config.js).
 
