@@ -108,8 +108,7 @@
 			'top-left'
 		);
 
-		// show icon at the center of map
-		map2.on('load', () => {
+		const loadCenterIcon = () => {
 			map2.loadImage(`${config.basePath}/map-center.png`, (error, image) => {
 				if (error) throw error;
 				map2.addImage('map-center', image);
@@ -139,16 +138,26 @@
 					}
 				});
 			});
+		};
+
+		// show icon at the center of map
+		map2.on('load', () => {
+			loadCenterIcon();
 			map2.on('moveend', () => {
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				centerMarker.data.features[0].geometry.coordinates = [
-					map2.getCenter().lng,
-					map2.getCenter().lat
-				];
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				map2.getSource('center').setData(centerMarker.data);
+				const source = map2.getSource('center');
+				if (source) {
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					centerMarker.data.features[0].geometry.coordinates = [
+						map2.getCenter().lng,
+						map2.getCenter().lat
+					];
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					map2.getSource('center').setData(centerMarker.data);
+				} else {
+					loadCenterIcon();
+				}
 			});
 		});
 

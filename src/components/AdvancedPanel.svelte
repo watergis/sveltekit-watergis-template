@@ -82,10 +82,8 @@
 				The feature is provided by Valhalla API.
 			</svelte:fragment>
 		</Select>
-		<div style="display:inline-flex">
-			<Textfield bind:value={longitude} label="Longitude" readonly />
-			<Textfield bind:value={latitude} label="Latitude" readonly />
-		</div>
+		<Textfield bind:value={longitude} label="Longitude" readonly />
+		<Textfield bind:value={latitude} label="Latitude" readonly />
 
 		<div class="button">
 			<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
