@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { LayerSpecification } from '@maplibre/maplibre-gl-style-spec/types';
+	import type { LayerSpecification } from 'maplibre-gl';
 	import FormField from '@smui/form-field';
 	import IconButton, { Icon } from '@smui/icon-button';
 	import { map } from '../stores';

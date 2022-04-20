@@ -10,9 +10,8 @@
 	import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 	import MapboxPopupControl from '@watergis/mapbox-gl-popup';
-	import { MapboxStyleSwitcherControl } from '@watergis/mapbox-gl-style-switcher';
 	import { MapboxValhallaControl } from '@watergis/mapbox-gl-valhalla';
-	import { map } from '../stores';
+	import { map, selectedStyle } from '../stores';
 	import { config } from '../config';
 
 	let mapContainer: HTMLDivElement;
@@ -20,7 +19,7 @@
 	onMount(async () => {
 		const map2 = new Map({
 			container: mapContainer,
-			style: config.styles[0].uri,
+			style: $selectedStyle.uri,
 			center: config.center,
 			zoom: config.zoom,
 			hash: true,
@@ -36,9 +35,6 @@
 		);
 		map2.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
 		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		map2.addControl(new MapboxStyleSwitcherControl(config.styles), 'top-right');
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		map2.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'top-right');

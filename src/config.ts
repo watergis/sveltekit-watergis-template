@@ -1,49 +1,4 @@
-import type { LngLatLike } from 'maplibre-gl';
-import type { Options as ElevationOptions } from '@watergis/maplibre-gl-elevation';
-import type { Options as ValhallaOptions } from '@watergis/mapbox-gl-valhalla';
-
-type Config = {
-	title: string;
-	url: string;
-	logo: string;
-	basePath: string;
-	attribution: string;
-	styles: {
-		title: string;
-		uri: string;
-	}[];
-	center: LngLatLike;
-	zoom: number;
-	search?: {
-		url: string;
-		target: string[];
-		format: (p: { customer: string; connno: string; serialno: string; village: string }) => string;
-		place_type: string[];
-		placeholder: string;
-		zoom: number;
-	};
-	popup: {
-		target: string[];
-	};
-	areaSwitcher: {
-		areas: {
-			title: string;
-			latlng: number[];
-			zoom: number;
-		}[];
-	};
-	legend?: {
-		targets: { [key: string]: string };
-	};
-	elevation?: {
-		url: string;
-		options: ElevationOptions;
-	};
-	valhalla?: {
-		url: string;
-		options: ValhallaOptions;
-	};
-};
+import type { Config } from './lib/types';
 
 export const config: Config = {
 	title: 'GIS for Water',
@@ -54,9 +9,12 @@ export const config: Config = {
 	attribution: '©NARWASSCO',
 	// change stylefiles URLs to yours
 	styles: [
-		{ title: 'UNVT(Water)', uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style.json` },
 		{
-			title: 'UNVT(Sewer',
+			title: 'UNVT(Water)',
+			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style.json`
+		},
+		{
+			title: 'UNVT(Sewer)',
 			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-sewer.json`
 		}
 	],

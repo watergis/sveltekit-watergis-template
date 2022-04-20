@@ -3,12 +3,10 @@
 	import List, { Item } from '@smui/list';
 	import FormField from '@smui/form-field';
 	import Checkbox from '@smui/checkbox';
-	import type {
-		StyleSpecification,
-		LayerSpecification
-	} from '@maplibre/maplibre-gl-style-spec/types';
-	import { map } from '../stores';
+	import type { StyleSpecification, LayerSpecification } from 'maplibre-gl';
 	import Layer from './Layer.svelte';
+	import StyleSwitcher from './StyleSwitcher.svelte';
+	import { map } from '../stores';
 	import { config } from '../config';
 
 	export let open = false;
@@ -55,12 +53,17 @@
 			}
 		}
 	};
+
+	const onStyleChange = () => {
+		updateLayers();
+	};
 </script>
 
 <div class="drawer-container">
 	<Drawer variant="dismissible" bind:open>
 		<div class="drawer-content">
 			<Header>
+				<StyleSwitcher on:change={onStyleChange} />
 				<FormField>
 					<Checkbox bind:checked={onlyRendered} />
 					<span slot="label">Show only rendered</span>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { LayerSpecification } from '@maplibre/maplibre-gl-style-spec/types';
+	import type { LayerSpecification } from 'maplibre-gl';
 	import LegendSymbol from '@watergis/legend-symbol';
 	import { map, spriteLoaderObject } from '../stores';
 	import SpriteLoader from '../lib/sprite';
