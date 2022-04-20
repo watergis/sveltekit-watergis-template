@@ -31,7 +31,7 @@
 		];
 	}
 
-	const valhalla = new Valhalla($map, config.valhalla.url, contours);
+	let valhalla = null;
 
 	let costingOptions = [
 		{
@@ -52,6 +52,10 @@
 
 	$: {
 		if ($map) {
+			if (valhalla) {
+				valhalla.clearFeatures();
+			}
+			valhalla = new Valhalla($map, config.valhalla.url, contours);
 			longitude = $map.getCenter().lng;
 			latitude = $map.getCenter().lat;
 		}
