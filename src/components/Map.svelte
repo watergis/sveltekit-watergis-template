@@ -128,7 +128,6 @@
 	@import '@watergis/maplibre-gl-export/css/styles.css';
 	@import '@watergis/maplibre-gl-elevation/css/styles.css';
 	@import '@watergis/mapbox-gl-valhalla/css/styles.css';
-	@import '@watergis/mapbox-gl-style-switcher/styles.css';
 	@import '@watergis/mapbox-gl-area-switcher/css/styles.css';
 	@import '@watergis/mapbox-gl-popup/css/styles.css';
 
