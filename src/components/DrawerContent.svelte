@@ -33,7 +33,9 @@
 	}
 
 	$: open, updateLayers();
-	let updateLayers;
+	let updateLayers = () => {
+		return;
+	};
 </script>
 
 <div class="drawer-container">
