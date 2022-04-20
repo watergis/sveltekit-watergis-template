@@ -21,7 +21,7 @@
 							<span slot="description">{feature.source}</span>
 						</Header>
 						<Content>
-							<DataTable table$aria-label={feature.layer.id} style="max-width: 100%;">
+							<DataTable table$aria-label={feature.layer.id} style="width: 100%;">
 								<Body>
 									{#each Object.keys(feature.properties) as key}
 										<Row>

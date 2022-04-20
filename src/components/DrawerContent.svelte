@@ -1,33 +1,16 @@
 <script lang="ts">
-	import Drawer, { AppContent, Content, Header } from '@smui/drawer';
-	import List, { Item } from '@smui/list';
-	import FormField from '@smui/form-field';
-	import Checkbox from '@smui/checkbox';
+	import Drawer, { AppContent, Header } from '@smui/drawer';
 	import Tab, { Label } from '@smui/tab';
 	import TabBar from '@smui/tab-bar';
-	import type { StyleSpecification, LayerSpecification } from 'maplibre-gl';
-	import Layer from './Layer.svelte';
-	import StyleSwitcher from './StyleSwitcher.svelte';
-	import { map, queriedFeatures } from '../stores';
-	import { config } from '../config';
+	import { queriedFeatures } from '../stores';
+	import LayerListPanel from './LayerListPanel.svelte';
 	import AttributesPanel from './AttributesPanel.svelte';
 
 	export let open = false;
-	let style: StyleSpecification = undefined;
-	let onlyRendered = true;
-	let onlyRelative = true;
-
-	let allLayers: LayerSpecification[] = [];
-	let visibleLayerMap = {};
-	let relativeLayers = {};
 	let tabs = ['Layers', 'Attributes'];
 	let activeTab = 'Layers';
 	let isLayersTabVisible = false;
 	let isAttributesTabVisible = false;
-
-	if (config.legend && config.legend.targets) {
-		relativeLayers = config.legend.targets;
-	}
 
 	$: {
 		switch (activeTab) {
@@ -49,42 +32,8 @@
 		}
 	}
 
-	$: {
-		if ($map) {
-			$map.on('moveend', updateLayers);
-			$map.on('styledata', updateLayers);
-		}
-	}
-
 	$: open, updateLayers();
-	$: style, updateLayers();
-	$: onlyRendered, updateLayers();
-	$: onlyRelative, updateLayers();
-
-	const updateLayers = () => {
-		if (!$map) return;
-		if ($map.isStyleLoaded()) {
-			style = $map.getStyle();
-			allLayers = style.layers;
-			updateVisibleLayers();
-		} else {
-			$map.on('load', updateLayers);
-		}
-	};
-
-	const updateVisibleLayers = () => {
-		visibleLayerMap = {};
-		if ($map && $map.queryRenderedFeatures) {
-			const features = $map.queryRenderedFeatures();
-			for (let feature of features) {
-				visibleLayerMap[feature.layer.id] = feature.layer;
-			}
-		}
-	};
-
-	const onStyleChange = () => {
-		updateLayers();
-	};
+	let updateLayers;
 </script>
 
 <div class="drawer-container">
@@ -98,45 +47,7 @@
 				</TabBar>
 			</Header>
 
-			{#if isLayersTabVisible}
-				<Header>
-					<StyleSwitcher on:change={onStyleChange} />
-					<FormField>
-						<Checkbox bind:checked={onlyRendered} />
-						<span slot="label">Show only rendered</span>
-					</FormField>
-					<FormField>
-						<Checkbox bind:checked={onlyRelative} />
-						<span slot="label">Show only water</span>
-					</FormField>
-					<hr />
-				</Header>
-				<Content>
-					<List>
-						{#key style}
-							{#each allLayers as layer}
-								{#if onlyRendered === true}
-									{#if visibleLayerMap[layer.id]}
-										{#if onlyRelative === true}
-											{#if relativeLayers[layer.id]}
-												<Item><Layer {layer} /></Item>
-											{/if}
-										{:else}
-											<Item><Layer {layer} /></Item>
-										{/if}
-									{/if}
-								{:else if onlyRelative === true}
-									{#if relativeLayers[layer.id]}
-										<Item><Layer {layer} /></Item>
-									{/if}
-								{:else}
-									<Item><Layer {layer} /></Item>
-								{/if}
-							{/each}
-						{/key}
-					</List>
-				</Content>
-			{/if}
+			<LayerListPanel {isLayersTabVisible} bind:updateLayers />
 			<AttributesPanel {isAttributesTabVisible} />
 		</div>
 	</Drawer>
