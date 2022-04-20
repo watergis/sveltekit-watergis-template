@@ -21,6 +21,7 @@
 		{#each config.styles as style}
 			<Option value={style.uri}>{style.title}</Option>
 		{/each}
+		<svelte:fragment slot="helperText">Select and change base map</svelte:fragment>
 	</Select>
 </div>
 

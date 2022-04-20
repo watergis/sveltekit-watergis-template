@@ -1,4 +1,5 @@
 export enum TabNames {
 	LAYERS = 'Layers',
-	ATTRIBUTES = 'Attributes'
+	ATTRIBUTES = 'Attributes',
+	SEARCH = 'Search'
 }

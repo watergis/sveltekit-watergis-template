@@ -1,27 +1,46 @@
 <script lang="ts">
 	import Drawer, { AppContent, Header } from '@smui/drawer';
-	import Tab, { Label } from '@smui/tab';
+	import Tab, { Icon, Label } from '@smui/tab';
 	import TabBar from '@smui/tab-bar';
 	import { queriedFeatures } from '../stores';
 	import LayerListPanel from './LayerListPanel.svelte';
 	import AttributesPanel from './AttributesPanel.svelte';
+	import SearchPanel from './SearchPanel.svelte';
 	import { TabNames } from '../lib/constants';
 
 	export let open = false;
-	let tabs = [TabNames.LAYERS, TabNames.ATTRIBUTES];
-	let activeTab = TabNames.LAYERS;
+	let tabs = [
+		{
+			icon: 'layers',
+			label: TabNames.LAYERS
+		},
+		{
+			icon: 'search',
+			label: TabNames.SEARCH
+		},
+		{
+			icon: 'info',
+			label: TabNames.ATTRIBUTES
+		}
+	];
+	let activeTab = tabs[0];
 	let isLayersTabVisible = false;
 	let isAttributesTabVisible = false;
+	let isSearchTabVisible = false;
 
 	$: {
-		switch (activeTab) {
+		isLayersTabVisible = false;
+		isAttributesTabVisible = false;
+		isSearchTabVisible = false;
+		switch (activeTab.label) {
 			case TabNames.LAYERS:
 				isLayersTabVisible = true;
-				isAttributesTabVisible = false;
 				break;
 			case TabNames.ATTRIBUTES:
-				isLayersTabVisible = false;
 				isAttributesTabVisible = true;
+				break;
+			case TabNames.SEARCH:
+				isSearchTabVisible = true;
 				break;
 		}
 	}
@@ -44,13 +63,21 @@
 		<div class="drawer-content">
 			<Header>
 				<TabBar {tabs} let:tab bind:active={activeTab}>
-					<Tab {tab} minWidth>
-						<Label>{tab}</Label>
+					<Tab
+						{tab}
+						minWidth
+						stacked={true}
+						indicatorSpanOnlyContent={true}
+						tabIndicator$transition="fade"
+					>
+						<Icon class="material-icons">{tab.icon}</Icon>
+						<Label>{tab.label}</Label>
 					</Tab>
 				</TabBar>
 			</Header>
 
 			<LayerListPanel {isLayersTabVisible} bind:updateLayers />
+			<SearchPanel {isSearchTabVisible} />
 			<AttributesPanel {isAttributesTabVisible} />
 		</div>
 	</Drawer>

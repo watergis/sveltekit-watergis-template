@@ -8,7 +8,6 @@
 		AttributionControl
 	} from 'maplibre-gl';
 	import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 	import { MapboxValhallaControl } from '@watergis/mapbox-gl-valhalla';
 	import { map, selectedStyle, queriedFeatures } from '../stores';
 	import { config } from '../config';
@@ -41,10 +40,6 @@
 				queriedFeatures.update(() => features);
 			})
 		);
-
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		map2.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'top-right');
 
 		if (config.elevation) {
 			const MapboxElevationControl = await (
@@ -133,7 +128,6 @@
 	@import '@watergis/maplibre-gl-export/css/styles.css';
 	@import '@watergis/maplibre-gl-elevation/css/styles.css';
 	@import '@watergis/mapbox-gl-valhalla/css/styles.css';
-	@import '@watergis/mapbox-gl-area-switcher/css/styles.css';
 	@import '../css/IdentifyTools.css';
 
 	.map-wrap {

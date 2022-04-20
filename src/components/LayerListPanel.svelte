@@ -64,11 +64,11 @@
 		<StyleSwitcher on:change={onStyleChange} />
 		<FormField>
 			<Checkbox bind:checked={onlyRendered} />
-			<span slot="label">Show only rendered</span>
+			<span slot="label">Show only rendered layers</span>
 		</FormField>
 		<FormField>
 			<Checkbox bind:checked={onlyRelative} />
-			<span slot="label">Show only water</span>
+			<span slot="label">Show only water layers</span>
 		</FormField>
 		<hr />
 	</Header>
