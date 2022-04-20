@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { LayerSpecification } from '@maplibre/maplibre-gl-style-spec/types';
-	import Checkbox from '@smui/checkbox';
 	import FormField from '@smui/form-field';
+	import IconButton, { Icon } from '@smui/icon-button';
 	import { map } from '../stores';
 	import Legend from './Legend.svelte';
 	import { config } from '../config';
@@ -22,12 +22,17 @@
 
 <div>
 	<FormField>
-		<Checkbox bind:checked touch />
+		<div style="display: flex; align-items: center;">
+			<IconButton toggle bind:pressed={checked}>
+				<Icon class="material-icons" on>visibility</Icon>
+				<Icon class="material-icons">visibility_off</Icon>
+			</IconButton>
+		</div>
 		<Legend {layer} />
-		<span slot="label"
-			>{config.legend && config.legend.targets && config.legend.targets[layer.id]
+		<span slot="label">
+			{config.legend && config.legend.targets && config.legend.targets[layer.id]
 				? config.legend.targets[layer.id]
-				: layer.id}</span
-		>
+				: layer.id}
+		</span>
 	</FormField>
 </div>
