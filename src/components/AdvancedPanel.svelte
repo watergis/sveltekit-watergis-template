@@ -2,7 +2,7 @@
 	import Accordion, { Panel, Header, Content } from '@smui-extra/accordion';
 	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
-	import Button, { Label } from '@smui/button';
+	import Button, { Label, Icon } from '@smui/button';
 	import { map } from '../stores';
 	import { config } from '../config';
 	import Valhalla, { Costing, ContourType } from '$lib/valhalla';
@@ -77,12 +77,19 @@
 			{#each costingOptions as item}
 				<Option value={item.value}>{item.label}</Option>
 			{/each}
-			<svelte:fragment slot="helperText">Select a method of transporting</svelte:fragment>
+			<svelte:fragment slot="helperText">
+				This is to calculate isochrone map from the center of the map by selected transport methods.
+				The feature is provided by Valhalla API.
+			</svelte:fragment>
 		</Select>
-		<Textfield bind:value={longitude} label="Longitude" readonly />
-		<Textfield bind:value={latitude} label="Latitude" readonly />
+		<div style="display:inline-flex">
+			<Textfield bind:value={longitude} label="Longitude" readonly />
+			<Textfield bind:value={latitude} label="Latitude" readonly />
+		</div>
+
 		<div class="button">
 			<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
+				<Icon class="material-icons">layers_clear</Icon>
 				<Label>Clear</Label>
 			</Button>
 		</div>
@@ -104,6 +111,7 @@
 							color="primary"
 							style="width:100%"
 						>
+							<Icon class="material-icons">access_time</Icon>
 							<Label>Calculate</Label>
 						</Button>
 					</div>
@@ -128,6 +136,7 @@
 							color="primary"
 							style="width:100%"
 						>
+							<Icon class="material-icons">straighten</Icon>
 							<Label>Calculate</Label>
 						</Button>
 					</div>
