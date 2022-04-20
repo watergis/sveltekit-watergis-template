@@ -1,6 +1,6 @@
 import type { LngLatLike } from 'maplibre-gl';
 import type { Options as ElevationOptions } from '@watergis/maplibre-gl-elevation';
-import type { Options as ValhallaOptions } from '@watergis/mapbox-gl-valhalla';
+import type { Contour } from '../valhalla';
 
 export type StyleSwitcherOption = {
 	title: string;
@@ -43,6 +43,8 @@ export type Config = {
 	};
 	valhalla?: {
 		url: string;
-		options: ValhallaOptions;
+		options: {
+			Contours?: Contour[];
+		};
 	};
 };

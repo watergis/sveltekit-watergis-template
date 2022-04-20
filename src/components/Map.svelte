@@ -5,15 +5,16 @@
 		NavigationControl,
 		GeolocateControl,
 		ScaleControl,
-		AttributionControl
+		AttributionControl,
+		type GeoJSONSourceSpecification
 	} from 'maplibre-gl';
 	import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-	import { MapboxValhallaControl } from '@watergis/mapbox-gl-valhalla';
 	import { map, selectedStyle, queriedFeatures } from '../stores';
 	import { config } from '../config';
 	import MaplibreIdentifyTools from '../lib/IdentifyTools';
 
 	let mapContainer: HTMLDivElement;
+	let centerMarker: GeoJSONSourceSpecification;
 
 	onMount(async () => {
 		const map2 = new Map({
@@ -68,14 +69,6 @@
 			'top-right'
 		);
 
-		if (config.valhalla)
-			map2.addControl(
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				new MapboxValhallaControl(config.valhalla.url, config.valhalla.options),
-				'top-right'
-			);
-
 		if (!config.search) return;
 		const customerData = await fetch(config.search.url).then((res) => res.json());
 		function forwardGeocoder(query) {
@@ -114,6 +107,51 @@
 			}),
 			'top-left'
 		);
+
+		// show icon at the center of map
+		map2.on('load', () => {
+			map2.loadImage(`${config.basePath}/map-center.png`, (error, image) => {
+				if (error) throw error;
+				map2.addImage('map-center', image);
+				centerMarker = {
+					type: 'geojson',
+					data: {
+						type: 'FeatureCollection',
+						features: [
+							{
+								type: 'Feature',
+								geometry: {
+									type: 'Point',
+									coordinates: [map2.getCenter().lng, map2.getCenter().lat]
+								}
+							}
+						]
+					}
+				};
+				map2.addSource('center', centerMarker);
+				map2.addLayer({
+					id: 'points',
+					type: 'symbol',
+					source: 'center', // reference the data source
+					layout: {
+						'icon-image': 'map-center', // reference the image
+						'icon-size': 0.3
+					}
+				});
+			});
+			map2.on('moveend', () => {
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				centerMarker.data.features[0].geometry.coordinates = [
+					map2.getCenter().lng,
+					map2.getCenter().lat
+				];
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				map2.getSource('center').setData(centerMarker.data);
+			});
+		});
+
 		map.update(() => map2);
 	});
 </script>
@@ -127,7 +165,6 @@
 	@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 	@import '@watergis/maplibre-gl-export/css/styles.css';
 	@import '@watergis/maplibre-gl-elevation/css/styles.css';
-	@import '@watergis/mapbox-gl-valhalla/css/styles.css';
 	@import '../css/IdentifyTools.css';
 
 	.map-wrap {

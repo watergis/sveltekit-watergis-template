@@ -6,6 +6,7 @@
 	import LayerListPanel from './LayerListPanel.svelte';
 	import AttributesPanel from './AttributesPanel.svelte';
 	import SearchPanel from './SearchPanel.svelte';
+	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { TabNames } from '../lib/constants';
 
 	export let open = false;
@@ -21,17 +22,23 @@
 		{
 			icon: 'info',
 			label: TabNames.ATTRIBUTES
+		},
+		{
+			icon: 'analytics',
+			label: TabNames.ADVANCED
 		}
 	];
 	let activeTab = tabs[0];
 	let isLayersTabVisible = false;
 	let isAttributesTabVisible = false;
 	let isSearchTabVisible = false;
+	let isAdvancedTabVisible = false;
 
 	$: {
 		isLayersTabVisible = false;
 		isAttributesTabVisible = false;
 		isSearchTabVisible = false;
+		isAdvancedTabVisible = false;
 		switch (activeTab.label) {
 			case TabNames.LAYERS:
 				isLayersTabVisible = true;
@@ -41,6 +48,9 @@
 				break;
 			case TabNames.SEARCH:
 				isSearchTabVisible = true;
+				break;
+			case TabNames.ADVANCED:
+				isAdvancedTabVisible = true;
 				break;
 		}
 	}
@@ -79,6 +89,7 @@
 			<LayerListPanel {isLayersTabVisible} bind:updateLayers />
 			<SearchPanel {isSearchTabVisible} />
 			<AttributesPanel {isAttributesTabVisible} />
+			<AdvancedPanel {isAdvancedTabVisible} />
 		</div>
 	</Drawer>
 	<AppContent class="app-content">
