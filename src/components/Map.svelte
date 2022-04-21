@@ -42,15 +42,15 @@
 			})
 		);
 
-		if (config.elevation) {
-			const MapboxElevationControl = await (
-				await import('@watergis/maplibre-gl-elevation')
-			).default;
-			map2.addControl(
-				new MapboxElevationControl(config.elevation.url, config.elevation.options),
-				'top-right'
-			);
-		}
+		// if (config.elevation) {
+		// 	const MapboxElevationControl = await (
+		// 		await import('@watergis/maplibre-gl-elevation')
+		// 	).default;
+		// 	map2.addControl(
+		// 		new MapboxElevationControl(config.elevation.url, config.elevation.options),
+		// 		'top-right'
+		// 	);
+		// }
 
 		const { MaplibreExportControl, Size, PageOrientation, Format, DPI } = await import(
 			'@watergis/maplibre-gl-export'
@@ -173,7 +173,7 @@
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 	@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 	@import '@watergis/maplibre-gl-export/css/styles.css';
-	@import '@watergis/maplibre-gl-elevation/css/styles.css';
+	/* @import '@watergis/maplibre-gl-elevation/css/styles.css'; */
 	@import '../css/IdentifyTools.css';
 
 	.map-wrap {

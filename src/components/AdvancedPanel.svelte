@@ -2,6 +2,7 @@
 	import { ContourType } from '$lib/valhalla';
 
 	import Accordion, { Panel, Header, Content } from '@smui-extra/accordion';
+	import MeasurePanel from './MeasurePanel.svelte';
 
 	import ValhallaPanel from './ValhallaPanel.svelte';
 
@@ -11,6 +12,12 @@
 {#if isAdvancedTabVisible}
 	<div class="accordion-container">
 		<Accordion>
+			<Panel>
+				<Header>Measuring tool</Header>
+				<Content>
+					<MeasurePanel />
+				</Content>
+			</Panel>
 			<Panel>
 				<Header>Time Isochrone</Header>
 				<Content>
