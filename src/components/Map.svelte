@@ -52,23 +52,6 @@
 			);
 		}
 
-		const { MaplibreExportControl, Size, PageOrientation, Format, DPI } = await import(
-			'@watergis/maplibre-gl-export'
-		);
-		map2.addControl(
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			new MaplibreExportControl({
-				PageSize: Size.A4,
-				PageOrientation: PageOrientation.Landscape,
-				Format: Format.PNG,
-				DPI: DPI[96],
-				Crosshair: true,
-				PrintableArea: true
-			}),
-			'top-right'
-		);
-
 		if (!config.search) return;
 		const customerData = await fetch(config.search.url).then((res) => res.json());
 		function forwardGeocoder(query) {
@@ -172,7 +155,6 @@
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 	@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-	@import '@watergis/maplibre-gl-export/css/styles.css';
 	@import '@watergis/maplibre-gl-elevation/css/styles.css';
 	@import '../css/IdentifyTools.css';
 
