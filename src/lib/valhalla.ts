@@ -120,14 +120,14 @@ export default class Valhalla {
 					.then((res) => res.json())
 					.then((geojson) => {
 						geojson.features.forEach((f) => {
-							const sourceName = `isochrone-${f.properties.contour}`;
+							const sourceName = `isochrone-${f.properties.contour}-${contourType}`;
 							this.map?.addSource(sourceName, {
 								type: 'geojson',
 								data: f
 							});
 							this.contourSources.push(sourceName);
 							this.map?.addLayer({
-								id: `pg-${sourceName}`,
+								id: `pg-${sourceName}-${contourType}`,
 								type: 'fill',
 								source: sourceName,
 								layout: {},
@@ -136,10 +136,10 @@ export default class Valhalla {
 									'fill-opacity': 0.1
 								}
 							});
-							this.contourLayers.push(`pg-${sourceName}`);
+							this.contourLayers.push(`pg-${sourceName}-${contourType}`);
 
 							this.map?.addLayer({
-								id: `ls-${sourceName}`,
+								id: `ls-${sourceName}-${contourType}`,
 								type: 'line',
 								source: sourceName,
 								layout: {
@@ -151,10 +151,10 @@ export default class Valhalla {
 									'line-width': 3
 								}
 							});
-							this.contourLayers.push(`ls-${sourceName}`);
+							this.contourLayers.push(`ls-${sourceName}-${contourType}`);
 
 							this.map?.addLayer({
-								id: `symbol-${sourceName}`,
+								id: `symbol-${sourceName}-${contourType}`,
 								type: 'symbol',
 								source: sourceName,
 								layout: {
@@ -170,7 +170,7 @@ export default class Valhalla {
 									'text-halo-color': '#FFFFFF'
 								}
 							});
-							this.contourLayers.push(`symbol-${sourceName}`);
+							this.contourLayers.push(`symbol-${sourceName}-${contourType}`);
 						});
 						if (this.map) {
 							this.contourMaker = new Marker().setLngLat([lon, lat]).addTo(this.map);

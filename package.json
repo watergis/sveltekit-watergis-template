@@ -19,6 +19,7 @@
 		"@fortawesome/free-solid-svg-icons": "^6.1.1",
 		"@smui-extra/accordion": "^6.0.0-beta.16",
 		"@smui/button": "^6.0.0-beta.16",
+		"@smui/card": "^6.0.0-beta.16",
 		"@smui/checkbox": "^6.0.0-beta.16",
 		"@smui/data-table": "^6.0.0-beta.16",
 		"@smui/drawer": "^6.0.0-beta.16",

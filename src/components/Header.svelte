@@ -54,7 +54,7 @@
 		</Section>
 		<section />
 		<Section align="end" toolbar>
-			<IconButton class="material-icons" aria-label="Print">print</IconButton>
+			<IconButton class="material-icons" aria-label="Print" style="display:none">print</IconButton>
 			<IconButton
 				aria-label={modeLabel}
 				class="material-icons"
