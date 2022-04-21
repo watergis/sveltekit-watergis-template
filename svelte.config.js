@@ -1,7 +1,6 @@
 import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
 import path from 'path';
-import legacy from '@vitejs/plugin-legacy';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -28,14 +27,7 @@ const config = {
 		alias: {
 			$lib: path.resolve('src/lib'),
 			$components: path.resolve('./src/components')
-		},
-		plugins: [
-			legacy({
-				targets: ['defaults', 'not IE 11'],
-				polyfills: true,
-				modernPolyfills: true
-			})
-		]
+		}
 	}
 };
 
