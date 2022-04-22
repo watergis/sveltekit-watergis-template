@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import {
+	import maplibregl, {
 		Map,
 		NavigationControl,
 		GeolocateControl,

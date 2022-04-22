@@ -10,13 +10,19 @@ export const config: Config = {
 	// change stylefiles URLs to yours
 	styles: [
 		{
-			title: 'UNVT(Water)',
+			title: 'UNVT Water (OSM)',
 			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style.json`
 		},
 		{
-			title: 'UNVT(Sewer)',
+			title: 'UNVT Water (Building)',
+			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-buildings.json`
+		},
+		// { title: 'Satellite Water', uri: `https://narwassco.github.io/mapbox-stylefiles/satellite/style.json`,},
+		{
+			title: 'UNVT Sewer',
 			uri: `https://narwassco.github.io/mapbox-stylefiles/unvt/style-sewer.json`
 		}
+		// { title: 'Satellite Sewer', uri: `https://narwassco.github.io/mapbox-stylefiles/satellite/style-sewer.json`,},
 	],
 	// change initial location and zoom level to yours
 	center: { lng: 35.87063, lat: -1.08551 },
