@@ -50,7 +50,6 @@
 
 {#if config.search}
 	<div class="search">
-		<p>Search meter</p>
 		<AutoComplete
 			items={searchItems}
 			bind:selectedItem={selectedObject}
@@ -61,7 +60,7 @@
 
 <style lang="scss">
 	.search {
-		padding-left: 1.5em;
-		width: 80%;
+		// padding-left: 1.5em;
+		width: 100%;
 	}
 </style>

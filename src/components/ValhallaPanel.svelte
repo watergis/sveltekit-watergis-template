@@ -76,63 +76,65 @@
 	};
 </script>
 
-<div class="select">
-	<Select bind:value={meansOfTransport} label="Means of Transport">
-		<Option value="" />
-		{#each costingOptions as item}
-			<Option value={item.value}>{item.label}</Option>
-		{/each}
-	</Select>
-	<Textfield bind:value={longitude} label="Longitude" readonly />
-	<Textfield bind:value={latitude} label="Latitude" readonly />
-</div>
-{#if contourType === ContourType.Time}
-	<div style="display:inline-flex">
-		{#each contours as contour}
-			<Textfield bind:value={contour.time} label="{contour.time} min" type="number" />
-		{/each}
+{#if config.valhalla}
+	<div class="select">
+		<Select bind:value={meansOfTransport} label="Means of Transport">
+			<Option value="" />
+			{#each costingOptions as item}
+				<Option value={item.value}>{item.label}</Option>
+			{/each}
+		</Select>
+		<Textfield bind:value={longitude} label="Longitude" readonly />
+		<Textfield bind:value={latitude} label="Latitude" readonly />
 	</div>
-	<div class="button">
-		<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
-			<Icon class="material-icons">layers_clear</Icon>
-			<Label>Clear</Label>
-		</Button>
-	</div>
-	<div class="button">
-		<Button
-			on:click={() => calc(ContourType.Time)}
-			variant="raised"
-			color="primary"
-			style="width:100%"
-		>
-			<Icon class="material-icons">access_time</Icon>
-			<Label>Calculate</Label>
-		</Button>
-	</div>
-{:else if contourType === ContourType.Distance}
-	<p>Distance Isochrone</p>
-	<div style="display:inline-flex">
-		{#each contours as contour}
-			<Textfield bind:value={contour.distance} label="{contour.distance} km" type="number" />
-		{/each}
-	</div>
-	<div class="button">
-		<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
-			<Icon class="material-icons">layers_clear</Icon>
-			<Label>Clear</Label>
-		</Button>
-	</div>
-	<div class="button">
-		<Button
-			on:click={() => calc(ContourType.Distance)}
-			variant="raised"
-			color="primary"
-			style="width:100%"
-		>
-			<Icon class="material-icons">straighten</Icon>
-			<Label>Calculate</Label>
-		</Button>
-	</div>
+	{#if contourType === ContourType.Time}
+		<div style="display:inline-flex">
+			{#each contours as contour}
+				<Textfield bind:value={contour.time} label="{contour.time} min" type="number" />
+			{/each}
+		</div>
+		<div class="button">
+			<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
+				<Icon class="material-icons">layers_clear</Icon>
+				<Label>Clear</Label>
+			</Button>
+		</div>
+		<div class="button">
+			<Button
+				on:click={() => calc(ContourType.Time)}
+				variant="raised"
+				color="primary"
+				style="width:100%"
+			>
+				<Icon class="material-icons">access_time</Icon>
+				<Label>Calculate</Label>
+			</Button>
+		</div>
+	{:else if contourType === ContourType.Distance}
+		<p>Distance Isochrone</p>
+		<div style="display:inline-flex">
+			{#each contours as contour}
+				<Textfield bind:value={contour.distance} label="{contour.distance} km" type="number" />
+			{/each}
+		</div>
+		<div class="button">
+			<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
+				<Icon class="material-icons">layers_clear</Icon>
+				<Label>Clear</Label>
+			</Button>
+		</div>
+		<div class="button">
+			<Button
+				on:click={() => calc(ContourType.Distance)}
+				variant="raised"
+				color="primary"
+				style="width:100%"
+			>
+				<Icon class="material-icons">straighten</Icon>
+				<Label>Calculate</Label>
+			</Button>
+		</div>
+	{/if}
 {/if}
 
 <style lang="scss">

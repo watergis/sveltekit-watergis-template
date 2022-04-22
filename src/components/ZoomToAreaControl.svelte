@@ -16,7 +16,6 @@
 
 {#if config.areaSwitcher}
 	<div class="select">
-		<p>Search area of interest</p>
 		<Select variant="outlined" bind:value label="Area">
 			<Icon class="material-icons" slot="leadingIcon">zoom_in_map</Icon>
 			<Option value="" />

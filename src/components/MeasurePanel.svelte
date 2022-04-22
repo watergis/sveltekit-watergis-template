@@ -222,30 +222,37 @@
 	};
 </script>
 
-<div class="button">
-	<Button on:click={() => measureStart()} variant="raised" color="primary" style="width:100%">
-		<Icon class="material-icons">straighten</Icon>
-		<Label>
-			{#if isQuery}
-				Stop measure
-			{:else}
-				Start measure
-			{/if}
-		</Label>
-	</Button>
-</div>
-<div class="button">
-	<Button on:click={() => clearFeatures()} variant="raised" color="secondary" style="width:100%">
-		<Icon class="material-icons">delete</Icon>
-		<Label>Clear</Label>
-	</Button>
-</div>
-<div class="button">
-	<Button on:click={() => downloadGeoJSON()} variant="raised" color="secondary" style="width:100%">
-		<Icon class="material-icons">file_download</Icon>
-		<Label>GeoJSON</Label>
-	</Button>
-</div>
+{#if config.elevation}
+	<div class="button">
+		<Button on:click={() => measureStart()} variant="raised" color="primary" style="width:100%">
+			<Icon class="material-icons">straighten</Icon>
+			<Label>
+				{#if isQuery}
+					Stop measure
+				{:else}
+					Start measure
+				{/if}
+			</Label>
+		</Button>
+	</div>
+	<div class="button">
+		<Button on:click={() => clearFeatures()} variant="raised" color="secondary" style="width:100%">
+			<Icon class="material-icons">delete</Icon>
+			<Label>Clear</Label>
+		</Button>
+	</div>
+	<div class="button">
+		<Button
+			on:click={() => downloadGeoJSON()}
+			variant="raised"
+			color="secondary"
+			style="width:100%"
+		>
+			<Icon class="material-icons">file_download</Icon>
+			<Label>GeoJSON</Label>
+		</Button>
+	</div>
+{/if}
 
 <style lang="scss">
 	.button {
