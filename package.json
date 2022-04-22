@@ -53,7 +53,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@mapbox/mapbox-gl-geocoder": "^5.0.0",
 		"@maplibre/maplibre-gl-style-spec": "^15.0.0",
 		"@turf/distance": "^6.5.0",
 		"@watergis/legend-symbol": "^0.2.2",
