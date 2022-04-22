@@ -19,6 +19,7 @@
 		"@fortawesome/free-solid-svg-icons": "^6.1.1",
 		"@smui-extra/accordion": "^6.0.0-beta.16",
 		"@smui/button": "^6.0.0-beta.16",
+		"@smui/card": "^6.0.0-beta.16",
 		"@smui/checkbox": "^6.0.0-beta.16",
 		"@smui/data-table": "^6.0.0-beta.16",
 		"@smui/dialog": "^6.0.0-beta.16",
@@ -37,7 +38,6 @@
 		"@types/file-saver": "^2.0.5",
 		"@typescript-eslint/eslint-plugin": "^5.10.1",
 		"@typescript-eslint/parser": "^5.10.1",
-		"@vitejs/plugin-legacy": "^1.8.1",
 		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^3.2.1",
@@ -55,16 +55,18 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"-": "^0.0.1",
-		"@mapbox/mapbox-gl-geocoder": "^5.0.0",
 		"@maplibre/maplibre-gl-style-spec": "^15.0.0",
+		"@turf/distance": "^6.5.0",
 		"@watergis/legend-symbol": "^0.2.2",
 		"@watergis/maplibre-gl-elevation": "^1.0.9",
+		"@watergis/terrain-rgb": "^1.1.7",
 		"D": "^1.0.0",
 		"fabric": "^5.2.1",
+		"file-saver": "^2.0.5",
 		"file-server": "^2.2.0",
 		"image-clipper": "^0.4.4",
 		"jspdf": "^2.5.1",
-		"maplibre-gl": "^2.1.9"
+		"maplibre-gl": "^2.1.9",
+		"simple-svelte-autocomplete": "^2.4.0"
 	}
 }

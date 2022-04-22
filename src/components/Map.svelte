@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import maplibregl, {
+	import {
 		Map,
 		NavigationControl,
 		GeolocateControl,
@@ -8,7 +8,6 @@
 		AttributionControl,
 		type GeoJSONSourceSpecification
 	} from 'maplibre-gl';
-	import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 	import { map, selectedStyle, queriedFeatures } from '../stores';
 	import { config } from '../config';
 	import MaplibreIdentifyTools from '../lib/IdentifyTools';
@@ -42,54 +41,15 @@
 			})
 		);
 
-		if (config.elevation) {
-			const MapboxElevationControl = await (
-				await import('@watergis/maplibre-gl-elevation')
-			).default;
-			map2.addControl(
-				new MapboxElevationControl(config.elevation.url, config.elevation.options),
-				'top-right'
-			);
-		}
-
-		if (!config.search) return;
-		const customerData = await fetch(config.search.url).then((res) => res.json());
-		function forwardGeocoder(query) {
-			var matchingFeatures = [];
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			for (var i = 0; i < customerData.features.length; i++) {
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				var feature = customerData.features[i];
-				config.search.target.forEach((v) => {
-					var target = feature.properties[v];
-					if (!target) {
-						return;
-					}
-					// handle queries with different capitalization than the source data by calling toLowerCase()
-					if (target.toString().toLowerCase().search(query.toString().toLowerCase()) !== -1) {
-						feature['place_name'] = config.search.format(feature.properties);
-						feature['center'] = feature.geometry.coordinates;
-						feature['place_type'] = config.search.place_type;
-						matchingFeatures.push(feature);
-					}
-				});
-			}
-			return matchingFeatures;
-		}
-		map2.addControl(
-			new MapboxGeocoder({
-				localGeocoder: forwardGeocoder,
-				localGeocoderOnly: true,
-				zoom: config.search.zoom,
-				placeholder: config.search.placeholder,
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				mapboxgl: maplibregl
-			}),
-			'top-left'
-		);
+		// if (config.elevation) {
+		// 	const MapboxElevationControl = await (
+		// 		await import('@watergis/maplibre-gl-elevation')
+		// 	).default;
+		// 	map2.addControl(
+		// 		new MapboxElevationControl(config.elevation.url, config.elevation.options),
+		// 		'top-right'
+		// 	);
+		// }
 
 		const loadCenterIcon = () => {
 			map2.loadImage(`${config.basePath}/map-center.png`, (error, image) => {
@@ -154,8 +114,7 @@
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
-	@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-	@import '@watergis/maplibre-gl-elevation/css/styles.css';
+	/* @import '@watergis/maplibre-gl-elevation/css/styles.css'; */
 	@import '../css/IdentifyTools.css';
 
 	.map-wrap {
