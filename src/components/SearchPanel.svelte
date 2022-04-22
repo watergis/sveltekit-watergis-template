@@ -3,6 +3,7 @@
 	import Icon from '@smui/select/icon';
 	import { config } from '../config';
 	import { map } from '../stores';
+	import SearchControl from './SearchControl.svelte';
 
 	export let isSearchTabVisible = false;
 	let value = '';
@@ -17,6 +18,7 @@
 
 {#if isSearchTabVisible}
 	<div class="select">
+		<p>Search area of interest</p>
 		<Select variant="outlined" bind:value label="Area">
 			<Icon class="material-icons" slot="leadingIcon">zoom_in_map</Icon>
 			<Option value="" />
@@ -26,6 +28,8 @@
 			<svelte:fragment slot="helperText">Select the area zooming to.</svelte:fragment>
 		</Select>
 	</div>
+
+	<SearchControl />
 {/if}
 
 <style lang="scss">

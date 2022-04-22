@@ -61,6 +61,7 @@
 		"@watergis/maplibre-gl-export": "^1.3.0",
 		"@watergis/terrain-rgb": "^1.1.7",
 		"image-clipper": "^0.4.4",
-		"maplibre-gl": "^2.1.9"
+		"maplibre-gl": "^2.1.9",
+		"simple-svelte-autocomplete": "^2.4.0"
 	}
 }
