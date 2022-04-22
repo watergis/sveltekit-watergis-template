@@ -29,6 +29,6 @@
 
 <style lang="scss">
 	.select {
-		padding-left: 1.5em;
+		padding-left: 0em;
 	}
 </style>
