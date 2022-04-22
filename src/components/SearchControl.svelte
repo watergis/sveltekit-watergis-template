@@ -1,13 +1,14 @@
 <script lang="ts">
 	import AutoComplete from 'simple-svelte-autocomplete';
-	import { Marker } from 'maplibre-gl';
+	import pkg from 'maplibre-gl';
+	const { Marker } = pkg;
 	import { config } from '../config';
 	import { map } from '../stores';
 
 	let searchItems = [];
 	let searchObject = {};
 	let selectedObject = {};
-	let markerSearch: Marker;
+	let markerSearch;
 	$: selectedObject, zoomToSearchedObject();
 	const zoomToSearchedObject = () => {
 		if (!(searchObject && Object.keys(searchObject).length > 0)) return;
