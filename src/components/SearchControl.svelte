@@ -10,6 +10,9 @@
 	let markerSearch: Marker;
 	$: selectedObject, zoomToSearchedObject();
 	const zoomToSearchedObject = () => {
+		if (!(searchObject && Object.keys(searchObject).length > 0)) return;
+		if (!(selectedObject && Object.keys(selectedObject).length > 0 && selectedObject['key']))
+			return;
 		const f = searchObject[selectedObject['key']];
 		if (!f) return;
 		const coordinates = f.geometry.coordinates;
@@ -24,6 +27,15 @@
 		})
 			.setLngLat(coordinates)
 			.addTo($map);
+	};
+
+	let onChange = () => {
+		if (!selectedObject) {
+			if (markerSearch) {
+				markerSearch.remove();
+				markerSearch = null;
+			}
+		}
 	};
 
 	if (config.search) {
@@ -53,6 +65,10 @@
 		<AutoComplete
 			items={searchItems}
 			bind:selectedItem={selectedObject}
+			bind:onChange
+			placeholder={config.search.placeholder}
+			showClear={true}
+			showLoadingIndicator={true}
 			labelFunction={(properties) => (properties ? config.search.format(properties) : '')}
 		/>
 	</div>
