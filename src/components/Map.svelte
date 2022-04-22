@@ -56,32 +56,39 @@
 		const loadCenterIcon = () => {
 			map2.loadImage(`${config.basePath}/map-center.png`, (error, image) => {
 				if (error) throw error;
-				map2.addImage('map-center', image);
-				centerMarker = {
-					type: 'geojson',
-					data: {
-						type: 'FeatureCollection',
-						features: [
-							{
-								type: 'Feature',
-								geometry: {
-									type: 'Point',
-									coordinates: [map2.getCenter().lng, map2.getCenter().lat]
+				if (!map2.hasImage('map-center')) {
+					map2.addImage('map-center', image);
+				}
+
+				if (!map2.getSource('center')) {
+					centerMarker = {
+						type: 'geojson',
+						data: {
+							type: 'FeatureCollection',
+							features: [
+								{
+									type: 'Feature',
+									geometry: {
+										type: 'Point',
+										coordinates: [map2.getCenter().lng, map2.getCenter().lat]
+									}
 								}
-							}
-						]
-					}
-				};
-				map2.addSource('center', centerMarker);
-				map2.addLayer({
-					id: 'points',
-					type: 'symbol',
-					source: 'center', // reference the data source
-					layout: {
-						'icon-image': 'map-center', // reference the image
-						'icon-size': 0.3
-					}
-				});
+							]
+						}
+					};
+					map2.addSource('center', centerMarker);
+				}
+				if (!map2.getLayer('points')) {
+					map2.addLayer({
+						id: 'points',
+						type: 'symbol',
+						source: 'center', // reference the data source
+						layout: {
+							'icon-image': 'map-center', // reference the image
+							'icon-size': 0.3
+						}
+					});
+				}
 			});
 		};
 

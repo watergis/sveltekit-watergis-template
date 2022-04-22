@@ -1,5 +1,6 @@
 <script lang="ts">
-	import Drawer, { AppContent, Header } from '@smui/drawer';
+	import { onMount } from 'svelte';
+	import Drawer, { AppContent, Header, Scrim } from '@smui/drawer';
 	import Tab, { Icon, Label } from '@smui/tab';
 	import TabBar from '@smui/tab-bar';
 	import { queriedFeatures } from '../stores';
@@ -8,6 +9,20 @@
 	import SearchPanel from './SearchPanel.svelte';
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { TabNames } from '../lib/constants';
+
+	let isMobile = false;
+	let drawerMode: 'dismissible' | 'modal' = 'dismissible';
+	$: {
+		if (isMobile) {
+			drawerMode = 'modal';
+		} else {
+			drawerMode = 'dismissible';
+		}
+	}
+
+	onMount(() => {
+		isMobile = window.matchMedia('only screen and (max-width: 760px)').matches;
+	});
 
 	export let open = false;
 	let tabs = [
@@ -69,7 +84,7 @@
 </script>
 
 <div class="drawer-container">
-	<Drawer variant="dismissible" bind:open>
+	<Drawer variant={drawerMode} fixed={!isMobile} bind:open>
 		<div class="drawer-content">
 			<Header>
 				<TabBar {tabs} let:tab bind:active={activeTab}>
@@ -92,6 +107,7 @@
 			<AdvancedPanel {isAdvancedTabVisible} />
 		</div>
 	</Drawer>
+	<Scrim fixed={false} />
 	<AppContent class="app-content">
 		<main class="main-content">
 			<slot />
