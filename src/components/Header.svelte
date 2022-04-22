@@ -4,6 +4,7 @@
 	import TopAppBar, { Row, Section, Title, AutoAdjust } from '@smui/top-app-bar';
 	import IconButton from '@smui/icon-button';
 	import { config } from '../config';
+	import MapExport from './MapExport.svelte';
 
 	export let drawerOpen = false;
 
@@ -15,7 +16,7 @@
 	// This icon represents the mode to which the user can switch.
 	$: modeIcon = darkTheme ? 'light_mode' : 'dark_mode';
 
-	onMount(() => {
+	onMount(async () => {
 		darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 	});
 	const toggleMode = () => (darkTheme = !darkTheme);
@@ -54,7 +55,7 @@
 		</Section>
 		<section />
 		<Section align="end" toolbar>
-			<IconButton class="material-icons" aria-label="Print" style="display:none">print</IconButton>
+			<MapExport />
 			<IconButton
 				aria-label={modeLabel}
 				class="material-icons"

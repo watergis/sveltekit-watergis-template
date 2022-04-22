@@ -51,23 +51,6 @@
 		// 	);
 		// }
 
-		const { MaplibreExportControl, Size, PageOrientation, Format, DPI } = await import(
-			'@watergis/maplibre-gl-export'
-		);
-		map2.addControl(
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			new MaplibreExportControl({
-				PageSize: Size.A4,
-				PageOrientation: PageOrientation.Landscape,
-				Format: Format.PNG,
-				DPI: DPI[96],
-				Crosshair: true,
-				PrintableArea: true
-			}),
-			'top-right'
-		);
-
 		const loadCenterIcon = () => {
 			map2.loadImage(`${config.basePath}/map-center.png`, (error, image) => {
 				if (error) throw error;
@@ -131,7 +114,6 @@
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
-	@import '@watergis/maplibre-gl-export/css/styles.css';
 	/* @import '@watergis/maplibre-gl-elevation/css/styles.css'; */
 	@import '../css/IdentifyTools.css';
 
