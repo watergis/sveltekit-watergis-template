@@ -24,9 +24,14 @@ export const config: Config = {
 	// you can put your geojson file for searching functions
 	search: {
 		url: 'https://narwassco.github.io/vt/meter.geojson',
-		target: ['connno', 'serialno'],
+		target: ['connno', 'serialno', 'village'],
 		format: (p) => {
-			return `${p.customer}, ${p.connno}, ${p.serialno}, ${p.village}`;
+			const label: string[] = [];
+			const targets = ['connno', 'serialno', 'village'];
+			targets.forEach((target) => {
+				if (p[target]) label.push(p[target]);
+			});
+			return label.length > 0 ? label.join(', ') : '';
 		},
 		place_type: ['meter'],
 		placeholder: 'Search CONN NO or S/N',
