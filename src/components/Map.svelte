@@ -6,6 +6,7 @@
 		GeolocateControl,
 		ScaleControl,
 		AttributionControl,
+		FullscreenControl,
 		type GeoJSONSourceSpecification
 	} from 'maplibre-gl';
 	import { map, selectedStyle, queriedFeatures } from '../stores';
@@ -32,6 +33,7 @@
 			}),
 			'top-right'
 		);
+		map2.addControl(new FullscreenControl({ container: document.querySelector('body') }));
 		map2.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
 		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
 
