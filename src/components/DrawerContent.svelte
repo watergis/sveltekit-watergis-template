@@ -10,18 +10,26 @@
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { TabNames } from '../lib/constants';
 
-	let isMobile = false;
+	let innerWidth = 0;
+	let innerHeight = 0;
+
+	let isMobile = innerWidth < 760 ? true : false;
 	let drawerMode: 'dismissible' | 'modal' = 'dismissible';
-	$: {
+
+	$: innerWidth, changeDrawerMode();
+	$: innerHeight, changeDrawerMode();
+
+	const changeDrawerMode = () => {
+		isMobile = innerWidth < 768 ? true : false;
 		if (isMobile) {
 			drawerMode = 'modal';
 		} else {
 			drawerMode = 'dismissible';
 		}
-	}
+	};
 
 	onMount(() => {
-		isMobile = window.matchMedia('only screen and (max-width: 760px)').matches;
+		isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
 	});
 
 	export let open = false;
@@ -83,6 +91,8 @@
 	};
 </script>
 
+<svelte:window bind:innerWidth bind:innerHeight />
+
 <div class="drawer-container">
 	<Drawer variant={drawerMode} fixed={!isMobile} bind:open>
 		<div class="drawer-content">
@@ -107,7 +117,9 @@
 			<AdvancedPanel {isAdvancedTabVisible} />
 		</div>
 	</Drawer>
-	<Scrim fixed={false} />
+	{#if drawerMode === 'modal'}
+		<Scrim fixed={false} />
+	{/if}
 	<AppContent class="app-content">
 		<main class="main-content">
 			<slot />
