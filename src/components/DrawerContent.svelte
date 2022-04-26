@@ -57,7 +57,8 @@
 	let isSearchTabVisible = false;
 	let isAdvancedTabVisible = false;
 
-	$: {
+	$: activeTab, changeActiveTab();
+	const changeActiveTab = () => {
 		isLayersTabVisible = false;
 		isAttributesTabVisible = false;
 		isSearchTabVisible = false;
@@ -76,14 +77,19 @@
 				isAdvancedTabVisible = true;
 				break;
 		}
-	}
+	};
 
-	$: identifiedFeatures = $queriedFeatures;
-	$: {
-		if (identifiedFeatures && identifiedFeatures.length > 0) {
-			open = true;
+	$: $queriedFeatures, setDefaultTabAsInfo();
+	const setDefaultTabAsInfo = () => {
+		const infoTab = tabs.find((t) => t.label === TabNames.ATTRIBUTES);
+		if (activeTab !== infoTab && $queriedFeatures && $queriedFeatures.length > 0) {
+			if (open !== true) {
+				open = true;
+			}
+			activeTab = infoTab;
+			changeActiveTab();
 		}
-	}
+	};
 
 	$: open, updateLayers();
 	let updateLayers = () => {

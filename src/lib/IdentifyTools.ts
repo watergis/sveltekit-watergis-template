@@ -34,6 +34,9 @@ export default class MaplibreIdentifyTools implements IControl {
 			this.button.classList.remove('-active');
 			this.isActive = false;
 			this.map.off('click', this.onClick.bind(this));
+			if (this.callback) {
+				this.callback(undefined);
+			}
 		} else {
 			this.button.classList.add('-active');
 			this.isActive = true;

@@ -12,7 +12,7 @@
 {#if isAdvancedTabVisible}
 	<div class="accordion-container">
 		<Accordion>
-			<Panel>
+			<Panel open={true}>
 				<Header>Measuring tool</Header>
 				<Content>
 					<MeasurePanel />

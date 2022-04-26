@@ -62,6 +62,7 @@
 {#if isLayersTabVisible}
 	<Header>
 		<StyleSwitcher on:change={onStyleChange} />
+		<hr />
 		<FormField>
 			<Checkbox bind:checked={onlyRendered} />
 			<span slot="label">Show only rendered layers</span>

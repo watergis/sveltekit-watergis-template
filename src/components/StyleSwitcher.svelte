@@ -32,11 +32,10 @@
 </script>
 
 <div class="style-switcher">
-	<Select bind:value={styleUrl} label="Map theme">
+	<Select variant="outlined" bind:value={styleUrl} label="Map theme">
 		{#each config.styles as style}
 			<Option value={style.uri}>{style.title}</Option>
 		{/each}
-		<svelte:fragment slot="helperText">Select and change base map</svelte:fragment>
 	</Select>
 </div>
 
