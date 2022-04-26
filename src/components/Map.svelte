@@ -12,14 +12,27 @@
 	import { map, selectedStyle, queriedFeatures } from '../stores';
 	import { config } from '../config';
 	import MaplibreIdentifyTools from '../lib/IdentifyTools';
+	import StyleUrl from '../lib/style-url';
 
 	let mapContainer: HTMLDivElement;
 	let centerMarker: GeoJSONSourceSpecification;
 
 	onMount(async () => {
+		const styleUrlObj = new StyleUrl();
+		const defaultStyle = config.styles[0];
+		const styleFromUrl = styleUrlObj.get();
+		let initialStyle = defaultStyle;
+		if (styleFromUrl) {
+			const styleObj = styleUrlObj.getMatchedStyleByTitle(config.styles, styleFromUrl);
+			if (styleObj) {
+				initialStyle = styleObj;
+			}
+		}
+		selectedStyle.update(() => initialStyle);
+
 		const map2 = new Map({
 			container: mapContainer,
-			style: $selectedStyle.uri,
+			style: initialStyle.uri,
 			center: config.center,
 			zoom: config.zoom,
 			hash: true,
