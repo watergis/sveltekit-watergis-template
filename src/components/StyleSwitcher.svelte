@@ -32,7 +32,7 @@
 </script>
 
 <div class="style-switcher">
-	<Select variant="outlined" bind:value={styleUrl} label="Map theme">
+	<Select variant="outlined" bind:value={styleUrl} label="Map theme" style="width:100%">
 		{#each config.styles as style}
 			<Option value={style.uri}>{style.title}</Option>
 		{/each}

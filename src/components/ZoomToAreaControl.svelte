@@ -16,7 +16,7 @@
 
 {#if config.areaSwitcher}
 	<div class="select">
-		<Select variant="outlined" bind:value label="Area">
+		<Select variant="outlined" bind:value label="Area" style="width:100%">
 			<Icon class="material-icons" slot="leadingIcon">zoom_in_map</Icon>
 			<Option value="" />
 			{#each areas as areas}

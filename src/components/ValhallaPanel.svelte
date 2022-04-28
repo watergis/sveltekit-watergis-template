@@ -78,14 +78,18 @@
 
 {#if config.valhalla}
 	<div class="select">
-		<Select bind:value={meansOfTransport} label="Means of Transport">
-			<Option value="" />
-			{#each costingOptions as item}
-				<Option value={item.value}>{item.label}</Option>
-			{/each}
-		</Select>
-		<Textfield bind:value={longitude} label="Longitude" readonly />
-		<Textfield bind:value={latitude} label="Latitude" readonly />
+		<div>
+			<Select bind:value={meansOfTransport} label="Means of Transport">
+				<Option value="" />
+				{#each costingOptions as item}
+					<Option value={item.value}>{item.label}</Option>
+				{/each}
+			</Select>
+		</div>
+		<div>
+			<Textfield bind:value={longitude} label="Longitude" readonly />
+			<Textfield bind:value={latitude} label="Latitude" readonly />
+		</div>
 	</div>
 	{#if contourType === ContourType.Time}
 		<div style="display:inline-flex">
