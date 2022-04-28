@@ -80,6 +80,10 @@
 			}
 			activeTab = infoTab;
 			changeActiveTab();
+		} else if ($queriedFeatures && $queriedFeatures.length > 0) {
+			if (open !== true) {
+				open = true;
+			}
 		}
 	};
 
