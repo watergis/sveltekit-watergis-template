@@ -1,36 +1,14 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import Drawer, { AppContent, Header, Scrim } from '@smui/drawer';
 	import Tab, { Icon, Label } from '@smui/tab';
 	import TabBar from '@smui/tab-bar';
+	import { Split } from '@geoffcox/svelte-splitter';
 	import { queriedFeatures } from '../stores';
 	import LayerListPanel from './LayerListPanel.svelte';
 	import AttributesPanel from './AttributesPanel.svelte';
 	import SearchPanel from './SearchPanel.svelte';
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { TabNames } from '../lib/constants';
-
-	let innerWidth = 0;
-	let innerHeight = 0;
-
-	let isMobile = innerWidth < 760 ? true : false;
-	let drawerMode: 'dismissible' | 'modal' = 'dismissible';
-
-	$: innerWidth, changeDrawerMode();
-	$: innerHeight, changeDrawerMode();
-
-	const changeDrawerMode = () => {
-		isMobile = innerWidth < 768 ? true : false;
-		if (isMobile) {
-			drawerMode = 'modal';
-		} else {
-			drawerMode = 'dismissible';
-		}
-	};
-
-	onMount(() => {
-		isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
-	});
+	import { map } from '../stores';
 
 	export let open = false;
 	let tabs = [
@@ -56,6 +34,7 @@
 	let isAttributesTabVisible = false;
 	let isSearchTabVisible = false;
 	let isAdvancedTabVisible = false;
+	let splitControl;
 
 	$: activeTab, changeActiveTab();
 	const changeActiveTab = () => {
@@ -91,47 +70,67 @@
 		}
 	};
 
-	$: open, updateLayers();
+	$: open, opened();
+	const opened = () => {
+		setSplitControl();
+		updateLayers();
+	};
 	let updateLayers = () => {
 		return;
 	};
+
+	const setSplitControl = () => {
+		if (!splitControl) return;
+		if (open === true) {
+			splitControl.setPercent(30);
+		} else {
+			splitControl.setPercent(0);
+		}
+		resizeMap();
+	};
+
+	const resizeMap = () => {
+		if ($map) return;
+		$map.triggerRepaint();
+		$map.resize();
+	};
+
+	const splitterChanged = () => {
+		resizeMap();
+		const percent = splitControl.getPercent();
+		if (percent === 0) {
+			open = false;
+		} else {
+			open = true;
+		}
+	};
+	setSplitControl();
 </script>
 
-<svelte:window bind:innerWidth bind:innerHeight />
-
-<div class="drawer-container">
-	<Drawer variant={drawerMode} fixed={!isMobile} bind:open>
-		<div class="drawer-content">
-			<Header>
-				<TabBar {tabs} let:tab bind:active={activeTab}>
-					<Tab
-						{tab}
-						minWidth
-						stacked={true}
-						indicatorSpanOnlyContent={true}
-						tabIndicator$transition="fade"
-					>
-						<Icon class="material-icons">{tab.icon}</Icon>
-						<Label>{tab.label}</Label>
-					</Tab>
-				</TabBar>
-			</Header>
-
-			<LayerListPanel {isLayersTabVisible} bind:updateLayers />
-			<SearchPanel {isSearchTabVisible} />
-			<AttributesPanel {isAttributesTabVisible} />
-			<AdvancedPanel {isAdvancedTabVisible} />
-		</div>
-	</Drawer>
-	{#if drawerMode === 'modal'}
-		<Scrim fixed={false} />
-	{/if}
-	<AppContent class="app-content">
-		<main class="main-content">
-			<slot />
-		</main>
-	</AppContent>
-</div>
+<Split initialPrimarySize="0%" on:changed={splitterChanged} bind:this={splitControl}>
+	<div slot="primary" class="drawer-content">
+		<TabBar {tabs} let:tab bind:active={activeTab}>
+			<Tab
+				{tab}
+				minWidth
+				stacked={true}
+				indicatorSpanOnlyContent={true}
+				tabIndicator$transition="fade"
+			>
+				<Icon class="material-icons">{tab.icon}</Icon>
+				<Label>{tab.label}</Label>
+			</Tab>
+		</TabBar>
+		<LayerListPanel {isLayersTabVisible} bind:updateLayers />
+		<SearchPanel {isSearchTabVisible} />
+		<AttributesPanel {isAttributesTabVisible} />
+		<AdvancedPanel {isAdvancedTabVisible} />
+	</div>
+	<div slot="secondary" class="main-content">
+		<slot />
+		<div />
+	</div></Split
+>
 
 <style lang="scss">
 	$height: calc(100vh - 64px);
@@ -140,29 +139,13 @@
 		$height: calc(100vh - 184px);
 	}
 
-	.drawer-container {
-		position: relative;
+	.drawer-content {
+		overflow: auto;
 		display: flex;
 		height: $height;
-		border: 1px solid var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.1));
-		overflow: auto;
-		z-index: 0;
-
-		.drawer-content {
-			overflow: auto;
-			display: flex;
-			height: $height;
-			flex-direction: column;
-			flex-basis: 100%;
-			flex: 1;
-		}
-	}
-
-	:global(.app-content) {
-		flex: auto;
-		overflow: auto;
-		position: relative;
-		flex-grow: 1;
+		flex-direction: column;
+		flex-basis: 100%;
+		flex: 1;
 	}
 
 	.main-content {
