@@ -48,6 +48,7 @@
 	let isSearchTabVisible = false;
 	let isAdvancedTabVisible = false;
 	let splitControl: Split;
+	let splitterSize = '0px';
 
 	$: activeTab, changeActiveTab();
 	const changeActiveTab = () => {
@@ -101,11 +102,14 @@
 		if (open === true) {
 			if (isMobile) {
 				splitControl.setPercent(100);
+				splitterSize = '0px';
 			} else {
 				splitControl.setPercent(25);
+				splitterSize = '10px';
 			}
 		} else {
 			splitControl.setPercent(0);
+			splitterSize = '0px';
 		}
 		resizeMap();
 	};
@@ -130,7 +134,7 @@
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
-<Split initialPrimarySize="0%" on:changed={splitterChanged} bind:this={splitControl}>
+<Split initialPrimarySize="0%" {splitterSize} on:changed={splitterChanged} bind:this={splitControl}>
 	<div slot="primary" class="drawer-content">
 		<TabBar {tabs} let:tab bind:active={activeTab}>
 			<Tab
