@@ -46,7 +46,11 @@
 	<Row>
 		<Section>
 			<IconButton class="material-icons" on:click={() => (drawerOpen = !drawerOpen)}>
-				menu
+				{#if !drawerOpen}
+					menu
+				{:else}
+					close
+				{/if}
 			</IconButton>
 			<a href={config.url}>
 				<img src={config.logo} alt="logo" class="logo" />
