@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Tab, { Icon, Label } from '@smui/tab';
 	import TabBar from '@smui/tab-bar';
 	import { Split } from '@geoffcox/svelte-splitter';
@@ -9,6 +10,18 @@
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { TabNames } from '../lib/constants';
 	import { map } from '../stores';
+
+	let innerWidth = 0;
+	let innerHeight = 0;
+	let isMobile = innerWidth < 760 ? true : false;
+	$: innerWidth, changeDrawerMode();
+	$: innerHeight, changeDrawerMode();
+	const changeDrawerMode = () => {
+		isMobile = innerWidth < 768 ? true : false;
+	};
+	onMount(() => {
+		isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
+	});
 
 	export let open = false;
 	let tabs = [
@@ -34,7 +47,7 @@
 	let isAttributesTabVisible = false;
 	let isSearchTabVisible = false;
 	let isAdvancedTabVisible = false;
-	let splitControl;
+	let splitControl: Split;
 
 	$: activeTab, changeActiveTab();
 	const changeActiveTab = () => {
@@ -82,7 +95,11 @@
 	const setSplitControl = () => {
 		if (!splitControl) return;
 		if (open === true) {
-			splitControl.setPercent(30);
+			if (isMobile) {
+				splitControl.setPercent(100);
+			} else {
+				splitControl.setPercent(25);
+			}
 		} else {
 			splitControl.setPercent(0);
 		}
@@ -106,6 +123,8 @@
 	};
 	setSplitControl();
 </script>
+
+<svelte:window bind:innerWidth bind:innerHeight />
 
 <Split initialPrimarySize="0%" on:changed={splitterChanged} bind:this={splitControl}>
 	<div slot="primary" class="drawer-content">
