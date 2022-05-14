@@ -56,16 +56,6 @@
 			})
 		);
 
-		// if (config.elevation) {
-		// 	const MapboxElevationControl = await (
-		// 		await import('@watergis/maplibre-gl-elevation')
-		// 	).default;
-		// 	map2.addControl(
-		// 		new MapboxElevationControl(config.elevation.url, config.elevation.options),
-		// 		'top-right'
-		// 	);
-		// }
-
 		const loadCenterIcon = () => {
 			map2.loadImage(`${config.basePath}/map-center.png`, (error, image) => {
 				if (error) throw error;
@@ -136,7 +126,6 @@
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
-	/* @import '@watergis/maplibre-gl-elevation/css/styles.css'; */
 	@import '../css/IdentifyTools.css';
 
 	.map-wrap {
