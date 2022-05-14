@@ -138,6 +138,7 @@
 <Split
 	initialPrimarySize="0%"
 	minPrimarySize={open ? '200px' : '0px'}
+	minSecondarySize={isMobile ? '0px' : '50%'}
 	{splitterSize}
 	on:changed={splitterChanged}
 	bind:this={splitControl}

@@ -58,6 +58,9 @@ export default class MaplibreIdentifyTools implements IControl {
 			}
 		});
 		const features = this.map.queryRenderedFeatures(e.point, { layers });
+		for (let i = 0; i < features.length; i++) {
+			features[i]['open'] = i === 0 ? true : false;
+		}
 		if (this.callback) {
 			this.callback(features);
 		}

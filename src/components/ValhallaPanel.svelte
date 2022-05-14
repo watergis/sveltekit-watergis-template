@@ -79,14 +79,13 @@
 {#if config.valhalla}
 	<div class="select">
 		<div>
-			<Select bind:value={meansOfTransport} label="Means of Transport">
-				<Option value="" />
+			<Select bind:value={meansOfTransport} label="Means of Transport" style="width:100%">
 				{#each costingOptions as item}
 					<Option value={item.value}>{item.label}</Option>
 				{/each}
 			</Select>
 		</div>
-		<div>
+		<div style="display:inline-flex">
 			<Textfield bind:value={longitude} label="Longitude" readonly />
 			<Textfield bind:value={latitude} label="Latitude" readonly />
 		</div>

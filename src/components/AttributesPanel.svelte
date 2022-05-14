@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Accordion, { Panel, Header, Content } from '@smui-extra/accordion';
+	import IconButton, { Icon } from '@smui/icon-button';
 	import DataTable, { Body, Row, Cell } from '@smui/data-table';
 	import Fa from 'svelte-fa';
 	import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
@@ -15,10 +16,14 @@
 		{#if identifiedFeatures?.length > 0}
 			<Accordion>
 				{#each identifiedFeatures as feature}
-					<Panel>
+					<Panel bind:open={feature['open']}>
 						<Header>
 							{feature.layer.id}
 							<span slot="description">{feature.source}</span>
+							<IconButton slot="icon" toggle pressed={feature['open']}>
+								<Icon class="material-icons" on>expand_less</Icon>
+								<Icon class="material-icons">expand_more</Icon>
+							</IconButton>
 						</Header>
 						<Content>
 							<DataTable table$aria-label={feature.layer.id} style="width: 100%;">

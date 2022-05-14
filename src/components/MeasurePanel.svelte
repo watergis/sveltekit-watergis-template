@@ -217,7 +217,13 @@
 {#if config.elevation}
 	<div class="button">
 		<Button on:click={() => measureStart()} variant="raised" color="primary" style="width:100%">
-			<Icon class="material-icons">straighten</Icon>
+			<Icon class="material-icons">
+				{#if isQuery}
+					stop_circle
+				{:else}
+					straighten
+				{/if}
+			</Icon>
 			<Label>
 				{#if isQuery}
 					Stop measure
@@ -227,30 +233,51 @@
 			</Label>
 		</Button>
 	</div>
-	<div class="button">
-		<Button on:click={() => clearFeatures()} variant="raised" color="secondary" style="width:100%">
-			<Icon class="material-icons">delete</Icon>
-			<Label>Clear</Label>
-		</Button>
-	</div>
-	<div class="button">
-		<Button
-			on:click={() => downloadGeoJSON()}
-			variant="raised"
-			color="secondary"
-			style="width:100%"
-		>
-			<Icon class="material-icons">file_download</Icon>
-			<Label>GeoJSON</Label>
-		</Button>
-	</div>
+	{#if isQuery}
+		<div style="display:inline-flex; width:100%">
+			<div class="sub-button">
+				<Button
+					on:click={() => clearFeatures()}
+					variant="raised"
+					color="secondary"
+					style="width:100%"
+				>
+					<Icon class="material-icons">delete</Icon>
+					<Label>Clear</Label>
+				</Button>
+			</div>
+			<div class="sub-button">
+				<Button
+					on:click={() => downloadGeoJSON()}
+					variant="raised"
+					color="secondary"
+					style="width:100%"
+				>
+					<Icon class="material-icons">file_download</Icon>
+					<Label>GeoJSON</Label>
+				</Button>
+			</div>
+		</div>
+	{/if}
 {/if}
 
 <style lang="scss">
 	.button {
 		padding-top: 0.5em;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
+	}
+
+	.sub-button {
+		padding-top: 0.5em;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		width: 50%;
 	}
 </style>

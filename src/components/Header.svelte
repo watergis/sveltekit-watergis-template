@@ -19,7 +19,10 @@
 	onMount(async () => {
 		darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 	});
-	const toggleMode = () => (darkTheme = !darkTheme);
+	const toggleMode = () => {
+		drawerOpen = false;
+		darkTheme = !darkTheme;
+	};
 </script>
 
 <svelte:head>
