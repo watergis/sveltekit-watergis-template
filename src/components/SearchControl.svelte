@@ -62,7 +62,7 @@
 </script>
 
 {#if config.search}
-	<div class="search">
+	<div>
 		<AutoComplete
 			items={searchItems}
 			bind:selectedItem={selectedObject}
@@ -76,8 +76,7 @@
 {/if}
 
 <style lang="scss">
-	.search {
-		// padding-left: 1.5em;
+	:global(.autocomplete) {
 		width: 100%;
 	}
 </style>
