@@ -99,7 +99,7 @@
 		</div>
 		<div class="button">
 			<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
-				<Icon class="material-icons">layers_clear</Icon>
+				<Icon class="material-icons">delete</Icon>
 				<Label>Clear</Label>
 			</Button>
 		</div>
@@ -123,7 +123,7 @@
 		</div>
 		<div class="button">
 			<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
-				<Icon class="material-icons">layers_clear</Icon>
+				<Icon class="material-icons">delete</Icon>
 				<Label>Clear</Label>
 			</Button>
 		</div>

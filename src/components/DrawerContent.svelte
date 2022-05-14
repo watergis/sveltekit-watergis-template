@@ -106,6 +106,7 @@
 			} else {
 				splitControl.setPercent(25);
 				splitterSize = '10px';
+				splitControl;
 			}
 		} else {
 			splitControl.setPercent(0);
@@ -134,7 +135,13 @@
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
-<Split initialPrimarySize="0%" {splitterSize} on:changed={splitterChanged} bind:this={splitControl}>
+<Split
+	initialPrimarySize="0%"
+	minPrimarySize={open ? '200px' : '0px'}
+	{splitterSize}
+	on:changed={splitterChanged}
+	bind:this={splitControl}
+>
 	<div slot="primary" class="drawer-content">
 		<TabBar {tabs} let:tab bind:active={activeTab}>
 			<Tab

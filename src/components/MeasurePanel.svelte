@@ -1,7 +1,6 @@
 <script lang="ts">
-	// import { onMount } from 'svelte';
 	import Button, { Label, Icon } from '@smui/button';
-	// import {TerrainRGB} from '@watergis/terrain-rgb'
+	import { TerrainRGB } from '@watergis/terrain-rgb';
 	import distance from '@turf/distance';
 	import { Marker, MapMouseEvent, GeoJSONFeature } from 'maplibre-gl';
 	import { map } from '../stores';
@@ -12,16 +11,11 @@
 	const LAYER_SYMBOL = 'elev-controls-layer-symbol';
 	const SOURCE_SYMBOL = 'elev-controls-source-symbol';
 
-	// let TerrainRGB;
 	let isQuery: boolean;
 	let units = config.elevation.options.units || 'kilometers';
 	let markers: Marker[] = [];
 	let coordinates = [];
-	// let elevations = [];
-
-	// onMount(async () => {
-	// 	TerrainRGB = (await import('@watergis/terrain-rgb')).TerrainRGB;
-	// });
+	let elevations = [];
 
 	const measureStart = () => {
 		if (isQuery) {
@@ -72,35 +66,33 @@
 		}
 		zoom = Math.round(zoom);
 		const lnglat: number[] = [event.lngLat.lng, event.lngLat.lat];
-		//   const trgb = new TerrainRGB(config.elevation.url, config.elevation.options.tileSize);
-		//   trgb.getElevation(lnglat, zoom)
-		//     .then((elev) => {
-		//       if (!elev) elev = -1;
-		if ($map) {
-			const marker = new Marker({
-				draggable: true
-			})
-				.setLngLat(event.lngLat)
-				.addTo($map);
-			markers.push(marker);
+		const trgb = new TerrainRGB(config.elevation.url, config.elevation.options.tileSize);
+		trgb.getElevation(lnglat, zoom).then((elev) => {
+			if (!elev) elev = -1;
+			if ($map) {
+				const marker = new Marker({
+					draggable: true
+				})
+					.setLngLat(event.lngLat)
+					.addTo($map);
+				markers.push(marker);
 
-			// coordinates.push([lnglat[0], lnglat[1], elev]);
-			// elevations.push(elev);
-			coordinates.push([lnglat[0], lnglat[1]]);
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			$map.getSource(SOURCE_LINE).setData(geoLineString(coordinates));
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			$map.getSource(SOURCE_SYMBOL).setData(geoPoint(coordinates));
-		}
-		// });
+				coordinates.push([lnglat[0], lnglat[1], elev]);
+				elevations.push(elev);
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				$map.getSource(SOURCE_LINE).setData(geoLineString(coordinates));
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				$map.getSource(SOURCE_SYMBOL).setData(geoPoint(coordinates));
+			}
+		});
 	};
 
 	const initFeatures = () => {
 		markers = [];
 		coordinates = [];
-		// elevations = [];
+		elevations = [];
 		if ($map) {
 			$map.addSource(SOURCE_LINE, {
 				type: 'geojson',
