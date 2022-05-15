@@ -213,20 +213,11 @@ export default class MapGenerator {
 	 */
 	private toJPEG(canvas: HTMLCanvasElement, fileName: string) {
 		const uri = canvas.toDataURL('image/jpeg', 0.85);
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		if (canvas.msToBlob) {
-			// for IE11
-			const blob = this.toBlob(uri);
-			(window.navigator as any).msSaveBlob(blob, fileName);
-		} else {
-			// for other browsers except IE11
-			const a = document.createElement('a');
-			a.href = uri;
-			a.download = fileName;
-			a.click();
-			a.remove();
-		}
+		const a = document.createElement('a');
+		a.href = uri;
+		a.download = fileName;
+		a.click();
+		a.remove();
 	}
 
 	/**
