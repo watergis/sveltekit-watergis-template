@@ -2,7 +2,7 @@
 	import type { LayerSpecification } from 'maplibre-gl';
 	import LegendSymbol from '@watergis/legend-symbol';
 	import { map, spriteLoaderObject } from '../stores';
-	import SpriteLoader from '../lib/sprite';
+	import SpriteLoader from '$lib/sprite';
 
 	export let layer: LayerSpecification;
 	let container: HTMLElement = document.createElement('div');

@@ -11,8 +11,8 @@
 	} from 'maplibre-gl';
 	import { map, selectedStyle, queriedFeatures } from '../stores';
 	import { config } from '../config';
-	import MaplibreIdentifyTools from '../lib/IdentifyTools';
-	import StyleUrl from '../lib/style-url';
+	import MaplibreIdentifyTools from '$lib/IdentifyTools';
+	import StyleUrl from '$lib/style-url';
 
 	let mapContainer: HTMLDivElement;
 	let centerMarker: GeoJSONSourceSpecification;

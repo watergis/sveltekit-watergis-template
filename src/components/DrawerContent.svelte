@@ -8,7 +8,7 @@
 	import AttributesPanel from './AttributesPanel.svelte';
 	import SearchPanel from './SearchPanel.svelte';
 	import AdvancedPanel from './AdvancedPanel.svelte';
-	import { TabNames } from '../lib/constants';
+	import { TabNames } from '$lib/constants';
 	import { map } from '../stores';
 
 	let innerWidth = 0;

@@ -5,9 +5,9 @@
 	import Select, { Option } from '@smui/select';
 	import Icon from '@smui/select/icon';
 	import Dialog, { Title, Content, Actions } from '@smui/dialog';
-	import { PageOrientation, Size, DPI, Format, Unit } from '../lib/map-generator';
-	import type MapGenerator from '../lib/map-generator';
-	import PrintableAreaManager from '../lib/printable-area-manager';
+	import { PageOrientation, Size, DPI, Format, Unit } from '$lib/map-generator';
+	import type MapGenerator from '$lib/map-generator';
+	import PrintableAreaManager from '$lib/printable-area-manager';
 	import { map } from '../stores';
 
 	let mapGenerator: MapGenerator;
