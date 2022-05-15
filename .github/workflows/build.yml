@@ -36,10 +36,8 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          VITE_MAPTILER_KEY: ${{secrets.MAPTILER_KEY}}
           NODE_ENV: production
         run: |
-          echo "VITE_MAPTILER_KEY=${VITE_MAPTILER_KEY}" > .env
           npm run build
           git config --global user.name "watergis+githubci"
           git config --global user.email "watergis+githubci@users.noreply.github.com"
