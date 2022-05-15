@@ -157,7 +157,7 @@
 			</Tab>
 		</TabBar>
 		<LayerListPanel {isLayersTabVisible} bind:updateLayers />
-		<SearchPanel {isSearchTabVisible} />
+		<SearchPanel {isSearchTabVisible} bind:parentPanelOpen={open} />
 		<AttributesPanel {isAttributesTabVisible} />
 		<AdvancedPanel {isAdvancedTabVisible} />
 	</div>

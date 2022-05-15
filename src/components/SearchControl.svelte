@@ -1,10 +1,12 @@
 <script lang="ts">
 	import AutoComplete from 'simple-svelte-autocomplete';
 	import pkg from 'maplibre-gl';
+	import { createEventDispatcher } from 'svelte';
 	const { Marker } = pkg;
 	import { config } from '../config';
 	import { map } from '../stores';
 
+	const dispatch = createEventDispatcher();
 	let searchItems = [];
 	let searchObject = {};
 	let selectedObject = {};
@@ -28,6 +30,8 @@
 		})
 			.setLngLat(coordinates)
 			.addTo($map);
+
+		dispatch('zoomed');
 	};
 
 	let onChange = () => {
