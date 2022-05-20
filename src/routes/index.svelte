@@ -11,6 +11,10 @@
 	selectedStyle.update(() => defaultStyle);
 </script>
 
+<svelte:head>
+	<title>{config.title}</title>
+</svelte:head>
+
 <Header bind:drawerOpen />
 <DrawerContent bind:open={drawerOpen}>
 	<Map />
