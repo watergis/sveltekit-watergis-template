@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-68c513cb.js",
+    "file": "start-63137bff.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -10,7 +10,7 @@
     "dynamicImports": [
       ".svelte-kit/runtime/components/layout.svelte",
       ".svelte-kit/runtime/components/error.svelte",
-      "_index-55c95709.js"
+      "_index-d8520f31.js"
     ]
   },
   ".svelte-kit/runtime/components/layout.svelte": {
@@ -32,12 +32,12 @@
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-8302544f.js",
+    "file": "pages/index.svelte-c0278c4a.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "imports": [
       "_index-110af84d.js",
-      "_index-55c95709.js",
+      "_index-d8520f31.js",
       "_preload-helper-82916016.js"
     ]
   },
@@ -50,8 +50,8 @@
       "_index-110af84d.js"
     ]
   },
-  "_index-55c95709.js": {
-    "file": "chunks/index-55c95709.js",
+  "_index-d8520f31.js": {
+    "file": "chunks/index-d8520f31.js",
     "isDynamicEntry": true,
     "imports": [
       "_index-110af84d.js",
@@ -80,11 +80,11 @@
     "isDynamicEntry": true
   },
   "node_modules/canvg/lib/index.es.js": {
-    "file": "chunks/index.es-03555d9e.js",
+    "file": "chunks/index.es-c57c25cb.js",
     "src": "node_modules/canvg/lib/index.es.js",
     "isDynamicEntry": true,
     "imports": [
-      "_index-55c95709.js",
+      "_index-d8520f31.js",
       "_index-110af84d.js",
       "_preload-helper-82916016.js"
     ]
