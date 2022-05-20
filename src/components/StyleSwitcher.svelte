@@ -12,6 +12,7 @@
 
 	const setStyle = () => {
 		if (!$map) return;
+		if (styleUrl === $selectedStyle.uri) return;
 		$map.setStyle(styleUrl);
 		$map.on('styledata', () => {
 			const styleUrlObj = new StyleUrl();
@@ -27,6 +28,7 @@
 	};
 
 	const updateStyleSelect = () => {
+		if (styleUrl === $selectedStyle.uri) return;
 		styleUrl = $selectedStyle.uri;
 	};
 </script>
