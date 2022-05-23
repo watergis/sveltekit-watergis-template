@@ -7,6 +7,7 @@
 		ScaleControl,
 		AttributionControl,
 		FullscreenControl,
+		TerrainControl,
 		type GeoJSONSourceSpecification
 	} from 'maplibre-gl';
 	import { map, selectedStyle, queriedFeatures } from '../stores';
@@ -38,7 +39,14 @@
 			hash: true,
 			attributionControl: false
 		});
-		map2.addControl(new NavigationControl({}), 'top-right');
+		map2.addControl(
+			new NavigationControl({
+				visualizePitch: true,
+				showZoom: true,
+				showCompass: true
+			}),
+			'top-right'
+		);
 		map2.addControl(
 			new GeolocateControl({
 				positionOptions: { enableHighAccuracy: true },
@@ -49,6 +57,11 @@
 		map2.addControl(new FullscreenControl({ container: document.querySelector('body') }));
 		map2.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
 		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
+
+		if (config.terrain) {
+			map2.setMaxPitch(85);
+			map2.addControl(new TerrainControl(config.terrain));
+		}
 
 		map2.addControl(
 			new MaplibreIdentifyTools(config.popup.target, (features) => {

@@ -1,4 +1,4 @@
-import type { LngLatLike } from 'maplibre-gl';
+import type { LngLatLike, TerrainSpecification } from 'maplibre-gl';
 import type { Contour } from '../valhalla';
 
 export type StyleSwitcherOption = {
@@ -54,4 +54,5 @@ export type Config = {
 			Contours?: Contour[];
 		};
 	};
+	terrain?: TerrainSpecification;
 };
