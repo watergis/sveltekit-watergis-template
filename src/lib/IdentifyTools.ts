@@ -26,6 +26,7 @@ export default class MaplibreIdentifyTools implements IControl {
 			this.changeButtonCondition();
 		});
 		this.controlContainer.appendChild(this.button);
+		this.button.dispatchEvent(new Event('click'));
 		return this.controlContainer;
 	}
 
