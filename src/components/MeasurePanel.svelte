@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Button, { Label, Icon } from '@smui/button';
 	import { TerrainRGB } from '@watergis/terrain-rgb';
 	import distance from '@turf/distance';
 	import { Marker, MapMouseEvent, GeoJSONFeature } from 'maplibre-gl';
-	import { map } from '../stores';
+	import { map, measureControlData } from '../stores';
 	import { config } from '../config';
+	import type { MeasureControlData } from '$lib/types';
 
 	const SOURCE_LINE = 'elev-controls-source-line';
 	const LAYER_LINE = 'elev-controls-layer-line';
@@ -13,9 +15,24 @@
 
 	let isQuery: boolean;
 	let units = config.elevation.options.units || 'kilometers';
-	let markers: Marker[] = [];
-	let coordinates = [];
-	let elevations = [];
+
+	let hasData = false;
+
+	onMount(() => {
+		if (!$measureControlData) {
+			const data: MeasureControlData = {
+				markers: [],
+				coordinates: [],
+				elevations: []
+			};
+			measureControlData.update(() => data);
+		} else {
+			if ($measureControlData.coordinates.length > 0) {
+				isQuery = true;
+				hasData = true;
+			}
+		}
+	});
 
 	const measureStart = () => {
 		if (isQuery) {
@@ -29,7 +46,6 @@
 		if ($map) {
 			$map.getCanvas().style.cursor = 'crosshair';
 			isQuery = true;
-			initFeatures();
 			$map.on('click', mapClickListener);
 			$map.fire('elevation.on');
 		}
@@ -39,7 +55,6 @@
 		isQuery = false;
 		if ($map) {
 			$map.getCanvas().style.cursor = '';
-			clearFeatures();
 			$map.off('click', mapClickListener);
 			$map.fire('elevation.off');
 		}
@@ -52,7 +67,8 @@
 			if ($map.getSource(SOURCE_LINE)) $map.removeSource(SOURCE_LINE);
 			if ($map.getSource(SOURCE_SYMBOL)) $map.removeSource(SOURCE_SYMBOL);
 		}
-		markers.forEach((m) => m.remove());
+		$measureControlData.markers.forEach((m) => m.remove());
+		hasData = false;
 	};
 
 	const mapClickListener = (event: MapMouseEvent) => {
@@ -75,32 +91,34 @@
 				})
 					.setLngLat(event.lngLat)
 					.addTo($map);
-				markers.push(marker);
+				$measureControlData.markers.push(marker);
 
-				coordinates.push([lnglat[0], lnglat[1], elev]);
-				elevations.push(elev);
+				$measureControlData.coordinates.push([lnglat[0], lnglat[1], elev]);
+				$measureControlData.elevations.push(elev);
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				$map.getSource(SOURCE_LINE).setData(geoLineString(coordinates));
+				$map.getSource(SOURCE_LINE).setData(geoLineString($measureControlData.coordinates));
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				$map.getSource(SOURCE_SYMBOL).setData(geoPoint(coordinates));
+				$map.getSource(SOURCE_SYMBOL).setData(geoPoint($measureControlData.coordinates));
+
+				hasData = true;
 			}
 		});
 	};
 
 	const initFeatures = () => {
-		markers = [];
-		coordinates = [];
-		elevations = [];
+		$measureControlData.markers = [];
+		$measureControlData.coordinates = [];
+		$measureControlData.elevations = [];
 		if ($map) {
 			$map.addSource(SOURCE_LINE, {
 				type: 'geojson',
-				data: geoLineString(coordinates)
+				data: geoLineString($measureControlData.coordinates)
 			});
 			$map.addSource(SOURCE_SYMBOL, {
 				type: 'geojson',
-				data: geoPoint(coordinates)
+				data: geoPoint($measureControlData.coordinates)
 			});
 			$map.addLayer({
 				id: LAYER_LINE,
@@ -187,15 +205,15 @@
 	};
 
 	const downloadGeoJSON = () => {
-		if (coordinates.length === 0) return;
-		const points = geoPoint(coordinates);
+		if ($measureControlData.coordinates.length === 0) return;
+		const points = geoPoint($measureControlData.coordinates);
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		points.features.forEach((f) => {
 			delete f.properties.text;
 		});
-		if (coordinates.length > 1) {
-			const line = geoLineString(coordinates);
+		if ($measureControlData.coordinates.length > 1) {
+			const line = geoLineString($measureControlData.coordinates);
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			points.features.push(line);
@@ -233,7 +251,7 @@
 			</Label>
 		</Button>
 	</div>
-	{#if isQuery}
+	{#if hasData}
 		<div style="display:inline-flex; width:100%">
 			<div class="sub-button">
 				<Button
