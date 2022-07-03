@@ -15,6 +15,7 @@
 	import MaplibreIdentifyTools from '$lib/IdentifyTools';
 	import StyleUrl from '$lib/style-url';
 	import SearchControl from './SearchControl.svelte';
+	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 
 	let mapContainer: HTMLDivElement;
 	let centerMarker: GeoJSONSourceSpecification;
@@ -70,6 +71,12 @@
 				queriedFeatures.update(() => features);
 			})
 		);
+
+		if (config.areaSwitcher) {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			map2.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'top-right');
+		}
 
 		const loadCenterIcon = () => {
 			map2.loadImage(`${config.basePath}/map-center.png`, (error, image) => {
@@ -146,6 +153,7 @@
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 	@import '../css/IdentifyTools.css';
+	@import '@watergis/mapbox-gl-area-switcher/css/styles.css';
 
 	.map-wrap {
 		position: relative;
