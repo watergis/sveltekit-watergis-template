@@ -14,9 +14,12 @@
 	import { config } from '../config';
 	import MaplibreIdentifyTools from '$lib/IdentifyTools';
 	import StyleUrl from '$lib/style-url';
+	import SearchControl from './SearchControl.svelte';
+	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 
 	let mapContainer: HTMLDivElement;
 	let centerMarker: GeoJSONSourceSpecification;
+	let isMapLoaded = false;
 
 	onMount(async () => {
 		const styleUrlObj = new StyleUrl();
@@ -69,6 +72,12 @@
 			})
 		);
 
+		if (config.areaSwitcher) {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			map2.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'top-right');
+		}
+
 		const loadCenterIcon = () => {
 			map2.loadImage(`${config.basePath}/map-center.png`, (error, image) => {
 				if (error) throw error;
@@ -110,6 +119,7 @@
 
 		// show icon at the center of map
 		map2.on('load', () => {
+			isMapLoaded = true;
 			loadCenterIcon();
 			map2.on('moveend', () => {
 				const source = map2.getSource('center');
@@ -135,11 +145,15 @@
 
 <div class="map-wrap">
 	<div class="map" id="map" bind:this={mapContainer} />
+	{#if isMapLoaded}
+		<SearchControl />
+	{/if}
 </div>
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 	@import '../css/IdentifyTools.css';
+	@import '@watergis/mapbox-gl-area-switcher/css/styles.css';
 
 	.map-wrap {
 		position: relative;

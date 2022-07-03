@@ -35,6 +35,7 @@
 
 	export const updateLayers = () => {
 		if (!$map) return;
+		if (!$map.isStyleLoaded()) return;
 		style = $map.getStyle();
 		allLayers = style.layers;
 		setTimeout(() => {
