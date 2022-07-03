@@ -5,6 +5,7 @@
 	import { map } from '../stores';
 	import { config } from '../config';
 	import Valhalla, { Costing, ContourType } from '$lib/valhalla';
+	import { valhallaControlData } from '../stores';
 
 	export let contourType;
 	let longitude: number;
@@ -30,8 +31,6 @@
 		];
 	}
 
-	let valhalla = null;
-
 	let costingOptions = [
 		{
 			value: Costing.Walking,
@@ -51,8 +50,12 @@
 
 	$: {
 		if ($map) {
-			if (!valhalla) {
-				valhalla = new Valhalla($map, config.valhalla.url);
+			if (!$valhallaControlData) {
+				const data: { [key: string]: Valhalla } = {};
+				valhallaControlData.update(() => data);
+			}
+			if (!$valhallaControlData[contourType]) {
+				$valhallaControlData[contourType] = new Valhalla($map, config.valhalla.url);
 			}
 			longitude = $map.getCenter().lng;
 			latitude = $map.getCenter().lat;
@@ -63,7 +66,7 @@
 		}
 	}
 	const calc = (contourType: string) => {
-		valhalla.getIsochrone(
+		$valhallaControlData[contourType].getIsochrone(
 			Number(longitude),
 			Number(latitude),
 			contourType,
@@ -72,7 +75,7 @@
 		);
 	};
 	const clear = () => {
-		valhalla.clearFeatures();
+		$valhallaControlData[contourType].clearFeatures();
 	};
 </script>
 

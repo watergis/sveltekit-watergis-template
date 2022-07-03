@@ -1,4 +1,5 @@
 import type { MeasureControlData, StyleSwitcherOption } from '$lib/types';
+import type Valhalla from '$lib/valhalla';
 import type { MapGeoJSONFeature, Map } from 'maplibre-gl';
 import { writable } from 'svelte/store';
 
@@ -12,3 +13,5 @@ export const selectedStyle = writable<StyleSwitcherOption>(null);
 export const queriedFeatures = writable<MapGeoJSONFeature[]>(null);
 
 export const measureControlData = writable<MeasureControlData>(null);
+
+export const valhallaControlData = writable<{ [key: string]: Valhalla }>(null);
