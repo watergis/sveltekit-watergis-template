@@ -66,7 +66,7 @@
 </script>
 
 {#if config.search}
-	<div>
+	<div id="data-container" class="data-container target">
 		<AutoComplete
 			items={searchItems}
 			bind:selectedItem={selectedObject}
@@ -75,6 +75,7 @@
 			showClear={true}
 			showLoadingIndicator={true}
 			labelFunction={(properties) => (properties ? config.search.format(properties) : '')}
+			maxItemsToShowInList="10"
 		/>
 	</div>
 {/if}
@@ -82,5 +83,32 @@
 <style lang="scss">
 	:global(.autocomplete) {
 		width: 100%;
+	}
+
+	:global(.autocomplete-input) {
+		background-color: #fff;
+		border-radius: 10px;
+		border: 1px solid #ccc;
+		box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+		color: #4a4a4a;
+		font-family: ProximaNova, sans-serif;
+		font-size: 11px;
+		height: 40px !important;
+	}
+
+	:global(.autocomplete-list) {
+		top: 5px !important;
+		background-color: #fff;
+		border-radius: 10px;
+		border: 1px solid #ccc;
+		box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+	}
+
+	.data-container {
+		top: 5px;
+		left: 5px;
+		padding: 10px;
+		position: absolute;
+		z-index: 10;
 	}
 </style>

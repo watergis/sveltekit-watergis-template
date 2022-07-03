@@ -14,9 +14,11 @@
 	import { config } from '../config';
 	import MaplibreIdentifyTools from '$lib/IdentifyTools';
 	import StyleUrl from '$lib/style-url';
+	import SearchControl from './SearchControl.svelte';
 
 	let mapContainer: HTMLDivElement;
 	let centerMarker: GeoJSONSourceSpecification;
+	let isMapLoaded = false;
 
 	onMount(async () => {
 		const styleUrlObj = new StyleUrl();
@@ -110,6 +112,7 @@
 
 		// show icon at the center of map
 		map2.on('load', () => {
+			isMapLoaded = true;
 			loadCenterIcon();
 			map2.on('moveend', () => {
 				const source = map2.getSource('center');
@@ -135,6 +138,9 @@
 
 <div class="map-wrap">
 	<div class="map" id="map" bind:this={mapContainer} />
+	{#if isMapLoaded}
+		<SearchControl />
+	{/if}
 </div>
 
 <style>
