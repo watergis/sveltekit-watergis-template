@@ -67,7 +67,7 @@
 		"file-server": "^2.2.0",
 		"image-clipper": "^0.4.4",
 		"jspdf": "^2.5.1",
-		"maplibre-gl": "^2.2.0-pre.2",
+		"maplibre-gl": "^2.2.0-pre.3",
 		"simple-svelte-autocomplete": "^2.4.0"
 	}
 }
