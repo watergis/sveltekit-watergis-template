@@ -11,9 +11,9 @@
 	selectedStyle.update(() => defaultStyle);
 </script>
 
-<svelte:head>
+<sveltekit:head>
 	<title>{config.title}</title>
-</svelte:head>
+</sveltekit:head>
 
 <Header bind:drawerOpen />
 <DrawerContent bind:open={drawerOpen}>
