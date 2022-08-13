@@ -4,7 +4,7 @@
 	import Button, { Label, Icon } from '@smui/button';
 	import { map } from '../stores';
 	import { config } from '../config';
-	import Valhalla, { Costing, ContourType } from '$lib/valhalla';
+	import ValhallaIsochrone, { Costing, ContourType } from '$lib/valhalla-isochrone';
 	import { valhallaControlData } from '../stores';
 
 	export let contourType;
@@ -51,11 +51,11 @@
 	$: {
 		if ($map) {
 			if (!$valhallaControlData) {
-				const data: { [key: string]: Valhalla } = {};
+				const data: { [key: string]: ValhallaIsochrone } = {};
 				valhallaControlData.update(() => data);
 			}
 			if (!$valhallaControlData[contourType]) {
-				$valhallaControlData[contourType] = new Valhalla($map, config.valhalla.url);
+				$valhallaControlData[contourType] = new ValhallaIsochrone($map, config.valhalla.url);
 			}
 			longitude = $map.getCenter().lng;
 			latitude = $map.getCenter().lat;

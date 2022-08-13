@@ -22,7 +22,7 @@ export type Contour = {
 	color: string;
 };
 
-export default class Valhalla {
+export default class ValhallaIsochrone {
 	private map: Map;
 
 	private url: string;

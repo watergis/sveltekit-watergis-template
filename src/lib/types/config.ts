@@ -1,5 +1,5 @@
 import type { LngLatLike, TerrainSpecification } from 'maplibre-gl';
-import type { Contour } from '../valhalla';
+import type { Contour } from '../valhalla-isochrone';
 
 export type StyleSwitcherOption = {
 	title: string;

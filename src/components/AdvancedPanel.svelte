@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { ContourType } from '$lib/valhalla';
+	import { ContourType } from '$lib/valhalla-isochrone';
 
 	import Accordion, { Panel, Header, Content } from '@smui-extra/accordion';
 	import IconButton, { Icon } from '@smui/icon-button';
 	import MeasurePanel from './MeasurePanel.svelte';
 
-	import ValhallaPanel from './ValhallaPanel.svelte';
+	import ValhallaIsochronePanel from './ValhallaIsochronePanel.svelte';
 
 	export let isAdvancedTabVisible = false;
 
@@ -38,7 +38,7 @@
 					</IconButton>
 				</Header>
 				<Content>
-					<ValhallaPanel bind:contourType={ContourType.Time} />
+					<ValhallaIsochronePanel bind:contourType={ContourType.Time} />
 				</Content>
 			</Panel>
 			<Panel>
@@ -50,7 +50,7 @@
 					</IconButton>
 				</Header>
 				<Content>
-					<ValhallaPanel bind:contourType={ContourType.Distance} />
+					<ValhallaIsochronePanel bind:contourType={ContourType.Distance} />
 				</Content>
 			</Panel>
 		</Accordion>
