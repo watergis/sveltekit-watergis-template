@@ -37,8 +37,8 @@
 		"@sveltejs/adapter-static": "^1.0.0-next.39",
 		"@sveltejs/kit": "^1.0.0-next.405",
 		"@types/file-saver": "^2.0.5",
-		"@typescript-eslint/eslint-plugin": "^5.32.0",
-		"@typescript-eslint/parser": "^5.32.0",
+		"@typescript-eslint/eslint-plugin": "^5.33.0",
+		"@typescript-eslint/parser": "^5.33.0",
 		"eslint": "^8.21.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -53,11 +53,11 @@
 		"svelte-preprocess": "^4.10.7",
 		"tslib": "^2.4.0",
 		"typescript": "~4.7.4",
-		"vite": "^3.0.4"
+		"vite": "^3.0.7"
 	},
 	"type": "module",
 	"dependencies": {
-		"@maplibre/maplibre-gl-style-spec": "^16.0.0",
+		"@maplibre/maplibre-gl-style-spec": "^17.0.0",
 		"@turf/distance": "^6.5.0",
 		"@watergis/legend-symbol": "^0.2.2",
 		"@watergis/mapbox-gl-area-switcher": "^1.0.1",
@@ -68,7 +68,7 @@
 		"file-server": "^2.2.0",
 		"image-clipper": "^0.4.4",
 		"jspdf": "^2.5.1",
-		"maplibre-gl": "^2.2.0-pre.3",
+		"maplibre-gl": "^2.2.1",
 		"simple-svelte-autocomplete": "^2.4.0"
 	}
 }
