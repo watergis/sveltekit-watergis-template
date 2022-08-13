@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import Button, { Label, Icon } from '@smui/button';
 	import { TerrainRGB } from '@watergis/terrain-rgb';
 	import distance from '@turf/distance';
@@ -28,9 +28,14 @@
 			measureControlData.update(() => data);
 		} else {
 			if ($measureControlData.coordinates.length > 0) {
-				isQuery = true;
 				hasData = true;
 			}
+		}
+	});
+
+	onDestroy(() => {
+		if (isQuery === true) {
+			measuringOff();
 		}
 	});
 

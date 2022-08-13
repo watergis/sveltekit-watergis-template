@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import Button, { Label, Icon } from '@smui/button';
 	import Select, { Option } from '@smui/select';
 	import type { GeoJSONFeature, MapMouseEvent } from 'maplibre-gl';
@@ -35,10 +35,12 @@
 	onMount(() => {
 		if (!$valhallaRoutingData) {
 			valhallaRoutingData.update(() => []);
-		} else {
-			if ($valhallaRoutingData.length > 0) {
-				isRouting = true;
-			}
+		}
+	});
+
+	onDestroy(() => {
+		if (isRouting === true) {
+			addingPointOff();
 		}
 	});
 

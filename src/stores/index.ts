@@ -17,3 +17,7 @@ export const measureControlData = writable<MeasureControlData>(null);
 export const valhallaControlData = writable<{ [key: string]: ValhallaIsochrone }>(null);
 
 export const valhallaRoutingData = writable<LngLat[]>(null);
+
+export const selectedAdvancedPanel = writable<
+	'Measure' | 'Routing' | 'TimeIsochrone' | 'DistanceIsochrone'
+>('Measure');
