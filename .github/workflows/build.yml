@@ -37,8 +37,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
           NODE_ENV: production
+          CNAME: ${{secrets.CNAME}}
         run: |
           npm run build
+          echo "${CNAME}" >> ./build/CNAME
           git config --global user.name "watergis+githubci"
           git config --global user.email "watergis+githubci@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${NODE_AUTH_TOKEN}@github.com/watergis/sveltekit-watergis-template.git
