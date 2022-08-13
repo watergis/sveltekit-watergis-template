@@ -6,6 +6,7 @@
 	import MeasurePanel from './MeasurePanel.svelte';
 
 	import ValhallaIsochronePanel from './ValhallaIsochronePanel.svelte';
+	import ValhallaRoutingPanel from './ValhallaRoutingPanel.svelte';
 
 	export let isAdvancedTabVisible = false;
 
@@ -27,6 +28,18 @@
 				</Header>
 				<Content>
 					<MeasurePanel />
+				</Content>
+			</Panel>
+			<Panel>
+				<Header>
+					Routing tool
+					<IconButton slot="icon" toggle pressed={panel1Open}>
+						<Icon class="material-icons" on>expand_less</Icon>
+						<Icon class="material-icons">expand_more</Icon>
+					</IconButton>
+				</Header>
+				<Content>
+					<ValhallaRoutingPanel />
 				</Content>
 			</Panel>
 			<Panel>

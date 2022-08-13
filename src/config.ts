@@ -149,7 +149,14 @@ export const config: Config = {
 					distance: 4,
 					color: 'ff00ff'
 				}
-			]
+			],
+			routing: {
+				font: ['Roboto Medium'],
+				fontSize: 14,
+				fontHalo: 1.5,
+				fontColor: '#263238',
+				fontHaloColor: '#fff'
+			}
 		}
 	},
 	terrain: {

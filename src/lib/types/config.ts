@@ -52,6 +52,13 @@ export type Config = {
 		url: string;
 		options: {
 			Contours?: Contour[];
+			routing: {
+				font: string[];
+				fontSize: number;
+				fontHalo: number;
+				fontColor: string;
+				fontHaloColor: string;
+			};
 		};
 	};
 	terrain?: TerrainSpecification;
