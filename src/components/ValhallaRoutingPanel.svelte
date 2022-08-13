@@ -1,14 +1,43 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Button, { Label, Icon } from '@smui/button';
+	import Select, { Option } from '@smui/select';
 	import type { GeoJSONFeature, MapMouseEvent } from 'maplibre-gl';
 	import { map, valhallaRoutingData } from '../stores';
 	import { config } from '../config';
+	import { Costing } from '$lib/valhalla-isochrone';
 
 	const SOURCE_LINE = 'routing-controls-source-line';
 	const LAYER_LINE = 'routing-controls-layer-line';
 	const LAYER_LINE_LABEL = 'routing-controls-layer-line-label';
 	const routingOptions = config.valhalla.options.routing;
 	let isRouting = false;
+
+	let costingOptions = [
+		{
+			value: Costing.Walking,
+			label: 'Walking'
+		},
+		{
+			value: Costing.Bicycle,
+			label: 'Bicycle'
+		},
+		{
+			value: Costing.Car,
+			label: 'Car'
+		}
+	];
+	let meansOfTransport = costingOptions[0].value;
+
+	onMount(() => {
+		if (!$valhallaRoutingData) {
+			valhallaRoutingData.update(() => []);
+		} else {
+			if ($valhallaRoutingData.length > 0) {
+				isRouting = true;
+			}
+		}
+	});
 
 	const handleAddPoint = () => {
 		if (isRouting) {
@@ -39,7 +68,11 @@
 	const mapClickListener = (event: MapMouseEvent) => {
 		const lnglat = event.lngLat;
 		if (!$valhallaRoutingData) valhallaRoutingData.update(() => []);
-		valhallaRoutingData.update(() => [...$valhallaRoutingData, lnglat]);
+		if ($valhallaRoutingData.length < 2) {
+			valhallaRoutingData.update(() => [...$valhallaRoutingData, lnglat]);
+		} else {
+			valhallaRoutingData.update(() => [$valhallaRoutingData[0], lnglat]);
+		}
 	};
 
 	const clearFeatures = () => {
@@ -52,6 +85,8 @@
 	};
 
 	$: $valhallaRoutingData, calcRoute();
+	$: meansOfTransport, calcRoute();
+
 	const calcRoute = async () => {
 		if (!$valhallaRoutingData || ($valhallaRoutingData && $valhallaRoutingData.length < 2)) {
 			return;
@@ -61,7 +96,7 @@
 			locations: $valhallaRoutingData.map((pt) => {
 				return { lon: pt.lng, lat: pt.lat };
 			}),
-			costing: 'pedestrian',
+			costing: meansOfTransport,
 			costing_options: { auto: { country_crossing_penalty: 2000.0 } },
 			units: 'kilometers',
 			id: 'my_work_route'
@@ -194,13 +229,21 @@
 </script>
 
 {#if config.valhalla}
+	<div>
+		<Select bind:value={meansOfTransport} label="Means of Transport" style="width:100%">
+			{#each costingOptions as item}
+				<Option value={item.value}>{item.label}</Option>
+			{/each}
+		</Select>
+	</div>
+
 	<div class="button" style="display: flex; align-items: center;">
 		<Button color="primary" variant="raised" on:click={handleAddPoint} style="width:100%">
 			<Icon class="material-icons">
 				{#if isRouting}
 					close
 				{:else}
-					add
+					route
 				{/if}
 			</Icon>
 			<Label>
