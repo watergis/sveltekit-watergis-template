@@ -10,6 +10,9 @@
 	const SOURCE_LINE = 'routing-controls-source-line';
 	const LAYER_LINE = 'routing-controls-layer-line';
 	const LAYER_LINE_LABEL = 'routing-controls-layer-line-label';
+	const LAYER_SYMBOL = 'routing-controls-layer-symbol';
+	const SOURCE_SYMBOL = 'routing-controls-source-symbol';
+
 	const routingOptions = config.valhalla.options.routing;
 	let isRouting = false;
 
@@ -79,7 +82,9 @@
 		if ($map) {
 			if ($map.getLayer(LAYER_LINE)) $map.removeLayer(LAYER_LINE);
 			if ($map.getLayer(LAYER_LINE_LABEL)) $map.removeLayer(LAYER_LINE_LABEL);
+			if ($map.getLayer(LAYER_SYMBOL)) $map.removeLayer(LAYER_SYMBOL);
 			if ($map.getSource(SOURCE_LINE)) $map.removeSource(SOURCE_LINE);
+			if ($map.getSource(SOURCE_SYMBOL)) $map.removeSource(SOURCE_SYMBOL);
 		}
 		valhallaRoutingData.update(() => []);
 	};
@@ -114,12 +119,17 @@
 			time: (json.trip.summary.time / 60).toFixed()
 		};
 		const feature = geoLineString(shape, props);
+		const pointFeatures = geoPoint($valhallaRoutingData.map((pt) => [pt.lng, pt.lat]));
 
 		if ($map) {
 			if (!$map.getSource(SOURCE_LINE)) {
 				$map.addSource(SOURCE_LINE, {
 					type: 'geojson',
 					data: feature
+				});
+				$map.addSource(SOURCE_SYMBOL, {
+					type: 'geojson',
+					data: pointFeatures
 				});
 				$map.addLayer({
 					id: LAYER_LINE,
@@ -155,10 +165,24 @@
 						'text-halo-width': routingOptions.fontHalo
 					}
 				});
+
+				$map.addLayer({
+					id: LAYER_SYMBOL,
+					type: 'symbol',
+					source: SOURCE_SYMBOL,
+					layout: {
+						'icon-image': routingOptions.iconImage,
+						'icon-size': routingOptions.iconSize
+					},
+					paint: {}
+				});
 			} else {
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
 				$map.getSource(SOURCE_LINE).setData(feature);
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				$map.getSource(SOURCE_SYMBOL).setData(pointFeatures);
 			}
 		}
 	};
@@ -176,6 +200,26 @@
 				type: 'LineString',
 				coordinates
 			}
+		};
+	};
+
+	const geoPoint = (coordinates: number[][] = []): GeoJSONFeature => {
+		return {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			type: 'FeatureCollection',
+			features: coordinates.map((c, i) => {
+				return {
+					type: 'Feature',
+					properties: {
+						id: i + 1
+					},
+					geometry: {
+						type: 'Point',
+						coordinates: c
+					}
+				};
+			})
 		};
 	};
 

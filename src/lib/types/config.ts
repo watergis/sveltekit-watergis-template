@@ -58,6 +58,8 @@ export type Config = {
 				fontHalo: number;
 				fontColor: string;
 				fontHaloColor: string;
+				iconImage: string;
+				iconSize: number;
 			};
 		};
 	};

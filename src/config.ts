@@ -153,9 +153,11 @@ export const config: Config = {
 			routing: {
 				font: ['Roboto Medium'],
 				fontSize: 14,
-				fontHalo: 1.5,
+				fontHalo: 3,
 				fontColor: '#263238',
-				fontHaloColor: '#fff'
+				fontHaloColor: '#fff',
+				iconImage: 'circle',
+				iconSize: 1
 			}
 		}
 	},
