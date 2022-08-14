@@ -76,11 +76,12 @@
 	const mapClickListener = (event: MapMouseEvent) => {
 		const lnglat = event.lngLat;
 		if (!$valhallaRoutingData) valhallaRoutingData.update(() => []);
-		if ($valhallaRoutingData.length < 2) {
-			valhallaRoutingData.update(() => [...$valhallaRoutingData, lnglat]);
-		} else {
-			valhallaRoutingData.update(() => [$valhallaRoutingData[0], lnglat]);
-		}
+		// if ($valhallaRoutingData.length < 2) {
+		// 	valhallaRoutingData.update(() => [...$valhallaRoutingData, lnglat]);
+		// } else {
+		// 	valhallaRoutingData.update(() => [$valhallaRoutingData[0], lnglat]);
+		// }
+		valhallaRoutingData.update(() => [...$valhallaRoutingData, lnglat]);
 	};
 
 	const clearFeatures = () => {
@@ -123,18 +124,26 @@
 		tripSummary = json.trip.summary;
 		tripSummary.length = Number(tripSummary.length.toFixed(2));
 		tripSummary.time = Number((tripSummary.time / 60).toFixed());
-		const props = {
-			length: tripSummary.length,
-			time: tripSummary.time
+
+		const features = {
+			type: 'FeatureCollection',
+			features: json.trip.legs.map((leg) => {
+				const shape = decodeShape(leg.shape);
+				const props = {
+					length: Number(leg.summary.length.toFixed(2)),
+					time: Number((leg.summary.time / 60).toFixed())
+				};
+				return geoLineString(shape, props);
+			})
 		};
-		const feature = geoLineString(shape, props);
+
 		const pointFeatures = geoPoint($valhallaRoutingData.map((pt) => [pt.lng, pt.lat]));
 
 		if ($map) {
 			if (!$map.getSource(SOURCE_LINE)) {
 				$map.addSource(SOURCE_LINE, {
 					type: 'geojson',
-					data: feature
+					data: features
 				});
 				$map.addSource(SOURCE_SYMBOL, {
 					type: 'geojson',
@@ -198,7 +207,7 @@
 			} else {
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				$map.getSource(SOURCE_LINE).setData(feature);
+				$map.getSource(SOURCE_LINE).setData(features);
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
 				$map.getSource(SOURCE_SYMBOL).setData(pointFeatures);
