@@ -76,11 +76,6 @@
 	const mapClickListener = (event: MapMouseEvent) => {
 		const lnglat = event.lngLat;
 		if (!$valhallaRoutingData) valhallaRoutingData.update(() => []);
-		// if ($valhallaRoutingData.length < 2) {
-		// 	valhallaRoutingData.update(() => [...$valhallaRoutingData, lnglat]);
-		// } else {
-		// 	valhallaRoutingData.update(() => [$valhallaRoutingData[0], lnglat]);
-		// }
 		valhallaRoutingData.update(() => [...$valhallaRoutingData, lnglat]);
 	};
 
