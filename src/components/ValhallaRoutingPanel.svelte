@@ -2,10 +2,12 @@
 	import { onMount, onDestroy } from 'svelte';
 	import Button, { Label, Icon } from '@smui/button';
 	import Select, { Option } from '@smui/select';
+	import Textfield from '@smui/textfield';
 	import type { GeoJSONFeature, MapMouseEvent } from 'maplibre-gl';
 	import { map, valhallaRoutingData } from '../stores';
 	import { config } from '../config';
 	import { Costing } from '$lib/valhalla-isochrone';
+	import type { ValhallaTripResult, ValhallaTripSummary } from '$lib/types';
 
 	const SOURCE_LINE = 'routing-controls-source-line';
 	const LAYER_LINE = 'routing-controls-layer-line';
@@ -31,6 +33,7 @@
 		}
 	];
 	let meansOfTransport = costingOptions[0].value;
+	let tripSummary: ValhallaTripSummary;
 
 	onMount(() => {
 		if (!$valhallaRoutingData) {
@@ -96,6 +99,7 @@
 
 	const calcRoute = async () => {
 		if (!$valhallaRoutingData || ($valhallaRoutingData && $valhallaRoutingData.length < 2)) {
+			tripSummary = undefined;
 			return;
 		}
 		const baseAPI = `${config.valhalla.url}/route`;
@@ -110,15 +114,18 @@
 		};
 		const url = `${baseAPI}?json=${JSON.stringify(options)}`;
 		const res = await fetch(url);
-		const json = await res.json();
+		const json: ValhallaTripResult = await res.json();
 		let shapes = json.trip.legs.map((s) => decodeShape(s.shape));
-		let shape = [];
+		let shape: number[][] = [];
 		shapes.forEach((shp) => {
 			shape = [...shape, ...shp];
 		});
+		tripSummary = json.trip.summary;
+		tripSummary.length = Number(tripSummary.length.toFixed(2));
+		tripSummary.time = Number((tripSummary.time / 60).toFixed());
 		const props = {
-			length: json.trip.summary.length.toFixed(2),
-			time: (json.trip.summary.time / 60).toFixed()
+			length: tripSummary.length,
+			time: tripSummary.time
 		};
 		const feature = geoLineString(shape, props);
 		const pointFeatures = geoPoint($valhallaRoutingData.map((pt) => [pt.lng, pt.lat]));
@@ -174,9 +181,19 @@
 					source: SOURCE_SYMBOL,
 					layout: {
 						'icon-image': routingOptions.iconImage,
-						'icon-size': routingOptions.iconSize
+						'icon-size': routingOptions.iconSize,
+						'text-field': ['get', 'text'],
+						'text-font': routingOptions.font,
+						'text-size': routingOptions.fontSize,
+						'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+						'text-radial-offset': 0.8,
+						'text-justify': 'auto'
 					},
-					paint: {}
+					paint: {
+						'text-color': routingOptions.fontColor,
+						'text-halo-color': routingOptions.fontHaloColor,
+						'text-halo-width': routingOptions.fontHalo
+					}
 				});
 			} else {
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -211,10 +228,16 @@
 			// @ts-ignore
 			type: 'FeatureCollection',
 			features: coordinates.map((c, i) => {
+				let text = (i + 1).toString();
+				if (i === 0) {
+					text = 'From';
+				} else if (i === coordinates.length - 1) {
+					text = 'To';
+				}
 				return {
 					type: 'Feature',
 					properties: {
-						id: i + 1
+						text
 					},
 					geometry: {
 						type: 'Point',
@@ -226,10 +249,10 @@
 	};
 
 	const decodeShape = (value: string, precision = 6) => {
-		var index = 0,
+		let index = 0,
 			lat = 0,
 			lng = 0,
-			coordinates = [],
+			coordinates: number[][] = [],
 			shift = 0,
 			result = 0,
 			byte = null,
@@ -314,6 +337,35 @@
 				<Label>Clear</Label>
 			</Button>
 		</div>
+
+		<div style="display:inline-flex; width: 100%">
+			<Textfield
+				value={`${$valhallaRoutingData[0].lng.toFixed(6)}, ${$valhallaRoutingData[0].lat.toFixed(
+					6
+				)}`}
+				label="From"
+				readonly
+				style="width: 50%"
+			/>
+
+			{#if $valhallaRoutingData.length > 1}
+				<Textfield
+					value={`${$valhallaRoutingData[$valhallaRoutingData.length - 1].lng.toFixed(
+						6
+					)}, ${$valhallaRoutingData[$valhallaRoutingData.length - 1].lat.toFixed(6)}`}
+					label="To"
+					readonly
+					style="width: 50%"
+				/>
+			{/if}
+		</div>
+
+		{#if tripSummary}
+			<div style="display:inline-flex; width: 100%">
+				<Textfield value={`${tripSummary.length} km`} label="Length" readonly style="width: 50%" />
+				<Textfield value={`${tripSummary.time} min`} label="Time" readonly style="width: 50%" />
+			</div>
+		{/if}
 	{/if}
 {/if}
 

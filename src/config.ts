@@ -156,7 +156,7 @@ export const config: Config = {
 				fontHalo: 3,
 				fontColor: '#263238',
 				fontHaloColor: '#fff',
-				iconImage: 'circle',
+				iconImage: 'marker',
 				iconSize: 1
 			}
 		}
