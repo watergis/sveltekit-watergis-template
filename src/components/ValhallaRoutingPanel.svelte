@@ -4,10 +4,10 @@
 	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
 	import type { GeoJSONFeature, MapMouseEvent } from 'maplibre-gl';
-	import { map, valhallaRoutingData } from '../stores';
+	import { map, valhallaRoutingData, errorMessage } from '../stores';
 	import { config } from '../config';
 	import { Costing } from '$lib/valhalla-isochrone';
-	import type { ValhallaTripResult, ValhallaTripSummary } from '$lib/types';
+	import type { ValhallaTripResult, ValhallaTripSummary, ValhallaError } from '$lib/types';
 
 	const SOURCE_LINE = 'routing-controls-source-line';
 	const LAYER_LINE = 'routing-controls-layer-line';
@@ -93,7 +93,7 @@
 	$: $valhallaRoutingData, calcRoute();
 	$: meansOfTransport, calcRoute();
 
-	const calcRoute = async () => {
+	const calcRoute = () => {
 		if (!$valhallaRoutingData || ($valhallaRoutingData && $valhallaRoutingData.length < 2)) {
 			tripSummary = undefined;
 			return;
@@ -109,105 +109,117 @@
 			id: 'my_work_route'
 		};
 		const url = `${baseAPI}?json=${JSON.stringify(options)}`;
-		const res = await fetch(url);
-		const json: ValhallaTripResult = await res.json();
-		let shapes = json.trip.legs.map((s) => decodeShape(s.shape));
-		let shape: number[][] = [];
-		shapes.forEach((shp) => {
-			shape = [...shape, ...shp];
-		});
-		tripSummary = json.trip.summary;
-		tripSummary.length = Number(tripSummary.length.toFixed(2));
-		tripSummary.time = Number((tripSummary.time / 60).toFixed());
 
-		const features = {
-			type: 'FeatureCollection',
-			features: json.trip.legs.map((leg) => {
-				const shape = decodeShape(leg.shape);
-				const props = {
-					length: Number(leg.summary.length.toFixed(2)),
-					time: Number((leg.summary.time / 60).toFixed())
+		fetch(url)
+			.then((res) => res.json())
+			.then((json: ValhallaTripResult | ValhallaError) => {
+				if ('error' in json) {
+					$valhallaRoutingData.pop(); //remove the last coordinates which cause error
+					throw new Error(
+						`${json.status} (${json.status_code}): ${json.error} (${json.error_code})`
+					);
+				}
+				let shapes = json.trip.legs.map((s) => decodeShape(s.shape));
+				let shape: number[][] = [];
+				shapes.forEach((shp) => {
+					shape = [...shape, ...shp];
+				});
+				tripSummary = json.trip.summary;
+				tripSummary.length = Number(tripSummary.length.toFixed(2));
+				tripSummary.time = Number((tripSummary.time / 60).toFixed());
+
+				const features = {
+					type: 'FeatureCollection',
+					features: json.trip.legs.map((leg) => {
+						const shape = decodeShape(leg.shape);
+						const props = {
+							length: Number(leg.summary.length.toFixed(2)),
+							time: Number((leg.summary.time / 60).toFixed())
+						};
+						return geoLineString(shape, props);
+					})
 				};
-				return geoLineString(shape, props);
+
+				const pointFeatures = geoPoint($valhallaRoutingData.map((pt) => [pt.lng, pt.lat]));
+
+				if ($map) {
+					if (!$map.getSource(SOURCE_LINE)) {
+						$map.addSource(SOURCE_LINE, {
+							type: 'geojson',
+							data: features
+						});
+						$map.addSource(SOURCE_SYMBOL, {
+							type: 'geojson',
+							data: pointFeatures
+						});
+						$map.addLayer({
+							id: LAYER_LINE,
+							type: 'line',
+							source: SOURCE_LINE,
+							paint: {
+								'line-color': 'rgb(255,0,0)',
+								'line-width': 4
+							}
+						});
+
+						$map.addLayer({
+							id: LAYER_LINE_LABEL,
+							type: 'symbol',
+							source: SOURCE_LINE,
+							layout: {
+								'text-field': [
+									'concat',
+									['to-string', ['get', 'length']],
+									' km (',
+									['to-string', ['get', 'time']],
+									' min)'
+								],
+								'text-font': routingOptions.font,
+								'text-size': routingOptions.fontSize,
+								'symbol-placement': 'line',
+								'text-allow-overlap': true,
+								'text-ignore-placement': true
+							},
+							paint: {
+								'text-color': routingOptions.fontColor,
+								'text-halo-color': routingOptions.fontHaloColor,
+								'text-halo-width': routingOptions.fontHalo
+							}
+						});
+
+						$map.addLayer({
+							id: LAYER_SYMBOL,
+							type: 'symbol',
+							source: SOURCE_SYMBOL,
+							layout: {
+								'icon-image': routingOptions.iconImage,
+								'icon-size': routingOptions.iconSize,
+								'text-field': ['get', 'text'],
+								'text-font': routingOptions.font,
+								'text-size': routingOptions.fontSize,
+								'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+								'text-radial-offset': 0.8,
+								'text-justify': 'auto'
+							},
+							paint: {
+								'text-color': routingOptions.fontColor,
+								'text-halo-color': routingOptions.fontHaloColor,
+								'text-halo-width': routingOptions.fontHalo
+							}
+						});
+					} else {
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+						// @ts-ignore
+						$map.getSource(SOURCE_LINE).setData(features);
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+						// @ts-ignore
+						$map.getSource(SOURCE_SYMBOL).setData(pointFeatures);
+					}
+				}
 			})
-		};
-
-		const pointFeatures = geoPoint($valhallaRoutingData.map((pt) => [pt.lng, pt.lat]));
-
-		if ($map) {
-			if (!$map.getSource(SOURCE_LINE)) {
-				$map.addSource(SOURCE_LINE, {
-					type: 'geojson',
-					data: features
-				});
-				$map.addSource(SOURCE_SYMBOL, {
-					type: 'geojson',
-					data: pointFeatures
-				});
-				$map.addLayer({
-					id: LAYER_LINE,
-					type: 'line',
-					source: SOURCE_LINE,
-					paint: {
-						'line-color': 'rgb(255,0,0)',
-						'line-width': 4
-					}
-				});
-
-				$map.addLayer({
-					id: LAYER_LINE_LABEL,
-					type: 'symbol',
-					source: SOURCE_LINE,
-					layout: {
-						'text-field': [
-							'concat',
-							['to-string', ['get', 'length']],
-							' km (',
-							['to-string', ['get', 'time']],
-							' min)'
-						],
-						'text-font': routingOptions.font,
-						'text-size': routingOptions.fontSize,
-						'symbol-placement': 'line',
-						'text-allow-overlap': true,
-						'text-ignore-placement': true
-					},
-					paint: {
-						'text-color': routingOptions.fontColor,
-						'text-halo-color': routingOptions.fontHaloColor,
-						'text-halo-width': routingOptions.fontHalo
-					}
-				});
-
-				$map.addLayer({
-					id: LAYER_SYMBOL,
-					type: 'symbol',
-					source: SOURCE_SYMBOL,
-					layout: {
-						'icon-image': routingOptions.iconImage,
-						'icon-size': routingOptions.iconSize,
-						'text-field': ['get', 'text'],
-						'text-font': routingOptions.font,
-						'text-size': routingOptions.fontSize,
-						'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
-						'text-radial-offset': 0.8,
-						'text-justify': 'auto'
-					},
-					paint: {
-						'text-color': routingOptions.fontColor,
-						'text-halo-color': routingOptions.fontHaloColor,
-						'text-halo-width': routingOptions.fontHalo
-					}
-				});
-			} else {
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				$map.getSource(SOURCE_LINE).setData(features);
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				$map.getSource(SOURCE_SYMBOL).setData(pointFeatures);
-			}
-		}
+			.catch((err: ErrorEvent) => {
+				errorMessage.update(() => [...$errorMessage, err.message]);
+			});
 	};
 
 	const geoLineString = (

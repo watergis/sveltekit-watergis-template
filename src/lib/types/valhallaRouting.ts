@@ -48,3 +48,10 @@ export interface ValhallaTripResult {
 	};
 	id: string;
 }
+
+export interface ValhallaError {
+	error: string;
+	error_code: number;
+	status: string;
+	status_code: number;
+}
