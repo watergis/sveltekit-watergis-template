@@ -29,6 +29,7 @@
 		"@smui/icon-button": "^6.0.0",
 		"@smui/list": "^6.0.0",
 		"@smui/select": "^6.0.0",
+		"@smui/snackbar": "^6.0.0",
 		"@smui/tab": "^6.0.0",
 		"@smui/tab-bar": "^6.0.0",
 		"@smui/textfield": "^6.0.0",

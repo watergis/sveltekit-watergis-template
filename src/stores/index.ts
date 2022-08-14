@@ -21,3 +21,5 @@ export const valhallaRoutingData = writable<LngLat[]>(null);
 export const selectedAdvancedPanel = writable<
 	'Measure' | 'Routing' | 'TimeIsochrone' | 'DistanceIsochrone'
 >('Measure');
+
+export const errorMessage = writable<string[]>([]);

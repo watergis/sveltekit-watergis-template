@@ -16,6 +16,7 @@
 	import StyleUrl from '$lib/style-url';
 	import SearchControl from './SearchControl.svelte';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
+	import MessageBar from './MessageBar.svelte';
 
 	let mapContainer: HTMLDivElement;
 	let centerMarker: GeoJSONSourceSpecification;
@@ -149,6 +150,8 @@
 		<SearchControl />
 	{/if}
 </div>
+
+<MessageBar />
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';

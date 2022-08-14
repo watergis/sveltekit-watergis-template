@@ -4,5 +4,6 @@ export type {
 	ValhallaTripResult,
 	ValhallaRoutingLeg,
 	ValhallaRoutingLocation,
-	ValhallaTripSummary
+	ValhallaTripSummary,
+	ValhallaError
 } from './valhallaRouting';
