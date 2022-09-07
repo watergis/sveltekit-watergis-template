@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import IconButton from '@smui/icon-button';
 	import Dialog, { Title, Content, Actions } from '@smui/dialog';
