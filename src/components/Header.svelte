@@ -5,6 +5,7 @@
 	import IconButton from '@smui/icon-button';
 	import { config } from '../config';
 	import MapExport from './MapExport.svelte';
+	import ShareURL from './ShareURL.svelte';
 
 	export let drawerOpen = false;
 
@@ -62,6 +63,7 @@
 		</Section>
 		<section />
 		<Section align="end" toolbar>
+			<ShareURL />
 			<MapExport />
 			<IconButton
 				aria-label={modeLabel}
