@@ -109,6 +109,6 @@
 		left: 5px;
 		padding: 10px;
 		position: absolute;
-		z-index: 10;
+		z-index: 1;
 	}
 </style>
