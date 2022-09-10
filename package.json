@@ -6,7 +6,7 @@
 		"build": "rm -rf build && vite build",
 		"package": "svelte-kit package",
 		"preview": "vite preview",
-		"prepare": "husky install && npm run smui-theme-light && npm run smui-theme-dark",
+		"prepare": "npm run smui-theme-light && npm run smui-theme-dark && husky install",
 		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
 		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
