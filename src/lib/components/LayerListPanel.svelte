@@ -7,7 +7,7 @@
 	import Layer from './Layer.svelte';
 	import StyleSwitcher from './StyleSwitcher.svelte';
 	import { map } from '$lib/stores';
-	import { config } from '../config';
+	import { config } from '../../config';
 
 	let style: StyleSpecification = undefined;
 	let onlyRendered = true;

@@ -4,7 +4,7 @@
 	import IconButton, { Icon } from '@smui/icon-button';
 	import { map } from '$lib/stores';
 	import Legend from './Legend.svelte';
-	import { config } from '../config';
+	import { config } from '../../config';
 
 	export let layer: LayerSpecification;
 	let visibility = 'visible';

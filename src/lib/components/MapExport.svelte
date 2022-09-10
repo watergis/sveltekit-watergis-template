@@ -28,7 +28,7 @@
 	}
 
 	onMount(async () => {
-		const { default: MapGenerator } = await import('../lib/map-generator');
+		const { default: MapGenerator } = await import('../map-generator');
 		mapGenerator = new MapGenerator();
 	});
 
