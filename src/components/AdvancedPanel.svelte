@@ -8,7 +8,7 @@
 
 	import ValhallaIsochronePanel from './ValhallaIsochronePanel.svelte';
 	import ValhallaRoutingPanel from './ValhallaRoutingPanel.svelte';
-	import { selectedAdvancedPanel } from '../stores';
+	import { selectedAdvancedPanel } from '$lib/stores';
 
 	export let isAdvancedTabVisible = false;
 

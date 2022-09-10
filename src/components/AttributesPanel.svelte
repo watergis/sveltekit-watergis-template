@@ -4,7 +4,7 @@
 	import DataTable, { Body, Row, Cell } from '@smui/data-table';
 	import Fa from 'svelte-fa';
 	import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
-	import { queriedFeatures } from '../stores';
+	import { queriedFeatures } from '$lib/stores';
 
 	export let isAttributesTabVisible = false;
 

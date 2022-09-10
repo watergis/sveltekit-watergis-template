@@ -3,12 +3,11 @@
 	import Tab, { Icon, Label } from '@smui/tab';
 	import TabBar from '@smui/tab-bar';
 	import { Split } from '@geoffcox/svelte-splitter';
-	import { queriedFeatures } from '../stores';
 	import LayerListPanel from './LayerListPanel.svelte';
 	import AttributesPanel from './AttributesPanel.svelte';
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { TabNames } from '$lib/constants';
-	import { map } from '../stores';
+	import { map, queriedFeatures } from '$lib/stores';
 
 	let innerWidth = 0;
 	let innerHeight = 0;

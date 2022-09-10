@@ -4,7 +4,7 @@
 	import Dialog, { Title, Content, Actions } from '@smui/dialog';
 	import Button, { Label, Icon } from '@smui/button';
 	import { copy } from 'svelte-copy';
-	import { map, selectedStyle } from '../stores';
+	import { map, selectedStyle } from '$lib/stores';
 
 	let isDialogOpen;
 

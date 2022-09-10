@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { LayerSpecification } from 'maplibre-gl';
 	import LegendSymbol from '@watergis/legend-symbol';
-	import { map, spriteLoaderObject } from '../stores';
+	import { map, spriteLoaderObject } from '$lib/stores';
 	import SpriteLoader from '$lib/sprite';
 
 	export let layer: LayerSpecification;

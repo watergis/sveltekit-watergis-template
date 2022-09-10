@@ -6,7 +6,7 @@
 	import type { StyleSpecification, LayerSpecification } from 'maplibre-gl';
 	import Layer from './Layer.svelte';
 	import StyleSwitcher from './StyleSwitcher.svelte';
-	import { map } from '../stores';
+	import { map } from '$lib/stores';
 	import { config } from '../config';
 
 	let style: StyleSpecification = undefined;

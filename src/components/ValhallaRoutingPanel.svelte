@@ -4,7 +4,7 @@
 	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
 	import type { GeoJSONFeature, MapMouseEvent } from 'maplibre-gl';
-	import { map, valhallaRoutingData, errorMessage } from '../stores';
+	import { map, valhallaRoutingData, errorMessage } from '$lib/stores';
 	import { config } from '../config';
 	import { Costing } from '$lib/valhalla-isochrone';
 	import type { ValhallaTripResult, ValhallaTripSummary, ValhallaError } from '$lib/types';

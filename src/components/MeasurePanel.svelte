@@ -4,7 +4,7 @@
 	import { TerrainRGB } from '@watergis/terrain-rgb';
 	import distance from '@turf/distance';
 	import { Marker, MapMouseEvent, GeoJSONFeature } from 'maplibre-gl';
-	import { map, measureControlData } from '../stores';
+	import { map, measureControlData } from '$lib/stores';
 	import { config } from '../config';
 	import type { MeasureControlData } from '$lib/types';
 

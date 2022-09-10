@@ -2,7 +2,7 @@
 	import type { SnackbarComponentDev } from '@smui/snackbar';
 	import Snackbar, { Actions, Label } from '@smui/snackbar';
 	import IconButton from '@smui/icon-button';
-	import { errorMessage } from '../stores';
+	import { errorMessage } from '$lib/stores';
 
 	let snackbar: SnackbarComponentDev;
 	let message: string;

@@ -4,7 +4,7 @@
 	import { createEventDispatcher } from 'svelte';
 	const { Marker } = pkg;
 	import { config } from '../config';
-	import { map } from '../stores';
+	import { map } from '$lib/stores';
 
 	const dispatch = createEventDispatcher();
 	let searchItems = [];
