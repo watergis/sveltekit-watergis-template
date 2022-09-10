@@ -10,12 +10,12 @@
 		TerrainControl,
 		type GeoJSONSourceSpecification
 	} from 'maplibre-gl';
-	import { map, selectedStyle, queriedFeatures } from '$lib/stores';
+	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '../../config';
-	import MaplibreIdentifyTools from '$lib/IdentifyTools';
 	import StyleUrl from '$lib/style-url';
 	import SearchControl from './SearchControl.svelte';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
+	import MapIdentifyToolControl from './MapIdentifyToolControl.svelte';
 	import MessageBar from './MessageBar.svelte';
 
 	let mapContainer: HTMLDivElement;
@@ -66,12 +66,6 @@
 			map2.setMaxPitch(85);
 			map2.addControl(new TerrainControl(config.terrain));
 		}
-
-		map2.addControl(
-			new MaplibreIdentifyTools(config.popup.target, (features) => {
-				queriedFeatures.update(() => features);
-			})
-		);
 
 		if (config.areaSwitcher) {
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -148,6 +142,7 @@
 	<div class="map" id="map" bind:this={mapContainer} />
 	{#if isMapLoaded}
 		<SearchControl />
+		<MapIdentifyToolControl bind:map={$map} />
 	{/if}
 </div>
 
@@ -155,7 +150,6 @@
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';
-	@import '../css/IdentifyTools.css';
 	@import '@watergis/mapbox-gl-area-switcher/css/styles.css';
 
 	.map-wrap {
