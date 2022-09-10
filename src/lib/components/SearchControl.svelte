@@ -3,8 +3,8 @@
 	import pkg from 'maplibre-gl';
 	import { createEventDispatcher } from 'svelte';
 	const { Marker } = pkg;
-	import { config } from '../config';
-	import { map } from '../stores';
+	import { config } from '../../config';
+	import { map } from '$lib/stores';
 
 	const dispatch = createEventDispatcher();
 	let searchItems = [];

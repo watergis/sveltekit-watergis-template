@@ -2,9 +2,9 @@
 	import type { LayerSpecification } from 'maplibre-gl';
 	import FormField from '@smui/form-field';
 	import IconButton, { Icon } from '@smui/icon-button';
-	import { map } from '../stores';
+	import { map } from '$lib/stores';
 	import Legend from './Legend.svelte';
-	import { config } from '../config';
+	import { config } from '../../config';
 
 	export let layer: LayerSpecification;
 	let visibility = 'visible';

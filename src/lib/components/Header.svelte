@@ -3,7 +3,7 @@
 	import type { TopAppBarComponentDev } from '@smui/top-app-bar';
 	import TopAppBar, { Row, Section, Title, AutoAdjust } from '@smui/top-app-bar';
 	import IconButton from '@smui/icon-button';
-	import { config } from '../config';
+	import { config } from '../../config';
 	import MapExport from './MapExport.svelte';
 	import ShareURL from './ShareURL.svelte';
 

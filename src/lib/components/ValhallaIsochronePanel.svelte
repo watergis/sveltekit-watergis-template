@@ -2,10 +2,9 @@
 	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
 	import Button, { Label, Icon } from '@smui/button';
-	import { map } from '../stores';
-	import { config } from '../config';
+	import { map, valhallaControlData } from '$lib/stores';
+	import { config } from '../../config';
 	import ValhallaIsochrone, { Costing, ContourType } from '$lib/valhalla-isochrone';
-	import { valhallaControlData } from '../stores';
 
 	export let contourType;
 	let longitude: number;

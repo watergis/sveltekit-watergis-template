@@ -8,7 +8,7 @@
 	import { PageOrientation, Size, DPI, Format, Unit } from '$lib/map-generator';
 	import type MapGenerator from '$lib/map-generator';
 	import PrintableAreaManager from '$lib/printable-area-manager';
-	import { map } from '../stores';
+	import { map } from '$lib/stores';
 
 	let mapGenerator: MapGenerator;
 	let printableArea;
@@ -28,7 +28,7 @@
 	}
 
 	onMount(async () => {
-		const { default: MapGenerator } = await import('../lib/map-generator');
+		const { default: MapGenerator } = await import('../map-generator');
 		mapGenerator = new MapGenerator();
 	});
 

@@ -10,8 +10,8 @@
 		TerrainControl,
 		type GeoJSONSourceSpecification
 	} from 'maplibre-gl';
-	import { map, selectedStyle, queriedFeatures } from '../stores';
-	import { config } from '../config';
+	import { map, selectedStyle, queriedFeatures } from '$lib/stores';
+	import { config } from '../../config';
 	import MaplibreIdentifyTools from '$lib/IdentifyTools';
 	import StyleUrl from '$lib/style-url';
 	import SearchControl from './SearchControl.svelte';

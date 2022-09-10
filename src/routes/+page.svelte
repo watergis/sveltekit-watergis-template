@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Header from '../components/Header.svelte';
-	import DrawerContent from '../components/DrawerContent.svelte';
-	import Map from '../components/Map.svelte';
-	import { selectedStyle } from '../stores';
+	import Header from '$lib/components/Header.svelte';
+	import DrawerContent from '$lib/components/DrawerContent.svelte';
+	import Map from '$lib/components/Map.svelte';
+	import { selectedStyle } from '$lib/stores';
 	import { config } from '../config';
 
 	let drawerOpen = false;
