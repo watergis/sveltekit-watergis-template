@@ -1,4 +1,4 @@
-import type { LayerSpecification } from '@maplibre/maplibre-gl-style-spec/types';
+import type { LayerSpecification } from 'maplibre-gl';
 
 export interface Sprite {
 	image: HTMLImageElement;

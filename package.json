@@ -59,7 +59,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@maplibre/maplibre-gl-style-spec": "^17.0.1",
 		"@turf/distance": "^6.5.0",
 		"@watergis/legend-symbol": "^0.2.2",
 		"@watergis/mapbox-gl-area-switcher": "^1.0.1",
