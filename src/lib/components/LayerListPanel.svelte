@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { Content, Header } from '@smui/drawer';
-	import List, { Item } from '@smui/list';
 	import FormField from '@smui/form-field';
 	import Checkbox from '@smui/checkbox';
 	import type { StyleSpecification, LayerSpecification } from 'maplibre-gl';
@@ -59,42 +57,47 @@
 </script>
 
 {#if isLayersTabVisible}
-	<Header>
-		<StyleSwitcher on:change={onStyleChange} />
-		<hr />
-		<FormField>
-			<Checkbox bind:checked={onlyRendered} />
-			<span slot="label">Show only rendered layers</span>
-		</FormField>
-		<FormField>
-			<Checkbox bind:checked={onlyRelative} />
-			<span slot="label">Show only water layers</span>
-		</FormField>
-		<hr />
-	</Header>
-	<Content>
-		<List>
-			{#key style}
-				{#each allLayers as layer}
-					{#if onlyRendered === true}
-						{#if visibleLayerMap[layer.id]}
-							{#if onlyRelative === true}
-								{#if relativeLayers[layer.id]}
-									<Item><Layer {layer} /></Item>
-								{/if}
-							{:else}
-								<Item><Layer {layer} /></Item>
+	<nav class="panel">
+		<div class="panel-block">
+			<StyleSwitcher on:change={onStyleChange} />
+		</div>
+		<div class="panel-block">
+			<label class="checkbox">
+				<input type="checkbox" bind:checked={onlyRendered} />
+				Show only rendered layers
+			</label>
+		</div>
+		<div class="panel-block">
+			<label class="checkbox">
+				<input type="checkbox" bind:checked={onlyRelative} />
+				Show only water layers
+			</label>
+		</div>
+
+		{#key style}
+			{#each allLayers as layer}
+				{#if onlyRendered === true}
+					{#if visibleLayerMap[layer.id]}
+						{#if onlyRelative === true}
+							{#if relativeLayers[layer.id]}
+								<!-- svelte-ignore a11y-missing-attribute -->
+								<a class="panel-block"><Layer {layer} /></a>
 							{/if}
+						{:else}
+							<!-- svelte-ignore a11y-missing-attribute -->
+							<a class="panel-block"><Layer {layer} /></a>
 						{/if}
-					{:else if onlyRelative === true}
-						{#if relativeLayers[layer.id]}
-							<Item><Layer {layer} /></Item>
-						{/if}
-					{:else}
-						<Item><Layer {layer} /></Item>
 					{/if}
-				{/each}
-			{/key}
-		</List>
-	</Content>
+				{:else if onlyRelative === true}
+					{#if relativeLayers[layer.id]}
+						<!-- svelte-ignore a11y-missing-attribute -->
+						<a class="panel-block"><Layer {layer} /></a>
+					{/if}
+				{:else}
+					<!-- svelte-ignore a11y-missing-attribute -->
+					<a class="panel-block"><Layer {layer} /></a>
+				{/if}
+			{/each}
+		{/key}
+	</nav>
 {/if}

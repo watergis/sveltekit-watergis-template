@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Select, { Option } from '@smui/select';
 	import { createEventDispatcher } from 'svelte';
 	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '../../config';
@@ -33,16 +32,10 @@
 	};
 </script>
 
-<div class="style-switcher">
-	<Select variant="outlined" bind:value={styleUrl} label="Map theme" style="width:100%">
+<div class="select is-link is-fullwidth">
+	<select bind:value={styleUrl}>
 		{#each config.styles as style}
-			<Option value={style.uri}>{style.title}</Option>
+			<option value={style.uri}>{style.title}</option>
 		{/each}
-	</Select>
+	</select>
 </div>
-
-<style>
-	.style-switcher {
-		padding-top: 10px;
-	}
-</style>
