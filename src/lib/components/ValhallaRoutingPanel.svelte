@@ -8,6 +8,10 @@
 	import { config } from '../../config';
 	import { Costing } from '$lib/valhalla-isochrone';
 	import type { ValhallaTripResult, ValhallaTripSummary, ValhallaError } from '$lib/types';
+	import Fa from 'svelte-fa';
+	import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
+	import { faRoute } from '@fortawesome/free-solid-svg-icons/faRoute';
+	import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 
 	const SOURCE_LINE = 'routing-controls-source-line';
 	const LAYER_LINE = 'routing-controls-layer-line';
@@ -322,36 +326,27 @@
 		</Select>
 	</div>
 
-	<div class="button" style="display: flex; align-items: center;">
-		<Button color="primary" variant="raised" on:click={handleAddPoint} style="width:100%">
-			<Icon class="material-icons">
-				{#if isRouting}
-					close
-				{:else}
-					route
-				{/if}
-			</Icon>
-			<Label>
-				{#if isRouting}
-					Stop routing
-				{:else}
-					Start routing
-				{/if}
-			</Label>
-		</Button>
-	</div>
+	<button class="button is-info is-fullwidth" on:click={handleAddPoint}>
+		{#if isRouting}
+			<Fa icon={faXmark} scale={1} />
+		{:else}
+			<Fa icon={faRoute} scale={1} />
+		{/if}
+		<div style="padding-left:5px;">
+			{#if isRouting}
+				Stop routing
+			{:else}
+				Start routing
+			{/if}
+		</div>
+	</button>
 
 	{#if $valhallaRoutingData && $valhallaRoutingData.length > 0}
-		<div class="sub-button button">
-			<Button
-				on:click={() => clearFeatures()}
-				variant="raised"
-				color="secondary"
-				style="width:100%"
-			>
-				<Icon class="material-icons">delete</Icon>
-				<Label>Clear</Label>
-			</Button>
+		<div style="padding-top:5px;">
+			<button class="button is-light is-fullwidth" on:click={clearFeatures}>
+				<Fa icon={faTrash} scale={1} />
+				<div style="padding-left:5px;">Clear</div>
+			</button>
 		</div>
 
 		<div style="display:inline-flex; width: 100%">
@@ -384,14 +379,3 @@
 		{/if}
 	{/if}
 {/if}
-
-<style lang="scss">
-	.button {
-		padding-top: 0.5em;
-		padding-left: 0.5em;
-		padding-right: 0.5em;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-	}
-</style>

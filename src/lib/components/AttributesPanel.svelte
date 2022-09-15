@@ -26,7 +26,17 @@
 							</IconButton>
 						</Header>
 						<Content>
-							<DataTable table$aria-label={feature.layer.id} style="width: 100%;">
+							<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+								<tbody>
+									{#each Object.keys(feature.properties) as key}
+										<tr>
+											<th>{key}</th>
+											<td>{feature.properties[key]}</td>
+										</tr>
+									{/each}
+								</tbody>
+							</table>
+							<!-- <DataTable table$aria-label={feature.layer.id} style="width: 100%;">
 								<Body>
 									{#each Object.keys(feature.properties) as key}
 										<Row>
@@ -35,7 +45,7 @@
 										</Row>
 									{/each}
 								</Body>
-							</DataTable>
+							</DataTable> -->
 						</Content>
 					</Panel>
 				{/each}

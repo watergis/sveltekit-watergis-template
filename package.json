@@ -44,6 +44,7 @@
 		"@watergis/legend-symbol": "^0.2.2",
 		"@watergis/mapbox-gl-area-switcher": "^1.0.1",
 		"@watergis/terrain-rgb": "^1.1.8",
+		"bulma": "^0.9.4",
 		"D": "^1.0.0",
 		"eslint": "^8.23.1",
 		"eslint-config-prettier": "^8.5.0",

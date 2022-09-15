@@ -7,6 +7,11 @@
 	import { map, measureControlData } from '$lib/stores';
 	import { config } from '../../config';
 	import type { MeasureControlData } from '$lib/types';
+	import Fa from 'svelte-fa';
+	import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
+	import { faRuler } from '@fortawesome/free-solid-svg-icons/faRuler';
+	import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+	import { faDownload } from '@fortawesome/free-solid-svg-icons/faDownload';
 
 	const SOURCE_LINE = 'elev-controls-source-line';
 	const LAYER_LINE = 'elev-controls-layer-line';
@@ -238,69 +243,34 @@
 </script>
 
 {#if config.elevation}
-	<div class="button">
-		<Button on:click={() => measureStart()} variant="raised" color="primary" style="width:100%">
-			<Icon class="material-icons">
-				{#if isQuery}
-					stop_circle
-				{:else}
-					straighten
-				{/if}
-			</Icon>
-			<Label>
-				{#if isQuery}
-					Stop measure
-				{:else}
-					Start measure
-				{/if}
-			</Label>
-		</Button>
-	</div>
+	<button class="button is-info is-fullwidth" on:click={() => measureStart()}>
+		{#if isQuery}
+			<Fa icon={faXmark} scale={1} />
+		{:else}
+			<Fa icon={faRuler} scale={1} />
+		{/if}
+		<div style="padding-left:5px;">
+			{#if isQuery}
+				Stop measure
+			{:else}
+				Start measure
+			{/if}
+		</div>
+	</button>
 	{#if hasData}
-		<div style="display:inline-flex; width:100%">
-			<div class="sub-button">
-				<Button
-					on:click={() => clearFeatures()}
-					variant="raised"
-					color="secondary"
-					style="width:100%"
-				>
-					<Icon class="material-icons">delete</Icon>
-					<Label>Clear</Label>
-				</Button>
+		<div class="columns" style="padding-top:5px;">
+			<div class="column is-half">
+				<button class="button is-light is-fullwidth" on:click={() => clearFeatures()}>
+					<Fa icon={faTrash} scale={1} />
+					<div style="padding-left:5px;">Clear</div>
+				</button>
 			</div>
-			<div class="sub-button">
-				<Button
-					on:click={() => downloadGeoJSON()}
-					variant="raised"
-					color="secondary"
-					style="width:100%"
-				>
-					<Icon class="material-icons">file_download</Icon>
-					<Label>GeoJSON</Label>
-				</Button>
+			<div class="column is-half">
+				<button class="button is-light is-fullwidth" on:click={() => downloadGeoJSON()}>
+					<Fa icon={faDownload} scale={1} />
+					<div style="padding-left:5px;">GeoJSON</div>
+				</button>
 			</div>
 		</div>
 	{/if}
 {/if}
-
-<style lang="scss">
-	.button {
-		padding-top: 0.5em;
-		padding-left: 0.5em;
-		padding-right: 0.5em;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-	}
-
-	.sub-button {
-		padding-top: 0.5em;
-		padding-left: 0.5em;
-		padding-right: 0.5em;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-		width: 50%;
-	}
-</style>

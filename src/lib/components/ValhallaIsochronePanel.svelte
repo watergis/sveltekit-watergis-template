@@ -5,6 +5,10 @@
 	import { map, valhallaControlData } from '$lib/stores';
 	import { config } from '../../config';
 	import ValhallaIsochrone, { Costing, ContourType } from '$lib/valhalla-isochrone';
+	import Fa from 'svelte-fa';
+	import { faClock } from '@fortawesome/free-solid-svg-icons/faClock';
+	import { faRoute } from '@fortawesome/free-solid-svg-icons/faRoute';
+	import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 
 	export let contourType;
 	let longitude: number;
@@ -56,11 +60,11 @@
 			if (!$valhallaControlData[contourType]) {
 				$valhallaControlData[contourType] = new ValhallaIsochrone($map, config.valhalla.url);
 			}
-			longitude = $map.getCenter().lng;
-			latitude = $map.getCenter().lat;
+			longitude = Number($map.getCenter().lng.toFixed(6));
+			latitude = Number($map.getCenter().lat.toFixed(6));
 			$map.on('moveend', () => {
-				longitude = $map.getCenter().lng;
-				latitude = $map.getCenter().lat;
+				longitude = Number($map.getCenter().lng.toFixed(6));
+				latitude = Number($map.getCenter().lat.toFixed(6));
 			});
 		}
 	}
@@ -79,7 +83,7 @@
 </script>
 
 {#if config.valhalla}
-	<div class="select">
+	<div>
 		<div>
 			<Select bind:value={meansOfTransport} label="Means of Transport" style="width:100%">
 				{#each costingOptions as item}
@@ -98,22 +102,17 @@
 				<Textfield bind:value={contour.time} label="{contour.time} min" type="number" />
 			{/each}
 		</div>
-		<div class="button">
-			<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
-				<Icon class="material-icons">delete</Icon>
-				<Label>Clear</Label>
-			</Button>
+		<div style="padding-top:5px;">
+			<button class="button is-light is-fullwidth" on:click={clear}>
+				<Fa icon={faTrash} scale={1} />
+				<div style="padding-left:5px;">Clear</div>
+			</button>
 		</div>
-		<div class="button">
-			<Button
-				on:click={() => calc(ContourType.Time)}
-				variant="raised"
-				color="primary"
-				style="width:100%"
-			>
-				<Icon class="material-icons">access_time</Icon>
-				<Label>Calculate</Label>
-			</Button>
+		<div style="padding-top:5px;">
+			<button class="button is-info is-fullwidth" on:click={() => calc(ContourType.Time)}>
+				<Fa icon={faClock} scale={1} />
+				<div style="padding-left:5px;">Calculate</div>
+			</button>
 		</div>
 	{:else if contourType === ContourType.Distance}
 		<p>Distance Isochrone</p>
@@ -122,35 +121,30 @@
 				<Textfield bind:value={contour.distance} label="{contour.distance} km" type="number" />
 			{/each}
 		</div>
-		<div class="button">
-			<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
-				<Icon class="material-icons">delete</Icon>
-				<Label>Clear</Label>
-			</Button>
+		<div style="padding-top:5px;">
+			<button class="button is-light is-fullwidth" on:click={clear}>
+				<Fa icon={faTrash} scale={1} />
+				<div style="padding-left:5px;">Clear</div>
+			</button>
 		</div>
-		<div class="button">
-			<Button
-				on:click={() => calc(ContourType.Distance)}
-				variant="raised"
-				color="primary"
-				style="width:100%"
-			>
-				<Icon class="material-icons">straighten</Icon>
-				<Label>Calculate</Label>
-			</Button>
+		<div style="padding-top:5px;">
+			<button class="button is-info is-fullwidth" on:click={() => calc(ContourType.Distance)}>
+				<Fa icon={faRoute} scale={1} />
+				<div style="padding-left:5px;">Calculate</div>
+			</button>
 		</div>
 	{/if}
 {/if}
 
 <style lang="scss">
-	.select {
-		padding-top: 0.5em;
-		padding-bottom: 0.5em;
-	}
-	.button {
-		padding-top: 0.5em;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-	}
+	// .select {
+	// 	padding-top: 0.5em;
+	// 	padding-bottom: 0.5em;
+	// }
+	// .button {
+	// 	padding-top: 0.5em;
+	// 	display: flex;
+	// 	flex-direction: column;
+	// 	align-items: flex-end;
+	// }
 </style>

@@ -19,3 +19,7 @@
 <DrawerContent bind:open={drawerOpen}>
 	<Map />
 </DrawerContent>
+
+<style lang="scss">
+	@import 'bulma/css/bulma.css';
+</style>
