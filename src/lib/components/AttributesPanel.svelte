@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Accordion, { Panel, Header, Content } from '@smui-extra/accordion';
 	import IconButton, { Icon } from '@smui/icon-button';
-	import DataTable, { Body, Row, Cell } from '@smui/data-table';
 	import Fa from 'svelte-fa';
 	import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
 	import { queriedFeatures } from '$lib/stores';
@@ -36,16 +35,6 @@
 									{/each}
 								</tbody>
 							</table>
-							<!-- <DataTable table$aria-label={feature.layer.id} style="width: 100%;">
-								<Body>
-									{#each Object.keys(feature.properties) as key}
-										<Row>
-											<Cell>{key}</Cell>
-											<Cell>{feature.properties[key]}</Cell>
-										</Row>
-									{/each}
-								</Body>
-							</DataTable> -->
 						</Content>
 					</Panel>
 				{/each}

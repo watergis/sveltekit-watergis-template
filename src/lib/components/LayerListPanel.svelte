@@ -1,6 +1,4 @@
 <script lang="ts">
-	import FormField from '@smui/form-field';
-	import Checkbox from '@smui/checkbox';
 	import type { StyleSpecification, LayerSpecification } from 'maplibre-gl';
 	import Layer from './Layer.svelte';
 	import StyleSwitcher from './StyleSwitcher.svelte';
