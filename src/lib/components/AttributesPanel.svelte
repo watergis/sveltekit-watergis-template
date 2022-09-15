@@ -40,41 +40,20 @@
 				{/each}
 			</Accordion>
 		{:else}
-			<ul class="no-data-layers">
-				<li class="message">
-					<div class="icon">
-						<Fa icon={faCircleInfo} size="lg" primaryColor="dodgerblue" />
+			<div class="card">
+				<div class="card-content">
+					<div class="content">
+						<div class="columns">
+							<div class="column is-1">
+								<Fa icon={faCircleInfo} size="lg" primaryColor="dodgerblue" />
+							</div>
+							<div class="column">
+								<p>No features identified on the map.</p>
+							</div>
+						</div>
 					</div>
-					<div class="text">No features identified on the map.</div>
-				</li>
-			</ul>
+				</div>
+			</div>
 		{/if}
 	</div>
 {/if}
-
-<style lang="scss">
-	ul {
-		margin: 0;
-		list-style: none;
-		padding-left: 1.2rem;
-		user-select: none;
-		padding-top: 5px;
-
-		li {
-			display: flex;
-			justify-content: left;
-			align-items: center;
-			padding: 10px;
-
-			@media (prefers-color-scheme: dark) {
-				background: #323234;
-				border-color: #30363d;
-				color: white;
-			}
-
-			.text {
-				padding-left: 15px;
-			}
-		}
-	}
-</style>
