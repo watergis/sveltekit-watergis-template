@@ -1,7 +1,5 @@
 <script lang="ts">
-	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
-	import Button, { Label, Icon } from '@smui/button';
 	import { map, valhallaControlData } from '$lib/stores';
 	import { config } from '../../config';
 	import ValhallaIsochrone, { Costing, ContourType } from '$lib/valhalla-isochrone';
@@ -84,12 +82,12 @@
 
 {#if config.valhalla}
 	<div>
-		<div>
-			<Select bind:value={meansOfTransport} label="Means of Transport" style="width:100%">
+		<div class="select is-link is-fullwidth">
+			<select bind:value={meansOfTransport}>
 				{#each costingOptions as item}
-					<Option value={item.value}>{item.label}</Option>
+					<option value={item.value}>{item.label}</option>
 				{/each}
-			</Select>
+			</select>
 		</div>
 		<div style="display:inline-flex">
 			<Textfield bind:value={longitude} label="Longitude" readonly />
@@ -115,7 +113,6 @@
 			</button>
 		</div>
 	{:else if contourType === ContourType.Distance}
-		<p>Distance Isochrone</p>
 		<div style="display:inline-flex">
 			{#each contours as contour}
 				<Textfield bind:value={contour.distance} label="{contour.distance} km" type="number" />

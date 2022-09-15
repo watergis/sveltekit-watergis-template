@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import Button, { Label, Icon } from '@smui/button';
 	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
 	import type { GeoJSONFeature, MapMouseEvent } from 'maplibre-gl';
@@ -318,14 +317,15 @@
 </script>
 
 {#if config.valhalla}
-	<div>
-		<Select bind:value={meansOfTransport} label="Means of Transport" style="width:100%">
+	<div class="select is-link is-fullwidth">
+		<select bind:value={meansOfTransport}>
 			{#each costingOptions as item}
-				<Option value={item.value}>{item.label}</Option>
+				<option value={item.value}>{item.label}</option>
 			{/each}
-		</Select>
+		</select>
 	</div>
 
+	<div style="padding-top:5px;">
 	<button class="button is-info is-fullwidth" on:click={handleAddPoint}>
 		{#if isRouting}
 			<Fa icon={faXmark} scale={1} />
@@ -340,6 +340,7 @@
 			{/if}
 		</div>
 	</button>
+</div>
 
 	{#if $valhallaRoutingData && $valhallaRoutingData.length > 0}
 		<div style="padding-top:5px;">
