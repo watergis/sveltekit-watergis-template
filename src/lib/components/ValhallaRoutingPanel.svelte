@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
 	import type { GeoJSONFeature, MapMouseEvent } from 'maplibre-gl';
 	import { map, valhallaRoutingData, errorMessage } from '$lib/stores';
@@ -326,21 +325,21 @@
 	</div>
 
 	<div style="padding-top:5px;">
-	<button class="button is-info is-fullwidth" on:click={handleAddPoint}>
-		{#if isRouting}
-			<Fa icon={faXmark} scale={1} />
-		{:else}
-			<Fa icon={faRoute} scale={1} />
-		{/if}
-		<div style="padding-left:5px;">
+		<button class="button is-info is-fullwidth" on:click={handleAddPoint}>
 			{#if isRouting}
-				Stop routing
+				<Fa icon={faXmark} scale={1} />
 			{:else}
-				Start routing
+				<Fa icon={faRoute} scale={1} />
 			{/if}
-		</div>
-	</button>
-</div>
+			<div style="padding-left:5px;">
+				{#if isRouting}
+					Stop routing
+				{:else}
+					Start routing
+				{/if}
+			</div>
+		</button>
+	</div>
 
 	{#if $valhallaRoutingData && $valhallaRoutingData.length > 0}
 		<div style="padding-top:5px;">
