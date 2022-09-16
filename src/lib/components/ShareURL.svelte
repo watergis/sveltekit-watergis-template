@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import IconButton from '@smui/icon-button';
-	import Dialog, { Title, Content, Actions } from '@smui/dialog';
-	import Button, { Label, Icon } from '@smui/button';
 	import { copy } from 'svelte-copy';
 	import { map, selectedStyle } from '$lib/stores';
+	import Fa from 'svelte-fa';
+	import { faCopy } from '@fortawesome/free-solid-svg-icons/faCopy';
 
 	let isDialogOpen;
 
@@ -35,58 +35,44 @@
 		url = `${baseUrl}${style}${zoom}${lat}${lng}${bearing}${pitch}`;
 		return url;
 	};
+
+	const handleClose = () => {
+		isDialogOpen = false;
+	};
 </script>
 
 <IconButton class="material-icons" aria-label="Share" on:click={() => (isDialogOpen = true)}
 	>share</IconButton
 >
 
-<Dialog
-	bind:open={isDialogOpen}
-	aria-labelledby="mandatory-title"
-	aria-describedby="mandatory-content"
->
-	<Title id="mandatory-title">URL to share</Title>
-	<Content id="mandatory-content">
-		<div class="copy-control">
-			<input
-				class="input copy-text"
-				type="text"
-				placeholder="URL to share"
-				bind:value={url}
-				readonly
-			/>
-			<div use:copy={url}>
-				<Button style="margin-left: 0.5em;width:100px;" on:click={handleCopy} variant="raised">
-					<Icon class="material-icons">content_copy</Icon>
-					<Label>{textCopyButton}</Label>
-				</Button>
+<div class="modal {isDialogOpen ? 'is-active' : ''}">
+	<div class="modal-background" on:click={handleClose} />
+	<div class="modal-card">
+		<header class="modal-card-head">
+			<p class="modal-card-title">URL to share</p>
+			<button class="delete" aria-label="close" on:click={handleClose} />
+		</header>
+		<section class="modal-card-body">
+			<div class="columns is-vcentered">
+				<div class="column is-marginless is-paddingless is-9">
+					<input
+						class="input is-link"
+						type="text"
+						placeholder="URL to share"
+						bind:value={url}
+						readonly
+					/>
+				</div>
+				<div class="column is-marginless is-paddingless">
+					<button class="button is-link is-light" on:click={handleCopy} use:copy={url}>
+						<Fa icon={faCopy} scale={1} />
+						<div style="padding-left:5px;">{textCopyButton}</div>
+					</button>
+				</div>
 			</div>
-		</div>
-	</Content>
-	<div>
-		<Actions>
-			<Button
-				style="margin-top: 1em;"
-				on:click={() => {
-					isDialogOpen = false;
-				}}
-				variant="raised"
-			>
-				<Icon class="material-icons">cancel</Icon>
-				<Label>Cancel</Label>
-			</Button>
-		</Actions>
+		</section>
+		<footer class="modal-card-foot">
+			<button class="button" on:click={handleClose}>Cancel</button>
+		</footer>
 	</div>
-</Dialog>
-
-<style lang="scss">
-	.copy-control {
-		display: flex;
-
-		.copy-text {
-			width: 200px;
-			height: 30px;
-		}
-	}
-</style>
+</div>
