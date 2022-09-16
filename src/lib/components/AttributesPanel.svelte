@@ -43,7 +43,7 @@
 			<div class="card">
 				<div class="card-content">
 					<div class="content">
-						<div class="columns">
+						<div class="columns is-mobile">
 							<div class="column is-1">
 								<Fa icon={faCircleInfo} size="lg" primaryColor="dodgerblue" />
 							</div>

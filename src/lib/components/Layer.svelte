@@ -21,7 +21,7 @@
 	};
 </script>
 
-<div class="columns is-vcentered">
+<div class="columns is-vcentered is-mobile">
 	<div class="column .is-marginless is-paddingless">
 		<button class="button is-text is-narrow" on:click={() => (checked = !checked)}>
 			{#if checked}

@@ -53,7 +53,7 @@
 			<button class="delete" aria-label="close" on:click={handleClose} />
 		</header>
 		<section class="modal-card-body">
-			<div class="columns is-vcentered">
+			<div class="columns is-vcentered is-mobile">
 				<div class="column is-marginless is-paddingless is-9">
 					<input
 						class="input is-success"
