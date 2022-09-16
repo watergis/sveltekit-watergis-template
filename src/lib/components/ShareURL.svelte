@@ -41,9 +41,9 @@
 	};
 </script>
 
-<IconButton class="material-icons" aria-label="Share" on:click={() => (isDialogOpen = true)}
-	>share</IconButton
->
+<IconButton class="material-icons" aria-label="Share" on:click={() => (isDialogOpen = true)}>
+	share
+</IconButton>
 
 <div class="modal {isDialogOpen ? 'is-active' : ''}">
 	<div class="modal-background" on:click={handleClose} />
@@ -56,7 +56,7 @@
 			<div class="columns is-vcentered">
 				<div class="column is-marginless is-paddingless is-9">
 					<input
-						class="input is-link"
+						class="input is-success"
 						type="text"
 						placeholder="URL to share"
 						bind:value={url}
@@ -64,7 +64,7 @@
 					/>
 				</div>
 				<div class="column is-marginless is-paddingless">
-					<button class="button is-link is-light" on:click={handleCopy} use:copy={url}>
+					<button class="button is-success" on:click={handleCopy} use:copy={url}>
 						<Fa icon={faCopy} scale={1} />
 						<div style="padding-left:5px;">{textCopyButton}</div>
 					</button>

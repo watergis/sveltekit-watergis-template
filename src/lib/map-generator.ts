@@ -109,88 +109,91 @@ export default class MapGenerator {
 		format: string = Format.PNG.toString(),
 		unit: Unit = Unit.mm
 	) {
-		this.map = map;
-		this.width = size[0];
-		this.height = size[1];
-		this.dpi = dpi;
-		this.format = format;
-		this.unit = unit;
+		return new Promise((resolve) => {
+			this.map = map;
+			this.width = size[0];
+			this.height = size[1];
+			this.dpi = dpi;
+			this.format = format;
+			this.unit = unit;
 
-		// eslint-disable-next-line @typescript-eslint/no-this-alias
-		const this_ = this;
+			// eslint-disable-next-line @typescript-eslint/no-this-alias
+			const this_ = this;
 
-		// Calculate pixel ratio
-		const actualPixelRatio: number = window.devicePixelRatio;
-		Object.defineProperty(window, 'devicePixelRatio', {
-			get() {
-				return this_.dpi / 96;
-			}
-		});
-		// Create map container
-		const hidden = document.createElement('div');
-		hidden.className = 'hidden-map';
-		document.body.appendChild(hidden);
-		const container = document.createElement('div');
-		container.style.width = this.toPixels(this.width);
-		container.style.height = this.toPixels(this.height);
-		hidden.appendChild(container);
-
-		const style = this.map.getStyle();
-		if (style && style.sources) {
-			const sources = style.sources;
-			Object.keys(sources).forEach((name) => {
-				const src = sources[name];
-				Object.keys(src).forEach((key) => {
-					// delete properties if value is undefined.
-					// for instance, raster-dem might has undefined value in "url" and "bounds"
-					if (!src[key]) delete src[key];
-				});
-			});
-		}
-
-		// Render map
-		const renderMap = new Map({
-			container,
-			style,
-			center: this.map.getCenter(),
-			zoom: this.map.getZoom(),
-			bearing: this.map.getBearing(),
-			pitch: this.map.getPitch(),
-			interactive: false,
-			preserveDrawingBuffer: true,
-			fadeDuration: 0,
-			attributionControl: false,
-			// hack to read transfrom request callback function
-			transformRequest: (this.map as Map)._requestManager._transformRequestFn
-		});
-
-		renderMap.once('idle', () => {
-			const canvas = renderMap.getCanvas();
-			const fileName = `map.${this_.format}`;
-			switch (this_.format) {
-				case Format.PNG:
-					this_.toPNG(canvas, fileName);
-					break;
-				case Format.JPEG:
-					this_.toJPEG(canvas, fileName);
-					break;
-				case Format.PDF:
-					this_.toPDF(renderMap, fileName);
-					break;
-				case Format.SVG:
-					this_.toSVG(canvas, fileName);
-					break;
-				default:
-					console.error(`Invalid file format: ${this_.format}`);
-					break;
-			}
-
-			renderMap.remove();
-			hidden.parentNode?.removeChild(hidden);
+			// Calculate pixel ratio
+			const actualPixelRatio: number = window.devicePixelRatio;
 			Object.defineProperty(window, 'devicePixelRatio', {
 				get() {
-					return actualPixelRatio;
+					return this_.dpi / 96;
 				}
+			});
+			// Create map container
+			const hidden = document.createElement('div');
+			hidden.className = 'hidden-map';
+			document.body.appendChild(hidden);
+			const container = document.createElement('div');
+			container.style.width = this.toPixels(this.width);
+			container.style.height = this.toPixels(this.height);
+			hidden.appendChild(container);
+
+			const style = this.map.getStyle();
+			if (style && style.sources) {
+				const sources = style.sources;
+				Object.keys(sources).forEach((name) => {
+					const src = sources[name];
+					Object.keys(src).forEach((key) => {
+						// delete properties if value is undefined.
+						// for instance, raster-dem might has undefined value in "url" and "bounds"
+						if (!src[key]) delete src[key];
+					});
+				});
+			}
+
+			// Render map
+			const renderMap = new Map({
+				container,
+				style,
+				center: this.map.getCenter(),
+				zoom: this.map.getZoom(),
+				bearing: this.map.getBearing(),
+				pitch: this.map.getPitch(),
+				interactive: false,
+				preserveDrawingBuffer: true,
+				fadeDuration: 0,
+				attributionControl: false,
+				// hack to read transfrom request callback function
+				transformRequest: (this.map as Map)._requestManager._transformRequestFn
+			});
+
+			renderMap.once('idle', () => {
+				const canvas = renderMap.getCanvas();
+				const fileName = `map.${this_.format}`;
+				switch (this_.format) {
+					case Format.PNG:
+						this_.toPNG(canvas, fileName);
+						break;
+					case Format.JPEG:
+						this_.toJPEG(canvas, fileName);
+						break;
+					case Format.PDF:
+						this_.toPDF(renderMap, fileName);
+						break;
+					case Format.SVG:
+						this_.toSVG(canvas, fileName);
+						break;
+					default:
+						console.error(`Invalid file format: ${this_.format}`);
+						break;
+				}
+
+				renderMap.remove();
+				hidden.parentNode?.removeChild(hidden);
+				Object.defineProperty(window, 'devicePixelRatio', {
+					get() {
+						return actualPixelRatio;
+					}
+				});
+				resolve(fileName);
 			});
 		});
 	}

@@ -1,14 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import IconButton from '@smui/icon-button';
-	import Button, { Label, Icon as ButtonIcon } from '@smui/button';
-	import Select, { Option } from '@smui/select';
-	import Icon from '@smui/select/icon';
-	import Dialog, { Title, Content, Actions } from '@smui/dialog';
 	import { PageOrientation, Size, DPI, Format, Unit } from '$lib/map-generator';
 	import type MapGenerator from '$lib/map-generator';
 	import PrintableAreaManager from '$lib/printable-area-manager';
 	import { map } from '$lib/stores';
+	import Fa from 'svelte-fa';
+	import { faFile } from '@fortawesome/free-solid-svg-icons/faFile';
+	import { faRotate } from '@fortawesome/free-solid-svg-icons/faRotate';
+	import { faFilePdf } from '@fortawesome/free-solid-svg-icons/faFilePdf';
+	import { faImage } from '@fortawesome/free-solid-svg-icons/faImage';
 
 	let mapGenerator: MapGenerator;
 	let printableArea;
@@ -40,9 +41,9 @@
 		return actualPaperSize;
 	};
 
-	const exportMap = () => {
+	const exportMap = async () => {
 		const actualPaperSize = getActualPaperSize();
-		mapGenerator.generate(
+		await mapGenerator.generate(
 			$map,
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
@@ -79,7 +80,7 @@
 		printableArea.updateArea(actualPaperSize[0], actualPaperSize[1]);
 	};
 
-	const closeDialog = () => {
+	const handleClose = () => {
 		togglePrintableArea(false);
 		isDialogOpen = false;
 	};
@@ -87,67 +88,88 @@
 
 <IconButton class="material-icons" aria-label="Print" on:click={openMenu}>print</IconButton>
 
-<Dialog
-	bind:open={isDialogOpen}
-	aria-labelledby="mandatory-title"
-	aria-describedby="mandatory-content"
->
-	<Title id="mandatory-title">Export</Title>
-	<Content id="mandatory-content">
-		<div style="margin: 1em; display: flex; flex-direction: column; align-items: flex-end;">
-			<Select bind:value={paperSize} label="Paper Size">
-				<Icon class="material-icons" slot="leadingIcon">description</Icon>
-				{#each Object.keys(Size) as key}
-					<Option value={Size[key]}>{key}</Option>
-				{/each}
-			</Select>
-			<Select bind:value={orientation} label="Page Orientation">
-				<Icon class="material-icons" slot="leadingIcon">screen_rotation</Icon>
-				{#each Object.keys(PageOrientation) as key}
-					<Option value={PageOrientation[key]}>{key}</Option>
-				{/each}
-			</Select>
-			<Select bind:value={format} label="Format">
-				<Icon class="material-icons" slot="leadingIcon">picture_as_pdf</Icon>
-				{#each Object.keys(Format) as key}
-					<Option value={Format[key]}>{key}</Option>
-				{/each}
-			</Select>
-			<Select bind:value={dpi} label="DPI">
-				<Icon class="material-icons" slot="leadingIcon">high_quality</Icon>
-				{#each Object.keys(DPI) as key}
-					<Option value={DPI[key]}>{key}</Option>
-				{/each}
-			</Select>
-		</div>
-	</Content>
-	<div style="margin: 1em; display: flex; flex-direction:row; align-items: flex-end;">
-		<Actions>
-			<Button
-				style="margin-top: 1em;"
-				on:click={() => {
-					closeDialog();
-				}}
-				variant="raised"
-			>
-				<ButtonIcon class="material-icons">cancel</ButtonIcon>
-				<Label>Cancel</Label>
-			</Button>
-		</Actions>
-		<Actions>
-			<Button
-				style="margin-top: 1em;"
-				on:click={() => {
-					exportMap();
-				}}
-				variant="raised"
-			>
-				<ButtonIcon class="material-icons">file_download</ButtonIcon>
-				<Label>Export</Label>
-			</Button>
-		</Actions>
+<div class="modal {isDialogOpen ? 'is-active' : ''}">
+	<div class="modal-background" on:click={handleClose} />
+	<div class="modal-card">
+		<header class="modal-card-head">
+			<p class="modal-card-title">Export</p>
+			<button class="delete" aria-label="close" on:click={handleClose} />
+		</header>
+		<section class="modal-card-body">
+			<table class="table is-narrow is-fullwidth">
+				<tr>
+					<td><p>Paper Size</p></td>
+					<td>
+						<div class="control has-icons-left">
+							<div class="select is-success is-fullwidth">
+								<select bind:value={paperSize}>
+									{#each Object.keys(Size) as key}
+										<option value={Size[key]}>{key}</option>
+									{/each}
+								</select>
+							</div>
+							<div class="icon is-small is-left">
+								<Fa icon={faFile} scale={1} />
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><p>Paper Orientation</p></td>
+					<td>
+						<div class="control has-icons-left">
+							<div class="select is-success is-fullwidth">
+								<select bind:value={orientation}>
+									{#each Object.keys(PageOrientation) as key}
+										<option value={PageOrientation[key]}>{key}</option>
+									{/each}
+								</select>
+							</div>
+							<div class="icon is-small is-left">
+								<Fa icon={faRotate} scale={1} />
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><p>Format</p></td>
+					<td>
+						<div class="control has-icons-left">
+							<div class="select is-success is-fullwidth">
+								<select bind:value={format}>
+									{#each Object.keys(Format) as key}
+										<option value={Format[key]}>{key}</option>
+									{/each}
+								</select>
+							</div>
+							<div class="icon is-small is-left">
+								<Fa icon={faFilePdf} scale={1} />
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><p>DPI</p></td>
+					<td>
+						<div class="control has-icons-left">
+							<div class="select is-success is-fullwidth">
+								<select bind:value={dpi}>
+									{#each Object.keys(DPI) as key}
+										<option value={DPI[key]}>{key}</option>
+									{/each}
+								</select>
+							</div>
+							<div class="icon is-small is-left">
+								<Fa icon={faImage} scale={1} />
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</section>
+		<footer class="modal-card-foot">
+			<button class="button" on:click={handleClose}>Cancel</button>
+			<button class="button is-success" on:click={exportMap}>Export</button>
+		</footer>
 	</div>
-</Dialog>
-
-<style>
-</style>
+</div>
