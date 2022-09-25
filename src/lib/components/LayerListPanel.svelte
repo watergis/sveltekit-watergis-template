@@ -4,7 +4,7 @@
 	import StyleSwitcher from './StyleSwitcher.svelte';
 	import { map } from '$lib/stores';
 	import { config } from '../../config';
-	import LayerListPanel from '@watergis/svelte-maplibre-legend'
+	import LayerListPanel from '@watergis/svelte-maplibre-legend';
 
 	let style: StyleSpecification = undefined;
 	$: {
@@ -14,7 +14,7 @@
 			});
 		}
 	}
-	
+
 	let relativeLayers = {};
 	export let isLayersTabVisible = false;
 
@@ -23,7 +23,7 @@
 	}
 
 	const onStyleChange = () => {
-		if (!$map) return
+		if (!$map) return;
 		style = $map.getStyle();
 	};
 </script>
@@ -33,6 +33,6 @@
 		<StyleSwitcher on:change={onStyleChange} />
 	</Header>
 	<Content>
-		<LayerListPanel bind:map={$map} {relativeLayers} bind:style={style}/>
+		<LayerListPanel bind:map={$map} {relativeLayers} bind:style />
 	</Content>
 {/if}
