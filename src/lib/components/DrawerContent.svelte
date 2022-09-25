@@ -4,10 +4,9 @@
 	import TabBar from '@smui/tab-bar';
 	import { Split } from '@geoffcox/svelte-splitter';
 	import LayerListPanel from './LayerListPanel.svelte';
-	import AttributesPanel from './AttributesPanel.svelte';
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { TabNames } from '$lib/constants';
-	import { map, queriedFeatures } from '$lib/stores';
+	import { map } from '$lib/stores';
 
 	let innerWidth = 0;
 	let innerHeight = 0;
@@ -28,17 +27,12 @@
 			label: TabNames.LAYERS
 		},
 		{
-			icon: 'info',
-			label: TabNames.ATTRIBUTES
-		},
-		{
 			icon: 'analytics',
 			label: TabNames.ADVANCED
 		}
 	];
 	let activeTab = tabs[0];
 	let isLayersTabVisible = false;
-	let isAttributesTabVisible = false;
 	let isAdvancedTabVisible = false;
 	let splitControl: Split;
 	let splitterSize = '0px';
@@ -46,34 +40,14 @@
 	$: activeTab, changeActiveTab();
 	const changeActiveTab = () => {
 		isLayersTabVisible = false;
-		isAttributesTabVisible = false;
 		isAdvancedTabVisible = false;
 		switch (activeTab.label) {
 			case TabNames.LAYERS:
 				isLayersTabVisible = true;
 				break;
-			case TabNames.ATTRIBUTES:
-				isAttributesTabVisible = true;
-				break;
 			case TabNames.ADVANCED:
 				isAdvancedTabVisible = true;
 				break;
-		}
-	};
-
-	$: $queriedFeatures, setDefaultTabAsInfo();
-	const setDefaultTabAsInfo = () => {
-		const infoTab = tabs.find((t) => t.label === TabNames.ATTRIBUTES);
-		if (activeTab !== infoTab && $queriedFeatures && $queriedFeatures.length > 0) {
-			if (open !== true) {
-				open = true;
-			}
-			activeTab = infoTab;
-			changeActiveTab();
-		} else if ($queriedFeatures && $queriedFeatures.length > 0) {
-			if (open !== true) {
-				open = true;
-			}
 		}
 	};
 
@@ -147,7 +121,6 @@
 			</Tab>
 		</TabBar>
 		<LayerListPanel {isLayersTabVisible} />
-		<AttributesPanel {isAttributesTabVisible} />
 		<AdvancedPanel {isAdvancedTabVisible} />
 	</div>
 	<div slot="secondary" class="main-content">

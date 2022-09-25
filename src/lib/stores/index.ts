@@ -8,8 +8,6 @@ export const map = writable<Map>(null);
 
 export const selectedStyle = writable<StyleSwitcherOption>(null);
 
-export const queriedFeatures = writable<MapGeoJSONFeature[]>(null);
-
 export const measureControlData = writable<MeasureControlData>(null);
 
 export const valhallaControlData = writable<{ [key: string]: ValhallaIsochrone }>(null);

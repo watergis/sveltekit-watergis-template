@@ -15,7 +15,7 @@
 	import StyleUrl from '$lib/style-url';
 	import SearchControl from './SearchControl.svelte';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
-	import MapIdentifyToolControl from './MapIdentifyToolControl.svelte';
+	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
 	import MessageBar from './MessageBar.svelte';
 
 	let mapContainer: HTMLDivElement;
@@ -142,7 +142,7 @@
 	<div class="map" id="map" bind:this={mapContainer} />
 	{#if isMapLoaded}
 		<SearchControl />
-		<MapIdentifyToolControl bind:map={$map} />
+		<AttributePopupControl bind:map={$map} bind:targetLayers={config.popup.target} />
 	{/if}
 </div>
 

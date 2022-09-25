@@ -79,7 +79,7 @@
 </script>
 
 {#if config.valhalla}
-	<div class="select">
+	<div class="transport-select">
 		<div>
 			<Select bind:value={meansOfTransport} label="Means of Transport" style="width:100%">
 				{#each costingOptions as item}
@@ -98,13 +98,13 @@
 				<Textfield bind:value={contour.time} label="{contour.time} min" type="number" />
 			{/each}
 		</div>
-		<div class="button">
+		<div class="tool-button">
 			<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
 				<Icon class="material-icons">delete</Icon>
 				<Label>Clear</Label>
 			</Button>
 		</div>
-		<div class="button">
+		<div class="tool-button">
 			<Button
 				on:click={() => calc(ContourType.Time)}
 				variant="raised"
@@ -122,13 +122,13 @@
 				<Textfield bind:value={contour.distance} label="{contour.distance} km" type="number" />
 			{/each}
 		</div>
-		<div class="button">
+		<div class="tool-button">
 			<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
 				<Icon class="material-icons">delete</Icon>
 				<Label>Clear</Label>
 			</Button>
 		</div>
-		<div class="button">
+		<div class="tool-button">
 			<Button
 				on:click={() => calc(ContourType.Distance)}
 				variant="raised"
@@ -143,11 +143,11 @@
 {/if}
 
 <style lang="scss">
-	.select {
+	.transport-select {
 		padding-top: 0.5em;
 		padding-bottom: 0.5em;
 	}
-	.button {
+	.tool-button {
 		padding-top: 0.5em;
 		display: flex;
 		flex-direction: column;
