@@ -41,7 +41,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.38.0",
 		"@typescript-eslint/parser": "^5.38.0",
 		"@watergis/mapbox-gl-area-switcher": "^1.0.1",
-		"@watergis/svelte-maplibre-legend": "^0.0.9",
+		"@watergis/svelte-maplibre-legend": "^0.0.10",
 		"@watergis/terrain-rgb": "^1.1.8",
 		"D": "^1.0.0",
 		"eslint": "^8.24.0",
