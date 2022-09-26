@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Content, Header } from '@smui/drawer';
 	import type { StyleSpecification } from 'maplibre-gl';
 	import StyleSwitcher from './StyleSwitcher.svelte';
 	import { map } from '$lib/stores';
