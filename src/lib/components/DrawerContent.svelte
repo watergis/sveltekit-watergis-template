@@ -109,7 +109,7 @@
 	bind:this={splitControl}
 >
 	<div slot="primary" class="drawer-content">
-		<div class="tabs is-centered is-small p-0 m-0">
+		<div class="tabs is-centered is-small mb-0">
 			<ul>
 				{#each tabs as tab}
 					<li
