@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Tab, { Icon, Label } from '@smui/tab';
-	import TabBar from '@smui/tab-bar';
 	import { Split } from '@geoffcox/svelte-splitter';
 	import LayerListPanel from './LayerListPanel.svelte';
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { TabNames } from '$lib/constants';
 	import { map } from '$lib/stores';
+	import Fa from 'svelte-fa';
+	import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup';
+	import { faChartSimple } from '@fortawesome/free-solid-svg-icons/faChartSimple';
 
 	let innerWidth = 0;
 	let innerHeight = 0;
@@ -23,11 +24,11 @@
 	export let open = false;
 	let tabs = [
 		{
-			icon: 'layers',
+			icon: faLayerGroup,
 			label: TabNames.LAYERS
 		},
 		{
-			icon: 'analytics',
+			icon: faChartSimple,
 			label: TabNames.ADVANCED
 		}
 	];
@@ -108,18 +109,22 @@
 	bind:this={splitControl}
 >
 	<div slot="primary" class="drawer-content">
-		<TabBar {tabs} let:tab bind:active={activeTab}>
-			<Tab
-				{tab}
-				minWidth
-				stacked={true}
-				indicatorSpanOnlyContent={true}
-				tabIndicator$transition="fade"
-			>
-				<Icon class="material-icons">{tab.icon}</Icon>
-				<Label>{tab.label}</Label>
-			</Tab>
-		</TabBar>
+		<div class="tabs is-centered is-small p-0 m-0">
+			<ul>
+				{#each tabs as tab}
+					<li
+						class={activeTab.label === tab.label ? 'is-active' : ''}
+						on:click={() => (activeTab = tab)}
+					>
+						<!-- svelte-ignore a11y-missing-attribute -->
+						<a>
+							<span class="icon ml-2"><Fa icon={tab.icon} scale={1} /></span>
+							<span>{tab.label}</span>
+						</a>
+					</li>
+					<li />{/each}
+			</ul>
+		</div>
 		<LayerListPanel {isLayersTabVisible} />
 		<AdvancedPanel {isAdvancedTabVisible} />
 	</div>
