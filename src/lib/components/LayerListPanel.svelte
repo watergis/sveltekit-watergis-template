@@ -29,10 +29,10 @@
 </script>
 
 {#if isLayersTabVisible}
-	<Header>
-		<StyleSwitcher on:change={onStyleChange} />
-	</Header>
-	<Content>
+	<nav class="panel">
+		<div class="panel-header m-1 p-0">
+			<StyleSwitcher on:change={onStyleChange} />
+		</div>
 		<LayerListPanel bind:map={$map} {relativeLayers} bind:style />
-	</Content>
+	</nav>
 {/if}

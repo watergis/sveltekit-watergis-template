@@ -1,14 +1,12 @@
 import type { MeasureControlData, StyleSwitcherOption } from '$lib/types';
 import type ValhallaIsochrone from '$lib/valhalla-isochrone';
-import type { MapGeoJSONFeature, Map, LngLat } from 'maplibre-gl';
+import type { Map, LngLat } from 'maplibre-gl';
 import { writable } from 'svelte/store';
 
 // map store for maplibre-gl object
 export const map = writable<Map>(null);
 
 export const selectedStyle = writable<StyleSwitcherOption>(null);
-
-export const queriedFeatures = writable<MapGeoJSONFeature[]>(null);
 
 export const measureControlData = writable<MeasureControlData>(null);
 

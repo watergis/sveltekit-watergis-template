@@ -238,7 +238,7 @@
 </script>
 
 {#if config.elevation}
-	<div class="button">
+	<div class="tool-button">
 		<Button on:click={() => measureStart()} variant="raised" color="primary" style="width:100%">
 			<Icon class="material-icons">
 				{#if isQuery}
@@ -285,7 +285,7 @@
 {/if}
 
 <style lang="scss">
-	.button {
+	.tool-button {
 		padding-top: 0.5em;
 		padding-left: 0.5em;
 		padding-right: 0.5em;

@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Tab, { Icon, Label } from '@smui/tab';
-	import TabBar from '@smui/tab-bar';
 	import { Split } from '@geoffcox/svelte-splitter';
 	import LayerListPanel from './LayerListPanel.svelte';
-	import AttributesPanel from './AttributesPanel.svelte';
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { TabNames } from '$lib/constants';
-	import { map, queriedFeatures } from '$lib/stores';
+	import { map } from '$lib/stores';
+	import Fa from 'svelte-fa';
+	import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup';
+	import { faChartSimple } from '@fortawesome/free-solid-svg-icons/faChartSimple';
 
 	let innerWidth = 0;
 	let innerHeight = 0;
@@ -24,21 +24,16 @@
 	export let open = false;
 	let tabs = [
 		{
-			icon: 'layers',
+			icon: faLayerGroup,
 			label: TabNames.LAYERS
 		},
 		{
-			icon: 'info',
-			label: TabNames.ATTRIBUTES
-		},
-		{
-			icon: 'analytics',
+			icon: faChartSimple,
 			label: TabNames.ADVANCED
 		}
 	];
 	let activeTab = tabs[0];
 	let isLayersTabVisible = false;
-	let isAttributesTabVisible = false;
 	let isAdvancedTabVisible = false;
 	let splitControl: Split;
 	let splitterSize = '0px';
@@ -46,34 +41,14 @@
 	$: activeTab, changeActiveTab();
 	const changeActiveTab = () => {
 		isLayersTabVisible = false;
-		isAttributesTabVisible = false;
 		isAdvancedTabVisible = false;
 		switch (activeTab.label) {
 			case TabNames.LAYERS:
 				isLayersTabVisible = true;
 				break;
-			case TabNames.ATTRIBUTES:
-				isAttributesTabVisible = true;
-				break;
 			case TabNames.ADVANCED:
 				isAdvancedTabVisible = true;
 				break;
-		}
-	};
-
-	$: $queriedFeatures, setDefaultTabAsInfo();
-	const setDefaultTabAsInfo = () => {
-		const infoTab = tabs.find((t) => t.label === TabNames.ATTRIBUTES);
-		if (activeTab !== infoTab && $queriedFeatures && $queriedFeatures.length > 0) {
-			if (open !== true) {
-				open = true;
-			}
-			activeTab = infoTab;
-			changeActiveTab();
-		} else if ($queriedFeatures && $queriedFeatures.length > 0) {
-			if (open !== true) {
-				open = true;
-			}
 		}
 	};
 
@@ -134,20 +109,23 @@
 	bind:this={splitControl}
 >
 	<div slot="primary" class="drawer-content">
-		<TabBar {tabs} let:tab bind:active={activeTab}>
-			<Tab
-				{tab}
-				minWidth
-				stacked={true}
-				indicatorSpanOnlyContent={true}
-				tabIndicator$transition="fade"
-			>
-				<Icon class="material-icons">{tab.icon}</Icon>
-				<Label>{tab.label}</Label>
-			</Tab>
-		</TabBar>
+		<div class="tabs is-centered is-small mb-0">
+			<ul>
+				{#each tabs as tab}
+					<li
+						class={activeTab.label === tab.label ? 'is-active' : ''}
+						on:click={() => (activeTab = tab)}
+					>
+						<!-- svelte-ignore a11y-missing-attribute -->
+						<a>
+							<span class="icon ml-2"><Fa icon={tab.icon} scale={1} /></span>
+							<span>{tab.label}</span>
+						</a>
+					</li>
+					<li />{/each}
+			</ul>
+		</div>
 		<LayerListPanel {isLayersTabVisible} />
-		<AttributesPanel {isAttributesTabVisible} />
 		<AdvancedPanel {isAdvancedTabVisible} />
 	</div>
 	<div slot="secondary" class="main-content">

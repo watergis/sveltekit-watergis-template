@@ -322,7 +322,7 @@
 		</Select>
 	</div>
 
-	<div class="button" style="display: flex; align-items: center;">
+	<div class="tool-button" style="display: flex; align-items: center;">
 		<Button color="primary" variant="raised" on:click={handleAddPoint} style="width:100%">
 			<Icon class="material-icons">
 				{#if isRouting}
@@ -342,7 +342,7 @@
 	</div>
 
 	{#if $valhallaRoutingData && $valhallaRoutingData.length > 0}
-		<div class="sub-button button">
+		<div class="sub-button tool-button">
 			<Button
 				on:click={() => clearFeatures()}
 				variant="raised"
@@ -386,7 +386,7 @@
 {/if}
 
 <style lang="scss">
-	.button {
+	.tool-button {
 		padding-top: 0.5em;
 		padding-left: 0.5em;
 		padding-right: 0.5em;
