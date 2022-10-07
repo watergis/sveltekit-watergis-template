@@ -18,48 +18,30 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      # pnpm setup
-      # refer to https://github.com/pnpm/action-setup
-      - name: pnpm setup
-        uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7
-          run_install: false
       - name: Use Nodejs
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      # install dependencies
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: |
+          npm ci
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
       - name: lint, format & build
-        env:
-          CNAME: ${{secrets.CNAME}}
         run: |
           npm run format
           npm run lint
           npm run build
-          echo "${CNAME}" >> ./build/CNAME
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.7
+      - name: deploy
         if: ${{ github.ref == 'refs/heads/main' }}
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: build # The folder the action should deploy.
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_ENV: production
+          CNAME: ${{secrets.CNAME}}
+        run: |
+          npm run build
+          echo "${CNAME}" >> ./build/CNAME
+          git config --global user.name "watergis+githubci"
+          git config --global user.email "watergis+githubci@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${NODE_AUTH_TOKEN}@github.com/watergis/sveltekit-watergis-template.git
+          npm run deploy
