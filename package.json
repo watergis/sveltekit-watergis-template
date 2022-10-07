@@ -6,14 +6,15 @@
 		"build": "rm -rf build && vite build",
 		"package": "svelte-kit package",
 		"preview": "vite preview",
-		"prepare": "npm run smui-theme-light && npm run smui-theme-dark && husky install",
-		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
-		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark",
+		"prepare": "pnpm run smui-theme-light && pnpm run smui-theme-dark && husky install",
+		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme -i ./node_modules",
+		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark -i ./node_modules",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --ignore-path .prettierignore --check --plugin-search-dir=. . && eslint --ignore-path .prettierignore .",
 		"format": "prettier --ignore-path .prettierignore --write --plugin-search-dir=. .",
-		"deploy": "npx gh-pages -d build -t true"
+		"deploy": "npx gh-pages -d build -t true",
+		"preinstall": "npx only-allow pnpm"
 	},
 	"devDependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.2.0",
@@ -47,7 +48,6 @@
 		"fabric": "^5.2.4",
 		"file-saver": "^2.0.5",
 		"file-server": "^2.2.1",
-		"gh-pages": "^4.0.0",
 		"husky": "^8.0.1",
 		"image-clipper": "^0.4.4",
 		"jspdf": "^2.5.1",
