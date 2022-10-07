@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 importers:
   .:
     specifiers:
+      '@arkweid/lefthook': ^0.7.7
       '@fortawesome/free-solid-svg-icons': ^6.2.0
       '@geoffcox/svelte-splitter': ^1.0.1
       '@smui-extra/accordion': ^6.1.1
@@ -34,12 +35,12 @@ importers:
       fabric: ^5.2.4
       file-saver: ^2.0.5
       file-server: ^2.2.1
-      husky: ^8.0.1
       image-clipper: ^0.4.4
       jspdf: ^2.5.1
       maplibre-gl: ^2.4.0
       prettier: ^2.7.1
       prettier-plugin-svelte: ^2.7.0
+      rimraf: ^3.0.2
       simple-svelte-autocomplete: ^2.4.0
       smui-theme: ^6.1.3
       svelte: ^3.50.1
@@ -50,6 +51,8 @@ importers:
       tslib: ^2.4.0
       typescript: ~4.8.3
       vite: ^3.1.3
+    dependencies:
+      '@arkweid/lefthook': 0.7.7
     devDependencies:
       '@fortawesome/free-solid-svg-icons': 6.2.0
       '@geoffcox/svelte-splitter': 1.0.1
@@ -82,12 +85,12 @@ importers:
       fabric: 5.2.4
       file-saver: 2.0.5
       file-server: 2.2.1
-      husky: 8.0.1
       image-clipper: 0.4.4
       jspdf: 2.5.1
       maplibre-gl: 2.4.0
       prettier: 2.7.1
       prettier-plugin-svelte: 2.7.0_nk6d2fkgcllkkdynqbuearcure
+      rimraf: 3.0.2
       simple-svelte-autocomplete: 2.4.0
       smui-theme: 6.1.3
       svelte: 3.50.1
@@ -100,6 +103,18 @@ importers:
       vite: 3.1.3
 
 packages:
+  /@arkweid/lefthook/0.7.7:
+    resolution:
+      {
+        integrity: sha512-Eq30OXKmjxIAIsTtbX2fcF3SNZIXS8yry1u8yty7PQFYRctx04rVlhOJCEB2UmfTh8T2vrOMC9IHHUvvo5zbaQ==
+      }
+    cpu: [x64, arm64, ia32]
+    os: [darwin, linux, win32]
+    deprecated: '@arkweid/lefthook has been renamed to @evilmartians/lefthook, please upgrade to it. You also can use @evilmartians/lefthook-installer'
+    hasBin: true
+    requiresBuild: true
+    dev: false
+
   /@babel/runtime/7.19.0:
     resolution:
       {
@@ -3306,15 +3321,6 @@ packages:
       - supports-color
     dev: true
     optional: true
-
-  /husky/8.0.1:
-    resolution:
-      {
-        integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==
-      }
-    engines: { node: '>=14' }
-    hasBin: true
-    dev: true
 
   /iconv-lite/0.6.3:
     resolution:
