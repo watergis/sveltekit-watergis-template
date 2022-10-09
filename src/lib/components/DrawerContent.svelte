@@ -81,7 +81,7 @@
 	};
 
 	const resizeMap = () => {
-		if ($map) return;
+		if (!$map) return;
 		$map.triggerRepaint();
 		$map.resize();
 	};
