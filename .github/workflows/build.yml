@@ -59,7 +59,7 @@ jobs:
         env:
           CNAME: ${{secrets.CNAME}}
         run: |
-          npm run build
+          pnpm build
           echo "${CNAME}" >> ./build/CNAME
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.7
