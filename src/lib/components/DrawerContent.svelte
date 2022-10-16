@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Split } from '@geoffcox/svelte-splitter';
+	import { Split } from '@geoffcox/svelte-splitter/src';
 	import LayerListPanel from './LayerListPanel.svelte';
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { TabNames } from '$lib/constants';
