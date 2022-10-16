@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import IconButton from '@smui/icon-button';
 	import { copy } from 'svelte-copy';
 	import { map, selectedStyle } from '$lib/stores';
 
@@ -39,9 +38,10 @@
 	};
 </script>
 
-<IconButton class="material-icons" aria-label="Share" on:click={() => (isDialogOpen = true)}
-	>share</IconButton
->
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="icon is-large is-left menu-button" on:click={() => (isDialogOpen = true)}>
+	<i class="fas fa-share-nodes fa-xl" />
+</div>
 
 <div class="modal {`${isDialogOpen ? 'is-active' : ''}`}">
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -82,5 +82,9 @@
 <style lang="scss">
 	.copy-control {
 		display: flex;
+	}
+
+	.menu-button {
+		cursor: pointer;
 	}
 </style>

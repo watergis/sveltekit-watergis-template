@@ -2,7 +2,7 @@
 	import type { StyleSpecification } from 'maplibre-gl';
 	import StyleSwitcher from './StyleSwitcher.svelte';
 	import { map } from '$lib/stores';
-	import { config } from '../../config';
+	import { config } from '$config';
 	import LayerListPanel from '@watergis/svelte-maplibre-legend';
 
 	let style: StyleSpecification = undefined;

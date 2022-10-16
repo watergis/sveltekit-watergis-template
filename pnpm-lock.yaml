@@ -8,15 +8,9 @@ importers:
       '@geoffcox/svelte-splitter': ^1.0.1
       '@smui-extra/accordion': ^6.1.4
       '@smui/button': ^6.1.4
-      '@smui/card': ^6.1.4
-      '@smui/checkbox': ^6.1.4
-      '@smui/dialog': ^6.1.4
-      '@smui/form-field': ^6.1.4
-      '@smui/icon-button': ^6.1.4
       '@smui/select': ^6.2.0
       '@smui/snackbar': ^6.1.4
       '@smui/textfield': ^6.1.4
-      '@smui/tooltip': ^6.1.4
       '@smui/top-app-bar': ^6.1.4
       '@sveltejs/adapter-static': ^1.0.0-next.44
       '@sveltejs/kit': ^1.0.0-next.516
@@ -28,8 +22,6 @@ importers:
       '@watergis/svelte-maplibre-attribute-popup': ^0.0.5
       '@watergis/svelte-maplibre-legend': ^0.0.13
       '@watergis/terrain-rgb': ^1.1.8
-      D: ^1.0.0
-      bulma: ^0.9.4
       eslint: ^8.25.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-svelte3: ^4.0.0
@@ -55,15 +47,9 @@ importers:
       '@geoffcox/svelte-splitter': 1.0.1
       '@smui-extra/accordion': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/button': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/card': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/checkbox': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/dialog': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/form-field': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/icon-button': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/select': 6.2.0_besnmoibwkhwtentvwuriss7pa
       '@smui/snackbar': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/textfield': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/tooltip': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/top-app-bar': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@turf/distance': 6.5.0
       '@types/file-saver': 2.0.5
@@ -71,7 +57,6 @@ importers:
       '@watergis/svelte-maplibre-attribute-popup': 0.0.5
       '@watergis/svelte-maplibre-legend': 0.0.13
       '@watergis/terrain-rgb': 1.1.8
-      D: 1.0.0
       fabric: 5.2.4
       file-saver: 2.0.5
       file-server: 2.2.1
@@ -87,7 +72,6 @@ importers:
       '@sveltejs/kit': 1.0.0-next.516_svelte@3.52.0+vite@3.1.8
       '@typescript-eslint/eslint-plugin': 5.40.0_25sstg4uu2sk4pm7xcyzuov7xq
       '@typescript-eslint/parser': 5.40.0_z4bbprzjrhnsfa24uvmcbu7f5q
-      bulma: 0.9.4
       eslint: 8.25.0
       eslint-config-prettier: 8.5.0_eslint@8.25.0
       eslint-plugin-svelte3: 4.0.0_2h6d4ngklmojchucosx7yvuw7m
@@ -320,56 +304,9 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@material/card/13.0.0:
-    resolution: {integrity: sha512-ooJUOt1Viv99Dyz4rhz9ZZbfa996eHh3RUuXkPRkT66Btd5TzpdqsQWKwOVc5bgbgWqzhDWQ6A/aQdYqH97ccg==}
-    dependencies:
-      '@material/dom': 13.0.0
-      '@material/elevation': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/ripple': 13.0.0
-      '@material/rtl': 13.0.0
-      '@material/shape': 13.0.0
-      '@material/theme': 13.0.0
-      tslib: 2.4.0
-    dev: false
-
-  /@material/checkbox/13.0.0:
-    resolution: {integrity: sha512-tRC6n9Jq7GgdU0d1F8NOvUy6WiRZR58tUgL1QqoiQK9PGKSt0dAF3Aa48uubO7/Lt9K4NqgwV6/OeHv8pHaM/w==}
-    dependencies:
-      '@material/animation': 13.0.0
-      '@material/base': 13.0.0
-      '@material/density': 13.0.0
-      '@material/dom': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/ripple': 13.0.0
-      '@material/theme': 13.0.0
-      '@material/touch-target': 13.0.0
-      tslib: 2.4.0
-    dev: false
-
   /@material/density/13.0.0:
     resolution: {integrity: sha512-ppJTzOsuhjQam5GvHaq/XZocZNUr+41XQ2sd5nONAmQ0wwzXgqG0FaxtF1EXqK3uZFadz+vAu6enagre9DXhTA==}
     dependencies:
-      tslib: 2.4.0
-    dev: false
-
-  /@material/dialog/13.0.0:
-    resolution: {integrity: sha512-1Ggo9Bid94F1ttZJKSjIcgMvkVQtKsqwbqLs5cWlleaiwtAcwUE12XA2B1MNj8xM9ajU3BJm4GigupBOK1jGHQ==}
-    dependencies:
-      '@material/animation': 13.0.0
-      '@material/base': 13.0.0
-      '@material/button': 13.0.0
-      '@material/dom': 13.0.0
-      '@material/elevation': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/icon-button': 13.0.0
-      '@material/ripple': 13.0.0
-      '@material/rtl': 13.0.0
-      '@material/shape': 13.0.0
-      '@material/theme': 13.0.0
-      '@material/tokens': 13.0.0
-      '@material/touch-target': 13.0.0
-      '@material/typography': 13.0.0
       tslib: 2.4.0
     dev: false
 
@@ -404,18 +341,6 @@ packages:
       '@material/base': 13.0.0
       '@material/dom': 13.0.0
       '@material/feature-targeting': 13.0.0
-      '@material/rtl': 13.0.0
-      '@material/theme': 13.0.0
-      '@material/typography': 13.0.0
-      tslib: 2.4.0
-    dev: false
-
-  /@material/form-field/13.0.0:
-    resolution: {integrity: sha512-cXs5uYA89KgrXrU1UYkl52JizeIK3Mx9LjBw4ZYiyQJzFaBTPYsYWGSJMad1HZhWlRiigGTyN1M9ePIxtBpi0Q==}
-    dependencies:
-      '@material/base': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/ripple': 13.0.0
       '@material/rtl': 13.0.0
       '@material/theme': 13.0.0
       '@material/typography': 13.0.0
@@ -601,21 +526,6 @@ packages:
       '@material/elevation': 13.0.0
     dev: false
 
-  /@material/tooltip/13.0.0:
-    resolution: {integrity: sha512-/QinwEM0sYtRUthgOy7R+V4iwLMZ8SCd8A3PyGyTr27BUGWykwAUFdXyzT4rxLhDNcnDOYH14N+Z3Bom+UwO9Q==}
-    dependencies:
-      '@material/animation': 13.0.0
-      '@material/base': 13.0.0
-      '@material/dom': 13.0.0
-      '@material/elevation': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/rtl': 13.0.0
-      '@material/shape': 13.0.0
-      '@material/theme': 13.0.0
-      '@material/typography': 13.0.0
-      tslib: 2.4.0
-    dev: false
-
   /@material/top-app-bar/13.0.0:
     resolution: {integrity: sha512-NTbIbBmoo4wfbBwW+9XMmjYQJ3e7NJ9P/ahTszYuzYDyWNcc3m8G/A0zM+1LBmoze3rP/QTxcaJUH/A5/3ufXA==}
     dependencies:
@@ -714,32 +624,6 @@ packages:
       - typescript
     dev: false
 
-  /@smui/card/6.1.4_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-B8t2+w4Y9/3bz80yZeEFJH3Y2aFVZzHsUyBF2aC59rxa5qARihLE7PbCVEyqr6T5oQFr8A7QcHKLC+Ylsxj6HQ==}
-    dependencies:
-      '@material/card': 13.0.0
-      '@smui/button': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/icon-button': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/ripple': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
-  /@smui/checkbox/6.1.4_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-yWARPjnOaQFVi4iQxUINDLAd0V78mtKhAEuc+F91cjpfDvSzaPWPD3dfynYN7g3yf7uW/bocHM1yUxqtmQ3+7Q==}
-    dependencies:
-      '@material/checkbox': 13.0.0
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/ripple': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
   /@smui/common/6.1.4_besnmoibwkhwtentvwuriss7pa:
     resolution: {integrity: sha512-l6c4gJH+qP9HdM9RhTP07Gl8eewVbYWT7QfVSAF+wwji32ndjgZLlP5P2Jl/GmsQOOlDoNB3VPy/o4Z/kab31g==}
     dependencies:
@@ -751,36 +635,10 @@ packages:
       - typescript
     dev: false
 
-  /@smui/dialog/6.1.4_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-ouCROTmIHutDxmSI3DYX4vlGeFaq0VHRtdhD3vCdd/7u9qBukXunKaCfTOvqozdoaa0pG3Cc66bYsa25m9RP4w==}
-    dependencies:
-      '@material/button': 13.0.0
-      '@material/dialog': 13.0.0
-      '@material/dom': 13.0.0
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
   /@smui/floating-label/6.1.4_besnmoibwkhwtentvwuriss7pa:
     resolution: {integrity: sha512-7crwK7WsU7ELS+uJj5J8XnbCGoJrCDijs7DN57ok3LemWTsmn0vhhnsmDC3FYZARcAQ1KsX936+ahJGfiP/oAg==}
     dependencies:
       '@material/floating-label': 13.0.0
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
-  /@smui/form-field/6.1.4_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-MytvYxHO/+zTzReWGNZ4UXZ2jeDShyopHFfQUCfwPszHX8ckiYTx/Ld+wFBs6GSq9bGJw49gHnYkkZUfVIbm3A==}
-    dependencies:
-      '@material/feature-targeting': 13.0.0
-      '@material/form-field': 13.0.0
-      '@material/rtl': 13.0.0
       '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
       svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
     transitivePeerDependencies:
@@ -942,17 +800,6 @@ packages:
       '@smui/line-ripple': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/notched-outline': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/ripple': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
-  /@smui/tooltip/6.1.4_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-KBSoaRJ+9GX5HCxRt66zUOJ4++w9P9LPbBjOXIfyAvV3Qfm4VOBAm5mD2GWi1fJw96gci+lnTFq4pCMMN9L/2A==}
-    dependencies:
-      '@material/tooltip': 13.0.0
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
       svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
     transitivePeerDependencies:
       - svelte
@@ -1270,11 +1117,6 @@ packages:
       - debug
     dev: false
 
-  /D/1.0.0:
-    resolution: {integrity: sha512-nQvrCBu7K2pSSEtIM0EEF03FVjcczCXInMt3moLNFbjlWx6bZrX72uT6/1uAXDbnzGUAx9gTyDiQ+vrFi663oA==}
-    deprecated: Package no longer supported. Contact support@npmjs.com for more info.
-    dev: false
-
   /abab/2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
     dev: false
@@ -1451,10 +1293,6 @@ packages:
       base64-js: 1.5.1
       ieee754: 1.2.1
     dev: false
-
-  /bulma/0.9.4:
-    resolution: {integrity: sha512-86FlT5+1GrsgKbPLRRY7cGDg8fsJiP/jzTqXXVqiUZZ2aZT8uemEOHlU1CDU+TxklPEZ11HZNNWclRBBecP4CQ==}
-    dev: true
 
   /busboy/1.6.0:
     resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}

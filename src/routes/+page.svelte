@@ -3,7 +3,7 @@
 	import DrawerContent from '$lib/components/DrawerContent.svelte';
 	import Map from '$lib/components/Map.svelte';
 	import { selectedStyle } from '$lib/stores';
-	import { config } from '../config';
+	import { config } from '$config';
 
 	let drawerOpen = false;
 
@@ -28,5 +28,5 @@
 </DrawerContent>
 
 <style>
-	@import 'bulma/css/bulma.css';
+	@import 'https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css';
 </style>
