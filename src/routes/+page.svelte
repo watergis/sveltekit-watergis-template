@@ -3,7 +3,7 @@
 	import DrawerContent from '$lib/components/DrawerContent.svelte';
 	import Map from '$lib/components/Map.svelte';
 	import { selectedStyle } from '$lib/stores';
-	import { config } from '../config';
+	import { config } from '$config';
 
 	let drawerOpen = false;
 

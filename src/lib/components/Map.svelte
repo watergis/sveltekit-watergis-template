@@ -11,7 +11,7 @@
 		type GeoJSONSourceSpecification
 	} from 'maplibre-gl';
 	import { map, selectedStyle } from '$lib/stores';
-	import { config } from '../../config';
+	import { config } from '$config';
 	import StyleUrl from '$lib/style-url';
 	import SearchControl from './SearchControl.svelte';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
