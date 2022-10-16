@@ -141,7 +141,9 @@
 <div class="map-wrap">
 	<div class="map" id="map" bind:this={mapContainer} />
 	{#if isMapLoaded}
-		<SearchControl />
+		{#if config.search}
+			<SearchControl bind:map={$map} bind:searchOption={config.search} />
+		{/if}
 		<AttributePopupControl bind:map={$map} bind:targetLayers={config.popup.target} />
 	{/if}
 </div>

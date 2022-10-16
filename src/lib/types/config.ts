@@ -6,6 +6,15 @@ export type StyleSwitcherOption = {
 	uri: string;
 };
 
+export type SearchOption = {
+	url: string;
+	target: string[];
+	format: (p: { [key: string]: string }) => string;
+	place_type: string[];
+	placeholder: string;
+	zoom: number;
+};
+
 export type Config = {
 	title: string;
 	url: string;
@@ -15,14 +24,7 @@ export type Config = {
 	styles: StyleSwitcherOption[];
 	center: LngLatLike;
 	zoom: number;
-	search?: {
-		url: string;
-		target: string[];
-		format: (p: { [key: string]: string }) => string;
-		place_type: string[];
-		placeholder: string;
-		zoom: number;
-	};
+	search?: SearchOption;
 	popup: {
 		target: string[];
 	};
