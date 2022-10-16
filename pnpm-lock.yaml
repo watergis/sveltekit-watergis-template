@@ -25,10 +25,11 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.40.0
       '@typescript-eslint/parser': ^5.40.0
       '@watergis/mapbox-gl-area-switcher': ^1.0.1
-      '@watergis/svelte-maplibre-attribute-popup': ^0.0.4
-      '@watergis/svelte-maplibre-legend': ^0.0.12
+      '@watergis/svelte-maplibre-attribute-popup': ^0.0.5
+      '@watergis/svelte-maplibre-legend': ^0.0.13
       '@watergis/terrain-rgb': ^1.1.8
       D: ^1.0.0
+      bulma: ^0.9.4
       eslint: ^8.25.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-svelte3: ^4.0.0
@@ -66,8 +67,8 @@ importers:
       '@turf/distance': 6.5.0
       '@types/file-saver': 2.0.5
       '@watergis/mapbox-gl-area-switcher': 1.0.1
-      '@watergis/svelte-maplibre-attribute-popup': 0.0.4
-      '@watergis/svelte-maplibre-legend': 0.0.12
+      '@watergis/svelte-maplibre-attribute-popup': 0.0.5
+      '@watergis/svelte-maplibre-legend': 0.0.13
       '@watergis/terrain-rgb': 1.1.8
       D: 1.0.0
       fabric: 5.2.4
@@ -85,6 +86,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.516_svelte@3.52.0+vite@3.1.8
       '@typescript-eslint/eslint-plugin': 5.40.0_25sstg4uu2sk4pm7xcyzuov7xq
       '@typescript-eslint/parser': 5.40.0_z4bbprzjrhnsfa24uvmcbu7f5q
+      bulma: 0.9.4
       eslint: 8.25.0
       eslint-config-prettier: 8.5.0_eslint@8.25.0
       eslint-plugin-svelte3: 4.0.0_2h6d4ngklmojchucosx7yvuw7m
@@ -1239,18 +1241,16 @@ packages:
       mapbox-gl: 1.13.2
     dev: false
 
-  /@watergis/svelte-maplibre-attribute-popup/0.0.4:
-    resolution: {integrity: sha512-lkIINu69j0DMN4jV81ap2+YCw8kix4NfxcYc6Rt3Q45ep27Ql0s+1u/wRTGmBxJiL4Fk/jIeFebr3LGQtT3Y2w==}
+  /@watergis/svelte-maplibre-attribute-popup/0.0.5:
+    resolution: {integrity: sha512-QquiAjoGogJkSfWWmCrPMxYGFbby21dmfG7cEMxCmddokCSKMD495t7XbSzFEtfOvFaZr4FFJW2rtNPsyYwK5A==}
     dependencies:
-      bulma: 0.9.4
       maplibre-gl: 2.4.0
     dev: false
 
-  /@watergis/svelte-maplibre-legend/0.0.12:
-    resolution: {integrity: sha512-uVyZ5pK2oXx2c8mKzLLBWMPI7i6yoFvZtDwpFqDcv+b5u2QKusyhGKkkYZP6oV50Q9ZyABCDUQFn6WkafBIeQg==}
+  /@watergis/svelte-maplibre-legend/0.0.13:
+    resolution: {integrity: sha512-l6Duu4RsjNlYbqg+c9JehxNPA4Y6IHTdACSdVGETqAMmev7yajFy0P8vfYJ9Ezutdi1PClxLKary3/WMpgR+7g==}
     dependencies:
       '@watergis/legend-symbol': 0.2.2
-      bulma: 0.9.4
       maplibre-gl: 2.4.0
     dev: false
 
@@ -1452,7 +1452,7 @@ packages:
 
   /bulma/0.9.4:
     resolution: {integrity: sha512-86FlT5+1GrsgKbPLRRY7cGDg8fsJiP/jzTqXXVqiUZZ2aZT8uemEOHlU1CDU+TxklPEZ11HZNNWclRBBecP4CQ==}
-    dev: false
+    dev: true
 
   /busboy/1.6.0:
     resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}
