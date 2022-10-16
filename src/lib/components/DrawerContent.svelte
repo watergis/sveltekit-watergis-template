@@ -5,9 +5,6 @@
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { TabNames } from '$lib/constants';
 	import { map } from '$lib/stores';
-	import Fa from 'svelte-fa';
-	import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup';
-	import { faChartSimple } from '@fortawesome/free-solid-svg-icons/faChartSimple';
 
 	let innerWidth = 0;
 	let innerHeight = 0;
@@ -24,11 +21,11 @@
 	export let open = false;
 	let tabs = [
 		{
-			icon: faLayerGroup,
+			icon: 'fas fa-layer-group',
 			label: TabNames.LAYERS
 		},
 		{
-			icon: faChartSimple,
+			icon: 'fas fa-chart-simple',
 			label: TabNames.ADVANCED
 		}
 	];
@@ -112,13 +109,14 @@
 		<div class="tabs is-centered is-small mb-0">
 			<ul>
 				{#each tabs as tab}
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<li
 						class={activeTab.label === tab.label ? 'is-active' : ''}
 						on:click={() => (activeTab = tab)}
 					>
 						<!-- svelte-ignore a11y-missing-attribute -->
 						<a>
-							<span class="icon ml-2"><Fa icon={tab.icon} scale={1} /></span>
+							<span class="icon ml-2"><i class={tab.icon} aria-hidden="true" /></span>
 							<span>{tab.label}</span>
 						</a>
 					</li>
