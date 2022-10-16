@@ -41,6 +41,7 @@ importers:
       maplibre-gl: ^2.4.0
       prettier: ^2.7.1
       prettier-plugin-svelte: ^2.8.0
+      rimraf: ^3.0.2
       simple-svelte-autocomplete: ^2.4.0
       smui-theme: ^6.2.0
       svelte: ^3.52.0
@@ -92,6 +93,7 @@ importers:
       eslint-plugin-svelte3: 4.0.0_2h6d4ngklmojchucosx7yvuw7m
       prettier: 2.7.1
       prettier-plugin-svelte: 2.8.0_lrllcp5xtrkmmdzifit4hd52ze
+      rimraf: 3.0.2
       svelte: 3.52.0
       svelte-check: 2.9.2_svelte@3.52.0
       svelte-preprocess: 4.10.7_besnmoibwkhwtentvwuriss7pa
