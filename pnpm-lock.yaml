@@ -12,7 +12,6 @@ importers:
       '@smui/checkbox': ^6.1.4
       '@smui/dialog': ^6.1.4
       '@smui/form-field': ^6.1.4
-      '@smui/icon-button': ^6.1.4
       '@smui/select': ^6.2.0
       '@smui/snackbar': ^6.1.4
       '@smui/textfield': ^6.1.4
@@ -29,7 +28,6 @@ importers:
       '@watergis/svelte-maplibre-legend': ^0.0.13
       '@watergis/terrain-rgb': ^1.1.8
       D: ^1.0.0
-      bulma: ^0.9.4
       eslint: ^8.25.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-svelte3: ^4.0.0
@@ -58,7 +56,6 @@ importers:
       '@smui/checkbox': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/dialog': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/form-field': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/icon-button': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/select': 6.2.0_besnmoibwkhwtentvwuriss7pa
       '@smui/snackbar': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/textfield': 6.1.4_besnmoibwkhwtentvwuriss7pa
@@ -86,7 +83,6 @@ importers:
       '@sveltejs/kit': 1.0.0-next.516_svelte@3.52.0+vite@3.1.8
       '@typescript-eslint/eslint-plugin': 5.40.0_25sstg4uu2sk4pm7xcyzuov7xq
       '@typescript-eslint/parser': 5.40.0_z4bbprzjrhnsfa24uvmcbu7f5q
-      bulma: 0.9.4
       eslint: 8.25.0
       eslint-config-prettier: 8.5.0_eslint@8.25.0
       eslint-plugin-svelte3: 4.0.0_2h6d4ngklmojchucosx7yvuw7m
@@ -1449,10 +1445,6 @@ packages:
       base64-js: 1.5.1
       ieee754: 1.2.1
     dev: false
-
-  /bulma/0.9.4:
-    resolution: {integrity: sha512-86FlT5+1GrsgKbPLRRY7cGDg8fsJiP/jzTqXXVqiUZZ2aZT8uemEOHlU1CDU+TxklPEZ11HZNNWclRBBecP4CQ==}
-    dev: true
 
   /busboy/1.6.0:
     resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}

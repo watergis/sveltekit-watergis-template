@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import type { TopAppBarComponentDev } from '@smui/top-app-bar';
 	import TopAppBar, { Row, Section, Title, AutoAdjust } from '@smui/top-app-bar';
-	import IconButton from '@smui/icon-button';
 	import { config } from '../../config';
 	import MapExport from './MapExport.svelte';
 	import ShareURL from './ShareURL.svelte';
@@ -11,11 +10,6 @@
 
 	let darkTheme: boolean;
 	let topAppBar: TopAppBarComponentDev;
-
-	$: modeLabel = `switch to ${darkTheme ? 'light' : 'dark'} mode`;
-
-	// This icon represents the mode to which the user can switch.
-	$: modeIcon = darkTheme ? 'light_mode' : 'dark_mode';
 
 	onMount(async () => {
 		darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -49,13 +43,10 @@
 <TopAppBar bind:this={topAppBar} variant="fixed">
 	<Row>
 		<Section>
-			<IconButton class="material-icons" on:click={() => (drawerOpen = !drawerOpen)}>
-				{#if !drawerOpen}
-					menu
-				{:else}
-					close
-				{/if}
-			</IconButton>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<div class="icon is-large is-left menu-button" on:click={() => (drawerOpen = !drawerOpen)}>
+				<i class="fas {`${drawerOpen ? 'fa-xmark' : 'fa-bars'}`} fa-xl" />
+			</div>
 			<a href={config.url}>
 				<img src={config.logo} alt="logo" class="logo" />
 			</a>
@@ -65,14 +56,10 @@
 		<Section align="end" toolbar>
 			<ShareURL />
 			<MapExport />
-			<IconButton
-				aria-label={modeLabel}
-				class="material-icons"
-				on:click={toggleMode}
-				title={modeLabel}
-			>
-				{modeIcon}
-			</IconButton>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<div class="icon is-large is-left menu-button" on:click={toggleMode}>
+				<i class="fas {`${darkTheme ? 'fa-sun' : 'fa-moon'}`} fa-xl" />
+			</div>
 		</Section>
 	</Row>
 </TopAppBar>
@@ -83,5 +70,9 @@
 		padding-top: 5px;
 		width: 48px;
 		height: 48px;
+	}
+
+	.menu-button {
+		cursor: pointer;
 	}
 </style>

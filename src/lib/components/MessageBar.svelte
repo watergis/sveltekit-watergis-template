@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { SnackbarComponentDev } from '@smui/snackbar';
 	import Snackbar, { Actions, Label } from '@smui/snackbar';
-	import IconButton from '@smui/icon-button';
 	import { errorMessage } from '$lib/stores';
 
 	let snackbar: SnackbarComponentDev;
@@ -21,9 +20,15 @@
 		{message}
 	</Label>
 	<Actions>
-		<IconButton class="material-icons" title="Dismiss">close</IconButton>
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<div class="icon is-small menu-button" style="color: white" on:click={() => snackbar.close()}>
+			<i class="fas fa-xmark" />
+		</div>
 	</Actions>
 </Snackbar>
 
-<style lang="scss">
+<style>
+	.menu-button {
+		cursor: pointer;
+	}
 </style>

@@ -28,5 +28,5 @@
 </DrawerContent>
 
 <style>
-	@import 'bulma/css/bulma.css';
+	@import 'https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css';
 </style>
