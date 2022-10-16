@@ -3,7 +3,6 @@
 	import { ContourType } from '$lib/valhalla-isochrone';
 
 	import Accordion, { Panel, Header, Content } from '@smui-extra/accordion';
-	import IconButton, { Icon } from '@smui/icon-button';
 	import MeasurePanel from './MeasurePanel.svelte';
 
 	import ValhallaIsochronePanel from './ValhallaIsochronePanel.svelte';
@@ -54,11 +53,16 @@
 		<Accordion>
 			<Panel bind:open={panelMeasureOpen}>
 				<Header>
-					Measuring tool
-					<IconButton slot="icon" toggle pressed={panelMeasureOpen}>
-						<Icon class="material-icons" on>expand_less</Icon>
-						<Icon class="material-icons">expand_more</Icon>
-					</IconButton>
+					<div class="level">
+						<p class="level-left">Measuring tool</p>
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<div
+							class="icon is-small level-right menu-button"
+							on:click={() => (panelMeasureOpen = !panelMeasureOpen)}
+						>
+							<i class="fas {`${panelMeasureOpen ? 'fa-chevron-down' : 'fa-chevron-up'}`}" />
+						</div>
+					</div>
 				</Header>
 				<Content>
 					<MeasurePanel />
@@ -66,11 +70,16 @@
 			</Panel>
 			<Panel bind:open={panelRoutingOpen}>
 				<Header>
-					Routing tool
-					<IconButton slot="icon" toggle pressed={panelRoutingOpen}>
-						<Icon class="material-icons" on>expand_less</Icon>
-						<Icon class="material-icons">expand_more</Icon>
-					</IconButton>
+					<div class="level">
+						<p class="level-left">Routing tool</p>
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<div
+							class="icon is-small level-right menu-button"
+							on:click={() => (panelRoutingOpen = !panelRoutingOpen)}
+						>
+							<i class="fas {`${panelRoutingOpen ? 'fa-chevron-down' : 'fa-chevron-up'}`}" />
+						</div>
+					</div>
 				</Header>
 				<Content>
 					<ValhallaRoutingPanel />
@@ -78,11 +87,16 @@
 			</Panel>
 			<Panel bind:open={panelTimeIsochroneOpen}>
 				<Header>
-					Time Isochrone
-					<IconButton slot="icon" toggle pressed={panelTimeIsochroneOpen}>
-						<Icon class="material-icons" on>expand_less</Icon>
-						<Icon class="material-icons">expand_more</Icon>
-					</IconButton>
+					<div class="level">
+						<p class="level-left">Time Isochrone</p>
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<div
+							class="icon is-small level-right menu-button"
+							on:click={() => (panelTimeIsochroneOpen = !panelTimeIsochroneOpen)}
+						>
+							<i class="fas {`${panelTimeIsochroneOpen ? 'fa-chevron-down' : 'fa-chevron-up'}`}" />
+						</div>
+					</div>
 				</Header>
 				<Content>
 					<ValhallaIsochronePanel bind:contourType={ContourType.Time} />
@@ -90,11 +104,18 @@
 			</Panel>
 			<Panel bind:open={panelDistanceIsochroneOpen}>
 				<Header>
-					Distance Isochrone
-					<IconButton slot="icon" toggle pressed={panelDistanceIsochroneOpen}>
-						<Icon class="material-icons" on>expand_less</Icon>
-						<Icon class="material-icons">expand_more</Icon>
-					</IconButton>
+					<div class="level">
+						<p class="level-left">Distance Isochrone</p>
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<div
+							class="icon is-small level-right menu-button"
+							on:click={() => (panelDistanceIsochroneOpen = !panelDistanceIsochroneOpen)}
+						>
+							<i
+								class="fas {`${panelDistanceIsochroneOpen ? 'fa-chevron-down' : 'fa-chevron-up'}`}"
+							/>
+						</div>
+					</div>
 				</Header>
 				<Content>
 					<ValhallaIsochronePanel bind:contourType={ContourType.Distance} />

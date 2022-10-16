@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import IconButton from '@smui/icon-button';
 	import { PageOrientation, Size, DPI, Format, Unit } from '$lib/map-generator';
 	import type MapGenerator from '$lib/map-generator';
 	// import PrintableAreaManager from '$lib/printable-area-manager';
@@ -80,7 +79,10 @@
 	};
 </script>
 
-<IconButton class="material-icons" aria-label="Print" on:click={openMenu}>print</IconButton>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="icon is-large is-left menu-button" on:click={openMenu}>
+	<i class="fas fa-print fa-xl" />
+</div>
 
 <div class="modal {`${isDialogOpen ? 'is-active' : ''}`}">
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -184,3 +186,9 @@
 		</footer>
 	</div>
 </div>
+
+<style>
+	.menu-button {
+		cursor: pointer;
+	}
+</style>

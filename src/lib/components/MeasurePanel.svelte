@@ -5,7 +5,7 @@
 	import distance from '@turf/distance';
 	import { Marker, MapMouseEvent, GeoJSONFeature } from 'maplibre-gl';
 	import { map, measureControlData } from '$lib/stores';
-	import { config } from '../../config';
+	import { config } from '$config';
 	import type { MeasureControlData } from '$lib/types';
 
 	const SOURCE_LINE = 'elev-controls-source-line';

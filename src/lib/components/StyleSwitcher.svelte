@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { map, selectedStyle } from '$lib/stores';
-	import { config } from '../../config';
+	import { config } from '$config';
 	import StyleUrl from '$lib/style-url';
 
 	const dispatch = createEventDispatcher();

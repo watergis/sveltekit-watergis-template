@@ -3,7 +3,7 @@
 	import Textfield from '@smui/textfield';
 	import Button, { Label, Icon } from '@smui/button';
 	import { map, valhallaControlData } from '$lib/stores';
-	import { config } from '../../config';
+	import { config } from '$config';
 	import ValhallaIsochrone, { Costing, ContourType } from '$lib/valhalla-isochrone';
 
 	export let contourType;
