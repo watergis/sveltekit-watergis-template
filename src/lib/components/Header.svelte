@@ -12,16 +12,25 @@
 
 	let topAppBar: TopAppBarComponentDev;
 
+	let innerWidth = 0;
 	let isMobile = innerWidth < 768 ? true : false;
 
-	onMount(() => {
+	$: innerWidth, setIsMobile();
+
+	const setIsMobile = () => {
 		isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
+	};
+
+	onMount(() => {
+		setIsMobile();
 	});
 
 	const toggleMode = () => {
 		drawerOpen = false;
 	};
 </script>
+
+<svelte:window bind:innerWidth />
 
 <TopAppBar bind:this={topAppBar} variant="fixed">
 	<Row>
