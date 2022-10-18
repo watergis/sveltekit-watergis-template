@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Textfield from '@smui/textfield';
 	import { map, valhallaControlData } from '$lib/stores';
 	import { config } from '$config';
 	import ValhallaIsochrone, { ContourType } from '$lib/valhalla-isochrone';
@@ -86,19 +85,60 @@
 				{/each}
 			</div>
 		</div>
-		<div style="display:inline-flex">
-			<Textfield bind:value={longitude} label="Longitude" readonly />
-			<Textfield bind:value={latitude} label="Latitude" readonly />
+		<div class="field is-horizontal px-3">
+			<div class="field-label is-normal">
+				<label class="label">Lon/Lat</label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="columns pt-1">
+						<div class="column is-half px-0">
+							<input
+								class="input is-small"
+								type="text"
+								placeholder="Name"
+								value={`${longitude.toFixed(6)}`}
+								readonly
+							/>
+						</div>
+						<div class="column is-half px-0">
+							<input
+								class="input is-small"
+								type="text"
+								placeholder="Name"
+								value={`${latitude.toFixed(6)}`}
+								readonly
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div style="display:inline-flex">
-		{#each contours as contour}
-			{#if contourType === ContourType.Time}
-				<Textfield bind:value={contour.time} label="{contour.time} min" type="number" />
-			{:else}
-				<Textfield bind:value={contour.distance} label="{contour.distance} km" type="number" />
-			{/if}
-		{/each}
+		<div class="columns px-3">
+			{#each contours as contour}
+				<div class="column is-one-quarter px-0">
+					<div class="field">
+						<!-- svelte-ignore a11y-label-has-associated-control -->
+						<label class="label is-small">
+							{#if contourType === ContourType.Time}
+								{contour.time} min
+							{:else}
+								{contour.distance} km
+							{/if}
+						</label>
+						<div class="control">
+							{#if contourType === ContourType.Time}
+								<input class="input is-small" type="number" bind:value={contour.time} />
+							{:else}
+								<input class="input is-small" type="number" bind:value={contour.distance} />
+							{/if}
+						</div>
+					</div>
+				</div>
+			{/each}
+		</div>
 	</div>
 	<div class="columns is-vcentered pt-2">
 		<div class="column is-half px-1 py-4">

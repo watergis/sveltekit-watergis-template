@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import Textfield from '@smui/textfield';
 	import type { GeoJSONFeature, MapMouseEvent } from 'maplibre-gl';
 	import { map, valhallaRoutingData, errorMessage } from '$lib/stores';
 	import { config } from '$config';
@@ -354,32 +353,95 @@
 			</div>
 		</div>
 
-		<div style="display:inline-flex; width: 100%">
-			<Textfield
-				value={`${$valhallaRoutingData[0].lng.toFixed(6)}, ${$valhallaRoutingData[0].lat.toFixed(
-					6
-				)}`}
-				label="From"
-				readonly
-				style="width: 50%"
-			/>
-
-			{#if $valhallaRoutingData.length > 1}
-				<Textfield
-					value={`${$valhallaRoutingData[$valhallaRoutingData.length - 1].lng.toFixed(
-						6
-					)}, ${$valhallaRoutingData[$valhallaRoutingData.length - 1].lat.toFixed(6)}`}
-					label="To"
-					readonly
-					style="width: 50%"
-				/>
-			{/if}
+		<div class="field is-horizontal px-3">
+			<div class="field-label is-normal">
+				<label class="label">From</label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="columns pt-1">
+						<div class="column is-half px-0">
+							<input
+								class="input is-small"
+								type="text"
+								placeholder="Name"
+								value={`${$valhallaRoutingData[0].lng.toFixed(6)}`}
+								readonly
+							/>
+						</div>
+						<div class="column is-half px-0">
+							<input
+								class="input is-small"
+								type="text"
+								placeholder="Name"
+								value={`${$valhallaRoutingData[0].lat.toFixed(6)}`}
+								readonly
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		{#if $valhallaRoutingData.length > 1}
+			<div class="field is-horizontal px-3">
+				<div class="field-label is-normal">
+					<label class="label">To</label>
+				</div>
+				<div class="field-body">
+					<div class="field">
+						<div class="columns pt-1">
+							<div class="column is-half px-0">
+								<input
+									class="input is-small"
+									type="text"
+									placeholder="Name"
+									value={`${$valhallaRoutingData[$valhallaRoutingData.length - 1].lng.toFixed(6)}`}
+									readonly
+								/>
+							</div>
+							<div class="column is-half px-0">
+								<input
+									class="input is-small"
+									type="text"
+									placeholder="Name"
+									value={`${$valhallaRoutingData[$valhallaRoutingData.length - 1].lat.toFixed(6)}`}
+									readonly
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{/if}
 
 		{#if tripSummary}
-			<div style="display:inline-flex; width: 100%">
-				<Textfield value={`${tripSummary.length} km`} label="Length" readonly style="width: 50%" />
-				<Textfield value={`${tripSummary.time} min`} label="Time" readonly style="width: 50%" />
+			<div class="columns px-3">
+				<div class="column is-half px-0">
+					<div class="field">
+						<label class="label is-small">Length</label>
+						<div class="control">
+							<input
+								class="input is-small"
+								type="text"
+								value={`${tripSummary.length} km`}
+								readonly
+							/>
+						</div>
+					</div>
+				</div>
+				<div class="column is-half px-0">
+					<div class="field">
+						<label class="label is-small">Time</label>
+						<div class="control">
+							<input
+								class="input is-small"
+								type="text"
+								value={`${tripSummary.time} min`}
+								readonly
+							/>
+						</div>
+					</div>
+				</div>
 			</div>
 		{/if}
 	{/if}

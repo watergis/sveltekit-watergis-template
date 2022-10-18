@@ -38,7 +38,6 @@
 		"@creativebulma/bulma-collapsible": "^1.0.4",
 		"@geoffcox/svelte-splitter": "^1.0.1",
 		"@smui/snackbar": "^6.1.4",
-		"@smui/textfield": "^6.1.4",
 		"@smui/top-app-bar": "^6.1.4",
 		"@turf/distance": "^6.5.0",
 		"@types/file-saver": "^2.0.5",
