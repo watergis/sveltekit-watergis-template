@@ -4,7 +4,7 @@
 	import ValhallaIsochrone, { ContourType } from '$lib/valhalla-isochrone';
 	import { costingOptions } from '$lib/constants';
 
-	export let contourType;
+	let contourType = ContourType.Time;
 	let longitude: number;
 	let latitude: number;
 	let contours = config.valhalla?.options.Contours;
@@ -33,11 +33,10 @@
 	$: {
 		if ($map) {
 			if (!$valhallaControlData) {
-				const data: { [key: string]: ValhallaIsochrone } = {};
-				valhallaControlData.update(() => data);
+				valhallaControlData.update(() => undefined);
 			}
-			if (!$valhallaControlData[contourType]) {
-				$valhallaControlData[contourType] = new ValhallaIsochrone($map, config.valhalla.url);
+			if (!$valhallaControlData) {
+				$valhallaControlData = new ValhallaIsochrone($map, config.valhalla.url);
 			}
 			longitude = $map.getCenter().lng;
 			latitude = $map.getCenter().lat;
@@ -48,7 +47,7 @@
 		}
 	}
 	const calc = (contourType: string) => {
-		$valhallaControlData[contourType].getIsochrone(
+		$valhallaControlData.getIsochrone(
 			Number(longitude),
 			Number(latitude),
 			contourType,
@@ -57,12 +56,38 @@
 		);
 	};
 	const clear = () => {
-		$valhallaControlData[contourType].clearFeatures();
+		$valhallaControlData.clearFeatures();
 	};
 </script>
 
 {#if config.valhalla}
 	<div class="transport-select">
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label">Type of Isochrone</label>
+			<div class="control">
+				{#each Object.keys(ContourType) as type}
+					<label class="radio" style="color:black">
+						<input
+							type="radio"
+							name="isochrone-{type}"
+							on:click={() => {
+								contourType = ContourType[type];
+							}}
+							checked={contourType === ContourType[type]}
+						/>
+						<div class="icon is-small is-left pl-3 pr-3">
+							{#if type === 'Time'}
+								<i class="fas fa-clock" />
+							{:else}
+								<i class="fas fa-ruler" />
+							{/if}
+						</div>
+						{type}
+					</label>
+				{/each}
+			</div>
+		</div>
 		<div class="field">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label class="label">Means of Transport</label>
