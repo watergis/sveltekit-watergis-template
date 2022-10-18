@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { TopAppBarComponentDev } from '@smui/top-app-bar';
 	import TopAppBar, { Row, Section, Title, AutoAdjust } from '@smui/top-app-bar';
 	import { config } from '$config';
@@ -10,6 +11,12 @@
 	export let drawerOpen = false;
 
 	let topAppBar: TopAppBarComponentDev;
+
+	let isMobile = innerWidth < 768 ? true : false;
+
+	onMount(() => {
+		isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
+	});
 
 	const toggleMode = () => {
 		drawerOpen = false;
@@ -23,7 +30,9 @@
 			<a href={config.url}>
 				<img src={config.logo} alt="logo" class="logo" />
 			</a>
-			<Title>{config.title}</Title>
+			{#if !isMobile}
+				<Title>{config.title}</Title>
+			{/if}
 		</Section>
 		<section />
 		<Section align="end" toolbar>
