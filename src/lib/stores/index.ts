@@ -10,7 +10,7 @@ export const selectedStyle = writable<StyleSwitcherOption>(null);
 
 export const measureControlData = writable<MeasureControlData>(null);
 
-export const valhallaControlData = writable<{ [key: string]: ValhallaIsochrone }>(null);
+export const valhallaControlData = writable<ValhallaIsochrone>(null);
 
 export const valhallaRoutingData = writable<LngLat[]>(null);
 

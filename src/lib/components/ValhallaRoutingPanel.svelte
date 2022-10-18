@@ -1,13 +1,10 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import Button, { Label, Icon } from '@smui/button';
-	import Select, { Option } from '@smui/select';
-	import Textfield from '@smui/textfield';
 	import type { GeoJSONFeature, MapMouseEvent } from 'maplibre-gl';
 	import { map, valhallaRoutingData, errorMessage } from '$lib/stores';
 	import { config } from '$config';
-	import { Costing } from '$lib/valhalla-isochrone';
 	import type { ValhallaTripResult, ValhallaTripSummary, ValhallaError } from '$lib/types';
+	import { costingOptions } from '$lib/constants';
 
 	const SOURCE_LINE = 'routing-controls-source-line';
 	const LAYER_LINE = 'routing-controls-layer-line';
@@ -18,20 +15,6 @@
 	const routingOptions = config.valhalla.options.routing;
 	let isRouting = false;
 
-	let costingOptions = [
-		{
-			value: Costing.Walking,
-			label: 'Walking'
-		},
-		{
-			value: Costing.Bicycle,
-			label: 'Bicycle'
-		},
-		{
-			value: Costing.Car,
-			label: 'Car'
-		}
-	];
 	let meansOfTransport = costingOptions[0].value;
 	let tripSummary: ValhallaTripSummary;
 
@@ -314,84 +297,152 @@
 </script>
 
 {#if config.valhalla}
-	<div>
-		<Select bind:value={meansOfTransport} label="Means of Transport" style="width:100%">
+	<div class="field">
+		<!-- svelte-ignore a11y-label-has-associated-control -->
+		<label class="label">Means of Transport</label>
+		<div class="control">
 			{#each costingOptions as item}
-				<Option value={item.value}>{item.label}</Option>
+				<label class="radio" style="color:black">
+					<input
+						type="radio"
+						name="transport-routing"
+						on:click={() => {
+							meansOfTransport = item.value;
+						}}
+						checked={meansOfTransport === item.value}
+					/>
+					<div class="icon is-small is-left pl-3 pr-3">
+						<i class="fas {item.icon}" />
+					</div>
+					{item.label}
+				</label>
 			{/each}
-		</Select>
+		</div>
 	</div>
 
-	<div class="tool-button" style="display: flex; align-items: center;">
-		<Button color="primary" variant="raised" on:click={handleAddPoint} style="width:100%">
-			<Icon class="material-icons">
-				{#if isRouting}
-					close
-				{:else}
-					route
-				{/if}
-			</Icon>
-			<Label>
-				{#if isRouting}
-					Stop routing
-				{:else}
-					Start routing
-				{/if}
-			</Label>
-		</Button>
+	<div class="columns is-vcentered">
+		<div class="column">
+			<button class="button is-fullwidth is-link" on:click={handleAddPoint}>
+				<span class="icon is-small">
+					{#if isRouting}
+						<i class="fas fa-stop" />
+					{:else}
+						<i class="fas fa-route" />
+					{/if}
+				</span>
+				<span>
+					{#if isRouting}
+						Stop routing
+					{:else}
+						Start routing
+					{/if}
+				</span>
+			</button>
+		</div>
 	</div>
 
 	{#if $valhallaRoutingData && $valhallaRoutingData.length > 0}
-		<div class="sub-button tool-button">
-			<Button
-				on:click={() => clearFeatures()}
-				variant="raised"
-				color="secondary"
-				style="width:100%"
-			>
-				<Icon class="material-icons">delete</Icon>
-				<Label>Clear</Label>
-			</Button>
+		<div class="columns is-vcentered">
+			<div class="column py-0">
+				<button class="button is-fullwidth is-link is-light" on:click={clearFeatures}>
+					<span class="icon is-small">
+						<i class="fas fa-trash" />
+					</span>
+					<span> Clear </span>
+				</button>
+			</div>
 		</div>
 
-		<div style="display:inline-flex; width: 100%">
-			<Textfield
-				value={`${$valhallaRoutingData[0].lng.toFixed(6)}, ${$valhallaRoutingData[0].lat.toFixed(
-					6
-				)}`}
-				label="From"
-				readonly
-				style="width: 50%"
-			/>
-
-			{#if $valhallaRoutingData.length > 1}
-				<Textfield
-					value={`${$valhallaRoutingData[$valhallaRoutingData.length - 1].lng.toFixed(
-						6
-					)}, ${$valhallaRoutingData[$valhallaRoutingData.length - 1].lat.toFixed(6)}`}
-					label="To"
-					readonly
-					style="width: 50%"
-				/>
-			{/if}
+		<div class="field is-horizontal px-3">
+			<div class="field-label is-normal">
+				<label class="label">From</label>
+			</div>
+			<div class="field-body">
+				<div class="field">
+					<div class="columns pt-1">
+						<div class="column is-half px-0">
+							<input
+								class="input is-small"
+								type="text"
+								placeholder="Name"
+								value={`${$valhallaRoutingData[0].lng.toFixed(6)}`}
+								readonly
+							/>
+						</div>
+						<div class="column is-half px-0">
+							<input
+								class="input is-small"
+								type="text"
+								placeholder="Name"
+								value={`${$valhallaRoutingData[0].lat.toFixed(6)}`}
+								readonly
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		{#if $valhallaRoutingData.length > 1}
+			<div class="field is-horizontal px-3">
+				<div class="field-label is-normal">
+					<label class="label">To</label>
+				</div>
+				<div class="field-body">
+					<div class="field">
+						<div class="columns pt-1">
+							<div class="column is-half px-0">
+								<input
+									class="input is-small"
+									type="text"
+									placeholder="Name"
+									value={`${$valhallaRoutingData[$valhallaRoutingData.length - 1].lng.toFixed(6)}`}
+									readonly
+								/>
+							</div>
+							<div class="column is-half px-0">
+								<input
+									class="input is-small"
+									type="text"
+									placeholder="Name"
+									value={`${$valhallaRoutingData[$valhallaRoutingData.length - 1].lat.toFixed(6)}`}
+									readonly
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{/if}
 
 		{#if tripSummary}
-			<div style="display:inline-flex; width: 100%">
-				<Textfield value={`${tripSummary.length} km`} label="Length" readonly style="width: 50%" />
-				<Textfield value={`${tripSummary.time} min`} label="Time" readonly style="width: 50%" />
+			<div class="columns px-3">
+				<div class="column is-half px-0">
+					<div class="field">
+						<label class="label is-small">Length</label>
+						<div class="control">
+							<input
+								class="input is-small"
+								type="text"
+								value={`${tripSummary.length} km`}
+								readonly
+							/>
+						</div>
+					</div>
+				</div>
+				<div class="column is-half px-0">
+					<div class="field">
+						<label class="label is-small">Time</label>
+						<div class="control">
+							<input
+								class="input is-small"
+								type="text"
+								value={`${tripSummary.time} min`}
+								readonly
+							/>
+						</div>
+					</div>
+				</div>
 			</div>
 		{/if}
 	{/if}
 {/if}
-
-<style lang="scss">
-	.tool-button {
-		padding-top: 0.5em;
-		padding-left: 0.5em;
-		padding-right: 0.5em;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-	}
-</style>

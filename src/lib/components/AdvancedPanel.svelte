@@ -12,7 +12,6 @@
 	let panelMeasureOpen = true;
 	let panelRoutingOpen = true;
 	let panelTimeIsochroneOpen = false;
-	let panelDistanceIsochroneOpen = false;
 </script>
 
 {#if isAdvancedTabVisible}
@@ -29,14 +28,9 @@
 				<ValhallaRoutingPanel />
 			</div>
 		</CollapsiblePanel>
-		<CollapsiblePanel title="Time Isochrone" bind:isPanelOpen={panelTimeIsochroneOpen}>
+		<CollapsiblePanel title="Isochrone analysis" bind:isPanelOpen={panelTimeIsochroneOpen}>
 			<div class="card-content">
-				<ValhallaIsochronePanel bind:contourType={ContourType.Time} />
-			</div>
-		</CollapsiblePanel>
-		<CollapsiblePanel title="Distance Isochrone" bind:isPanelOpen={panelDistanceIsochroneOpen}>
-			<div class="card-content">
-				<ValhallaIsochronePanel bind:contourType={ContourType.Distance} />
+				<ValhallaIsochronePanel />
 			</div>
 		</CollapsiblePanel>
 	{/if}
