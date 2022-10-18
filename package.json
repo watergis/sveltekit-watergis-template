@@ -35,8 +35,8 @@
 		"vite": "^3.1.8"
 	},
 	"dependencies": {
+		"@creativebulma/bulma-collapsible": "^1.0.4",
 		"@geoffcox/svelte-splitter": "^1.0.1",
-		"@smui-extra/accordion": "^6.1.4",
 		"@smui/button": "^6.1.4",
 		"@smui/select": "^6.2.0",
 		"@smui/snackbar": "^6.1.4",

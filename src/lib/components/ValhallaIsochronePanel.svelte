@@ -92,54 +92,27 @@
 			<Textfield bind:value={latitude} label="Latitude" readonly />
 		</div>
 	</div>
-	{#if contourType === ContourType.Time}
-		<div style="display:inline-flex">
-			{#each contours as contour}
+	<div style="display:inline-flex">
+		{#each contours as contour}
+			{#if contourType === ContourType.Time}
 				<Textfield bind:value={contour.time} label="{contour.time} min" type="number" />
-			{/each}
-		</div>
-		<div class="tool-button">
-			<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
-				<Icon class="material-icons">delete</Icon>
-				<Label>Clear</Label>
-			</Button>
-		</div>
-		<div class="tool-button">
-			<Button
-				on:click={() => calc(ContourType.Time)}
-				variant="raised"
-				color="primary"
-				style="width:100%"
-			>
-				<Icon class="material-icons">access_time</Icon>
-				<Label>Calculate</Label>
-			</Button>
-		</div>
-	{:else if contourType === ContourType.Distance}
-		<p>Distance Isochrone</p>
-		<div style="display:inline-flex">
-			{#each contours as contour}
+			{:else}
 				<Textfield bind:value={contour.distance} label="{contour.distance} km" type="number" />
-			{/each}
-		</div>
-		<div class="tool-button">
-			<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
-				<Icon class="material-icons">delete</Icon>
-				<Label>Clear</Label>
-			</Button>
-		</div>
-		<div class="tool-button">
-			<Button
-				on:click={() => calc(ContourType.Distance)}
-				variant="raised"
-				color="primary"
-				style="width:100%"
-			>
-				<Icon class="material-icons">straighten</Icon>
-				<Label>Calculate</Label>
-			</Button>
-		</div>
-	{/if}
+			{/if}
+		{/each}
+	</div>
+	<div class="tool-button">
+		<Button on:click={() => calc(contourType)} variant="raised" color="primary" style="width:100%">
+			<Icon class="material-icons">straighten</Icon>
+			<Label>Calculate</Label>
+		</Button>
+	</div>
+	<div class="tool-button">
+		<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
+			<Icon class="material-icons">delete</Icon>
+			<Label>Clear</Label>
+		</Button>
+	</div>
 {/if}
 
 <style lang="scss">
