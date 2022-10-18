@@ -19,8 +19,9 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.40.0
       '@typescript-eslint/parser': ^5.40.0
       '@watergis/mapbox-gl-area-switcher': ^1.0.1
-      '@watergis/svelte-maplibre-attribute-popup': ^0.0.5
-      '@watergis/svelte-maplibre-legend': ^0.0.13
+      '@watergis/svelte-maplibre-attribute-popup': ^0.0.7
+      '@watergis/svelte-maplibre-legend': ^0.0.15
+      '@watergis/svelte-maplibre-search': ^0.1.2
       '@watergis/terrain-rgb': ^1.1.8
       eslint: ^8.25.0
       eslint-config-prettier: ^8.5.0
@@ -34,7 +35,6 @@ importers:
       prettier: ^2.7.1
       prettier-plugin-svelte: ^2.8.0
       rimraf: ^3.0.2
-      simple-svelte-autocomplete: ^2.4.0
       smui-theme: ^6.2.0
       svelte: ^3.52.0
       svelte-check: ^2.9.2
@@ -54,8 +54,9 @@ importers:
       '@turf/distance': 6.5.0
       '@types/file-saver': 2.0.5
       '@watergis/mapbox-gl-area-switcher': 1.0.1
-      '@watergis/svelte-maplibre-attribute-popup': 0.0.5
-      '@watergis/svelte-maplibre-legend': 0.0.13
+      '@watergis/svelte-maplibre-attribute-popup': 0.0.7
+      '@watergis/svelte-maplibre-legend': 0.0.15
+      '@watergis/svelte-maplibre-search': 0.1.2
       '@watergis/terrain-rgb': 1.1.8
       fabric: 5.2.4
       file-saver: 2.0.5
@@ -63,7 +64,6 @@ importers:
       image-clipper: 0.4.4
       jspdf: 2.5.1
       maplibre-gl: 2.4.0
-      simple-svelte-autocomplete: 2.4.0
       smui-theme: 6.2.0
       svelte-copy: 1.3.0
     devDependencies:
@@ -1063,17 +1063,24 @@ packages:
       mapbox-gl: 1.13.2
     dev: false
 
-  /@watergis/svelte-maplibre-attribute-popup/0.0.5:
-    resolution: {integrity: sha512-QquiAjoGogJkSfWWmCrPMxYGFbby21dmfG7cEMxCmddokCSKMD495t7XbSzFEtfOvFaZr4FFJW2rtNPsyYwK5A==}
+  /@watergis/svelte-maplibre-attribute-popup/0.0.7:
+    resolution: {integrity: sha512-w20LmfhR9dabrcy+suF9nhV7KkhhGP6AO+WJ0CNBGmmyI4FI0Zyr6MJa8nbwD4W/0uMxUyn/w+LecKVgj+u3Qg==}
     dependencies:
       maplibre-gl: 2.4.0
     dev: false
 
-  /@watergis/svelte-maplibre-legend/0.0.13:
-    resolution: {integrity: sha512-l6Duu4RsjNlYbqg+c9JehxNPA4Y6IHTdACSdVGETqAMmev7yajFy0P8vfYJ9Ezutdi1PClxLKary3/WMpgR+7g==}
+  /@watergis/svelte-maplibre-legend/0.0.15:
+    resolution: {integrity: sha512-KAXuy5nOSyMb9Lv/4IKn1hgD6kmTAEVd7ZPZxvYMixsaYe1l5UK9wlgB0GJgxh8Bew1t1hBb7I/1/5zvDVFe8Q==}
     dependencies:
       '@watergis/legend-symbol': 0.2.2
       maplibre-gl: 2.4.0
+    dev: false
+
+  /@watergis/svelte-maplibre-search/0.1.2:
+    resolution: {integrity: sha512-t2HVyHWBUHHQgdbGnEWjEa+jFiGmcKULarKX+420SeGf9TcXE3p3OPKPALU/CHGJyDpZAffpypvAEikRU5XFyQ==}
+    dependencies:
+      maplibre-gl: 2.4.0
+      simple-svelte-autocomplete: 2.4.0
     dev: false
 
   /@watergis/terrain-rgb/1.1.8:
