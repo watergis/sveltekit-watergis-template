@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
 	import Button, { Label, Icon } from '@smui/button';
 	import { map, valhallaControlData } from '$lib/stores';
 	import { config } from '$config';
-	import ValhallaIsochrone, { Costing, ContourType } from '$lib/valhalla-isochrone';
+	import ValhallaIsochrone, { ContourType } from '$lib/valhalla-isochrone';
+	import { costingOptions } from '$lib/constants';
 
 	export let contourType;
 	let longitude: number;
@@ -29,21 +29,6 @@
 			}
 		];
 	}
-
-	let costingOptions = [
-		{
-			value: Costing.Walking,
-			label: 'Walking'
-		},
-		{
-			value: Costing.Bicycle,
-			label: 'Bicycle'
-		},
-		{
-			value: Costing.Car,
-			label: 'Car'
-		}
-	];
 
 	let meansOfTransport = costingOptions[0].value;
 
@@ -80,12 +65,27 @@
 
 {#if config.valhalla}
 	<div class="transport-select">
-		<div>
-			<Select bind:value={meansOfTransport} label="Means of Transport" style="width:100%">
+		<div class="field">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label class="label">Means of Transport</label>
+			<div class="control">
 				{#each costingOptions as item}
-					<Option value={item.value}>{item.label}</Option>
+					<label class="radio" style="color:black">
+						<input
+							type="radio"
+							name="transport-{contourType}"
+							on:click={() => {
+								meansOfTransport = item.value;
+							}}
+							checked={meansOfTransport === item.value}
+						/>
+						<div class="icon is-small is-left pl-3 pr-3">
+							<i class="fas {item.icon}" />
+						</div>
+						{item.label}
+					</label>
 				{/each}
-			</Select>
+			</div>
 		</div>
 		<div style="display:inline-flex">
 			<Textfield bind:value={longitude} label="Longitude" readonly />

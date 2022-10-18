@@ -8,7 +8,6 @@ importers:
       '@creativebulma/bulma-collapsible': ^1.0.4
       '@geoffcox/svelte-splitter': ^1.0.1
       '@smui/button': ^6.1.4
-      '@smui/select': ^6.2.0
       '@smui/snackbar': ^6.1.4
       '@smui/textfield': ^6.1.4
       '@smui/top-app-bar': ^6.1.4
@@ -47,7 +46,6 @@ importers:
       '@creativebulma/bulma-collapsible': 1.0.4
       '@geoffcox/svelte-splitter': 1.0.1
       '@smui/button': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/select': 6.2.0_besnmoibwkhwtentvwuriss7pa
       '@smui/snackbar': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/textfield': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/top-app-bar': 6.1.4_besnmoibwkhwtentvwuriss7pa
@@ -377,49 +375,6 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@material/list/13.0.0:
-    resolution: {integrity: sha512-poq4WNDEfW6Z3YPAn3wdBX4RSkj3A83Pht6984MmG8YJZMlq34ftHECw37VcdmFJIyRPdpZqywJo/i7CxsSAgQ==}
-    dependencies:
-      '@material/base': 13.0.0
-      '@material/density': 13.0.0
-      '@material/dom': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/ripple': 13.0.0
-      '@material/rtl': 13.0.0
-      '@material/shape': 13.0.0
-      '@material/theme': 13.0.0
-      '@material/typography': 13.0.0
-      tslib: 2.4.0
-    dev: false
-
-  /@material/menu-surface/13.0.0:
-    resolution: {integrity: sha512-Irfnk0l8AO7z8ucilbBzZI8izbFV/aK1GbiPpT1SmZuKkL1z+04rB2HpB+OqwaBixdLTDq70AyawcnQ0MACeXQ==}
-    dependencies:
-      '@material/animation': 13.0.0
-      '@material/base': 13.0.0
-      '@material/elevation': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/rtl': 13.0.0
-      '@material/shape': 13.0.0
-      '@material/theme': 13.0.0
-      tslib: 2.4.0
-    dev: false
-
-  /@material/menu/13.0.0:
-    resolution: {integrity: sha512-RY9R2ubYU6a7WRJW3nWr/AoSzdrxwUGqkfJSx0U9M/wK1vbXYYcJ7eCXFzSpa5VrstE7of7PbyYtQ8V61tILEQ==}
-    dependencies:
-      '@material/base': 13.0.0
-      '@material/dom': 13.0.0
-      '@material/elevation': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/list': 13.0.0
-      '@material/menu-surface': 13.0.0
-      '@material/ripple': 13.0.0
-      '@material/rtl': 13.0.0
-      '@material/theme': 13.0.0
-      tslib: 2.4.0
-    dev: false
-
   /@material/notched-outline/13.0.0:
     resolution: {integrity: sha512-BHdxr1x2AN4oqycTNg0FGisG3rMHf50z3MuyUoQsJJ3WGjxBMWKd0yK/xl4m38nFKPg1vQnzyHIYTJdRpCaE7A==}
     dependencies:
@@ -448,28 +403,6 @@ packages:
     resolution: {integrity: sha512-nFGy3iQg7k+xLs67eb86mRFVLwa0yi7MusqRK4OM8DXcLO5yoVfUTPKpdSykcbRryp9imVHsxutox2tZawR4og==}
     dependencies:
       '@material/theme': 13.0.0
-      tslib: 2.4.0
-    dev: false
-
-  /@material/select/13.0.0:
-    resolution: {integrity: sha512-wVprsSMicU/l+LAqXdOU+qdzzdHupLXpWWQo2Rsk8G6AxL1Zna+/+ETnRlDdr2wHHK/KNDXSBdmuCcoEIRshcA==}
-    dependencies:
-      '@material/animation': 13.0.0
-      '@material/base': 13.0.0
-      '@material/density': 13.0.0
-      '@material/dom': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/floating-label': 13.0.0
-      '@material/line-ripple': 13.0.0
-      '@material/list': 13.0.0
-      '@material/menu': 13.0.0
-      '@material/menu-surface': 13.0.0
-      '@material/notched-outline': 13.0.0
-      '@material/ripple': 13.0.0
-      '@material/rtl': 13.0.0
-      '@material/shape': 13.0.0
-      '@material/theme': 13.0.0
-      '@material/typography': 13.0.0
       tslib: 2.4.0
     dev: false
 
@@ -658,46 +591,6 @@ packages:
       - typescript
     dev: false
 
-  /@smui/list/6.1.4_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-YPecf8ib/EETUVlt+TZMclzm5S+usMVpFsIgidMR75+HFUpXVlHsaOqGdQuQYJ75YRf3HZcYwUNn4t2B3ayhTg==}
-    dependencies:
-      '@material/dom': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/list': 13.0.0
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/ripple': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
-  /@smui/menu-surface/6.1.4_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-rZDHRLiAUCYrunhYAuZUSqtBO2r80rMu5/aeNuBNcemwBw/z/6opNTC8XEcAfN6kbbABewKDD/aW/MIZJgjHsA==}
-    dependencies:
-      '@material/animation': 13.0.0
-      '@material/menu-surface': 13.0.0
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
-  /@smui/menu/6.2.0_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-zYb3U5DPyrHWKwH2Q6KLSotrQ+6r223PnLbYGRcOCF7sEVNL+P7N8n8EfJTxX+/NF9Dbs48Z1a0QBvkN51klbQ==}
-    dependencies:
-      '@material/dom': 13.0.0
-      '@material/menu': 13.0.0
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/list': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/menu-surface': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
   /@smui/notched-outline/6.1.4_besnmoibwkhwtentvwuriss7pa:
     resolution: {integrity: sha512-wUWnF5qzCbM6UXioq1CHeYMHXfnd/2A2dXnl7ziQTEqPit9qCNc0XM9VcoxLJTy7IyEFmmTI7GcH0fOjggqg8A==}
     dependencies:
@@ -716,28 +609,6 @@ packages:
       '@material/dom': 13.0.0
       '@material/ripple': 13.0.0
       '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
-  /@smui/select/6.2.0_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-Cr9lKbEiGF9E+AzQOaSbUc1WyHbbft7CoeLNHblEiRijffSMY/Pgsn0qjqOBh3jeDUu6Nb5BW/3icL1As3SS4Q==}
-    dependencies:
-      '@material/feature-targeting': 13.0.0
-      '@material/ripple': 13.0.0
-      '@material/rtl': 13.0.0
-      '@material/select': 13.0.0
-      '@material/theme': 13.0.0
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/floating-label': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/line-ripple': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/list': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/menu': 6.2.0_besnmoibwkhwtentvwuriss7pa
-      '@smui/menu-surface': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/notched-outline': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/ripple': 6.1.4_besnmoibwkhwtentvwuriss7pa
       svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
     transitivePeerDependencies:
       - svelte

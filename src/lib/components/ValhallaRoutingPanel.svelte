@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import Button, { Label, Icon } from '@smui/button';
-	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
 	import type { GeoJSONFeature, MapMouseEvent } from 'maplibre-gl';
 	import { map, valhallaRoutingData, errorMessage } from '$lib/stores';
 	import { config } from '$config';
-	import { Costing } from '$lib/valhalla-isochrone';
 	import type { ValhallaTripResult, ValhallaTripSummary, ValhallaError } from '$lib/types';
+	import { costingOptions } from '$lib/constants';
 
 	const SOURCE_LINE = 'routing-controls-source-line';
 	const LAYER_LINE = 'routing-controls-layer-line';
@@ -18,20 +17,6 @@
 	const routingOptions = config.valhalla.options.routing;
 	let isRouting = false;
 
-	let costingOptions = [
-		{
-			value: Costing.Walking,
-			label: 'Walking'
-		},
-		{
-			value: Costing.Bicycle,
-			label: 'Bicycle'
-		},
-		{
-			value: Costing.Car,
-			label: 'Car'
-		}
-	];
 	let meansOfTransport = costingOptions[0].value;
 	let tripSummary: ValhallaTripSummary;
 
@@ -314,12 +299,27 @@
 </script>
 
 {#if config.valhalla}
-	<div>
-		<Select bind:value={meansOfTransport} label="Means of Transport" style="width:100%">
+	<div class="field">
+		<!-- svelte-ignore a11y-label-has-associated-control -->
+		<label class="label">Means of Transport</label>
+		<div class="control">
 			{#each costingOptions as item}
-				<Option value={item.value}>{item.label}</Option>
+				<label class="radio" style="color:black">
+					<input
+						type="radio"
+						name="transport-routing"
+						on:click={() => {
+							meansOfTransport = item.value;
+						}}
+						checked={meansOfTransport === item.value}
+					/>
+					<div class="icon is-small is-left pl-3 pr-3">
+						<i class="fas {item.icon}" />
+					</div>
+					{item.label}
+				</label>
 			{/each}
-		</Select>
+		</div>
 	</div>
 
 	<div class="tool-button" style="display: flex; align-items: center;">
