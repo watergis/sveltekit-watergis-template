@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { ContourType } from '$lib/valhalla-isochrone';
-
 	import MeasurePanel from './MeasurePanel.svelte';
 	import ValhallaIsochronePanel from './ValhallaIsochronePanel.svelte';
 	import ValhallaRoutingPanel from './ValhallaRoutingPanel.svelte';
