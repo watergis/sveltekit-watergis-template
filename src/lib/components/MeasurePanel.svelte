@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import Button, { Label, Icon } from '@smui/button';
 	import { TerrainRGB } from '@watergis/terrain-rgb';
 	import distance from '@turf/distance';
 	import { Marker, MapMouseEvent, GeoJSONFeature } from 'maplibre-gl';
@@ -238,69 +237,44 @@
 </script>
 
 {#if config.elevation}
-	<div class="tool-button">
-		<Button on:click={() => measureStart()} variant="raised" color="primary" style="width:100%">
-			<Icon class="material-icons">
-				{#if isQuery}
-					stop_circle
-				{:else}
-					straighten
-				{/if}
-			</Icon>
-			<Label>
-				{#if isQuery}
-					Stop measure
-				{:else}
-					Start measure
-				{/if}
-			</Label>
-		</Button>
+	<div class="columns is-vcentered">
+		<div class="column">
+			<button class="button is-fullwidth is-link" on:click={() => measureStart()}>
+				<span class="icon is-small">
+					{#if isQuery}
+						<i class="fas fa-stop" />
+					{:else}
+						<i class="fas fa-ruler" />
+					{/if}
+				</span>
+				<span>
+					{#if isQuery}
+						Stop measure
+					{:else}
+						Start measure
+					{/if}
+				</span>
+			</button>
+		</div>
 	</div>
 	{#if hasData}
-		<div style="display:inline-flex; width:100%">
-			<div class="sub-button">
-				<Button
-					on:click={() => clearFeatures()}
-					variant="raised"
-					color="secondary"
-					style="width:100%"
-				>
-					<Icon class="material-icons">delete</Icon>
-					<Label>Clear</Label>
-				</Button>
+		<div class="columns is-vcentered">
+			<div class="column is-half py-0">
+				<button class="button is-fullwidth is-link is-light" on:click={() => clearFeatures()}>
+					<span class="icon is-small">
+						<i class="fas fa-trash" />
+					</span>
+					<span> Clear </span>
+				</button>
 			</div>
-			<div class="sub-button">
-				<Button
-					on:click={() => downloadGeoJSON()}
-					variant="raised"
-					color="secondary"
-					style="width:100%"
-				>
-					<Icon class="material-icons">file_download</Icon>
-					<Label>GeoJSON</Label>
-				</Button>
+			<div class="column is-half py-0">
+				<button class="button is-fullwidth is-link is-light" on:click={() => downloadGeoJSON()}>
+					<span class="icon is-small">
+						<i class="fas fa-download" />
+					</span>
+					<span> GeoJSON </span>
+				</button>
 			</div>
 		</div>
 	{/if}
 {/if}
-
-<style lang="scss">
-	.tool-button {
-		padding-top: 0.5em;
-		padding-left: 0.5em;
-		padding-right: 0.5em;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-	}
-
-	.sub-button {
-		padding-top: 0.5em;
-		padding-left: 0.5em;
-		padding-right: 0.5em;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-		width: 50%;
-	}
-</style>

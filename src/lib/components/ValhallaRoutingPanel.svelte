@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import Button, { Label, Icon } from '@smui/button';
 	import Textfield from '@smui/textfield';
 	import type { GeoJSONFeature, MapMouseEvent } from 'maplibre-gl';
 	import { map, valhallaRoutingData, errorMessage } from '$lib/stores';
@@ -322,36 +321,37 @@
 		</div>
 	</div>
 
-	<div class="tool-button" style="display: flex; align-items: center;">
-		<Button color="primary" variant="raised" on:click={handleAddPoint} style="width:100%">
-			<Icon class="material-icons">
-				{#if isRouting}
-					close
-				{:else}
-					route
-				{/if}
-			</Icon>
-			<Label>
-				{#if isRouting}
-					Stop routing
-				{:else}
-					Start routing
-				{/if}
-			</Label>
-		</Button>
+	<div class="columns is-vcentered">
+		<div class="column">
+			<button class="button is-fullwidth is-link" on:click={handleAddPoint}>
+				<span class="icon is-small">
+					{#if isRouting}
+						<i class="fas fa-stop" />
+					{:else}
+						<i class="fas fa-route" />
+					{/if}
+				</span>
+				<span>
+					{#if isRouting}
+						Stop routing
+					{:else}
+						Start routing
+					{/if}
+				</span>
+			</button>
+		</div>
 	</div>
 
 	{#if $valhallaRoutingData && $valhallaRoutingData.length > 0}
-		<div class="sub-button tool-button">
-			<Button
-				on:click={() => clearFeatures()}
-				variant="raised"
-				color="secondary"
-				style="width:100%"
-			>
-				<Icon class="material-icons">delete</Icon>
-				<Label>Clear</Label>
-			</Button>
+		<div class="columns is-vcentered">
+			<div class="column py-0">
+				<button class="button is-fullwidth is-link is-light" on:click={clearFeatures}>
+					<span class="icon is-small">
+						<i class="fas fa-trash" />
+					</span>
+					<span> Clear </span>
+				</button>
+			</div>
 		</div>
 
 		<div style="display:inline-flex; width: 100%">
@@ -384,14 +384,3 @@
 		{/if}
 	{/if}
 {/if}
-
-<style lang="scss">
-	.tool-button {
-		padding-top: 0.5em;
-		padding-left: 0.5em;
-		padding-right: 0.5em;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-	}
-</style>

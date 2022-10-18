@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Textfield from '@smui/textfield';
-	import Button, { Label, Icon } from '@smui/button';
 	import { map, valhallaControlData } from '$lib/stores';
 	import { config } from '$config';
 	import ValhallaIsochrone, { ContourType } from '$lib/valhalla-isochrone';
@@ -101,17 +100,27 @@
 			{/if}
 		{/each}
 	</div>
-	<div class="tool-button">
-		<Button on:click={() => calc(contourType)} variant="raised" color="primary" style="width:100%">
-			<Icon class="material-icons">straighten</Icon>
-			<Label>Calculate</Label>
-		</Button>
-	</div>
-	<div class="tool-button">
-		<Button on:click={() => clear()} variant="raised" color="secondary" style="width:100%">
-			<Icon class="material-icons">delete</Icon>
-			<Label>Clear</Label>
-		</Button>
+	<div class="columns is-vcentered pt-2">
+		<div class="column is-half px-1 py-4">
+			<button class="button is-fullwidth is-link" on:click={() => calc(contourType)}>
+				<span class="icon is-small">
+					{#if contourType === ContourType.Time}
+						<i class="fas fa-clock" />
+					{:else}
+						<i class="fas fa-ruler" />
+					{/if}
+				</span>
+				<span> Calculate </span>
+			</button>
+		</div>
+		<div class="column is-half px-1 py-4">
+			<button class="button is-fullwidth is-link is-light" on:click={clear}>
+				<span class="icon is-small">
+					<i class="fas fa-trash" />
+				</span>
+				<span> Clear </span>
+			</button>
+		</div>
 	</div>
 {/if}
 

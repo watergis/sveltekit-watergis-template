@@ -37,7 +37,6 @@
 	"dependencies": {
 		"@creativebulma/bulma-collapsible": "^1.0.4",
 		"@geoffcox/svelte-splitter": "^1.0.1",
-		"@smui/button": "^6.1.4",
 		"@smui/snackbar": "^6.1.4",
 		"@smui/textfield": "^6.1.4",
 		"@smui/top-app-bar": "^6.1.4",

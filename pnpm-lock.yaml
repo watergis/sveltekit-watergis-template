@@ -7,7 +7,6 @@ importers:
       '@arkweid/lefthook': ^0.7.7
       '@creativebulma/bulma-collapsible': ^1.0.4
       '@geoffcox/svelte-splitter': ^1.0.1
-      '@smui/button': ^6.1.4
       '@smui/snackbar': ^6.1.4
       '@smui/textfield': ^6.1.4
       '@smui/top-app-bar': ^6.1.4
@@ -45,7 +44,6 @@ importers:
     dependencies:
       '@creativebulma/bulma-collapsible': 1.0.4
       '@geoffcox/svelte-splitter': 1.0.1
-      '@smui/button': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/snackbar': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/textfield': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/top-app-bar': 6.1.4_besnmoibwkhwtentvwuriss7pa
