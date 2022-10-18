@@ -13,7 +13,7 @@
 	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '$config';
 	import StyleUrl from '$lib/style-url';
-	import SearchControl from './SearchControl.svelte';
+	import SearchControl from '@watergis/svelte-maplibre-search';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
 	import MessageBar from './MessageBar.svelte';
@@ -142,7 +142,7 @@
 	<div class="map" id="map" bind:this={mapContainer} />
 	{#if isMapLoaded}
 		{#if config.search}
-			<SearchControl bind:map={$map} bind:searchOption={config.search} />
+			<SearchControl bind:map={$map} bind:searchOption={config.search} position="top-left" />
 		{/if}
 		<AttributePopupControl bind:map={$map} bind:targetLayers={config.popup.target} />
 	{/if}
