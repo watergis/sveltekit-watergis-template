@@ -25,9 +25,9 @@
 		setIsMobile();
 	});
 
-	const toggleMode = () => {
-		drawerOpen = false;
-	};
+	// const toggleMode = () => {
+	// 	drawerOpen = false;
+	// };
 </script>
 
 <svelte:window bind:innerWidth />
@@ -47,7 +47,8 @@
 		<Section align="end" toolbar>
 			<ShareURL />
 			<MapExport />
-			<LightDarkSwitch on:change={toggleMode} />
+			<!-- disable switching to darkmode since it does not work for bulma well -->
+			<!-- <LightDarkSwitch on:change={toggleMode} /> -->
 		</Section>
 	</Row>
 </TopAppBar>
