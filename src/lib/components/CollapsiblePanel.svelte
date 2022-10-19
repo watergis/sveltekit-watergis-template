@@ -4,7 +4,7 @@
 	export let isPanelOpen = false;
 </script>
 
-<nav class="panel is-info mx-1 mb-1">
+<nav class="panel is-info my-1 mx-1">
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<p class="panel-heading p-2 header-menu" on:click={() => (isPanelOpen = !isPanelOpen)}>
 		<span class="panel-icon mt-1">
