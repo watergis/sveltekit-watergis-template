@@ -110,13 +110,14 @@
 				{/each}
 			</div>
 		</div>
-		<div class="field is-horizontal px-3">
+		<div class="field is-horizontal">
 			<div class="field-label is-normal">
-				<label class="label">Lon/Lat</label>
+				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<label class="label">From</label>
 			</div>
 			<div class="field-body">
 				<div class="field">
-					<div class="columns pt-1">
+					<div class="columns pt-1 px-3 is-mobile">
 						<div class="column is-half px-0">
 							<input
 								class="input is-small"
@@ -141,7 +142,7 @@
 		</div>
 	</div>
 	<div style="display:inline-flex">
-		<div class="columns px-3">
+		<div class="columns px-3 is-mobile">
 			{#each contours as contour}
 				<div class="column is-one-quarter px-0">
 					<div class="field">

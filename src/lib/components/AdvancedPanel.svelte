@@ -15,21 +15,15 @@
 {#if isAdvancedTabVisible}
 	{#if config.elevation}
 		<CollapsiblePanel title="Measuring tool" bind:isPanelOpen={panelMeasureOpen}>
-			<div class="card-content">
-				<MeasurePanel />
-			</div>
+			<MeasurePanel />
 		</CollapsiblePanel>
 	{/if}
 	{#if config.valhalla}
 		<CollapsiblePanel title="Routing tool" bind:isPanelOpen={panelRoutingOpen}>
-			<div class="card-content">
-				<ValhallaRoutingPanel />
-			</div>
+			<ValhallaRoutingPanel />
 		</CollapsiblePanel>
 		<CollapsiblePanel title="Isochrone analysis" bind:isPanelOpen={panelTimeIsochroneOpen}>
-			<div class="card-content">
-				<ValhallaIsochronePanel />
-			</div>
+			<ValhallaIsochronePanel />
 		</CollapsiblePanel>
 	{/if}
 {/if}
