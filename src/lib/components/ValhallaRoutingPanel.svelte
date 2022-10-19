@@ -355,6 +355,7 @@
 
 		<div class="field is-horizontal px-3">
 			<div class="field-label is-normal">
+				<!-- svelte-ignore a11y-label-has-associated-control -->
 				<label class="label">From</label>
 			</div>
 			<div class="field-body">
@@ -385,11 +386,12 @@
 		{#if $valhallaRoutingData.length > 1}
 			<div class="field is-horizontal px-3">
 				<div class="field-label is-normal">
+					<!-- svelte-ignore a11y-label-has-associated-control -->
 					<label class="label">To</label>
 				</div>
 				<div class="field-body">
 					<div class="field">
-						<div class="columns pt-1">
+						<div class="columns pt-1 is-mobile">
 							<div class="column is-half px-0">
 								<input
 									class="input is-small"
@@ -415,9 +417,10 @@
 		{/if}
 
 		{#if tripSummary}
-			<div class="columns px-3">
+			<div class="columns px-3 is-mobile">
 				<div class="column is-half px-0">
 					<div class="field">
+						<!-- svelte-ignore a11y-label-has-associated-control -->
 						<label class="label is-small">Length</label>
 						<div class="control">
 							<input
@@ -429,8 +432,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="column is-half px-0">
+				<div class="column is-half px-0 is-mobile">
 					<div class="field">
+						<!-- svelte-ignore a11y-label-has-associated-control -->
 						<label class="label is-small">Time</label>
 						<div class="control">
 							<input
