@@ -38,12 +38,12 @@
 </svelte:head>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="icon is-large is-left menu-button" on:click={toggleMode}>
+<!-- <div class="icon is-large is-left menu-button" on:click={toggleMode}>
 	<i class="fas {`${darkTheme ? 'fa-sun' : 'fa-moon'}`} fa-xl" />
-</div>
+</div> -->
 
-<style>
+<!-- <style>
 	.menu-button {
 		cursor: pointer;
 	}
-</style>
+</style> -->
