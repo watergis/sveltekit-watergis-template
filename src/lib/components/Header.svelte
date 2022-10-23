@@ -3,13 +3,12 @@
 	import type { TopAppBarComponentDev } from '@smui/top-app-bar';
 	import TopAppBar, { Row, Section, Title, AutoAdjust } from '@smui/top-app-bar';
 	import { config } from '$config';
-	import MapExport from './MapExport.svelte';
 	import ShareURL from './ShareURL.svelte';
-	import LightDarkSwitch from './LightDarkSwitch.svelte';
 	import MenuButton from './MenuButton.svelte';
 
 	export let drawerOpen = false;
 
+	let darkTheme: boolean;
 	let topAppBar: TopAppBarComponentDev;
 
 	let innerWidth = 0;
@@ -19,6 +18,7 @@
 
 	const setIsMobile = () => {
 		isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
+		darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 	};
 
 	onMount(() => {
@@ -31,6 +31,26 @@
 </script>
 
 <svelte:window bind:innerWidth />
+
+<svelte:head>
+	{#if darkTheme === undefined}
+		<link
+			rel="stylesheet"
+			href="{config.basePath}/smui.css"
+			media="(prefers-color-scheme: light)"
+		/>
+		<link
+			rel="stylesheet"
+			href="{config.basePath}/smui-dark.css"
+			media="screen and (prefers-color-scheme: dark)"
+		/>
+	{:else if darkTheme}
+		<link rel="stylesheet" href="{config.basePath}/smui.css" media="print" />
+		<link rel="stylesheet" href="{config.basePath}/smui-dark.css" media="screen" />
+	{:else}
+		<link rel="stylesheet" href="{config.basePath}/smui.css" />
+	{/if}
+</svelte:head>
 
 <TopAppBar bind:this={topAppBar} variant="fixed">
 	<Row>
@@ -46,8 +66,6 @@
 		<section />
 		<Section align="end" toolbar>
 			<ShareURL />
-			<MapExport />
-			<LightDarkSwitch on:change={toggleMode} />
 		</Section>
 	</Row>
 </TopAppBar>
