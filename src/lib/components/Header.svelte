@@ -3,7 +3,6 @@
 	import type { TopAppBarComponentDev } from '@smui/top-app-bar';
 	import TopAppBar, { Row, Section, Title, AutoAdjust } from '@smui/top-app-bar';
 	import { config } from '$config';
-	import MapExport from './MapExport.svelte';
 	import ShareURL from './ShareURL.svelte';
 	import LightDarkSwitch from './LightDarkSwitch.svelte';
 	import MenuButton from './MenuButton.svelte';
@@ -46,7 +45,6 @@
 		<section />
 		<Section align="end" toolbar>
 			<ShareURL />
-			<MapExport />
 			<LightDarkSwitch on:change={toggleMode} />
 		</Section>
 	</Row>

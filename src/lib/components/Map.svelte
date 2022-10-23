@@ -16,6 +16,7 @@
 	import SearchControl from '@watergis/svelte-maplibre-search';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
+	import { MapExportControl } from '@watergis/svelte-maplibre-export';
 	import MessageBar from './MessageBar.svelte';
 
 	let mapContainer: HTMLDivElement;
@@ -140,6 +141,7 @@
 
 <div class="map-wrap">
 	<div class="map" id="map" bind:this={mapContainer} />
+	<MapExportControl bind:map={$map} showPrintableArea={true} showCrosshair={true} />
 	{#if isMapLoaded}
 		{#if config.search}
 			<SearchControl bind:map={$map} bind:searchOption={config.search} position="top-left" />
