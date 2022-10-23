@@ -32,6 +32,17 @@
 		<div class="panel-header m-1 p-0">
 			<StyleSwitcher on:change={onStyleChange} />
 		</div>
-		<LayerListPanel bind:map={$map} {relativeLayers} bind:style />
+		<div class="panel-content">
+			<LayerListPanel bind:map={$map} {relativeLayers} bind:style />
+		</div>
 	</nav>
 {/if}
+
+<style lang="scss">
+	$height: calc(100vh - 140px);
+
+	.panel-content {
+		height: $height;
+		margin-bottom: 20px;
+	}
+</style>

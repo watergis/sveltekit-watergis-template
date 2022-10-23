@@ -1,11 +1,7 @@
 <script lang="ts">
-	import Header from '$lib/components/Header.svelte';
-	import DrawerContent from '$lib/components/DrawerContent.svelte';
 	import Map from '$lib/components/Map.svelte';
 	import { selectedStyle } from '$lib/stores';
 	import { config } from '$config';
-
-	let drawerOpen = false;
 
 	const defaultStyle = config.styles[0];
 	selectedStyle.update(() => defaultStyle);
@@ -22,10 +18,7 @@
 	/>
 </sveltekit:head>
 
-<Header bind:drawerOpen />
-<DrawerContent bind:open={drawerOpen}>
-	<Map />
-</DrawerContent>
+<Map />
 
 <style>
 	@import 'https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css';
