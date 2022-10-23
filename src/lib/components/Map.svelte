@@ -17,6 +17,7 @@
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
 	import { MapExportControl } from '@watergis/svelte-maplibre-export';
+	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
 	import MessageBar from './MessageBar.svelte';
 
 	let mapContainer: HTMLDivElement;
@@ -44,30 +45,33 @@
 			hash: true,
 			attributionControl: false
 		});
+		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
 		map2.addControl(
 			new NavigationControl({
 				visualizePitch: true,
 				showZoom: true,
 				showCompass: true
 			}),
-			'top-right'
+			'bottom-right'
 		);
 		map2.addControl(
 			new GeolocateControl({
 				positionOptions: { enableHighAccuracy: true },
 				trackUserLocation: true
 			}),
-			'top-right'
+			'bottom-right'
 		);
-		map2.addControl(new FullscreenControl({ container: document.querySelector('body') }));
 		map2.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
-		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
 
 		if (config.terrain) {
 			map2.setMaxPitch(85);
-			map2.addControl(new TerrainControl(config.terrain));
+			map2.addControl(new TerrainControl(config.terrain), 'bottom-right');
 		}
 
+		map2.addControl(
+			new FullscreenControl({ container: document.querySelector('body') }),
+			'top-right'
+		);
 		if (config.areaSwitcher) {
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
@@ -137,11 +141,23 @@
 
 		map.update(() => map2);
 	});
+
+	let customiseUrl = (url: string): string => {
+		const _url = new URL(url);
+		_url.searchParams.set('style', $selectedStyle.title);
+		return _url.toString();
+	};
 </script>
 
 <div class="map-wrap">
 	<div class="map" id="map" bind:this={mapContainer} />
-	<MapExportControl bind:map={$map} showPrintableArea={true} showCrosshair={true} />
+	<ShareURLControl bind:map={$map} bind:customiseUrl position="top-right" />
+	<MapExportControl
+		bind:map={$map}
+		showPrintableArea={true}
+		showCrosshair={true}
+		position="top-right"
+	/>
 	{#if isMapLoaded}
 		{#if config.search}
 			<SearchControl bind:map={$map} bind:searchOption={config.search} position="top-left" />

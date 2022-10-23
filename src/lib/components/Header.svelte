@@ -3,7 +3,6 @@
 	import type { TopAppBarComponentDev } from '@smui/top-app-bar';
 	import TopAppBar, { Row, Section, Title, AutoAdjust } from '@smui/top-app-bar';
 	import { config } from '$config';
-	import ShareURL from './ShareURL.svelte';
 	import MenuButton from './MenuButton.svelte';
 
 	export let drawerOpen = false;
@@ -24,10 +23,6 @@
 	onMount(() => {
 		setIsMobile();
 	});
-
-	const toggleMode = () => {
-		drawerOpen = false;
-	};
 </script>
 
 <svelte:window bind:innerWidth />
@@ -64,9 +59,6 @@
 			{/if}
 		</Section>
 		<section />
-		<Section align="end" toolbar>
-			<ShareURL />
-		</Section>
 	</Row>
 </TopAppBar>
 <AutoAdjust {topAppBar} />
