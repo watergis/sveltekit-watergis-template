@@ -136,7 +136,7 @@
 	$height: calc(100vh - 64px);
 
 	@media (max-width: 768px) {
-		$height: calc(100vh - 184px);
+		$height: calc(100vh - 52px);
 	}
 
 	.drawer-content {
