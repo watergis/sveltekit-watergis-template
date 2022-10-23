@@ -6,9 +6,7 @@
 		"build": "rimraf build && vite build",
 		"package": "svelte-kit package",
 		"preview": "vite preview",
-		"prepare": "npm run smui-theme-light && npm run smui-theme-dark && lefthook install",
-		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme -i ./node_modules",
-		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark -i ./node_modules",
+		"prepare": "lefthook install",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --ignore-path .prettierignore --check --plugin-search-dir=. . && eslint --ignore-path .prettierignore .",
@@ -27,6 +25,7 @@
 		"prettier": "^2.7.1",
 		"prettier-plugin-svelte": "^2.8.0",
 		"rimraf": "^3.0.2",
+		"sass": "^1.55.0",
 		"svelte": "^3.52.0",
 		"svelte-check": "^2.9.2",
 		"svelte-preprocess": "^4.10.7",
@@ -36,7 +35,6 @@
 	},
 	"dependencies": {
 		"@geoffcox/svelte-splitter": "^1.0.1",
-		"@smui/top-app-bar": "^6.1.4",
 		"@turf/distance": "^6.5.0",
 		"@watergis/mapbox-gl-area-switcher": "^1.0.1",
 		"@watergis/svelte-maplibre-attribute-popup": "^0.0.7",
@@ -45,8 +43,7 @@
 		"@watergis/svelte-maplibre-search": "^0.1.2",
 		"@watergis/svelte-maplibre-share": "^0.1.0",
 		"@watergis/terrain-rgb": "^1.1.8",
-		"maplibre-gl": "^2.4.0",
-		"smui-theme": "^6.2.0"
+		"maplibre-gl": "^2.4.0"
 	},
 	"type": "module"
 }
