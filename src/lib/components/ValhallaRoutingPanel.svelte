@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import type { GeoJSONFeature, MapMouseEvent } from 'maplibre-gl';
-	import { map, valhallaRoutingData, errorMessage } from '$lib/stores';
+	import { map, valhallaRoutingData } from '$lib/stores';
 	import { config } from '$config';
 	import type { ValhallaTripResult, ValhallaTripSummary, ValhallaError } from '$lib/types';
 	import { costingOptions } from '$lib/constants';
@@ -17,6 +17,8 @@
 
 	let meansOfTransport = costingOptions[0].value;
 	let tripSummary: ValhallaTripSummary;
+
+	let errorMessage = '';
 
 	onMount(() => {
 		if (!$valhallaRoutingData) {
@@ -71,6 +73,7 @@
 			if ($map.getSource(SOURCE_SYMBOL)) $map.removeSource(SOURCE_SYMBOL);
 		}
 		valhallaRoutingData.update(() => []);
+		errorMessage = '';
 	};
 
 	$: $valhallaRoutingData, calcRoute();
@@ -81,6 +84,7 @@
 			tripSummary = undefined;
 			return;
 		}
+		errorMessage = '';
 		const baseAPI = `${config.valhalla.url}/route`;
 		const options = {
 			locations: $valhallaRoutingData.map((pt) => {
@@ -201,7 +205,7 @@
 				}
 			})
 			.catch((err: ErrorEvent) => {
-				errorMessage.update(() => [...$errorMessage, err.message]);
+				errorMessage = err.message;
 			});
 	};
 
@@ -446,6 +450,13 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		{/if}
+
+		{#if errorMessage}
+			<div class="notification is-warning">
+				<button class="delete" on:click={() => (errorMessage = '')} />
+				{errorMessage}
 			</div>
 		{/if}
 	{/if}
