@@ -258,7 +258,7 @@
 		</div>
 	</div>
 	{#if hasData}
-		<div class="columns is-vcentered">
+		<div class="columns is-vcentered pb-3">
 			<div class="column is-half py-0">
 				<button class="button is-fullwidth is-link is-light" on:click={() => clearFeatures()}>
 					<span class="icon is-small">
