@@ -36,7 +36,6 @@
 	},
 	"dependencies": {
 		"@geoffcox/svelte-splitter": "^1.0.1",
-		"@smui/snackbar": "^6.1.4",
 		"@smui/top-app-bar": "^6.1.4",
 		"@turf/distance": "^6.5.0",
 		"@watergis/mapbox-gl-area-switcher": "^1.0.1",

@@ -18,7 +18,6 @@
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
 	import { MapExportControl } from '@watergis/svelte-maplibre-export';
 	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
-	import MessageBar from './MessageBar.svelte';
 
 	let mapContainer: HTMLDivElement;
 	let centerMarker: GeoJSONSourceSpecification;
@@ -165,8 +164,6 @@
 		<AttributePopupControl bind:map={$map} bind:targetLayers={config.popup.target} />
 	{/if}
 </div>
-
-<MessageBar />
 
 <style>
 	@import 'maplibre-gl/dist/maplibre-gl.css';

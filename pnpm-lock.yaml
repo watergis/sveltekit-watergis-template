@@ -6,7 +6,6 @@ importers:
     specifiers:
       '@arkweid/lefthook': ^0.7.7
       '@geoffcox/svelte-splitter': ^1.0.1
-      '@smui/snackbar': ^6.1.4
       '@smui/top-app-bar': ^6.1.4
       '@sveltejs/adapter-static': ^1.0.0-next.44
       '@sveltejs/kit': ^1.0.0-next.516
@@ -36,7 +35,6 @@ importers:
       vite: ^3.1.8
     dependencies:
       '@geoffcox/svelte-splitter': 1.0.1
-      '@smui/snackbar': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@smui/top-app-bar': 6.1.4_besnmoibwkhwtentvwuriss7pa
       '@turf/distance': 6.5.0
       '@watergis/mapbox-gl-area-switcher': 1.0.1
@@ -250,29 +248,6 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@material/button/13.0.0:
-    resolution: {integrity: sha512-lYorht6fcEd4P+dsLVp2BGtaY5cGYNp71LMajuDe71GZX3dZPoKeVvb+Ie1S7vcB+o+WLTeaisMk9/vA4gfi8A==}
-    dependencies:
-      '@material/density': 13.0.0
-      '@material/dom': 13.0.0
-      '@material/elevation': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/ripple': 13.0.0
-      '@material/rtl': 13.0.0
-      '@material/shape': 13.0.0
-      '@material/theme': 13.0.0
-      '@material/tokens': 13.0.0
-      '@material/touch-target': 13.0.0
-      '@material/typography': 13.0.0
-      tslib: 2.4.0
-    dev: false
-
-  /@material/density/13.0.0:
-    resolution: {integrity: sha512-ppJTzOsuhjQam5GvHaq/XZocZNUr+41XQ2sd5nONAmQ0wwzXgqG0FaxtF1EXqK3uZFadz+vAu6enagre9DXhTA==}
-    dependencies:
-      tslib: 2.4.0
-    dev: false
-
   /@material/dom/13.0.0:
     resolution: {integrity: sha512-M9HLAYBZtkTUvf66FL+jAEvUOdhji1HkGA1mV6oyE+HY9gkCkmso+mngvzlLd5+uaAVE9I3WQFhSb9gp0cpXnw==}
     dependencies:
@@ -294,20 +269,6 @@ packages:
   /@material/feature-targeting/13.0.0:
     resolution: {integrity: sha512-QJClfeaA4EMyAxKJy9WR0Nx+/VwSZCkhGLUVBG9NhxqYGfl/LtaeaidrNm32vYEoNZAofN92VD2RwQTRwp/dMQ==}
     dependencies:
-      tslib: 2.4.0
-    dev: false
-
-  /@material/icon-button/13.0.0:
-    resolution: {integrity: sha512-SdxFytWvbfN0fj7jHFq3DqK5/Zoms+Ipuv6fI8AzwgDFe7mXJ2euPahN+3XcmJ3BaSMyfYsdbcYdCWs8bgHW1w==}
-    dependencies:
-      '@material/base': 13.0.0
-      '@material/density': 13.0.0
-      '@material/elevation': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/ripple': 13.0.0
-      '@material/rtl': 13.0.0
-      '@material/theme': 13.0.0
-      '@material/touch-target': 13.0.0
       tslib: 2.4.0
     dev: false
 
@@ -339,35 +300,11 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@material/snackbar/13.0.0:
-    resolution: {integrity: sha512-z59aYCeMWWEbsUU04QDZN4CxzCCOp3OIc5tzrdqnY3qRq4wwApxncf7RKKKSU2K6WTEWfdHHOc7aNX8kqlDmUg==}
-    dependencies:
-      '@material/animation': 13.0.0
-      '@material/base': 13.0.0
-      '@material/button': 13.0.0
-      '@material/dom': 13.0.0
-      '@material/elevation': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/icon-button': 13.0.0
-      '@material/ripple': 13.0.0
-      '@material/rtl': 13.0.0
-      '@material/shape': 13.0.0
-      '@material/theme': 13.0.0
-      '@material/typography': 13.0.0
-      tslib: 2.4.0
-    dev: false
-
   /@material/theme/13.0.0:
     resolution: {integrity: sha512-KAe1s0MvvfCGAwJliDVTvgAKuD3ESwhl7F7br4Iam4IPdqME2rWl8NPhKHFfaWqTG7PyCgMMngYEYuA8cLNTsA==}
     dependencies:
       '@material/feature-targeting': 13.0.0
       tslib: 2.4.0
-    dev: false
-
-  /@material/tokens/13.0.0:
-    resolution: {integrity: sha512-t55CKVeAjABdSQCKjsvYvqrA6Z4f5varLpLloai8ZQU0giSl7qbUczV1i8y2pSOzpRTswD5JKM7a19qfsl/TCA==}
-    dependencies:
-      '@material/elevation': 13.0.0
     dev: false
 
   /@material/top-app-bar/13.0.0:
@@ -381,15 +318,6 @@ packages:
       '@material/shape': 13.0.0
       '@material/theme': 13.0.0
       '@material/typography': 13.0.0
-      tslib: 2.4.0
-    dev: false
-
-  /@material/touch-target/13.0.0:
-    resolution: {integrity: sha512-2BMjj+nwKIYG7cZZGcNuRSKo53knqDu9ksv9wLidxjLgzqXBd1v9gdXsqMRQXepoOqftWGmYMaRYI0xMnxt6lA==}
-    dependencies:
-      '@material/base': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/rtl': 13.0.0
       tslib: 2.4.0
     dev: false
 
@@ -438,68 +366,11 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@smui/button/6.1.4_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-4CD6uPNkvZzoQyr6b3+PC49wieMkZW6xzxf+r/vq5pcv2X/PM+caySjzfAZamWN2m4nZMrmJjyEw1iCITWoQyg==}
-    dependencies:
-      '@material/button': 13.0.0
-      '@material/elevation': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/ripple': 13.0.0
-      '@material/theme': 13.0.0
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/ripple': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
   /@smui/common/6.1.4_besnmoibwkhwtentvwuriss7pa:
     resolution: {integrity: sha512-l6c4gJH+qP9HdM9RhTP07Gl8eewVbYWT7QfVSAF+wwji32ndjgZLlP5P2Jl/GmsQOOlDoNB3VPy/o4Z/kab31g==}
     dependencies:
       '@material/dom': 13.0.0
       '@tsconfig/svelte': 3.0.0
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
-  /@smui/icon-button/6.1.4_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-8eUow8d+vztGJBzHTuXGP0UszXq5RUN4syxW7Ur742D4zNSrF6dzccjteF5S51a7Pcf7AHeEDkAqHbA6ioIGLw==}
-    dependencies:
-      '@material/density': 13.0.0
-      '@material/icon-button': 13.0.0
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/ripple': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
-  /@smui/ripple/6.1.4_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-bMyjVE13Mpy8iygQTtxFTPfxJcefAD/4JBDTm3EORhyO16CcSHhHmMuUjP8YxWTPmn+mnWaeNORZ31aJt4tlYw==}
-    dependencies:
-      '@material/dom': 13.0.0
-      '@material/ripple': 13.0.0
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
-    transitivePeerDependencies:
-      - svelte
-      - typescript
-    dev: false
-
-  /@smui/snackbar/6.1.4_besnmoibwkhwtentvwuriss7pa:
-    resolution: {integrity: sha512-RkKqm9/uXRxcOTQfgkL3HvwRkRVzhmEjUWaRj6hr3MPUHvTI2nihv86BUNobRCt32ROKvnSATCjXsCfqTfceqg==}
-    dependencies:
-      '@material/dom': 13.0.0
-      '@material/feature-targeting': 13.0.0
-      '@material/snackbar': 13.0.0
-      '@smui/button': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/common': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/icon-button': 6.1.4_besnmoibwkhwtentvwuriss7pa
-      '@smui/ripple': 6.1.4_besnmoibwkhwtentvwuriss7pa
       svelte2tsx: 0.5.19_besnmoibwkhwtentvwuriss7pa
     transitivePeerDependencies:
       - svelte

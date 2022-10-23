@@ -13,5 +13,3 @@ export const measureControlData = writable<MeasureControlData>(null);
 export const valhallaControlData = writable<ValhallaIsochrone>(null);
 
 export const valhallaRoutingData = writable<LngLat[]>(null);
-
-export const errorMessage = writable<string[]>([]);
