@@ -16,7 +16,7 @@ importers:
       '@watergis/svelte-maplibre-legend': ^0.0.15
       '@watergis/svelte-maplibre-menu': ^0.1.1
       '@watergis/svelte-maplibre-search': ^0.1.2
-      '@watergis/svelte-maplibre-share': ^0.1.1
+      '@watergis/svelte-maplibre-share': ^0.1.2
       '@watergis/terrain-rgb': ^1.1.8
       eslint: ^8.26.0
       eslint-config-prettier: ^8.5.0
@@ -40,7 +40,7 @@ importers:
       '@watergis/svelte-maplibre-legend': 0.0.15
       '@watergis/svelte-maplibre-menu': 0.1.1
       '@watergis/svelte-maplibre-search': 0.1.2
-      '@watergis/svelte-maplibre-share': 0.1.1
+      '@watergis/svelte-maplibre-share': 0.1.2
       '@watergis/terrain-rgb': 1.1.8
       maplibre-gl: 2.4.0
     devDependencies:
@@ -569,8 +569,8 @@ packages:
       simple-svelte-autocomplete: 2.4.0
     dev: false
 
-  /@watergis/svelte-maplibre-share/0.1.1:
-    resolution: {integrity: sha512-taIaSrexLO2/AJ9SImb81SR5ZH/rs5s4WBLkSnLoTDx4J4E+QPQUVoGHw+/Pb3pLkXPgqsU3olLToTGFi6K2ig==}
+  /@watergis/svelte-maplibre-share/0.1.2:
+    resolution: {integrity: sha512-BFe9Af+XFF2DNCOwtMZMHXj+24CzFTA094zdSZp88B5XUSYjzwtyqgPr+t1oxmTu4G+34cxEtloT0Dbku3U1JQ==}
     dependencies:
       maplibre-gl: 2.4.0
       svelte-copy: 1.3.0
