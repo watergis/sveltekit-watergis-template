@@ -1,14 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { TopAppBarComponentDev } from '@smui/top-app-bar';
-	import TopAppBar, { Row, Section, Title, AutoAdjust } from '@smui/top-app-bar';
 	import { config } from '$config';
-	import MenuButton from './MenuButton.svelte';
 
 	export let drawerOpen = false;
-
-	let darkTheme: boolean;
-	let topAppBar: TopAppBarComponentDev;
 
 	let innerWidth = 0;
 	let isMobile = innerWidth < 768 ? true : false;
@@ -17,7 +11,6 @@
 
 	const setIsMobile = () => {
 		isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
-		darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 	};
 
 	onMount(() => {
@@ -27,46 +20,52 @@
 
 <svelte:window bind:innerWidth />
 
-<svelte:head>
-	{#if darkTheme === undefined}
-		<link
-			rel="stylesheet"
-			href="{config.basePath}/smui.css"
-			media="(prefers-color-scheme: light)"
-		/>
-		<link
-			rel="stylesheet"
-			href="{config.basePath}/smui-dark.css"
-			media="screen and (prefers-color-scheme: dark)"
-		/>
-	{:else if darkTheme}
-		<link rel="stylesheet" href="{config.basePath}/smui.css" media="print" />
-		<link rel="stylesheet" href="{config.basePath}/smui-dark.css" media="screen" />
-	{:else}
-		<link rel="stylesheet" href="{config.basePath}/smui.css" />
-	{/if}
-</svelte:head>
+<!-- svelte-ignore a11y-no-redundant-roles -->
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+	<div class="navbar-brand">
+		<a class="navbar-item" href={config.url}>
+			<img src={config.logo} height="48" alt="logo" />
+		</a>
+		<div class="navbar-item">
+			<p class="title m-0 {`${!isMobile ? 'is-4' : 'is-6'}`}" style="color:white;">
+				{config.title}
+			</p>
+		</div>
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-missing-attribute -->
+		<a
+			role="button"
+			class="navbar-burger {`${drawerOpen ? 'is-active' : ''}`}"
+			aria-label="menu"
+			aria-expanded="false"
+			on:click={() => (drawerOpen = !drawerOpen)}
+		>
+			<span aria-hidden="true" />
+			<span aria-hidden="true" />
+			<span aria-hidden="true" />
+		</a>
+	</div>
 
-<TopAppBar bind:this={topAppBar} variant="fixed">
-	<Row>
-		<Section>
-			<MenuButton bind:isOpened={drawerOpen} />
-			<a href={config.url}>
-				<img src={config.logo} alt="logo" class="logo" />
-			</a>
-			{#if !isMobile}
-				<Title>{config.title}</Title>
-			{/if}
-		</Section>
-		<section />
-	</Row>
-</TopAppBar>
-<AutoAdjust {topAppBar} />
+	<div class="navbar-menu">
+		<div class="navbar-end">
+			<div class="navbar-item">
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<div class="icon is-large is-left menu-button" on:click={() => (drawerOpen = !drawerOpen)}>
+					<i class="fas {`${drawerOpen ? 'fa-xmark' : 'fa-bars'}`} fa-xl" />
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
 
 <style>
 	.logo {
 		padding-top: 5px;
 		width: 48px;
 		height: 48px;
+	}
+
+	.menu-button {
+		cursor: pointer;
 	}
 </style>

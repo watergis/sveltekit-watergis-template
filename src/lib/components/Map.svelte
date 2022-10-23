@@ -45,6 +45,18 @@
 			attributionControl: false
 		});
 		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
+
+		if (config.terrain) {
+			map2.setMaxPitch(85);
+			map2.addControl(new TerrainControl(config.terrain), 'bottom-right');
+		}
+		map2.addControl(
+			new GeolocateControl({
+				positionOptions: { enableHighAccuracy: true },
+				trackUserLocation: true
+			}),
+			'bottom-right'
+		);
 		map2.addControl(
 			new NavigationControl({
 				visualizePitch: true,
@@ -53,24 +65,14 @@
 			}),
 			'bottom-right'
 		);
-		map2.addControl(
-			new GeolocateControl({
-				positionOptions: { enableHighAccuracy: true },
-				trackUserLocation: true
-			}),
-			'bottom-right'
-		);
-		map2.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
 
-		if (config.terrain) {
-			map2.setMaxPitch(85);
-			map2.addControl(new TerrainControl(config.terrain), 'bottom-right');
-		}
+		map2.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
 
 		map2.addControl(
 			new FullscreenControl({ container: document.querySelector('body') }),
 			'top-right'
 		);
+
 		if (config.areaSwitcher) {
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
