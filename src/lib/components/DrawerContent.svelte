@@ -63,5 +63,6 @@
 		position: absolute;
 		top: 0px;
 		left: 0px;
+		margin: 3px;
 	}
 </style>
