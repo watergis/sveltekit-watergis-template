@@ -24,6 +24,7 @@
 	let mapContainer: HTMLDivElement;
 	let centerMarker: GeoJSONSourceSpecification;
 	let isMapLoaded = false;
+	let isMenuShown = false;
 
 	onMount(async () => {
 		const styleUrlObj = new StyleUrl();
@@ -155,7 +156,7 @@
 	};
 </script>
 
-<MenuControl bind:map={$map} position={'top-right'}>
+<MenuControl bind:map={$map} position={'top-right'} bind:isMenuShown>
 	<div slot="primary">
 		<DrawerContent />
 	</div>
