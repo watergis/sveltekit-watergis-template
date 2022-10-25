@@ -14,7 +14,7 @@ importers:
       '@watergis/svelte-maplibre-attribute-popup': ^0.0.7
       '@watergis/svelte-maplibre-export': ^0.1.6
       '@watergis/svelte-maplibre-legend': ^0.1.0
-      '@watergis/svelte-maplibre-menu': ^0.1.2
+      '@watergis/svelte-maplibre-menu': ^0.1.4
       '@watergis/svelte-maplibre-search': ^0.1.2
       '@watergis/svelte-maplibre-share': ^0.1.2
       '@watergis/terrain-rgb': ^1.1.8
@@ -38,7 +38,7 @@ importers:
       '@watergis/svelte-maplibre-attribute-popup': 0.0.7
       '@watergis/svelte-maplibre-export': 0.1.6
       '@watergis/svelte-maplibre-legend': 0.1.0
-      '@watergis/svelte-maplibre-menu': 0.1.2
+      '@watergis/svelte-maplibre-menu': 0.1.4
       '@watergis/svelte-maplibre-search': 0.1.2
       '@watergis/svelte-maplibre-share': 0.1.2
       '@watergis/terrain-rgb': 1.1.8
@@ -555,8 +555,8 @@ packages:
       maplibre-gl: 2.4.0
     dev: false
 
-  /@watergis/svelte-maplibre-menu/0.1.2:
-    resolution: {integrity: sha512-k7b4AVlK76T9liXm1FBfb890N5qoV6G0msSbM0cSGrSvjiXjA/SStg86s26U8tBcldeJTsgDXd1tHYjChLQpcg==}
+  /@watergis/svelte-maplibre-menu/0.1.4:
+    resolution: {integrity: sha512-rxYfxlkAR307drKK5uhqI9vTdbc7WX/SX/n4FgNWi655rlEbfTPdiNMoE7I4dCjCWHsG6qqAt8eCr0YOmlnrUQ==}
     dependencies:
       '@geoffcox/svelte-splitter': 1.0.1
       maplibre-gl: 2.4.0
