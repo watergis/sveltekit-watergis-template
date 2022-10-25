@@ -11,7 +11,7 @@ pre-push:
 pre-commit:
   parallel: true
   commands:
-    lint:
+    1_lint:
       run: pnpm lint
-    format:
+    2_format:
       run: pnpm format

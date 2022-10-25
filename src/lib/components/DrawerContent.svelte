@@ -54,24 +54,11 @@
 				<li />{/each}
 		</ul>
 	</div>
-	<div class="panel-content">
-		<LayerListPanel {isLayersTabVisible} />
-		<AdvancedPanel {isAdvancedTabVisible} />
-	</div>
+	<LayerListPanel {isLayersTabVisible} />
+	<AdvancedPanel {isAdvancedTabVisible} />
 </div>
 
 <style lang="scss">
-	$height: calc(100vh - 40px);
-
-	.panel-content {
-		overflow: auto;
-		display: flex;
-		height: $height;
-		flex-direction: column;
-		flex-basis: 100%;
-		flex: 1;
-	}
-
 	.logo {
 		position: absolute;
 		top: 0px;

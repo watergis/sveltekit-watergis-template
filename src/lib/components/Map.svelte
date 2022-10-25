@@ -156,10 +156,10 @@
 </script>
 
 <MenuControl bind:map={$map} position={'top-right'}>
-	<div class="map-wrap" slot="primary">
+	<div slot="primary">
 		<DrawerContent />
 	</div>
-	<div class="map-wrap" slot="secondary">
+	<div slot="secondary">
 		<div class="map" id="map" bind:this={mapContainer} />
 		{#if isMapLoaded}
 			{#if config.search}
@@ -181,15 +181,12 @@
 	@import 'maplibre-gl/dist/maplibre-gl.css';
 	@import '@watergis/mapbox-gl-area-switcher/css/styles.css';
 
-	.map-wrap {
-		position: relative;
-		width: 100%;
-		height: 100%;
-	}
 	.map {
 		position: absolute;
 		top: 0;
 		bottom: 0;
+		margin: 0;
+		padding: 0;
 		width: 100%;
 		height: 100%;
 		z-index: 1;

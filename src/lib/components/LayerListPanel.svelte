@@ -3,7 +3,7 @@
 	import StyleSwitcher from './StyleSwitcher.svelte';
 	import { map } from '$lib/stores';
 	import { config } from '$config';
-	import LayerListPanel from '@watergis/svelte-maplibre-legend';
+	import { LegendPanel, LegendHeader } from '@watergis/svelte-maplibre-legend';
 
 	let style: StyleSpecification = undefined;
 	$: {
@@ -14,6 +14,8 @@
 		}
 	}
 
+	let onlyRendered = true;
+	let onlyRelative = true;
 	let relativeLayers = {};
 	export let isLayersTabVisible = false;
 
@@ -32,17 +34,23 @@
 		<div class="panel-header m-1 p-0">
 			<StyleSwitcher on:change={onStyleChange} />
 		</div>
-		<div class="panel-content">
-			<LayerListPanel bind:map={$map} {relativeLayers} bind:style />
+		<div class="legend-header m-1">
+			<LegendHeader bind:onlyRendered bind:onlyRelative {relativeLayers} />
+		</div>
+		<div class="legend-content">
+			<LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
 		</div>
 	</nav>
 {/if}
 
 <style lang="scss">
-	$height: calc(100vh - 140px);
+	$height: calc(100vh - 135px);
 
-	.panel-content {
+	.legend-content {
+		position: absolute;
+		overflow-x: hidden;
+		overflow-y: auto;
 		height: $height;
-		margin-bottom: 20px;
+		width: 100%;
 	}
 </style>
