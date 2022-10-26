@@ -12,7 +12,7 @@
 	} from 'maplibre-gl';
 	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '$config';
-	import StyleUrl from '$lib/style-url';
+	// import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
 	import SearchControl from '@watergis/svelte-maplibre-search';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
@@ -20,6 +20,7 @@
 	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import DrawerContent from './DrawerContent.svelte';
+	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
 
 	let mapContainer: HTMLDivElement;
 	let centerMarker: GeoJSONSourceSpecification;

@@ -1,19 +1,7 @@
 import type { LngLatLike, TerrainSpecification } from 'maplibre-gl';
 import type { Contour } from '$lib/valhalla-isochrone';
-
-export type StyleSwitcherOption = {
-	title: string;
-	uri: string;
-};
-
-export type SearchOption = {
-	url: string;
-	target: string[];
-	format: (p: { [key: string]: string }) => string;
-	place_type: string[];
-	placeholder: string;
-	zoom: number;
-};
+import type { StyleSwitcherOption } from '@watergis/svelte-maplibre-style-switcher';
+import type { SearchOption } from '@watergis/svelte-maplibre-search';
 
 export type Config = {
 	title: string;
