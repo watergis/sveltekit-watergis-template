@@ -12,7 +12,6 @@
 	} from 'maplibre-gl';
 	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '$config';
-	import StyleUrl from '$lib/style-url';
 	import SearchControl from '@watergis/svelte-maplibre-search';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
@@ -20,6 +19,7 @@
 	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import DrawerContent from './DrawerContent.svelte';
+	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
 
 	let mapContainer: HTMLDivElement;
 	let centerMarker: GeoJSONSourceSpecification;
@@ -28,15 +28,7 @@
 
 	onMount(async () => {
 		const styleUrlObj = new StyleUrl();
-		const defaultStyle = config.styles[0];
-		const styleFromUrl = styleUrlObj.get();
-		let initialStyle = defaultStyle;
-		if (styleFromUrl) {
-			const styleObj = styleUrlObj.getMatchedStyleByTitle(config.styles, styleFromUrl);
-			if (styleObj) {
-				initialStyle = styleObj;
-			}
-		}
+		const initialStyle = styleUrlObj.getInitialStyle(config.styles);
 		selectedStyle.update(() => initialStyle);
 
 		const map2 = new Map({

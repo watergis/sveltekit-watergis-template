@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { StyleSpecification } from 'maplibre-gl';
-	import StyleSwitcher from './StyleSwitcher.svelte';
-	import { map } from '$lib/stores';
+	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '$config';
 	import { LegendPanel, LegendHeader } from '@watergis/svelte-maplibre-legend';
+	import { StyleSwitcher } from '@watergis/svelte-maplibre-style-switcher';
+	import type { StyleSpecification } from 'maplibre-gl';
 
 	let style: StyleSpecification = undefined;
 	$: {
@@ -32,7 +32,12 @@
 {#if isLayersTabVisible}
 	<nav class="panel">
 		<div class="panel-header m-1 p-0">
-			<StyleSwitcher on:change={onStyleChange} />
+			<StyleSwitcher
+				bind:map={$map}
+				bind:selectedStyle={$selectedStyle}
+				bind:styles={config.styles}
+				on:change={onStyleChange}
+			/>
 		</div>
 		<div class="legend-header m-1">
 			<LegendHeader bind:onlyRendered bind:onlyRelative {relativeLayers} />
