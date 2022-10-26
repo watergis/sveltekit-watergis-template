@@ -17,7 +17,7 @@ importers:
       '@watergis/svelte-maplibre-menu': ^0.1.4
       '@watergis/svelte-maplibre-search': ^0.1.2
       '@watergis/svelte-maplibre-share': ^0.1.2
-      '@watergis/svelte-maplibre-style-switcher': ^0.1.1
+      '@watergis/svelte-maplibre-style-switcher': ^0.1.2
       '@watergis/terrain-rgb': ^1.1.8
       eslint: ^8.26.0
       eslint-config-prettier: ^8.5.0
@@ -42,7 +42,7 @@ importers:
       '@watergis/svelte-maplibre-menu': 0.1.4
       '@watergis/svelte-maplibre-search': 0.1.2
       '@watergis/svelte-maplibre-share': 0.1.2
-      '@watergis/svelte-maplibre-style-switcher': 0.1.1
+      '@watergis/svelte-maplibre-style-switcher': 0.1.2
       '@watergis/terrain-rgb': 1.1.8
       maplibre-gl: 2.4.0
     devDependencies:
@@ -578,8 +578,8 @@ packages:
       svelte-copy: 1.3.0
     dev: false
 
-  /@watergis/svelte-maplibre-style-switcher/0.1.1:
-    resolution: {integrity: sha512-lAK0yKc9xASat83YWiDhZITSO9GxU2IiLiERWxajq7Sd4uM1wFNYq6Qle6tTU0dfkFWeeQrWuXbPrXmDN1Tvww==}
+  /@watergis/svelte-maplibre-style-switcher/0.1.2:
+    resolution: {integrity: sha512-V+qsvC4ajMrWOdXUqEPUp98co8DF3XvTQGtJrdVzEKxLGNEeAWlZJPowMaNhs14CELFNA+9ylOamk6Nr+B1ynQ==}
     dependencies:
       maplibre-gl: 2.4.0
     dev: false

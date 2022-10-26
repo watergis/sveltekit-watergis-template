@@ -2,7 +2,7 @@
 	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '$config';
 	import { LegendPanel, LegendHeader } from '@watergis/svelte-maplibre-legend';
-	import StyleSwitcher from '@watergis/svelte-maplibre-style-switcher';
+	import { StyleSwitcher } from '@watergis/svelte-maplibre-style-switcher';
 	import type { StyleSpecification } from 'maplibre-gl';
 
 	let style: StyleSpecification = undefined;

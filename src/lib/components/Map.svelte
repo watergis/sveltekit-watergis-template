@@ -28,15 +28,7 @@
 
 	onMount(async () => {
 		const styleUrlObj = new StyleUrl();
-		const defaultStyle = config.styles[0];
-		const styleFromUrl = styleUrlObj.get();
-		let initialStyle = defaultStyle;
-		if (styleFromUrl) {
-			const styleObj = styleUrlObj.getMatchedStyleByTitle(config.styles, styleFromUrl);
-			if (styleObj) {
-				initialStyle = styleObj;
-			}
-		}
+		const initialStyle = styleUrlObj.getInitialStyle(config.styles);
 		selectedStyle.update(() => initialStyle);
 
 		const map2 = new Map({
