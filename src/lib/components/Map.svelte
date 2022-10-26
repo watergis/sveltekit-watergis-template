@@ -12,7 +12,6 @@
 	} from 'maplibre-gl';
 	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '$config';
-	// import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
 	import SearchControl from '@watergis/svelte-maplibre-search';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
