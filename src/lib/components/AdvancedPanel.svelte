@@ -1,8 +1,9 @@
 <script lang="ts">
-	import MeasurePanel from './MeasurePanel.svelte';
+	import { MeasurePanel } from '@watergis/svelte-maplibre-measure';
 	import ValhallaIsochronePanel from './ValhallaIsochronePanel.svelte';
 	import ValhallaRoutingPanel from './ValhallaRoutingPanel.svelte';
 	import CollapsiblePanel from './CollapsiblePanel.svelte';
+	import { map } from '$lib/stores';
 	import { config } from '$config';
 
 	export let isAdvancedTabVisible = false;
@@ -16,7 +17,11 @@
 	{#if isAdvancedTabVisible}
 		{#if config.elevation}
 			<CollapsiblePanel title="Measuring tool" bind:isPanelOpen={panelMeasureOpen}>
-				<MeasurePanel />
+				<MeasurePanel
+					bind:map={$map}
+					bind:measureOption={config.elevation.options}
+					bind:terrainRgbUrl={config.elevation.url}
+				/>
 			</CollapsiblePanel>
 		{/if}
 		{#if config.valhalla}

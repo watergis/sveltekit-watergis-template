@@ -7,18 +7,17 @@ importers:
       '@arkweid/lefthook': ^0.7.7
       '@sveltejs/adapter-static': ^1.0.0-next.46
       '@sveltejs/kit': ^1.0.0-next.525
-      '@turf/distance': ^6.5.0
       '@typescript-eslint/eslint-plugin': ^5.41.0
       '@typescript-eslint/parser': ^5.41.0
       '@watergis/mapbox-gl-area-switcher': ^1.0.1
       '@watergis/svelte-maplibre-attribute-popup': ^0.0.7
       '@watergis/svelte-maplibre-export': ^0.1.6
       '@watergis/svelte-maplibre-legend': ^0.1.0
+      '@watergis/svelte-maplibre-measure': ^0.1.0
       '@watergis/svelte-maplibre-menu': ^0.1.4
       '@watergis/svelte-maplibre-search': ^0.1.2
       '@watergis/svelte-maplibre-share': ^0.1.2
       '@watergis/svelte-maplibre-style-switcher': ^0.1.2
-      '@watergis/terrain-rgb': ^1.1.8
       eslint: ^8.26.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-svelte3: ^4.0.0
@@ -34,16 +33,15 @@ importers:
       typescript: ~4.8.4
       vite: ^3.1.8
     dependencies:
-      '@turf/distance': 6.5.0
       '@watergis/mapbox-gl-area-switcher': 1.0.1
       '@watergis/svelte-maplibre-attribute-popup': 0.0.7
       '@watergis/svelte-maplibre-export': 0.1.6
       '@watergis/svelte-maplibre-legend': 0.1.0
+      '@watergis/svelte-maplibre-measure': 0.1.0
       '@watergis/svelte-maplibre-menu': 0.1.4
       '@watergis/svelte-maplibre-search': 0.1.2
       '@watergis/svelte-maplibre-share': 0.1.2
       '@watergis/svelte-maplibre-style-switcher': 0.1.2
-      '@watergis/terrain-rgb': 1.1.8
       maplibre-gl: 2.4.0
     devDependencies:
       '@arkweid/lefthook': 0.7.7
@@ -555,6 +553,16 @@ packages:
     dependencies:
       '@watergis/legend-symbol': 0.2.2
       maplibre-gl: 2.4.0
+    dev: false
+
+  /@watergis/svelte-maplibre-measure/0.1.0:
+    resolution: {integrity: sha512-7+ly/VagiIJ3AItvITwfmF79gFLqbixS1iz4xcat/x0aHc6s1jeAdkHutbAVCtrlh9FweQ5J7N80Vl3kHrIx+g==}
+    dependencies:
+      '@turf/distance': 6.5.0
+      '@watergis/terrain-rgb': 1.1.8
+      maplibre-gl: 2.4.0
+    transitivePeerDependencies:
+      - debug
     dev: false
 
   /@watergis/svelte-maplibre-menu/0.1.4:
