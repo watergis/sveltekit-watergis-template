@@ -7,18 +7,17 @@ importers:
       '@arkweid/lefthook': ^0.7.7
       '@sveltejs/adapter-static': ^1.0.0-next.46
       '@sveltejs/kit': ^1.0.0-next.525
-      '@turf/distance': ^6.5.0
       '@typescript-eslint/eslint-plugin': ^5.41.0
       '@typescript-eslint/parser': ^5.41.0
       '@watergis/mapbox-gl-area-switcher': ^1.0.1
       '@watergis/svelte-maplibre-attribute-popup': ^0.0.7
-      '@watergis/svelte-maplibre-export': ^0.1.6
+      '@watergis/svelte-maplibre-export': ^0.1.7
       '@watergis/svelte-maplibre-legend': ^0.1.0
+      '@watergis/svelte-maplibre-measure': ^0.1.4
       '@watergis/svelte-maplibre-menu': ^0.1.4
       '@watergis/svelte-maplibre-search': ^0.1.2
       '@watergis/svelte-maplibre-share': ^0.1.2
       '@watergis/svelte-maplibre-style-switcher': ^0.1.2
-      '@watergis/terrain-rgb': ^1.1.8
       eslint: ^8.26.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-svelte3: ^4.0.0
@@ -34,16 +33,15 @@ importers:
       typescript: ~4.8.4
       vite: ^3.1.8
     dependencies:
-      '@turf/distance': 6.5.0
       '@watergis/mapbox-gl-area-switcher': 1.0.1
       '@watergis/svelte-maplibre-attribute-popup': 0.0.7
-      '@watergis/svelte-maplibre-export': 0.1.6
+      '@watergis/svelte-maplibre-export': 0.1.7
       '@watergis/svelte-maplibre-legend': 0.1.0
+      '@watergis/svelte-maplibre-measure': 0.1.4
       '@watergis/svelte-maplibre-menu': 0.1.4
       '@watergis/svelte-maplibre-search': 0.1.2
       '@watergis/svelte-maplibre-share': 0.1.2
       '@watergis/svelte-maplibre-style-switcher': 0.1.2
-      '@watergis/terrain-rgb': 1.1.8
       maplibre-gl: 2.4.0
     devDependencies:
       '@arkweid/lefthook': 0.7.7
@@ -81,10 +79,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
-    dev: false
-
-  /@canvas/image-data/1.0.0:
-    resolution: {integrity: sha512-BxOqI5LgsIQP1odU5KMwV9yoijleOPzHL18/YvNqF9KFSGF2K/DLlYAbDQsWqd/1nbaFuSkYD/191dpMtNh4vw==}
     dev: false
 
   /@esbuild/android-arm/0.15.10:
@@ -542,8 +536,8 @@ packages:
       maplibre-gl: 2.4.0
     dev: false
 
-  /@watergis/svelte-maplibre-export/0.1.6:
-    resolution: {integrity: sha512-PNIN2ruVeQcDuGOQBQADilwhZGGnsuQjeCgkApU+RQ2Oa8Ig3+I3XJicHkk7q5nmODHZVBULkHbW+K9Bkgqf7A==}
+  /@watergis/svelte-maplibre-export/0.1.7:
+    resolution: {integrity: sha512-uyBUI2L0ccDQBvw9nu1kWhwc07zLpSOHaCLOxJRmQZOcONZIkZKdE0ILH85HSXTZwMdCVsNKua7srjuDl9uMzQ==}
     dependencies:
       '@neodrag/svelte': 1.2.4
       jspdf: 2.5.1
@@ -555,6 +549,16 @@ packages:
     dependencies:
       '@watergis/legend-symbol': 0.2.2
       maplibre-gl: 2.4.0
+    dev: false
+
+  /@watergis/svelte-maplibre-measure/0.1.4:
+    resolution: {integrity: sha512-83O0WJAl3RTDrtdediqr4SHLFIaQUu5nEJ+XiB394MaEBdXnD0ceMmwmeBKkavaum66WTpgma+OaiK+pW/EEZw==}
+    dependencies:
+      '@turf/distance': 6.5.0
+      global-mercator: 3.1.0
+      maplibre-gl: 2.4.0
+      pako: 2.0.4
+      webp-hero: 0.0.2
     dev: false
 
   /@watergis/svelte-maplibre-menu/0.1.4:
@@ -582,20 +586,6 @@ packages:
     resolution: {integrity: sha512-V+qsvC4ajMrWOdXUqEPUp98co8DF3XvTQGtJrdVzEKxLGNEeAWlZJPowMaNhs14CELFNA+9ylOamk6Nr+B1ynQ==}
     dependencies:
       maplibre-gl: 2.4.0
-    dev: false
-
-  /@watergis/terrain-rgb/1.1.8:
-    resolution: {integrity: sha512-SHcAbuyMJgqjyMfoaez8wE+NVZb0kTetaT0A75Wl12SYp9lV79995/3EZbc7q4ipewYst/rHk0rpPU0knVZA/Q==}
-    dependencies:
-      '@canvas/image-data': 1.0.0
-      axios: 0.21.4
-      buffer: 6.0.3
-      fs: 0.0.1-security
-      path: 0.12.7
-      png-ts: 0.0.3
-      webp-hero: 0.0.0-dev.27
-    transitivePeerDependencies:
-      - debug
     dev: false
 
   /acorn-jsx/5.3.2_acorn@8.8.0:
@@ -656,14 +646,6 @@ packages:
     hasBin: true
     dev: false
 
-  /axios/0.21.4:
-    resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
-    dependencies:
-      follow-redirects: 1.15.2
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
@@ -673,10 +655,6 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: false
     optional: true
-
-  /base64-js/1.5.1:
-    resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
-    dev: false
 
   /binary-extensions/2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
@@ -706,13 +684,6 @@ packages:
   /buffer-crc32/0.2.13:
     resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
     dev: true
-
-  /buffer/6.0.3:
-    resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
-    dependencies:
-      base64-js: 1.5.1
-      ieee754: 1.2.1
-    dev: false
 
   /busboy/1.6.0:
     resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}
@@ -1296,23 +1267,9 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
-  /follow-redirects/1.15.2:
-    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dev: false
-
   /fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: true
-
-  /fs/0.0.1-security:
-    resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
-    dev: false
 
   /fsevents/2.3.2:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
@@ -1363,6 +1320,10 @@ packages:
       once: 1.4.0
       path-is-absolute: 1.0.1
     dev: true
+
+  /global-mercator/3.1.0:
+    resolution: {integrity: sha512-Ws/8nyCHDFzpDQjfr6fcbWY+yU/Oh6rk7+WXNr/pZl7O1WCktAnMZy+9wpJ2stNCqM2SWwvZoqWbIzTiFN++2A==}
+    dev: false
 
   /global-prefix/3.0.0:
     resolution: {integrity: sha512-awConJSVCHVGND6x3tmMaKcQvwXLhjdkmomy2W+Goaui8YPgYgXJZewhg3fWC+DlfqqQuWg8AwqjGTD2nAPVWg==}
@@ -1466,10 +1427,6 @@ packages:
       once: 1.4.0
       wrappy: 1.0.2
     dev: true
-
-  /inherits/2.0.3:
-    resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
-    dev: false
 
   /inherits/2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -1771,8 +1728,8 @@ packages:
       p-limit: 3.1.0
     dev: true
 
-  /pako/1.0.11:
-    resolution: {integrity: sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==}
+  /pako/2.0.4:
+    resolution: {integrity: sha512-v8tweI900AUkZN6heMU/4Uy4cXRc2AYNRggVmTR+dEncawDJgCdLMximOVA2p4qO57WMynangsfGRb5WD6L1Bg==}
     dev: false
 
   /parent-module/1.0.1:
@@ -1806,13 +1763,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /path/0.12.7:
-    resolution: {integrity: sha512-aXXC6s+1w7otVF9UletFkFcDsJeO7lSZBPUQhtb5O0xJe8LtYhj/GxldoL09bBj9+ZmE2hNoHqQSFMN5fikh4Q==}
-    dependencies:
-      process: 0.11.10
-      util: 0.10.4
-    dev: false
-
   /pbf/3.2.1:
     resolution: {integrity: sha512-ClrV7pNOn7rtmoQVF4TS1vyU0WhYRnP92fzbfF75jAIwpnzdJXf8iTd4CMEqO4yUenH6NDqLiwjqlh6QgZzgLQ==}
     hasBin: true
@@ -1834,12 +1784,6 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
     dev: true
-
-  /png-ts/0.0.3:
-    resolution: {integrity: sha512-Qwn3yMfbrbaN86QjrDAqD1UVJc4AV4hvBCx5Dv9libLd6D20xKtgOFs/UcvD0nnjxWlgS12kEVWCDFd9ZtwB+g==}
-    dependencies:
-      pako: 1.0.11
-    dev: false
 
   /postcss/8.4.17:
     resolution: {integrity: sha512-UNxNOLQydcOFi41yHNMcKRZ39NeXlr8AxGuZJsdub8vIb12fHzcq37DTU/QtbI6WLxNg2gF9Z+8qtRwTj1UI1Q==}
@@ -1874,11 +1818,6 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
-
-  /process/0.11.10:
-    resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
-    engines: {node: '>= 0.6.0'}
-    dev: false
 
   /protocol-buffers-schema/3.6.0:
     resolution: {integrity: sha512-TdDRD+/QNdrCGCE7v8340QyuXd4kIWIgapsE2+n/SaGiSSbomYl4TjHlvIoCWRpE7wFt02EpB35VVA2ImcBVqw==}
@@ -2323,12 +2262,6 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /util/0.10.4:
-    resolution: {integrity: sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A==}
-    dependencies:
-      inherits: 2.0.3
-    dev: false
-
   /utrie/1.0.2:
     resolution: {integrity: sha512-1MLa5ouZiOmQzUbjbu9VmjLzn1QLXBhwpUa7kdLUQK+KQ5KA9I1vk5U4YHe/X2Ch7PYnJfWuWT+VbuxbGwljhw==}
     dependencies:
@@ -2372,8 +2305,8 @@ packages:
       pbf: 3.2.1
     dev: false
 
-  /webp-hero/0.0.0-dev.27:
-    resolution: {integrity: sha512-ptEl95qLj2bDweaEw3UR9w8pucJ7KA9OlzUYLkV+zhb3OrZyIC6mNDdZFHzWpzuBDAtfS5jM24vj/aOje/8cKQ==}
+  /webp-hero/0.0.2:
+    resolution: {integrity: sha512-XDN8k2DZerXAawblkGKbcRXAz3WjY6Id5fTmrsOvblzFg5jELfoDCOxRDHD3zIGJo3OPEjLRsVS6Kzl36HxjqA==}
     dev: false
 
   /which/1.3.1:

@@ -1,5 +1,5 @@
-import type { MeasureControlData, StyleSwitcherOption } from '$lib/types';
 import type ValhallaIsochrone from '$lib/valhalla-isochrone';
+import type { StyleSwitcherOption } from '@watergis/svelte-maplibre-style-switcher';
 import type { Map, LngLat } from 'maplibre-gl';
 import { writable } from 'svelte/store';
 
@@ -7,8 +7,6 @@ import { writable } from 'svelte/store';
 export const map = writable<Map>(null);
 
 export const selectedStyle = writable<StyleSwitcherOption>(null);
-
-export const measureControlData = writable<MeasureControlData>(null);
 
 export const valhallaControlData = writable<ValhallaIsochrone>(null);
 
