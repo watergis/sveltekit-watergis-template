@@ -18,6 +18,7 @@ importers:
       '@watergis/svelte-maplibre-search': ^0.1.2
       '@watergis/svelte-maplibre-share': ^0.1.2
       '@watergis/svelte-maplibre-style-switcher': ^0.1.2
+      '@watergis/svelte-maplibre-valhalla': ^0.0.2
       eslint: ^8.26.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-svelte3: ^4.0.0
@@ -42,6 +43,7 @@ importers:
       '@watergis/svelte-maplibre-search': 0.1.2
       '@watergis/svelte-maplibre-share': 0.1.2
       '@watergis/svelte-maplibre-style-switcher': 0.1.2
+      '@watergis/svelte-maplibre-valhalla': 0.0.2
       maplibre-gl: 2.4.0
     devDependencies:
       '@arkweid/lefthook': 0.7.7
@@ -584,6 +586,12 @@ packages:
 
   /@watergis/svelte-maplibre-style-switcher/0.1.2:
     resolution: {integrity: sha512-V+qsvC4ajMrWOdXUqEPUp98co8DF3XvTQGtJrdVzEKxLGNEeAWlZJPowMaNhs14CELFNA+9ylOamk6Nr+B1ynQ==}
+    dependencies:
+      maplibre-gl: 2.4.0
+    dev: false
+
+  /@watergis/svelte-maplibre-valhalla/0.0.2:
+    resolution: {integrity: sha512-+lErgW1EY6wPe+QEd75mCcnZvBcRHXwu5qlKrtVGRYBMdiM/7CQmIxVV52dSHq/fVzWQ7WbFVg2+1b4SpjwWZg==}
     dependencies:
       maplibre-gl: 2.4.0
     dev: false

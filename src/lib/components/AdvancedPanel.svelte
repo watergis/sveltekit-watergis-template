@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { MeasurePanel } from '@watergis/svelte-maplibre-measure';
-	import ValhallaIsochronePanel from './ValhallaIsochronePanel.svelte';
-	import ValhallaRoutingPanel from './ValhallaRoutingPanel.svelte';
 	import CollapsiblePanel from './CollapsiblePanel.svelte';
+	import { ValhallaIsochronePanel, ValhallaRoutingPanel } from '@watergis/svelte-maplibre-valhalla';
 	import { map } from '$lib/stores';
 	import { config } from '$config';
 
@@ -26,10 +25,18 @@
 		{/if}
 		{#if config.valhalla}
 			<CollapsiblePanel title="Routing tool" bind:isPanelOpen={panelRoutingOpen}>
-				<ValhallaRoutingPanel />
+				<ValhallaRoutingPanel
+					bind:map={$map}
+					bind:url={config.valhalla.url}
+					bind:options={config.valhalla.routingOptions}
+				/>
 			</CollapsiblePanel>
 			<CollapsiblePanel title="Isochrone analysis" bind:isPanelOpen={panelTimeIsochroneOpen}>
-				<ValhallaIsochronePanel />
+				<ValhallaIsochronePanel
+					bind:map={$map}
+					bind:url={config.valhalla.url}
+					bind:options={config.valhalla.isoChroneOptions}
+				/>
 			</CollapsiblePanel>
 		{/if}
 	{/if}
