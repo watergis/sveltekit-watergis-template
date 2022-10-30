@@ -43,6 +43,7 @@
 		"@watergis/svelte-maplibre-search": "^0.1.2",
 		"@watergis/svelte-maplibre-share": "^0.1.2",
 		"@watergis/svelte-maplibre-style-switcher": "^0.1.2",
+		"@watergis/svelte-maplibre-valhalla": "^0.0.2",
 		"maplibre-gl": "^2.4.0"
 	},
 	"type": "module"
