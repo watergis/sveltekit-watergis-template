@@ -59,6 +59,8 @@
 </div>
 
 <style lang="scss">
+	@import '$lib/style/fa/css/all.css';
+
 	.logo {
 		position: absolute;
 		top: 0px;
