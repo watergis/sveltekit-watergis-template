@@ -35,6 +35,7 @@
 	},
 	"dependencies": {
 		"@watergis/mapbox-gl-area-switcher": "^1.0.1",
+		"@watergis/maplibre-center-icon": "^0.1.0",
 		"@watergis/svelte-collapsible-panel": "^0.0.5",
 		"@watergis/svelte-maplibre-attribute-popup": "^0.0.7",
 		"@watergis/svelte-maplibre-export": "^0.1.9",
