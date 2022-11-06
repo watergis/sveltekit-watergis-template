@@ -7,8 +7,7 @@
 		ScaleControl,
 		AttributionControl,
 		FullscreenControl,
-		TerrainControl,
-		type GeoJSONSourceSpecification
+		TerrainControl
 	} from 'maplibre-gl';
 	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '$config';
@@ -20,9 +19,9 @@
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import DrawerContent from './DrawerContent.svelte';
 	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
+	import CenterIconManager from '@watergis/maplibre-center-icon';
 
 	let mapContainer: HTMLDivElement;
-	let centerMarker: GeoJSONSourceSpecification;
 	let isMapLoaded = false;
 	let isMenuShown = false;
 
@@ -41,49 +40,11 @@
 		});
 		map2.addControl(new AttributionControl({ compact: true }), 'bottom-right');
 
-		const loadCenterIcon = () => {
-			map2.loadImage(`${config.basePath}/map-center.png`, (error, image) => {
-				if (error) throw error;
-				if (!map2.hasImage('map-center')) {
-					map2.addImage('map-center', image);
-				}
+		const centerIconManager = new CenterIconManager(map2);
+		centerIconManager.create();
 
-				if (!map2.getSource('center')) {
-					centerMarker = {
-						type: 'geojson',
-						data: {
-							type: 'FeatureCollection',
-							features: [
-								{
-									type: 'Feature',
-									geometry: {
-										type: 'Point',
-										coordinates: [map2.getCenter().lng, map2.getCenter().lat]
-									}
-								}
-							]
-						}
-					};
-					map2.addSource('center', centerMarker);
-				}
-				if (!map2.getLayer('points')) {
-					map2.addLayer({
-						id: 'points',
-						type: 'symbol',
-						source: 'center', // reference the data source
-						layout: {
-							'icon-image': 'map-center', // reference the image
-							'icon-size': 0.3
-						}
-					});
-				}
-			});
-		};
-
-		// show icon at the center of map
 		map2.on('load', () => {
 			isMapLoaded = true;
-			loadCenterIcon();
 
 			map2.addControl(
 				new NavigationControl({
@@ -119,23 +80,6 @@
 				// @ts-ignore
 				map2.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'top-right');
 			}
-
-			map2.on('moveend', () => {
-				const source = map2.getSource('center');
-				if (source) {
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					centerMarker.data.features[0].geometry.coordinates = [
-						map2.getCenter().lng,
-						map2.getCenter().lat
-					];
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					map2.getSource('center').setData(centerMarker.data);
-				} else {
-					loadCenterIcon();
-				}
-			});
 		});
 
 		map.update(() => map2);
