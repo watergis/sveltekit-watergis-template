@@ -7,7 +7,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.42.0
   '@typescript-eslint/parser': ^5.42.0
   '@watergis/mapbox-gl-area-switcher': ^1.0.1
-  '@watergis/maplibre-center-icon': ^0.1.0
+  '@watergis/maplibre-center-icon': ^0.1.1
   '@watergis/svelte-collapsible-panel': ^0.0.5
   '@watergis/svelte-maplibre-attribute-popup': ^0.0.7
   '@watergis/svelte-maplibre-export': ^0.1.10
@@ -35,7 +35,7 @@ specifiers:
 
 dependencies:
   '@watergis/mapbox-gl-area-switcher': 1.0.1
-  '@watergis/maplibre-center-icon': 0.1.0
+  '@watergis/maplibre-center-icon': 0.1.1
   '@watergis/svelte-collapsible-panel': 0.0.5
   '@watergis/svelte-maplibre-attribute-popup': 0.0.7
   '@watergis/svelte-maplibre-export': 0.1.10
@@ -527,8 +527,8 @@ packages:
       mapbox-gl: 1.13.2
     dev: false
 
-  /@watergis/maplibre-center-icon/0.1.0:
-    resolution: {integrity: sha512-hnkrk6JtPfL2DXMDVWbwtcl7sGnkMLOheDlnoxAdS0BGBQxSiacaOJG1Yemhn4iG8iHmVe0C2V03DYWy15Ro5A==}
+  /@watergis/maplibre-center-icon/0.1.1:
+    resolution: {integrity: sha512-20PuIGo8DRjuDW4PvLUj59qTOolDtrxtUEo4qbTK2yhAxOQmYV62SyrAzpo/zIJ3gMU2RP7MMNAvTyioguQsFQ==}
     dependencies:
       maplibre-gl: 2.4.0
     dev: false
