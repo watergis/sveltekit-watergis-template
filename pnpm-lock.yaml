@@ -13,7 +13,7 @@ specifiers:
   '@watergis/svelte-maplibre-export': ^0.1.14
   '@watergis/svelte-maplibre-legend': ^0.1.6
   '@watergis/svelte-maplibre-measure': ^0.1.10
-  '@watergis/svelte-maplibre-menu': ^0.1.7
+  '@watergis/svelte-maplibre-menu': ^0.1.8
   '@watergis/svelte-maplibre-search': ^0.1.3
   '@watergis/svelte-maplibre-share': ^0.1.7
   '@watergis/svelte-maplibre-style-switcher': ^0.1.6
@@ -42,7 +42,7 @@ dependencies:
   '@watergis/svelte-maplibre-export': 0.1.14
   '@watergis/svelte-maplibre-legend': 0.1.6
   '@watergis/svelte-maplibre-measure': 0.1.10
-  '@watergis/svelte-maplibre-menu': 0.1.7
+  '@watergis/svelte-maplibre-menu': 0.1.8
   '@watergis/svelte-maplibre-search': 0.1.3
   '@watergis/svelte-maplibre-share': 0.1.7
   '@watergis/svelte-maplibre-style-switcher': 0.1.6
@@ -572,8 +572,8 @@ packages:
       webp-hero: 0.0.2
     dev: false
 
-  /@watergis/svelte-maplibre-menu/0.1.7:
-    resolution: {integrity: sha512-1MvkcCjmKwYFgzKjAiVIC2qXQV4ncQWzXkjtU+1AZl/+GMV6akMzXiJ5z/fMFxbOafjEqFOI1rvZyFlfd5PlbA==}
+  /@watergis/svelte-maplibre-menu/0.1.8:
+    resolution: {integrity: sha512-HzF+6Vf+57o7VMUt+2N9uOSXd5HLadwDpSSLtaWJLE4YvvdlOa2y4Z6Q8wdJwtRZzOEZZy6UY17FJQNvSMBmsg==}
     dependencies:
       '@geoffcox/svelte-splitter': 1.0.1
       maplibre-gl: 2.4.0
