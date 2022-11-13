@@ -30,8 +30,8 @@
 </script>
 
 {#if isLayersTabVisible}
-	<nav class="panel">
-		<div class="panel-header m-1 p-0">
+	<div class="primary-container">
+		<div class="style-header">
 			<StyleSwitcher
 				bind:map={$map}
 				bind:selectedStyle={$selectedStyle}
@@ -45,17 +45,33 @@
 		<div class="legend-content">
 			<LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
 		</div>
-	</nav>
+	</div>
 {/if}
 
 <style lang="scss">
-	$height: calc(100vh - 135px);
+	$height: calc(100vh - 140px);
 
-	.legend-content {
-		position: absolute;
-		overflow-x: hidden;
-		overflow-y: auto;
-		height: $height;
-		width: 100%;
+	.primary-container {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		margin: 0.5rem;
+
+		.style-header {
+			width: 100%;
+			margin-bottom: 0.5rem;
+		}
+
+		.legend-header {
+			width: 100%;
+			margin-bottom: 0.5rem;
+		}
+
+		.legend-content {
+			overflow-x: hidden;
+			overflow-y: auto;
+			height: $height;
+			width: 100%;
+		}
 	}
 </style>
