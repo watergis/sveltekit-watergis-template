@@ -18,10 +18,14 @@
 		body {
 			margin: 0;
 			padding: 0;
+			min-height: 100vh;
+			/* mobile viewport bug fix */
+			min-height: -webkit-fill-available;
 		}
 
 		html {
 			overflow-y: hidden !important;
+			height: -webkit-fill-available;
 		}
 	</style>
 	<body>
