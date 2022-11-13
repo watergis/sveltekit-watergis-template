@@ -62,31 +62,37 @@
 				bind:isPanelOpen={panelMeasureOpen}
 				color={panelColor}
 			>
-				<MeasurePanel
-					bind:map={$map}
-					bind:measureOption={config.elevation.options}
-					bind:terrainRgbUrl={config.elevation.url}
-				/>
+				<div class="accordion-content">
+					<MeasurePanel
+						bind:map={$map}
+						bind:measureOption={config.elevation.options}
+						bind:terrainRgbUrl={config.elevation.url}
+					/>
+				</div>
 			</CollapsiblePanel>
 		{/if}
 		{#if config.valhalla}
 			<CollapsiblePanel title="Routing tool" bind:isPanelOpen={panelRoutingOpen} color={panelColor}>
-				<ValhallaRoutingPanel
-					bind:map={$map}
-					bind:url={config.valhalla.url}
-					bind:options={config.valhalla.routingOptions}
-				/>
+				<div class="accordion-content">
+					<ValhallaRoutingPanel
+						bind:map={$map}
+						bind:url={config.valhalla.url}
+						bind:options={config.valhalla.routingOptions}
+					/>
+				</div>
 			</CollapsiblePanel>
 			<CollapsiblePanel
 				title="Isochrone analysis"
 				bind:isPanelOpen={panelTimeIsochroneOpen}
 				color={panelColor}
 			>
-				<ValhallaIsochronePanel
-					bind:map={$map}
-					bind:url={config.valhalla.url}
-					bind:options={config.valhalla.isoChroneOptions}
-				/>
+				<div class="accordion-content">
+					<ValhallaIsochronePanel
+						bind:map={$map}
+						bind:url={config.valhalla.url}
+						bind:options={config.valhalla.isoChroneOptions}
+					/>
+				</div>
 			</CollapsiblePanel>
 		{/if}
 	{/if}
@@ -98,5 +104,12 @@
 	.panel-content {
 		overflow-y: auto;
 		height: $height;
+	}
+
+	.accordion-content {
+		padding-top: 0.5rem;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		padding-bottom: 0.5rem;
 	}
 </style>

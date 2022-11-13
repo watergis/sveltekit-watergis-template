@@ -8,16 +8,17 @@ specifiers:
   '@typescript-eslint/parser': ^5.42.1
   '@watergis/mapbox-gl-area-switcher': ^1.0.1
   '@watergis/maplibre-center-icon': ^0.1.2
-  '@watergis/svelte-collapsible-panel': ^0.0.5
-  '@watergis/svelte-maplibre-attribute-popup': ^0.0.7
-  '@watergis/svelte-maplibre-export': ^0.1.11
-  '@watergis/svelte-maplibre-legend': ^0.1.4
-  '@watergis/svelte-maplibre-measure': ^0.1.8
+  '@watergis/svelte-collapsible-panel': ^0.0.7
+  '@watergis/svelte-maplibre-attribute-popup': ^0.0.9
+  '@watergis/svelte-maplibre-export': ^0.1.14
+  '@watergis/svelte-maplibre-legend': ^0.1.6
+  '@watergis/svelte-maplibre-measure': ^0.1.10
   '@watergis/svelte-maplibre-menu': ^0.1.7
   '@watergis/svelte-maplibre-search': ^0.1.3
-  '@watergis/svelte-maplibre-share': ^0.1.6
-  '@watergis/svelte-maplibre-style-switcher': ^0.1.3
-  '@watergis/svelte-maplibre-valhalla': ^0.0.6
+  '@watergis/svelte-maplibre-share': ^0.1.7
+  '@watergis/svelte-maplibre-style-switcher': ^0.1.6
+  '@watergis/svelte-maplibre-valhalla': ^0.0.8
+  bulma: ^0.9.4
   eslint: ^8.27.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
@@ -25,8 +26,8 @@ specifiers:
   prettier: ^2.7.1
   prettier-plugin-svelte: ^2.8.0
   rimraf: ^3.0.2
-  sass: ^1.56.0
-  svelte: ^3.52.0
+  sass: ^1.56.1
+  svelte: ^3.53.1
   svelte-check: ^2.9.2
   svelte-preprocess: ^4.10.7
   tslib: ^2.4.1
@@ -36,37 +37,38 @@ specifiers:
 dependencies:
   '@watergis/mapbox-gl-area-switcher': 1.0.1
   '@watergis/maplibre-center-icon': 0.1.2
-  '@watergis/svelte-collapsible-panel': 0.0.5
-  '@watergis/svelte-maplibre-attribute-popup': 0.0.7
-  '@watergis/svelte-maplibre-export': 0.1.11
-  '@watergis/svelte-maplibre-legend': 0.1.4
-  '@watergis/svelte-maplibre-measure': 0.1.8
+  '@watergis/svelte-collapsible-panel': 0.0.7
+  '@watergis/svelte-maplibre-attribute-popup': 0.0.9
+  '@watergis/svelte-maplibre-export': 0.1.14
+  '@watergis/svelte-maplibre-legend': 0.1.6
+  '@watergis/svelte-maplibre-measure': 0.1.10
   '@watergis/svelte-maplibre-menu': 0.1.7
   '@watergis/svelte-maplibre-search': 0.1.3
-  '@watergis/svelte-maplibre-share': 0.1.6
-  '@watergis/svelte-maplibre-style-switcher': 0.1.3
-  '@watergis/svelte-maplibre-valhalla': 0.0.6
+  '@watergis/svelte-maplibre-share': 0.1.7
+  '@watergis/svelte-maplibre-style-switcher': 0.1.6
+  '@watergis/svelte-maplibre-valhalla': 0.0.8
   maplibre-gl: 2.4.0
 
 devDependencies:
   '@arkweid/lefthook': 0.7.7
   '@sveltejs/adapter-static': 1.0.0-next.48
-  '@sveltejs/kit': 1.0.0-next.538_svelte@3.52.0+vite@3.2.3
+  '@sveltejs/kit': 1.0.0-next.544_svelte@3.53.1+vite@3.2.3
   '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
   '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
+  bulma: 0.9.4
   eslint: 8.27.0
   eslint-config-prettier: 8.5.0_eslint@8.27.0
-  eslint-plugin-svelte3: 4.0.0_3mj2dxwqqdwhca3fosrxvrsvse
+  eslint-plugin-svelte3: 4.0.0_ktwpzwc5ejqdbyb2mks6m4mhya
   prettier: 2.7.1
-  prettier-plugin-svelte: 2.8.0_lrllcp5xtrkmmdzifit4hd52ze
+  prettier-plugin-svelte: 2.8.0_nryolsexf6k3znhuh4uzpugsem
   rimraf: 3.0.2
-  sass: 1.56.0
-  svelte: 3.52.0
-  svelte-check: 2.9.2_sass@1.56.0+svelte@3.52.0
-  svelte-preprocess: 4.10.7_ngwexh7rjq5fmatf3fnjcyc3qm
+  sass: 1.56.1
+  svelte: 3.53.1
+  svelte-check: 2.9.2_sass@1.56.1+svelte@3.53.1
+  svelte-preprocess: 4.10.7_rhkhm62u5ds7cpymasrra2tufy
   tslib: 2.4.1
   typescript: 4.8.4
-  vite: 3.2.3_sass@1.56.0
+  vite: 3.2.3_sass@1.56.1
 
 packages:
 
@@ -268,8 +270,8 @@ packages:
     resolution: {integrity: sha512-Z5Z+QZOav6D0KDeU3ReksGERJg/sX1k5OKWWXyQ11OwGErEEwSXHYRUyjaBmZEPeGzpVVGwwMUK8YWJlG/MKeA==}
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.538_svelte@3.52.0+vite@3.2.3:
-    resolution: {integrity: sha512-NRu6+j1Lc0daE2OirlbDCbT/yMf5l5nFln2o1asMA3HL7A244SG+uGGFea4DZ1bdetZ3IhO5xa1MWIGY5Ybb3g==}
+  /@sveltejs/kit/1.0.0-next.544_svelte@3.53.1+vite@3.2.3:
+    resolution: {integrity: sha512-zgQHiSvxiTDjJJROj9mPwIEoT6sAopagDroh89cHKarKc2eK/1nISA2dascKz/atGF8mghOn7RXZPnPofr01fQ==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
@@ -277,7 +279,7 @@ packages:
       svelte: ^3.44.0
       vite: ^3.2.0
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 1.1.0_svelte@3.52.0+vite@3.2.3
+      '@sveltejs/vite-plugin-svelte': 1.1.1_svelte@3.53.1+vite@3.2.3
       '@types/cookie': 0.5.1
       cookie: 0.5.0
       devalue: 4.2.0
@@ -287,17 +289,17 @@ packages:
       sade: 1.8.1
       set-cookie-parser: 2.5.1
       sirv: 2.0.2
-      svelte: 3.52.0
+      svelte: 3.53.1
       tiny-glob: 0.2.9
       undici: 5.12.0
-      vite: 3.2.3_sass@1.56.0
+      vite: 3.2.3_sass@1.56.1
     transitivePeerDependencies:
       - diff-match-patch
       - supports-color
     dev: true
 
-  /@sveltejs/vite-plugin-svelte/1.1.0_svelte@3.52.0+vite@3.2.3:
-    resolution: {integrity: sha512-cFRfEdztubtj1c/rYh7ArK7XCfFJn6wG6+J8/e9amFsKtEJILovoBrK0/mxt1AjPQg0vaX+fHPKvhx+q8mTPaQ==}
+  /@sveltejs/vite-plugin-svelte/1.1.1_svelte@3.53.1+vite@3.2.3:
+    resolution: {integrity: sha512-NzIaGIzWh5hCSMUoxukYEGmxFCWgzaVglqHJLV5r0BA7hHZbHXu8DYR80i6QUX4xyoQ4PZ8ir7SUYsThbreMcg==}
     engines: {node: ^14.18.0 || >= 16}
     peerDependencies:
       diff-match-patch: ^1.0.5
@@ -311,9 +313,9 @@ packages:
       deepmerge: 4.2.2
       kleur: 4.1.5
       magic-string: 0.26.7
-      svelte: 3.52.0
-      svelte-hmr: 0.15.0_svelte@3.52.0
-      vite: 3.2.3_sass@1.56.0
+      svelte: 3.53.1
+      svelte-hmr: 0.15.0_svelte@3.53.1
+      vite: 3.2.3_sass@1.56.1
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -533,33 +535,35 @@ packages:
       maplibre-gl: 2.4.0
     dev: false
 
-  /@watergis/svelte-collapsible-panel/0.0.5:
-    resolution: {integrity: sha512-3lUJ9Ti2UoIbruZtB7gtmqEtegBqn5Y1/p1nUany/jOUJsDSmUpDKIGK3zFZUKH4qtTQzRMzrCBbsfmsFxZhdQ==}
+  /@watergis/svelte-collapsible-panel/0.0.7:
+    resolution: {integrity: sha512-jONbIt6tQYL2MIs681vKIlq9aHBnz4GWKE4v8Itj4H5EDj8oMjOXvDkrqDCplMk3X9QtHXcn6O0KP7q1/5gUsg==}
+    dependencies:
+      bulma: 0.9.4
     dev: false
 
-  /@watergis/svelte-maplibre-attribute-popup/0.0.7:
-    resolution: {integrity: sha512-w20LmfhR9dabrcy+suF9nhV7KkhhGP6AO+WJ0CNBGmmyI4FI0Zyr6MJa8nbwD4W/0uMxUyn/w+LecKVgj+u3Qg==}
+  /@watergis/svelte-maplibre-attribute-popup/0.0.9:
+    resolution: {integrity: sha512-CqF77IC1O8UfBav+K4DxFz/NzrAt4ueDdsrwLX5FP4tJ4SkE67Awy0yhbiDd2LZlLP2HeycR/jjCWO0/cw+4FA==}
     dependencies:
       maplibre-gl: 2.4.0
     dev: false
 
-  /@watergis/svelte-maplibre-export/0.1.11:
-    resolution: {integrity: sha512-F1sYWvBY88Ttjn8i//LdBhP9hZ5dqYlNdnz+evNsB05/tRRqRMp5lgFpIBP1/cM4aGFybTaa1FjHZHTi5ntWzQ==}
+  /@watergis/svelte-maplibre-export/0.1.14:
+    resolution: {integrity: sha512-nv4RoB4mk2DA8uKtA6jnYFMuGkfszrkDCsI3Z1x2Wl5UdJ5+b9U5XYqMWRbEoi1psE+tzx83CECFTplGk2RxjA==}
     dependencies:
       '@neodrag/svelte': 1.2.4
       jspdf: 2.5.1
       maplibre-gl: 2.4.0
     dev: false
 
-  /@watergis/svelte-maplibre-legend/0.1.4:
-    resolution: {integrity: sha512-aD12VTYYOwQUx36UWtW6kb9tGJ7LgVPUOPtJ6Bewpnc4zZLXCKrxbAR1O0Zr5WgSC/e0TYTUj+CgAewn/Xwkgg==}
+  /@watergis/svelte-maplibre-legend/0.1.6:
+    resolution: {integrity: sha512-kGQgFLmW8i2HCE+G1YRV9LLiC3Bqt12scsCRv4sXF6e8DYAJRghyU5NbtdTXmAarPIAVjr1ebWoRV+ftqD71Pw==}
     dependencies:
       '@watergis/legend-symbol': 0.2.2
       maplibre-gl: 2.4.0
     dev: false
 
-  /@watergis/svelte-maplibre-measure/0.1.8:
-    resolution: {integrity: sha512-uVIg+T5AWmMFLMFKoTgsa4NstKaOl8IbEyn5A6p2H/1kTwj6wNq+tVkb7vbte77JeTFgHJAXxv7AQSsQm8yg5g==}
+  /@watergis/svelte-maplibre-measure/0.1.10:
+    resolution: {integrity: sha512-BtTPksGld0NXCOmNTppzswMEZzeHfluuan6YCKfk8jT0f2cc02+KrL5JO10rDMzAgK0Y5gxMGy+Jpz1TEX8n1A==}
     dependencies:
       '@turf/distance': 6.5.0
       global-mercator: 3.1.0
@@ -582,21 +586,21 @@ packages:
       simple-svelte-autocomplete: 2.5.0
     dev: false
 
-  /@watergis/svelte-maplibre-share/0.1.6:
-    resolution: {integrity: sha512-nxVxumnTj0gdPVzGmZVcXRVDUca/2pgswM2gr3RjPG9MU4hXUVGhepzwuQTlK1GrDR8ltb+5R2r2znHC3IAT9Q==}
+  /@watergis/svelte-maplibre-share/0.1.7:
+    resolution: {integrity: sha512-FMQKLuhUS9EBBTBTmMeFxETOisgdhxC7SzIZOlC9ZJOfXdlK5ubjH6YRd44oZ6CCsGGibG0BZTP9AW3PuGUJ6g==}
     dependencies:
       maplibre-gl: 2.4.0
       svelte-copy: 1.3.0
     dev: false
 
-  /@watergis/svelte-maplibre-style-switcher/0.1.3:
-    resolution: {integrity: sha512-qouBkp1bA+dNo/US/Ql2zsHVr2p4eP2fDsVMjTgUIUkQnQfUAXdp9WZltLIwMo24Y/qWqkuJrF4fAi8Plx1n1w==}
+  /@watergis/svelte-maplibre-style-switcher/0.1.6:
+    resolution: {integrity: sha512-ISIVYRJIJtHZI+qhxFQvL52m5/exw1IcPEMeMMCRVHNGOMDzy85UKdsO2UCSk+saKwU1ZpEDl4n7VxFHsyE/SA==}
     dependencies:
       maplibre-gl: 2.4.0
     dev: false
 
-  /@watergis/svelte-maplibre-valhalla/0.0.6:
-    resolution: {integrity: sha512-WG2iX2fSiwZlO64RWK3Yxfi7MKPrcge5RJD4vpxhlqp/DW7kjgd9hHKBEvbAOVE14jxv0KX9yug6XVwms58wDw==}
+  /@watergis/svelte-maplibre-valhalla/0.0.8:
+    resolution: {integrity: sha512-zROFpjv6IOA0gslTPBejge5AUaeo7T/mborvGu7Jv1Ci01i5wKSyAIofGCgyJN3/o6iydQFxsNsUWdzrHoju/Q==}
     dependencies:
       maplibre-gl: 2.4.0
     dev: false
@@ -697,6 +701,9 @@ packages:
   /buffer-crc32/0.2.13:
     resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
     dev: true
+
+  /bulma/0.9.4:
+    resolution: {integrity: sha512-86FlT5+1GrsgKbPLRRY7cGDg8fsJiP/jzTqXXVqiUZZ2aZT8uemEOHlU1CDU+TxklPEZ11HZNNWclRBBecP4CQ==}
 
   /busboy/1.6.0:
     resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}
@@ -839,8 +846,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /dompurify/2.4.0:
-    resolution: {integrity: sha512-Be9tbQMZds4a3C6xTmz68NlMfeONA//4dOavl/1rNw50E+/QO0KVpbcU0PcaW0nsQxurXls9ZocqFxk8R2mWEA==}
+  /dompurify/2.4.1:
+    resolution: {integrity: sha512-ewwFzHzrrneRjxzmK6oVz/rZn9VWspGFRDb4/rRtIsM1n36t9AKma/ye8syCpcw+XJ25kOK/hOG7t1j2I2yBqA==}
     requiresBuild: true
     dev: false
     optional: true
@@ -1077,14 +1084,14 @@ packages:
       eslint: 8.27.0
     dev: true
 
-  /eslint-plugin-svelte3/4.0.0_3mj2dxwqqdwhca3fosrxvrsvse:
+  /eslint-plugin-svelte3/4.0.0_ktwpzwc5ejqdbyb2mks6m4mhya:
     resolution: {integrity: sha512-OIx9lgaNzD02+MDFNLw0GEUbuovNcglg+wnd/UY0fbZmlQSz7GlQiQ1f+yX0XvC07XPcDOnFcichqI3xCwp71g==}
     peerDependencies:
       eslint: '>=8.0.0'
       svelte: ^3.2.0
     dependencies:
       eslint: 8.27.0
-      svelte: 3.52.0
+      svelte: 3.53.1
     dev: true
 
   /eslint-scope/5.1.1:
@@ -1516,7 +1523,7 @@ packages:
     optionalDependencies:
       canvg: 3.0.10
       core-js: 3.26.0
-      dompurify: 2.4.0
+      dompurify: 2.4.1
       html2canvas: 1.4.1
     dev: false
 
@@ -1798,8 +1805,8 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /postcss/8.4.18:
-    resolution: {integrity: sha512-Wi8mWhncLJm11GATDaQKobXSNEYGUHeQLiQqDFG1qQ5UTDPTEvKw0Xt5NsTpktGTwLps3ByrWsBrG0rB8YQ9oA==}
+  /postcss/8.4.19:
+    resolution: {integrity: sha512-h+pbPsyhlYj6N2ozBmHhHrs9DzGmbaarbLvWipMRO7RLS+v4onj26MPFXA5OBYFxyqYhUJK456SwDcY9H2/zsA==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.4
@@ -1816,14 +1823,14 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-svelte/2.8.0_lrllcp5xtrkmmdzifit4hd52ze:
+  /prettier-plugin-svelte/2.8.0_nryolsexf6k3znhuh4uzpugsem:
     resolution: {integrity: sha512-QlXv/U3bUszks3XYDPsk1fsaQC+fo2lshwKbcbO+lrSVdJ+40mB1BfL8OCAk1W9y4pJxpqO/4gqm6NtF3zNGCw==}
     peerDependencies:
       prettier: ^1.16.4 || ^2.0.0
       svelte: ^3.2.0
     dependencies:
       prettier: 2.7.1
-      svelte: 3.52.0
+      svelte: 3.53.1
     dev: true
 
   /prettier/2.7.1:
@@ -1951,8 +1958,8 @@ packages:
       rimraf: 2.7.1
     dev: true
 
-  /sass/1.56.0:
-    resolution: {integrity: sha512-WFJ9XrpkcnqZcYuLRJh5qiV6ibQOR4AezleeEjTjMsCocYW59dEG19U3fwTTXxzi2Ed3yjPBp727hbbj53pHFw==}
+  /sass/1.56.1:
+    resolution: {integrity: sha512-VpEyKpyBPCxE7qGDtOcdJ6fFbcpOM+Emu7uZLxVrkX8KVU/Dp5UF7WLvzqRuUhB6mqqQt1xffLoG+AndxTZrCQ==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -2088,7 +2095,7 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte-check/2.9.2_sass@1.56.0+svelte@3.52.0:
+  /svelte-check/2.9.2_sass@1.56.1+svelte@3.53.1:
     resolution: {integrity: sha512-DRi8HhnCiqiGR2YF9ervPGvtoYrheE09cXieCTEqeTPOTJzfoa54Py8rovIBv4bH4n5HgZYIyTQ3DDLHQLl2uQ==}
     hasBin: true
     peerDependencies:
@@ -2100,8 +2107,8 @@ packages:
       import-fresh: 3.3.0
       picocolors: 1.0.0
       sade: 1.8.1
-      svelte: 3.52.0
-      svelte-preprocess: 4.10.7_ngwexh7rjq5fmatf3fnjcyc3qm
+      svelte: 3.53.1
+      svelte-preprocess: 4.10.7_rhkhm62u5ds7cpymasrra2tufy
       typescript: 4.8.4
     transitivePeerDependencies:
       - '@babel/core'
@@ -2120,16 +2127,16 @@ packages:
     resolution: {integrity: sha512-C3v7/RNhMsRoXgAdIW8VSb7A5+/fV/NXDdlm7mXlKN9jXRC5fwG0HvjsgqhKgitlXOJtYf9UvAK+NPSAv+qPbg==}
     dev: false
 
-  /svelte-hmr/0.15.0_svelte@3.52.0:
+  /svelte-hmr/0.15.0_svelte@3.53.1:
     resolution: {integrity: sha512-Aw21SsyoohyVn4yiKXWPNCSW2DQNH/76kvUnE9kpt4h9hcg9tfyQc6xshx9hzgMfGF0kVx0EGD8oBMWSnATeOg==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     peerDependencies:
       svelte: '>=3.19.0'
     dependencies:
-      svelte: 3.52.0
+      svelte: 3.53.1
     dev: true
 
-  /svelte-preprocess/4.10.7_ngwexh7rjq5fmatf3fnjcyc3qm:
+  /svelte-preprocess/4.10.7_rhkhm62u5ds7cpymasrra2tufy:
     resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
     engines: {node: '>= 9.11.2'}
     requiresBuild: true
@@ -2174,15 +2181,15 @@ packages:
       '@types/sass': 1.43.1
       detect-indent: 6.1.0
       magic-string: 0.25.9
-      sass: 1.56.0
+      sass: 1.56.1
       sorcery: 0.10.0
       strip-indent: 3.0.0
-      svelte: 3.52.0
+      svelte: 3.53.1
       typescript: 4.8.4
     dev: true
 
-  /svelte/3.52.0:
-    resolution: {integrity: sha512-FxcnEUOAVfr10vDU5dVgJN19IvqeHQCS1zfe8vayTfis9A2t5Fhx+JDe5uv/C3j//bB1umpLJ6quhgs9xyUbCQ==}
+  /svelte/3.53.1:
+    resolution: {integrity: sha512-Q4/hHkktZogGhN5iqxqSi9sjEVoe/NbIxX4hXEHoasTxj+TxEQVAq66LnDMdAZxjmsodkoI5F3slqsS68U7FNw==}
     engines: {node: '>= 8'}
     dev: true
 
@@ -2282,7 +2289,7 @@ packages:
     dev: false
     optional: true
 
-  /vite/3.2.3_sass@1.56.0:
+  /vite/3.2.3_sass@1.56.1:
     resolution: {integrity: sha512-h8jl1TZ76eGs3o2dIBSsvXDLb1m/Ec1iej8ZMdz+PsaFUsftZeWe2CZOI3qogEsMNaywc17gu0q6cQDzh/weCQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -2308,10 +2315,10 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.15.13
-      postcss: 8.4.18
+      postcss: 8.4.19
       resolve: 1.22.1
       rollup: 2.79.1
-      sass: 1.56.0
+      sass: 1.56.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
