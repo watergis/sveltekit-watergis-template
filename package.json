@@ -42,7 +42,7 @@
 		"@watergis/svelte-maplibre-export": "^0.1.15",
 		"@watergis/svelte-maplibre-legend": "^0.1.8",
 		"@watergis/svelte-maplibre-measure": "^0.1.11",
-		"@watergis/svelte-maplibre-menu": "^0.1.10",
+		"@watergis/svelte-maplibre-menu": "^0.1.11",
 		"@watergis/svelte-maplibre-search": "^0.1.4",
 		"@watergis/svelte-maplibre-share": "^0.1.8",
 		"@watergis/svelte-maplibre-style-switcher": "^0.1.8",
