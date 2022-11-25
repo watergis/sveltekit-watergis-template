@@ -40,25 +40,27 @@
 </script>
 
 <div class="drawer-content">
-	<a class="icon is-medium logo" href={config.url}>
-		<img src={config.logo} alt="logo" />
-	</a>
-	<div class="tabs is-centered is-small mb-0">
-		<ul>
-			{#each tabs as tab}
-				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<li
-					class={activeTab.label === tab.label ? 'is-active' : ''}
-					on:click={() => (activeTab = tab)}
-				>
-					<!-- svelte-ignore a11y-missing-attribute -->
-					<a>
-						<span class="icon ml-2"><Fa icon={tab.icon} size="2x" aria-hidden="true" /></span>
-						<span>{tab.label}</span>
-					</a>
-				</li>
-				<li />{/each}
-		</ul>
+	<div class="header">
+		<a class="icon is-medium logo" href={config.url}>
+			<img src={config.logo} alt="logo" />
+		</a>
+		<div class="tabs is-centered is-small mb-0">
+			<ul>
+				{#each tabs as tab}
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<li
+						class={activeTab.label === tab.label ? 'is-active' : ''}
+						on:click={() => (activeTab = tab)}
+					>
+						<!-- svelte-ignore a11y-missing-attribute -->
+						<a>
+							<span class="icon ml-2"><Fa icon={tab.icon} size="2x" aria-hidden="true" /></span>
+							<span>{tab.label}</span>
+						</a>
+					</li>
+					<li />{/each}
+			</ul>
+		</div>
 	</div>
 	<LayerListPanel {isLayersTabVisible} />
 	<AdvancedPanel {isAdvancedTabVisible} />
@@ -67,10 +69,22 @@
 <style lang="scss">
 	@import 'bulma/bulma.sass';
 
-	.logo {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		margin: 3px;
+	.drawer-content {
+		display: flex;
+		flex-direction: column;
+
+		.header {
+			display: flex;
+			flex-direction: row;
+
+			.logo {
+				margin: 3px;
+			}
+
+			.tabs {
+				margin-left: 0.5rem;
+				width: 100%;
+			}
+		}
 	}
 </style>

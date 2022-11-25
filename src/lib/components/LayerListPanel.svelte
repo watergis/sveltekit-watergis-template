@@ -40,7 +40,7 @@
 			/>
 		</div>
 		<div class="legend-header m-1">
-			<LegendHeader bind:onlyRendered bind:onlyRelative {relativeLayers} />
+			<LegendHeader bind:onlyRendered bind:onlyRelative />
 		</div>
 		<div class="legend-content">
 			<LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
