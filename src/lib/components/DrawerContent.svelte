@@ -1,16 +1,22 @@
 <script lang="ts">
+	import Fa from 'svelte-fa';
+	import { faLayerGroup, faChartSimple } from '@fortawesome/free-solid-svg-icons';
 	import LayerListPanel from './LayerListPanel.svelte';
 	import AdvancedPanel from './AdvancedPanel.svelte';
-	import { TabNames } from '$lib/constants';
 	import { config } from '$config';
+
+	enum TabNames {
+		LAYERS = 'Layers',
+		ADVANCED = 'Advanced'
+	}
 
 	let tabs = [
 		{
-			icon: 'fas fa-layer-group',
+			icon: faLayerGroup,
 			label: TabNames.LAYERS
 		},
 		{
-			icon: 'fas fa-chart-simple',
+			icon: faChartSimple,
 			label: TabNames.ADVANCED
 		}
 	];
@@ -47,7 +53,7 @@
 				>
 					<!-- svelte-ignore a11y-missing-attribute -->
 					<a>
-						<span class="icon ml-2"><i class={tab.icon} aria-hidden="true" /></span>
+						<span class="icon ml-2"><Fa icon={tab.icon} size="2x" aria-hidden="true" /></span>
 						<span>{tab.label}</span>
 					</a>
 				</li>
@@ -60,7 +66,6 @@
 
 <style lang="scss">
 	@import 'bulma/bulma.sass';
-	@import '$lib/style/fa/css/all.css';
 
 	.logo {
 		position: absolute;
