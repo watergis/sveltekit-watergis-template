@@ -8,6 +8,9 @@ import type {
 
 export type Config = {
 	title: string;
+	description: string;
+	siteUrl: string;
+	twitterAccount: string;
 	url: string;
 	logo: string;
 	basePath: string;

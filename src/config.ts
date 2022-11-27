@@ -2,6 +2,10 @@ import type { Config } from './lib/types';
 
 export const config: Config = {
 	title: 'GIS for Water',
+	description:
+		'GIS for Water is a modern web frontend part of supporting operation and maintenance of water utilities. It provides users with spatial data, and visualization and analytical tools as a one stop shop.',
+	siteUrl: 'https://demo.water-gis.com',
+	twitterAccount: '@j_igarashi',
 	url: 'https://water-gis.com',
 	logo: 'https://raw.githubusercontent.com/watergis/logo/main/logo.svg',
 	// basePath: process.env.NODE_ENV === 'production' ? '/sveltekit-watergis-template' : '',
