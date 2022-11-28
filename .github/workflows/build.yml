@@ -65,7 +65,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.7
         env:
           SKIP_DEPLOY_TO_GHPAGES: ${{secrets.SKIP_DEPLOY_TO_GHPAGES}}
-        if: ${{ github.ref == 'refs/heads/main' && env.SKIP_DEPLOY_TO_GHPAGES != '' }}
+        if: ${{ github.ref == 'refs/heads/main' && env.SKIP_DEPLOY_TO_GHPAGES == '' }}
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: build # The folder the action should deploy.
