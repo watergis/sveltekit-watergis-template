@@ -19,6 +19,12 @@ const config = {
 			// base: process.env.NODE_ENV === 'production' ? '/sveltekit-watergis-template' : ''
 			base: ''
 		}
+	},
+	onwarn: () => {
+		const SKIP_DEPLOY_TO_GHPAGES = process.env.SKIP_DEPLOY_TO_GHPAGES;
+		if (SKIP_DEPLOY_TO_GHPAGES) {
+			return;
+		}
 	}
 };
 
