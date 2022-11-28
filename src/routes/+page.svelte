@@ -7,8 +7,4 @@
 	selectedStyle.update(() => defaultStyle);
 </script>
 
-<sveltekit:head>
-	<title>{config.title}</title>
-</sveltekit:head>
-
 <Map />

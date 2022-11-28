@@ -1,7 +1,7 @@
 import type { Config } from './lib/types';
 
 export const config: Config = {
-	title: 'GIS for Water',
+	title: 'GIS for Water - Visualise, Analise and Share Water & Sanitation data',
 	url: 'https://water-gis.com',
 	logo: 'https://raw.githubusercontent.com/watergis/logo/main/logo.svg',
 	// basePath: process.env.NODE_ENV === 'production' ? '/sveltekit-watergis-template' : '',
