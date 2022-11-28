@@ -8,6 +8,9 @@ import type {
 
 export type Config = {
 	title: string;
+	description: string;
+	preview: string;
+	site_url: string;
 	url: string;
 	logo: string;
 	basePath: string;
