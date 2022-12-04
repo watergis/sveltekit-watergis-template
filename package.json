@@ -51,6 +51,7 @@
 		"@watergis/svelte-maplibre-share": "^0.1.8",
 		"@watergis/svelte-maplibre-style-switcher": "^0.1.8",
 		"@watergis/svelte-maplibre-valhalla": "^0.0.9",
+		"buffer": "^6.0.3",
 		"maplibre-gl": "^2.4.0"
 	},
 	"type": "module"
