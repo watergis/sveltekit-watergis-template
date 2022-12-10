@@ -16,6 +16,7 @@
 
 	let onlyRendered = true;
 	let onlyRelative = true;
+	let enableLayerOrder = false;
 	let relativeLayers = {};
 	export let isLayersTabVisible = false;
 
@@ -40,10 +41,23 @@
 			/>
 		</div>
 		<div class="legend-header m-1">
-			<LegendHeader bind:onlyRendered bind:onlyRelative />
+			<LegendHeader
+				bind:onlyRendered
+				bind:onlyRelative
+				bind:enableLayerOrder
+				isLayerOrderShown={true}
+			/>
 		</div>
 		<div class="legend-content">
-			<LegendPanel bind:map={$map} {style} bind:onlyRendered bind:onlyRelative {relativeLayers} />
+			<LegendPanel
+				bind:map={$map}
+				{style}
+				bind:onlyRendered
+				bind:onlyRelative
+				bind:enableLayerOrder
+				{relativeLayers}
+				disableVisibleButton={false}
+			/>
 		</div>
 	</div>
 {/if}
