@@ -30,37 +30,35 @@
 	};
 </script>
 
-{#if isLayersTabVisible}
-	<div class="primary-container">
-		<div class="style-header">
-			<StyleSwitcher
-				bind:map={$map}
-				bind:selectedStyle={$selectedStyle}
-				bind:styles={config.styles}
-				on:change={onStyleChange}
-			/>
-		</div>
-		<div class="legend-header m-1">
-			<LegendHeader
-				bind:onlyRendered
-				bind:onlyRelative
-				bind:enableLayerOrder
-				isLayerOrderShown={true}
-			/>
-		</div>
-		<div class="legend-content">
-			<LegendPanel
-				bind:map={$map}
-				{style}
-				bind:onlyRendered
-				bind:onlyRelative
-				bind:enableLayerOrder
-				{relativeLayers}
-				disableVisibleButton={false}
-			/>
-		</div>
+<div class="primary-container">
+	<div class="style-header">
+		<StyleSwitcher
+			bind:map={$map}
+			bind:selectedStyle={$selectedStyle}
+			bind:styles={config.styles}
+			on:change={onStyleChange}
+		/>
 	</div>
-{/if}
+	<div class="legend-header m-1">
+		<LegendHeader
+			bind:onlyRendered
+			bind:onlyRelative
+			bind:enableLayerOrder
+			isLayerOrderShown={true}
+		/>
+	</div>
+	<div class="legend-content">
+		<LegendPanel
+			bind:map={$map}
+			{style}
+			bind:onlyRendered
+			bind:onlyRelative
+			bind:enableLayerOrder
+			{relativeLayers}
+			disableVisibleButton={false}
+		/>
+	</div>
+</div>
 
 <style lang="scss">
 	$height: calc(100vh - 140px);

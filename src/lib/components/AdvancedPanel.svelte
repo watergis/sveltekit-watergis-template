@@ -5,7 +5,6 @@
 	import { map } from '$lib/stores';
 	import { config } from '$config';
 
-	export let isAdvancedTabVisible = false;
 	let panelColor:
 		| ''
 		| 'is-link'
@@ -55,46 +54,40 @@
 </script>
 
 <div class="panel-content">
-	{#if isAdvancedTabVisible}
-		{#if config.elevation}
-			<CollapsiblePanel
-				title="Measuring tool"
-				bind:isPanelOpen={panelMeasureOpen}
-				color={panelColor}
-			>
-				<div class="accordion-content">
-					<MeasurePanel
-						bind:map={$map}
-						bind:measureOption={config.elevation.options}
-						bind:terrainRgbUrl={config.elevation.url}
-					/>
-				</div>
-			</CollapsiblePanel>
-		{/if}
-		{#if config.valhalla}
-			<CollapsiblePanel title="Routing tool" bind:isPanelOpen={panelRoutingOpen} color={panelColor}>
-				<div class="accordion-content">
-					<ValhallaRoutingPanel
-						bind:map={$map}
-						bind:url={config.valhalla.url}
-						bind:options={config.valhalla.routingOptions}
-					/>
-				</div>
-			</CollapsiblePanel>
-			<CollapsiblePanel
-				title="Isochrone analysis"
-				bind:isPanelOpen={panelTimeIsochroneOpen}
-				color={panelColor}
-			>
-				<div class="accordion-content">
-					<ValhallaIsochronePanel
-						bind:map={$map}
-						bind:url={config.valhalla.url}
-						bind:options={config.valhalla.isoChroneOptions}
-					/>
-				</div>
-			</CollapsiblePanel>
-		{/if}
+	{#if config.elevation}
+		<CollapsiblePanel title="Measuring tool" bind:isPanelOpen={panelMeasureOpen} color={panelColor}>
+			<div class="accordion-content">
+				<MeasurePanel
+					bind:map={$map}
+					bind:measureOption={config.elevation.options}
+					bind:terrainRgbUrl={config.elevation.url}
+				/>
+			</div>
+		</CollapsiblePanel>
+	{/if}
+	{#if config.valhalla}
+		<CollapsiblePanel title="Routing tool" bind:isPanelOpen={panelRoutingOpen} color={panelColor}>
+			<div class="accordion-content">
+				<ValhallaRoutingPanel
+					bind:map={$map}
+					bind:url={config.valhalla.url}
+					bind:options={config.valhalla.routingOptions}
+				/>
+			</div>
+		</CollapsiblePanel>
+		<CollapsiblePanel
+			title="Isochrone analysis"
+			bind:isPanelOpen={panelTimeIsochroneOpen}
+			color={panelColor}
+		>
+			<div class="accordion-content">
+				<ValhallaIsochronePanel
+					bind:map={$map}
+					bind:url={config.valhalla.url}
+					bind:options={config.valhalla.isoChroneOptions}
+				/>
+			</div>
+		</CollapsiblePanel>
 	{/if}
 </div>
 

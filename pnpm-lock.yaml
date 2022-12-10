@@ -10,7 +10,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.46.0
   '@watergis/mapbox-gl-area-switcher': ^1.0.1
   '@watergis/maplibre-center-icon': ^0.1.4
-  '@watergis/svelte-collapsible-panel': ^0.0.9
+  '@watergis/svelte-collapsible-panel': ^0.0.10
   '@watergis/svelte-maplibre-attribute-popup': ^0.0.12
   '@watergis/svelte-maplibre-export': ^0.1.16
   '@watergis/svelte-maplibre-legend': ^0.1.11
@@ -42,7 +42,7 @@ specifiers:
 dependencies:
   '@watergis/mapbox-gl-area-switcher': 1.0.1
   '@watergis/maplibre-center-icon': 0.1.4
-  '@watergis/svelte-collapsible-panel': 0.0.9
+  '@watergis/svelte-collapsible-panel': 0.0.10
   '@watergis/svelte-maplibre-attribute-popup': 0.0.12
   '@watergis/svelte-maplibre-export': 0.1.16
   '@watergis/svelte-maplibre-legend': 0.1.11
@@ -746,8 +746,8 @@ packages:
       maplibre-gl: 2.4.0
     dev: false
 
-  /@watergis/svelte-collapsible-panel/0.0.9:
-    resolution: {integrity: sha512-pOrw1Jbs3gdqgrh+ftOwnYmxXBpLwoj7/FsPSekXspG9gdl6UXfxHknAokiG1UJfzqauZtHCaia2PxnIP16p9Q==}
+  /@watergis/svelte-collapsible-panel/0.0.10:
+    resolution: {integrity: sha512-pUZ7dxbJ7XmL6f78PLlmBBJv6FSqXuqlWTDwGlvKTDLljmQx/vps7lFsqQiy5YzltTNy7UBeaQFoobIi/RxDVg==}
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.2.1
       bulma: 0.9.4
