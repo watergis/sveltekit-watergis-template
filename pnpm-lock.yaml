@@ -13,7 +13,7 @@ specifiers:
   '@watergis/svelte-collapsible-panel': ^0.0.9
   '@watergis/svelte-maplibre-attribute-popup': ^0.0.12
   '@watergis/svelte-maplibre-export': ^0.1.16
-  '@watergis/svelte-maplibre-legend': ^0.1.9
+  '@watergis/svelte-maplibre-legend': ^0.1.11
   '@watergis/svelte-maplibre-measure': ^0.1.13
   '@watergis/svelte-maplibre-menu': ^0.1.12
   '@watergis/svelte-maplibre-search': ^0.1.5
@@ -34,7 +34,7 @@ specifiers:
   svelte: ^3.54.0
   svelte-check: ^2.10.2
   svelte-fa: ^3.0.3
-  svelte-preprocess: ^4.10.7
+  svelte-preprocess: ^5.0.0
   tslib: ^2.4.1
   typescript: ~4.9.4
   vite: ^4.0.0
@@ -45,7 +45,7 @@ dependencies:
   '@watergis/svelte-collapsible-panel': 0.0.9
   '@watergis/svelte-maplibre-attribute-popup': 0.0.12
   '@watergis/svelte-maplibre-export': 0.1.16
-  '@watergis/svelte-maplibre-legend': 0.1.9
+  '@watergis/svelte-maplibre-legend': 0.1.11
   '@watergis/svelte-maplibre-measure': 0.1.13
   '@watergis/svelte-maplibre-menu': 0.1.12
   '@watergis/svelte-maplibre-search': 0.1.5
@@ -75,7 +75,7 @@ devDependencies:
   svelte: 3.54.0
   svelte-check: 2.10.2_sass@1.56.2+svelte@3.54.0
   svelte-fa: 3.0.3
-  svelte-preprocess: 4.10.7_qzsefpw3caktxn3x6hfckma6hy
+  svelte-preprocess: 5.0.0_qzsefpw3caktxn3x6hfckma6hy
   tslib: 2.4.1
   typescript: 4.9.4
   vite: 4.0.0_sass@1.56.2
@@ -770,11 +770,12 @@ packages:
       svelte-fa: 3.0.3
     dev: false
 
-  /@watergis/svelte-maplibre-legend/0.1.9:
-    resolution: {integrity: sha512-bMjLWFzDGtFeQZv8r6aIg7xiKpgzHqmEIFAXJcVtq+Rnh9fuyZIRjAbx/gRf0jrRWLJd0kD2d4VomRhAFb6nLg==}
+  /@watergis/svelte-maplibre-legend/0.1.11:
+    resolution: {integrity: sha512-TDf98tALuwgyx9jBaBOrQS6IFCaMSjwwtVNSVDc28ni8cwZLhvIYn9f2VZZRqXUkD2DjyuRA3mcNtsPLdGpPyA==}
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.2.1
       '@watergis/legend-symbol': 0.2.3
+      detect-touch-device: 1.1.6
       maplibre-gl: 2.4.0
       svelte-fa: 3.0.3
     dev: false
@@ -1083,6 +1084,10 @@ packages:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
     engines: {node: '>=8'}
     dev: true
+
+  /detect-touch-device/1.1.6:
+    resolution: {integrity: sha512-9DYLJE05EFGI9f8m/GyJtWjw7aMZMBQM2QVy6bb7zX8uC3iorOE3Erdrk3TWCj5FVOlHTfinU0bATTE9GWYebw==}
+    dev: false
 
   /devalue/4.2.0:
     resolution: {integrity: sha512-mbjoAaCL2qogBKgeFxFPOXAUsZchircF+B/79LD4sHH0+NHfYm8gZpQrskKDn5gENGt35+5OI1GUF7hLVnkPDw==}
@@ -2275,6 +2280,55 @@ packages:
       '@types/sass': 1.43.1
       detect-indent: 6.1.0
       magic-string: 0.25.9
+      sass: 1.56.2
+      sorcery: 0.10.0
+      strip-indent: 3.0.0
+      svelte: 3.54.0
+      typescript: 4.9.4
+    dev: true
+
+  /svelte-preprocess/5.0.0_qzsefpw3caktxn3x6hfckma6hy:
+    resolution: {integrity: sha512-q7lpa7i2FBu8Pa+G0MmuQQWETBwCKgsGmuq1Sf6n8q4uaG9ZLcLP0Y+etC6bF4sE6EbLxfiI38zV6RfPe3RSfg==}
+    engines: {node: '>= 14.10.0'}
+    requiresBuild: true
+    peerDependencies:
+      '@babel/core': ^7.10.2
+      coffeescript: ^2.5.1
+      less: ^3.11.3 || ^4.0.0
+      postcss: ^7 || ^8
+      postcss-load-config: ^2.1.0 || ^3.0.0 || ^4.0.0
+      pug: ^3.0.0
+      sass: ^1.26.8
+      stylus: ^0.55.0
+      sugarss: ^2.0.0 || ^3.0.0 || ^4.0.0
+      svelte: ^3.23.0
+      typescript: ^3.9.5 || ^4.0.0
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      coffeescript:
+        optional: true
+      less:
+        optional: true
+      postcss:
+        optional: true
+      postcss-load-config:
+        optional: true
+      pug:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@types/pug': 2.0.6
+      '@types/sass': 1.43.1
+      detect-indent: 6.1.0
+      magic-string: 0.27.0
       sass: 1.56.2
       sorcery: 0.10.0
       strip-indent: 3.0.0
