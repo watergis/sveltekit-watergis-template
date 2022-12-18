@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@arkweid/lefthook': ^0.7.7
-  '@esbuild-plugins/node-globals-polyfill': ^0.1.1
   '@fortawesome/free-solid-svg-icons': ^6.2.1
   '@sveltejs/adapter-static': ^1.0.0
   '@sveltejs/kit': ^1.0.1
@@ -22,7 +21,6 @@ specifiers:
   '@watergis/svelte-maplibre-valhalla': ^0.0.14
   buffer: ^6.0.3
   bulma: ^0.9.4
-  esbuild: ^0.16.7
   eslint: ^8.30.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
@@ -57,14 +55,12 @@ dependencies:
 
 devDependencies:
   '@arkweid/lefthook': 0.7.7
-  '@esbuild-plugins/node-globals-polyfill': 0.1.1_esbuild@0.16.7
   '@fortawesome/free-solid-svg-icons': 6.2.1
   '@sveltejs/adapter-static': 1.0.0_@sveltejs+kit@1.0.1
   '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.2
   '@typescript-eslint/eslint-plugin': 5.46.1_mqzxmroayievgzgel6yrqgih5i
   '@typescript-eslint/parser': 5.46.1_lzzuuodtsqwxnvqeq4g4likcqa
   bulma: 0.9.4
-  esbuild: 0.16.7
   eslint: 8.30.0
   eslint-config-prettier: 8.5.0_eslint@8.30.0
   eslint-plugin-svelte3: 4.0.0_khrjkzzv5v2x7orkj5o7sxbz3a
@@ -101,14 +97,6 @@ packages:
   /@canvas/image-data/1.0.0:
     resolution: {integrity: sha512-BxOqI5LgsIQP1odU5KMwV9yoijleOPzHL18/YvNqF9KFSGF2K/DLlYAbDQsWqd/1nbaFuSkYD/191dpMtNh4vw==}
     dev: false
-
-  /@esbuild-plugins/node-globals-polyfill/0.1.1_esbuild@0.16.7:
-    resolution: {integrity: sha512-MR0oAA+mlnJWrt1RQVQ+4VYuRJW/P2YmRTv1AsplObyvuBMnPHiizUF95HHYiSsMGLhyGtWufaq2XQg6+iurBg==}
-    peerDependencies:
-      esbuild: '*'
-    dependencies:
-      esbuild: 0.16.7
-    dev: true
 
   /@esbuild/android-arm/0.16.7:
     resolution: {integrity: sha512-yhzDbiVcmq6T1/XEvdcJIVcXHdLjDJ5cQ0Dp9R9p9ERMBTeO1dR5tc8YYv8zwDeBw1xZm+Eo3MRo8cwclhBS0g==}
