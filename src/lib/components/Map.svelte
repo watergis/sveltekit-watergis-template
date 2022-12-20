@@ -63,6 +63,12 @@
 			$map.addControl(new TerrainControl(config.terrain), 'bottom-right');
 		}
 
+		if (config.areaSwitcher) {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			$map.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'bottom-right');
+		}
+
 		$map.addControl(
 			new FullscreenControl({ container: document.querySelector('body') }),
 			'bottom-right'
@@ -75,12 +81,6 @@
 
 		$map.on('load', () => {
 			isMapLoaded = true;
-
-			if (config.areaSwitcher) {
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				$map.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'top-right');
-			}
 		});
 	});
 
