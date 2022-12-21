@@ -112,7 +112,8 @@
 							zoom: config.search.zoom,
 							placeholder: config.search.placeholder,
 							limit: config.search.limit,
-							mapboxgl: maplibregl
+							mapboxgl: maplibregl,
+							collapsed: true
 						}),
 						'top-left'
 					);
@@ -163,8 +164,8 @@
 		z-index: 1;
 	}
 
-	:global(.suggestions) {
+	:global(.mapboxgl-ctrl-geocoder .suggestions) {
 		overflow-y: auto !important;
-		max-height: 400px;
+		max-height: calc(85vh);
 	}
 </style>
