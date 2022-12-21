@@ -43,7 +43,8 @@ export const config: Config = {
 		},
 		place_type: ['meter'],
 		placeholder: 'Search CONN NO or S/N',
-		zoom: 17
+		zoom: 17,
+		limit: 50
 	},
 	// please specify layers' name for showing popup with attributes table.
 	popup: {

@@ -111,6 +111,7 @@
 							localGeocoderOnly: true,
 							zoom: config.search.zoom,
 							placeholder: config.search.placeholder,
+							limit: config.search.limit,
 							mapboxgl: maplibregl
 						}),
 						'top-left'
@@ -160,5 +161,10 @@
 		width: 100%;
 		height: 100%;
 		z-index: 1;
+	}
+
+	:global(.suggestions) {
+		overflow-y: auto !important;
+		max-height: 400px;
 	}
 </style>

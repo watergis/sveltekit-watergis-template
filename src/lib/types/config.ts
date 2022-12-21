@@ -21,6 +21,7 @@ export type Config = {
 		place_type: string[];
 		placeholder: string;
 		zoom: number;
+		limit: number;
 	};
 	popup: {
 		target: string[];
