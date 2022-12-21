@@ -1,6 +1,5 @@
 import type { LngLatLike, TerrainSpecification } from 'maplibre-gl';
 import type { StyleSwitcherOption } from '@watergis/svelte-maplibre-style-switcher';
-import type { SearchOption } from '@watergis/svelte-maplibre-search';
 import type {
 	ValhallaIsochroneOptions,
 	ValhallaRoutingOptions
@@ -15,7 +14,15 @@ export type Config = {
 	styles: StyleSwitcherOption[];
 	center: LngLatLike;
 	zoom: number;
-	search?: SearchOption;
+	search?: {
+		url: string;
+		target: string[];
+		format: (p: { [key: string]: string }) => string;
+		place_type: string[];
+		placeholder: string;
+		zoom: number;
+		limit: number;
+	};
 	popup: {
 		target: string[];
 	};

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import {
+	import maplibregl, {
 		Map,
 		NavigationControl,
 		GeolocateControl,
@@ -11,7 +11,6 @@
 	} from 'maplibre-gl';
 	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '$config';
-	import SearchControl from '@watergis/svelte-maplibre-search';
 	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
 	import { MapExportControl } from '@watergis/svelte-maplibre-export';
@@ -20,6 +19,8 @@
 	import DrawerContent from './DrawerContent.svelte';
 	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
 	import CenterIconManager from '@watergis/maplibre-center-icon';
+	import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+	import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 	let mapContainer: HTMLDivElement;
 	let isMapLoaded = false;
@@ -79,6 +80,45 @@
 		const centerIconManager = new CenterIconManager($map);
 		centerIconManager.create();
 
+		if (config.search) {
+			fetch(config.search.url)
+				.then((res) => res.json())
+				.then((data) => {
+					function forwardGeocoder(query) {
+						var matchingFeatures = [];
+						for (var i = 0; i < data.features.length; i++) {
+							var feature = data.features[i];
+							config.search.target.forEach((v) => {
+								var target = feature.properties[v];
+								if (!target) {
+									return;
+								}
+								// handle queries with different capitalization than the source data by calling toLowerCase()
+								if (target.toString().toLowerCase().search(query.toString().toLowerCase()) !== -1) {
+									feature['place_name'] = config.search.format(feature.properties);
+									feature['center'] = feature.geometry.coordinates;
+									feature['place_type'] = config.search.place_type;
+									matchingFeatures.push(feature);
+								}
+							});
+						}
+						return matchingFeatures;
+					}
+					$map.addControl(
+						new MapboxGeocoder({
+							// accessToken: mapboxgl.accessToken,
+							localGeocoder: forwardGeocoder,
+							localGeocoderOnly: true,
+							zoom: config.search.zoom,
+							placeholder: config.search.placeholder,
+							limit: config.search.limit,
+							mapboxgl: maplibregl
+						}),
+						'top-left'
+					);
+				});
+		}
+
 		$map.on('load', () => {
 			isMapLoaded = true;
 		});
@@ -97,9 +137,6 @@
 	</div>
 	<div slot="secondary">
 		<div class="map" id="map" bind:this={mapContainer} />
-		{#if isMapLoaded && config.search}
-			<SearchControl bind:map={$map} bind:searchOption={config.search} position="top-left" />
-		{/if}
 		<AttributePopupControl bind:map={$map} bind:targetLayers={config.popup.target} />
 		<ShareURLControl bind:map={$map} bind:customiseUrl position="top-right" />
 		<MapExportControl
@@ -124,5 +161,10 @@
 		width: 100%;
 		height: 100%;
 		z-index: 1;
+	}
+
+	:global(.suggestions) {
+		overflow-y: auto !important;
+		max-height: 400px;
 	}
 </style>
