@@ -4,6 +4,7 @@ specifiers:
   '@arkweid/lefthook': ^0.7.7
   '@fortawesome/free-solid-svg-icons': ^6.2.1
   '@mapbox/mapbox-gl-geocoder': ^5.0.1
+  '@popperjs/core': ^2.11.6
   '@sveltejs/adapter-static': ^1.0.0
   '@sveltejs/kit': ^1.0.1
   '@types/events': ^3.0.0
@@ -15,9 +16,9 @@ specifiers:
   '@watergis/svelte-collapsible-panel': ^0.0.14
   '@watergis/svelte-maplibre-attribute-popup': ^0.0.16
   '@watergis/svelte-maplibre-export': ^0.1.20
-  '@watergis/svelte-maplibre-legend': 0.1.15
+  '@watergis/svelte-maplibre-legend': ^0.1.17
   '@watergis/svelte-maplibre-measure': ^0.1.18
-  '@watergis/svelte-maplibre-menu': ^0.1.16
+  '@watergis/svelte-maplibre-menu': ^0.1.17
   '@watergis/svelte-maplibre-share': ^0.1.13
   '@watergis/svelte-maplibre-style-switcher': ^0.1.15
   '@watergis/svelte-maplibre-valhalla': ^0.0.14
@@ -33,19 +34,20 @@ specifiers:
   rimraf: ^3.0.2
   sass: ^1.57.1
   svelte: ^3.55.0
-  svelte-check: ^2.10.3
+  svelte-check: ^3.0.1
   svelte-fa: ^3.0.3
   svelte-preprocess: ^5.0.0
   tslib: ^2.4.1
   typescript: ~4.9.4
-  vite: ^4.0.2
+  vite: ^4.0.3
 
 devDependencies:
   '@arkweid/lefthook': 0.7.7
   '@fortawesome/free-solid-svg-icons': 6.2.1
-  '@mapbox/mapbox-gl-geocoder': 5.0.1_mapbox-gl@1.13.2
+  '@mapbox/mapbox-gl-geocoder': 5.0.1_mapbox-gl@2.11.1
+  '@popperjs/core': 2.11.6
   '@sveltejs/adapter-static': 1.0.0_@sveltejs+kit@1.0.1
-  '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.2
+  '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.3
   '@types/events': 3.0.0
   '@types/node': 18.11.17
   '@typescript-eslint/eslint-plugin': 5.47.0_ncmi6noazr3nzas7jxykisekym
@@ -55,9 +57,9 @@ devDependencies:
   '@watergis/svelte-collapsible-panel': 0.0.14
   '@watergis/svelte-maplibre-attribute-popup': 0.0.16
   '@watergis/svelte-maplibre-export': 0.1.20
-  '@watergis/svelte-maplibre-legend': 0.1.15
+  '@watergis/svelte-maplibre-legend': 0.1.17_wbktlcl6xhsncvz2r5eelcs6le
   '@watergis/svelte-maplibre-measure': 0.1.18
-  '@watergis/svelte-maplibre-menu': 0.1.16
+  '@watergis/svelte-maplibre-menu': 0.1.17
   '@watergis/svelte-maplibre-share': 0.1.13
   '@watergis/svelte-maplibre-style-switcher': 0.1.15
   '@watergis/svelte-maplibre-valhalla': 0.0.14
@@ -73,12 +75,12 @@ devDependencies:
   rimraf: 3.0.2
   sass: 1.57.1
   svelte: 3.55.0
-  svelte-check: 2.10.3_sass@1.57.1+svelte@3.55.0
+  svelte-check: 3.0.1_sass@1.57.1+svelte@3.55.0
   svelte-fa: 3.0.3
   svelte-preprocess: 5.0.0_cfliyikhlimajcn5n7qvd3jsli
   tslib: 2.4.1
   typescript: 4.9.4
-  vite: 4.0.2_gneikmxcpj2uc2xuqjosnroj4e
+  vite: 4.0.3_gneikmxcpj2uc2xuqjosnroj4e
 
 packages:
 
@@ -112,8 +114,8 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
-  /@babel/runtime/7.20.6:
-    resolution: {integrity: sha512-Q+8MqP7TiHMWzSfwiJwXCjyf4GYA4Dgw3emg/7xmwsdLJOZUp+nMqcOwOzzYheuM1rhDu8FSj2l0aoMygEuXuA==}
+  /@babel/runtime/7.20.7:
+    resolution: {integrity: sha512-UF0tvkUtxwAgZ5W/KrkHf0Rn0fdnLDU9ScxBrEVNUprE/MzirjK4MJUX1/BVDv00Sv8cljtukVK1aky++X1SjQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
@@ -416,7 +418,7 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
-  /@mapbox/mapbox-gl-geocoder/5.0.1_mapbox-gl@1.13.2:
+  /@mapbox/mapbox-gl-geocoder/5.0.1_mapbox-gl@2.11.1:
     resolution: {integrity: sha512-/OUL42eh4OBaIerhcwCpa27oD+u4a2xN8V7vEdsglwd8lCplFAxJCdwT9Kprli1TH5mTYsXyONmh03FwoWBWfA==}
     engines: {node: '>=6'}
     peerDependencies:
@@ -425,7 +427,7 @@ packages:
       '@mapbox/mapbox-sdk': 0.13.7
       events: 3.3.0
       lodash.debounce: 4.0.8
-      mapbox-gl: 1.13.2
+      mapbox-gl: 2.11.1
       nanoid: 3.3.4
       subtag: 0.5.0
       suggestions: 1.7.1
@@ -545,6 +547,10 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: true
+
   /@sindresorhus/is/4.6.0:
     resolution: {integrity: sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==}
     engines: {node: '>=10'}
@@ -555,10 +561,10 @@ packages:
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.2
+      '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.3
     dev: true
 
-  /@sveltejs/kit/1.0.1_svelte@3.55.0+vite@4.0.2:
+  /@sveltejs/kit/1.0.1_svelte@3.55.0+vite@4.0.3:
     resolution: {integrity: sha512-C41aCaDjA7xoUdsrc/lSdU1059UdLPIRE1vEIRRynzpMujNgp82bTMHkDosb6vykH6LrLf3tT2w2/5NYQhKYGQ==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
@@ -567,7 +573,7 @@ packages:
       svelte: ^3.54.0
       vite: ^4.0.0
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 2.0.2_svelte@3.55.0+vite@4.0.2
+      '@sveltejs/vite-plugin-svelte': 2.0.2_svelte@3.55.0+vite@4.0.3
       '@types/cookie': 0.5.1
       cookie: 0.5.0
       devalue: 4.2.0
@@ -581,12 +587,12 @@ packages:
       svelte: 3.55.0
       tiny-glob: 0.2.9
       undici: 5.14.0
-      vite: 4.0.2_gneikmxcpj2uc2xuqjosnroj4e
+      vite: 4.0.3_gneikmxcpj2uc2xuqjosnroj4e
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@sveltejs/vite-plugin-svelte/2.0.2_svelte@3.55.0+vite@4.0.2:
+  /@sveltejs/vite-plugin-svelte/2.0.2_svelte@3.55.0+vite@4.0.3:
     resolution: {integrity: sha512-xCEan0/NNpQuL0l5aS42FjwQ6wwskdxC3pW1OeFtEKNZwRg7Evro9lac9HesGP6TdFsTv2xMes5ASQVKbCacxg==}
     engines: {node: ^14.18.0 || >= 16}
     peerDependencies:
@@ -599,8 +605,8 @@ packages:
       magic-string: 0.27.0
       svelte: 3.55.0
       svelte-hmr: 0.15.1_svelte@3.55.0
-      vite: 4.0.2_gneikmxcpj2uc2xuqjosnroj4e
-      vitefu: 0.2.4_vite@4.0.2
+      vite: 4.0.3_gneikmxcpj2uc2xuqjosnroj4e
+      vitefu: 0.2.4_vite@4.0.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -888,14 +894,22 @@ packages:
       svelte-fa: 3.0.3
     dev: true
 
-  /@watergis/svelte-maplibre-legend/0.1.15:
-    resolution: {integrity: sha512-8O+ZDw3erEnpfvHeER16t29Fraswrsyiuqafzw/CtQkFKkH/d6QI1grw2IdwYaLHMXG8LOQOygcqXfjfp/zCoQ==}
+  /@watergis/svelte-maplibre-legend/0.1.17_wbktlcl6xhsncvz2r5eelcs6le:
+    resolution: {integrity: sha512-aRB56wUBPCWldVeAW0+VIUkYR+DFdn4UCqgqAWfUQl9NVL5aBJBjedwywZqcRR6EZWGEhuncFvq7dFMadq7eVg==}
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.2.1
       '@watergis/legend-symbol': 0.2.3
+      chroma-js: 2.4.2
       detect-touch-device: 1.1.6
       maplibre-gl: 2.4.0
+      svelte-awesome-color-picker: 2.2.1
       svelte-fa: 3.0.3
+      svelte-popperjs: 1.3.2_wbktlcl6xhsncvz2r5eelcs6le
+      svelte-range-slider-pips: 2.1.1
+      svelte-use-click-outside: 1.0.0
+    transitivePeerDependencies:
+      - '@popperjs/core'
+      - svelte
     dev: true
 
   /@watergis/svelte-maplibre-measure/0.1.18:
@@ -910,8 +924,8 @@ packages:
       - debug
     dev: true
 
-  /@watergis/svelte-maplibre-menu/0.1.16:
-    resolution: {integrity: sha512-AZWPxN/9pXrXpQGuoQYnR4IILFXjqsZabPPuuDIsbAPtckkrSPIYd7dTWomue7AIE+1yXmIUUi3KHUmrvHp6gw==}
+  /@watergis/svelte-maplibre-menu/0.1.17:
+    resolution: {integrity: sha512-2bsNjJnhbIRjhf+FEHeVCkZWQ28oDjw71GoST9uNY2jWC73Hi4FxVP03vX8wBZeylvZjyMHqrPwb4erKGUpk9A==}
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.2.1
       '@geoffcox/svelte-splitter': 1.0.1
@@ -1111,7 +1125,7 @@ packages:
     resolution: {integrity: sha512-pouW8/FmiPQbuGpkXQ9BAPv/Mo5xDGANgSNXzTzJ8DrKGuXOssM4wIQRjfanNRh3Yu5cfYPvcorqbhg2KIJtew==}
     engines: {node: '>=8'}
     dependencies:
-      clone-response: 1.0.2
+      clone-response: 1.0.3
       get-stream: 5.2.0
       http-cache-semantics: 4.1.0
       keyv: 4.5.2
@@ -1144,7 +1158,7 @@ packages:
     engines: {node: '>=10.0.0'}
     requiresBuild: true
     dependencies:
-      '@babel/runtime': 7.20.6
+      '@babel/runtime': 7.20.7
       '@types/raf': 3.4.0
       core-js: 3.26.1
       raf: 3.4.1
@@ -1187,8 +1201,12 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /clone-response/1.0.2:
-    resolution: {integrity: sha512-yjLXh88P599UOyPTFX0POsd7WxnbsVsGohcwzHOLspIhhpalPw1BcqED8NblyZLKcGrL8dTgMlcaZxV2jAD41Q==}
+  /chroma-js/2.4.2:
+    resolution: {integrity: sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==}
+    dev: true
+
+  /clone-response/1.0.3:
+    resolution: {integrity: sha512-ROoL94jJH2dUVML2Y/5PEDNaSHgeOdSDicUyS7izcF63G6sTc/FTjLub4b8Il9S8S0beOfYt0TaA5qvFK+w0wA==}
     dependencies:
       mimic-response: 1.0.1
     dev: true
@@ -1212,6 +1230,10 @@ packages:
 
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+    dev: true
+
+  /colord/2.9.3:
+    resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
     dev: true
 
   /combined-stream/1.0.8:
@@ -1844,8 +1866,8 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
-  /immutable/4.1.0:
-    resolution: {integrity: sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==}
+  /immutable/4.2.0:
+    resolution: {integrity: sha512-h4ujZ0OZ3kpvdFcwJAHXEdvawH7J8TYTB62e8xI03OSZhuGpuPY9DPXnonMN8s+uQ56gMUqMK71mXU8ob20xfA==}
     dev: true
 
   /import-fresh/3.3.0:
@@ -1967,7 +1989,7 @@ packages:
   /jspdf/2.5.1:
     resolution: {integrity: sha512-hXObxz7ZqoyhxET78+XR34Xu2qFGrJJ2I2bE5w4SM8eFaFEkW2xcGRVUss360fYelwRSid/jT078kbNvmoW0QA==}
     dependencies:
-      '@babel/runtime': 7.20.6
+      '@babel/runtime': 7.20.7
       atob: 2.1.2
       btoa: 1.2.1
       fflate: 0.4.8
@@ -2044,12 +2066,6 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /magic-string/0.25.9:
-    resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
-    dependencies:
-      sourcemap-codec: 1.4.8
-    dev: true
-
   /magic-string/0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
     engines: {node: '>=12'}
@@ -2089,6 +2105,32 @@ packages:
       murmurhash-js: 1.0.0
       pbf: 3.2.1
       potpack: 1.0.2
+      quickselect: 2.0.0
+      rw: 1.3.3
+      supercluster: 7.1.5
+      tinyqueue: 2.0.3
+      vt-pbf: 3.1.3
+    dev: true
+
+  /mapbox-gl/2.11.1:
+    resolution: {integrity: sha512-UzPi3m9i4t95M234sPmL3n9q2XpyHoyIFMXDjuJP+3OmzROwYUMzLcNMnPHrOmgwGicg99dr7rEJGYyEGr9i+A==}
+    dependencies:
+      '@mapbox/geojson-rewind': 0.5.2
+      '@mapbox/jsonlint-lines-primitives': 2.0.2
+      '@mapbox/mapbox-gl-supported': 2.0.1
+      '@mapbox/point-geometry': 0.1.0
+      '@mapbox/tiny-sdf': 2.0.5
+      '@mapbox/unitbezier': 0.0.1
+      '@mapbox/vector-tile': 1.3.1
+      '@mapbox/whoots-js': 3.1.0
+      csscolorparser: 1.0.3
+      earcut: 2.2.4
+      geojson-vt: 3.2.1
+      gl-matrix: 3.4.3
+      grid-index: 1.1.0
+      murmurhash-js: 1.0.0
+      pbf: 3.2.1
+      potpack: 2.0.0
       quickselect: 2.0.0
       rw: 1.3.3
       supercluster: 7.1.5
@@ -2402,6 +2444,10 @@ packages:
     resolution: {integrity: sha512-choctRBIV9EMT9WGAZHn3V7t0Z2pMQyl0EZE6pFc/6ml3ssw7Dlf/oAOvFwjm1HVsqfQN8GfeFyJ+d8tRzqueQ==}
     dev: true
 
+  /potpack/2.0.0:
+    resolution: {integrity: sha512-Q+/tYsFU9r7xoOJ+y/ZTtdVQwTWfzjbiXBDMM/JKUux3+QPP02iUuIoeBQ+Ot6oEDlC+/PGjB/5A3K7KKb7hcw==}
+    dev: true
+
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -2562,8 +2608,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup/3.7.5:
-    resolution: {integrity: sha512-z0ZbqHBtS/et2EEUKMrAl2CoSdwN7ZPzL17UMiKN9RjjqHShTlv7F9J6ZJZJNREYjBh3TvBrdfjkFDIXFNeuiQ==}
+  /rollup/3.8.1:
+    resolution: {integrity: sha512-4yh9eMW7byOroYcN8DlF9P/2jCpu6txVIHjEqquQVSx7DI0RgyCCN3tjrcy4ra6yVtV336aLBB3v2AarYAxePQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -2602,7 +2648,7 @@ packages:
     hasBin: true
     dependencies:
       chokidar: 3.5.3
-      immutable: 4.1.0
+      immutable: 4.2.0
       source-map-js: 1.0.2
     dev: true
 
@@ -2775,11 +2821,17 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte-check/2.10.3_sass@1.57.1+svelte@3.55.0:
-    resolution: {integrity: sha512-Nt1aWHTOKFReBpmJ1vPug0aGysqPwJh2seM1OvICfM2oeyaA62mOiy5EvkXhltGfhCcIQcq2LoE0l1CwcWPjlw==}
+  /svelte-awesome-color-picker/2.2.1:
+    resolution: {integrity: sha512-61i3i+f2vleyk0VeTub5WHf2k8qChDhdaABLFKZO3qcF6dxT/0LTH4obzbOD1nsC70uKHqUiZ6CavMtCelJBmg==}
+    dependencies:
+      colord: 2.9.3
+    dev: true
+
+  /svelte-check/3.0.1_sass@1.57.1+svelte@3.55.0:
+    resolution: {integrity: sha512-7YpHYWv6V2qhcvVeAlXixUPAlpLCXB1nZEQK0EItB3PtuYmENhKclbc5uKSJTodTwWR1y+4stKGcbH30k6A3Yw==}
     hasBin: true
     peerDependencies:
-      svelte: ^3.24.0
+      svelte: ^3.55.0
     dependencies:
       '@jridgewell/trace-mapping': 0.3.17
       chokidar: 3.5.3
@@ -2788,13 +2840,12 @@ packages:
       picocolors: 1.0.0
       sade: 1.8.1
       svelte: 3.55.0
-      svelte-preprocess: 4.10.7_cfliyikhlimajcn5n7qvd3jsli
+      svelte-preprocess: 5.0.0_cfliyikhlimajcn5n7qvd3jsli
       typescript: 4.9.4
     transitivePeerDependencies:
       - '@babel/core'
       - coffeescript
       - less
-      - node-sass
       - postcss
       - postcss-load-config
       - pug
@@ -2820,56 +2871,14 @@ packages:
       svelte: 3.55.0
     dev: true
 
-  /svelte-preprocess/4.10.7_cfliyikhlimajcn5n7qvd3jsli:
-    resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
-    engines: {node: '>= 9.11.2'}
-    requiresBuild: true
+  /svelte-popperjs/1.3.2_wbktlcl6xhsncvz2r5eelcs6le:
+    resolution: {integrity: sha512-fwrErlkvngL876WXRnL3OLlfk/n9YkZwwLxuKRpZOYCJLt1zrwhoKTXS+/sRgDveD/zd6GQ35hV89EOip+NBGA==}
     peerDependencies:
-      '@babel/core': ^7.10.2
-      coffeescript: ^2.5.1
-      less: ^3.11.3 || ^4.0.0
-      node-sass: '*'
-      postcss: ^7 || ^8
-      postcss-load-config: ^2.1.0 || ^3.0.0 || ^4.0.0
-      pug: ^3.0.0
-      sass: ^1.26.8
-      stylus: ^0.55.0
-      sugarss: ^2.0.0
-      svelte: ^3.23.0
-      typescript: ^3.9.5 || ^4.0.0
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      coffeescript:
-        optional: true
-      less:
-        optional: true
-      node-sass:
-        optional: true
-      postcss:
-        optional: true
-      postcss-load-config:
-        optional: true
-      pug:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      typescript:
-        optional: true
+      '@popperjs/core': '>=2'
+      svelte: '>=3'
     dependencies:
-      '@types/pug': 2.0.6
-      '@types/sass': 1.43.1
-      detect-indent: 6.1.0
-      magic-string: 0.25.9
-      sass: 1.57.1
-      sorcery: 0.10.0
-      strip-indent: 3.0.0
+      '@popperjs/core': 2.11.6
       svelte: 3.55.0
-      typescript: 4.9.4
     dev: true
 
   /svelte-preprocess/5.0.0_cfliyikhlimajcn5n7qvd3jsli:
@@ -2919,6 +2928,14 @@ packages:
       strip-indent: 3.0.0
       svelte: 3.55.0
       typescript: 4.9.4
+    dev: true
+
+  /svelte-range-slider-pips/2.1.1:
+    resolution: {integrity: sha512-fLkhfnyEc4uMOCZCl8IPyC0e9lujrjqdSyrKw28Y8j99YUPZR+pHnSxde7PqhM0ST6eyO4ugh2nFnLZTIoG9aQ==}
+    dev: true
+
+  /svelte-use-click-outside/1.0.0:
+    resolution: {integrity: sha512-tOWeMPxeIoW9RshS0WbogRhdYdbxcJV0ebkzSh1lwR7Ihl0hSZMmB4YyCHHoXJK4xcbxCCFh0AnQ1vkzGZfLVQ==}
     dev: true
 
   /svelte/3.55.0:
@@ -3049,8 +3066,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite/4.0.2_gneikmxcpj2uc2xuqjosnroj4e:
-    resolution: {integrity: sha512-QJaY3R+tFlTagH0exVqbgkkw45B+/bXVBzF2ZD1KB5Z8RiAoiKo60vSUf6/r4c2Vh9jfGBKM4oBI9b4/1ZJYng==}
+  /vite/4.0.3_gneikmxcpj2uc2xuqjosnroj4e:
+    resolution: {integrity: sha512-HvuNv1RdE7deIfQb8mPk51UKjqptO/4RXZ5yXSAvurd5xOckwS/gg8h9Tky3uSbnjYTgUm0hVCet1cyhKd73ZA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -3078,13 +3095,13 @@ packages:
       esbuild: 0.16.10
       postcss: 8.4.20
       resolve: 1.22.1
-      rollup: 3.7.5
+      rollup: 3.8.1
       sass: 1.57.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
 
-  /vitefu/0.2.4_vite@4.0.2:
+  /vitefu/0.2.4_vite@4.0.3:
     resolution: {integrity: sha512-fanAXjSaf9xXtOOeno8wZXIhgia+CZury481LsDaV++lSvcU2R9Ch2bPh3PYFyoHW+w9LqAeYRISVQjUIew14g==}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0
@@ -3092,7 +3109,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.0.2_gneikmxcpj2uc2xuqjosnroj4e
+      vite: 4.0.3_gneikmxcpj2uc2xuqjosnroj4e
     dev: true
 
   /vt-pbf/3.1.3:
