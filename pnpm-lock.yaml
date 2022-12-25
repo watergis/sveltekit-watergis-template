@@ -16,7 +16,7 @@ specifiers:
   '@watergis/svelte-collapsible-panel': ^0.0.14
   '@watergis/svelte-maplibre-attribute-popup': ^0.0.16
   '@watergis/svelte-maplibre-export': ^0.1.20
-  '@watergis/svelte-maplibre-legend': ^0.1.19
+  '@watergis/svelte-maplibre-legend': ^0.1.20
   '@watergis/svelte-maplibre-measure': ^0.1.18
   '@watergis/svelte-maplibre-menu': ^0.1.17
   '@watergis/svelte-maplibre-share': ^0.1.13
@@ -57,7 +57,7 @@ devDependencies:
   '@watergis/svelte-collapsible-panel': 0.0.14
   '@watergis/svelte-maplibre-attribute-popup': 0.0.16
   '@watergis/svelte-maplibre-export': 0.1.20
-  '@watergis/svelte-maplibre-legend': 0.1.19_wbktlcl6xhsncvz2r5eelcs6le
+  '@watergis/svelte-maplibre-legend': 0.1.20_wbktlcl6xhsncvz2r5eelcs6le
   '@watergis/svelte-maplibre-measure': 0.1.18
   '@watergis/svelte-maplibre-menu': 0.1.17
   '@watergis/svelte-maplibre-share': 0.1.13
@@ -894,8 +894,8 @@ packages:
       svelte-fa: 3.0.3
     dev: true
 
-  /@watergis/svelte-maplibre-legend/0.1.19_wbktlcl6xhsncvz2r5eelcs6le:
-    resolution: {integrity: sha512-JAxHyip2wC5EFa/qv0kq92Cf++LffaaB+lYbcmSietul1N3tpMjD5gseukc2d1LVZiHz4WkJffeqC6ziWfZZyg==}
+  /@watergis/svelte-maplibre-legend/0.1.20_wbktlcl6xhsncvz2r5eelcs6le:
+    resolution: {integrity: sha512-Qu4JldM8AraeDVnywozqhzHFg365xS93jXhTixl/RALE1/AHptCKQLHBjPZyGzRBQt4CE2OZ0WAtMFuLGvIn5g==}
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.2.1
       '@watergis/legend-symbol': 0.2.3

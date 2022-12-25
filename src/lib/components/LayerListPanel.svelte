@@ -3,16 +3,6 @@
 	import { config } from '$config';
 	import { LegendPanel, LegendHeader } from '@watergis/svelte-maplibre-legend';
 	import { StyleSwitcher } from '@watergis/svelte-maplibre-style-switcher';
-	import type { StyleSpecification } from 'maplibre-gl';
-
-	let style: StyleSpecification = undefined;
-	$: {
-		if ($map) {
-			$map.on('load', () => {
-				style = $map.getStyle();
-			});
-		}
-	}
 
 	let onlyRendered = true;
 	let onlyRelative = true;
@@ -26,7 +16,7 @@
 
 	const onStyleChange = () => {
 		if (!$map) return;
-		style = $map.getStyle();
+		$map.fire('style:change');
 	};
 </script>
 
@@ -50,7 +40,6 @@
 	<div class="legend-content">
 		<LegendPanel
 			bind:map={$map}
-			{style}
 			bind:onlyRendered
 			bind:onlyRelative
 			bind:enableLayerOrder
