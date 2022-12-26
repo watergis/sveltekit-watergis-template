@@ -16,7 +16,7 @@ specifiers:
   '@watergis/svelte-collapsible-panel': ^0.0.14
   '@watergis/svelte-maplibre-attribute-popup': ^0.0.16
   '@watergis/svelte-maplibre-export': ^0.1.20
-  '@watergis/svelte-maplibre-legend': ^0.1.22
+  '@watergis/svelte-maplibre-legend': ^0.1.23
   '@watergis/svelte-maplibre-measure': ^0.1.18
   '@watergis/svelte-maplibre-menu': ^0.1.17
   '@watergis/svelte-maplibre-share': ^0.1.13
@@ -57,7 +57,7 @@ devDependencies:
   '@watergis/svelte-collapsible-panel': 0.0.14
   '@watergis/svelte-maplibre-attribute-popup': 0.0.16
   '@watergis/svelte-maplibre-export': 0.1.20
-  '@watergis/svelte-maplibre-legend': 0.1.22_wbktlcl6xhsncvz2r5eelcs6le
+  '@watergis/svelte-maplibre-legend': 0.1.23_wbktlcl6xhsncvz2r5eelcs6le
   '@watergis/svelte-maplibre-measure': 0.1.18
   '@watergis/svelte-maplibre-menu': 0.1.17
   '@watergis/svelte-maplibre-share': 0.1.13
@@ -894,13 +894,14 @@ packages:
       svelte-fa: 3.0.3
     dev: true
 
-  /@watergis/svelte-maplibre-legend/0.1.22_wbktlcl6xhsncvz2r5eelcs6le:
-    resolution: {integrity: sha512-9/m1ZMGqsf7NBtCfIP42xU0KBZ9mYCBxt7hBsBg3CRfutbtL68fFjj4psE9w4HMia/y145WdhqceUnTKRP6mLg==}
+  /@watergis/svelte-maplibre-legend/0.1.23_wbktlcl6xhsncvz2r5eelcs6le:
+    resolution: {integrity: sha512-djp5aGuZOW9qesjHqd6RSSPUIFIBqAuYJJoXDZp0VOHHSEdDOi9BX+xoQKCbaNaoYjq1xFZQqLa/+NnhZlNsBg==}
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.2.1
       '@watergis/legend-symbol': 0.2.3
       chroma-js: 2.4.2
       detect-touch-device: 1.1.6
+      js-yaml: 4.1.0
       lodash-es: 4.17.21
       maplibre-gl: 2.4.0
       svelte-awesome-color-picker: 2.2.1
@@ -1161,7 +1162,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.20.7
       '@types/raf': 3.4.0
-      core-js: 3.26.1
+      core-js: 3.27.0
       raf: 3.4.1
       regenerator-runtime: 0.13.11
       rgbcolor: 1.0.1
@@ -1253,8 +1254,8 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
-  /core-js/3.26.1:
-    resolution: {integrity: sha512-21491RRQVzUn0GGM9Z1Jrpr6PNPxPi+Za8OM9q4tksTSnlbXXGKK1nXNg/QvwFYettXvSX6zWKCtHHfjN4puyA==}
+  /core-js/3.27.0:
+    resolution: {integrity: sha512-wY6cKosevs430KRkHUIsvepDXHGjlXOZO3hYXNyqpD6JvB0X28aXyv0t1Y1vZMwE7SoKmtfa6IASHCPN52FwBQ==}
     requiresBuild: true
     dev: true
     optional: true
@@ -1996,7 +1997,7 @@ packages:
       fflate: 0.4.8
     optionalDependencies:
       canvg: 3.0.10
-      core-js: 3.26.1
+      core-js: 3.27.0
       dompurify: 2.4.1
       html2canvas: 1.4.1
     dev: true
