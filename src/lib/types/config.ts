@@ -1,9 +1,9 @@
 import type { LngLatLike, TerrainSpecification } from 'maplibre-gl';
-import type { StyleSwitcherOption } from '@watergis/svelte-maplibre-style-switcher';
+import type { StyleSwitcherOption } from '@watergis/svelte-maplibre-style-switcher/package';
 import type {
 	ValhallaIsochroneOptions,
 	ValhallaRoutingOptions
-} from '@watergis/svelte-maplibre-valhalla';
+} from '@watergis/svelte-maplibre-valhalla/package';
 
 export type Config = {
 	title: string;

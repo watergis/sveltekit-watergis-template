@@ -21,22 +21,6 @@
 		}
 	];
 	let activeTab = tabs[0];
-	let isLayersTabVisible = false;
-	let isAdvancedTabVisible = false;
-
-	$: activeTab, changeActiveTab();
-	const changeActiveTab = () => {
-		isLayersTabVisible = false;
-		isAdvancedTabVisible = false;
-		switch (activeTab.label) {
-			case TabNames.LAYERS:
-				isLayersTabVisible = true;
-				break;
-			case TabNames.ADVANCED:
-				isAdvancedTabVisible = true;
-				break;
-		}
-	};
 </script>
 
 <div class="drawer-content">
