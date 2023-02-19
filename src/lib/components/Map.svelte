@@ -31,6 +31,7 @@
 	selectedStyle.update(() => initialStyle);
 
 	const initialise = () => {
+		if (!mapContainer) return;
 		return new Promise<void>((resolve) => {
 			$map = new Map({
 				container: mapContainer,
@@ -141,10 +142,10 @@
 </script>
 
 <MenuControl bind:map={$map} position={'top-right'} bind:isMenuShown>
-	<div slot="primary">
+	<div slot="sidebar">
 		<DrawerContent />
 	</div>
-	<div slot="secondary">
+	<div slot="map">
 		<div class="map" id="map" bind:this={mapContainer} />
 		{#await isInitialising then}
 			<AttributePopupControl bind:map={$map} bind:targetLayers={config.popup.target} />
