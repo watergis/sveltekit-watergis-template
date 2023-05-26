@@ -62,7 +62,7 @@ jobs:
           pnpm build
           echo "${CNAME}" >> ./build/CNAME
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        uses: JamesIves/github-pages-deploy-action@v4.4.2
         env:
           SKIP_DEPLOY_TO_GHPAGES: ${{secrets.SKIP_DEPLOY_TO_GHPAGES}}
         if: ${{ github.ref == 'refs/heads/main' && env.SKIP_DEPLOY_TO_GHPAGES == '' }}
