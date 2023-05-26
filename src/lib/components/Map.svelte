@@ -9,9 +9,11 @@
 		FullscreenControl,
 		TerrainControl
 	} from 'maplibre-gl';
+	import 'maplibre-gl/dist/maplibre-gl.css';
 	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '$config';
-	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
+	import MaplibreAreaSwitcherControl from '@watergis/maplibre-gl-area-switcher';
+	import '@watergis/maplibre-gl-area-switcher/dist/maplibre-gl-area-switcher.css';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
 	import { MapExportControl } from '@watergis/svelte-maplibre-export';
 	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
@@ -19,8 +21,8 @@
 	import DrawerContent from './DrawerContent.svelte';
 	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
 	import CenterIconManager from '@watergis/maplibre-center-icon';
-	import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-	import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+	import MaplibreGeocoder from '@maplibre/maplibre-gl-geocoder';
+	import '@maplibre/maplibre-gl-geocoder/lib/maplibre-gl-geocoder.css';
 
 	let mapContainer: HTMLDivElement;
 	let isMenuShown = false;
@@ -67,9 +69,7 @@
 			}
 
 			if (config.areaSwitcher) {
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				$map.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'bottom-right');
+				$map.addControl(new MaplibreAreaSwitcherControl(config.areaSwitcher.areas), 'bottom-right');
 			}
 
 			$map.addControl(
@@ -86,7 +86,7 @@
 				fetch(config.search.url)
 					.then((res) => res.json())
 					.then((data) => {
-						function forwardGeocoder(query) {
+						const forwardGeocoder = async (query) => {
 							var matchingFeatures = [];
 							for (var i = 0; i < data.features.length; i++) {
 								var feature = data.features[i];
@@ -107,17 +107,24 @@
 								});
 							}
 							return matchingFeatures;
-						}
+						};
+
+						var geocoder_api = {
+							forwardGeocode: async ({ query }) => {
+								return {
+									features: await forwardGeocoder(query)
+								};
+							}
+						};
+
 						$map.addControl(
-							new MapboxGeocoder({
-								// accessToken: mapboxgl.accessToken,
-								localGeocoder: forwardGeocoder,
-								localGeocoderOnly: true,
+							new MaplibreGeocoder(geocoder_api, {
 								zoom: config.search.zoom,
 								placeholder: config.search.placeholder,
 								limit: config.search.limit,
-								mapboxgl: maplibregl,
-								collapsed: true
+								maplibregl: maplibregl,
+								collapsed: true,
+								showResultsWhileTyping: true
 							}),
 							'top-left'
 						);
@@ -161,9 +168,6 @@
 </MenuControl>
 
 <style>
-	@import 'maplibre-gl/dist/maplibre-gl.css';
-	@import '@watergis/mapbox-gl-area-switcher/css/styles.css';
-
 	.map {
 		position: absolute;
 		top: 0;
