@@ -19,8 +19,8 @@
 	import DrawerContent from './DrawerContent.svelte';
 	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
 	import CenterIconManager from '@watergis/maplibre-center-icon';
-	import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-	import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+	import MaplibreGeocoder from '@maplibre/maplibre-gl-geocoder';
+	import '@maplibre/maplibre-gl-geocoder/lib/maplibre-gl-geocoder.css';
 
 	let mapContainer: HTMLDivElement;
 	let isMenuShown = false;
@@ -86,7 +86,7 @@
 				fetch(config.search.url)
 					.then((res) => res.json())
 					.then((data) => {
-						function forwardGeocoder(query) {
+						const forwardGeocoder = async (query) => {
 							var matchingFeatures = [];
 							for (var i = 0; i < data.features.length; i++) {
 								var feature = data.features[i];
@@ -107,17 +107,24 @@
 								});
 							}
 							return matchingFeatures;
-						}
+						};
+
+						var geocoder_api = {
+							forwardGeocode: async ({ query }) => {
+								return {
+									features: await forwardGeocoder(query)
+								};
+							}
+						};
+
 						$map.addControl(
-							new MapboxGeocoder({
-								// accessToken: mapboxgl.accessToken,
-								localGeocoder: forwardGeocoder,
-								localGeocoderOnly: true,
+							new MaplibreGeocoder(geocoder_api, {
 								zoom: config.search.zoom,
 								placeholder: config.search.placeholder,
 								limit: config.search.limit,
-								mapboxgl: maplibregl,
-								collapsed: true
+								maplibregl: maplibregl,
+								collapsed: true,
+								showResultsWhileTyping: true
 							}),
 							'top-left'
 						);
