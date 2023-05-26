@@ -9,9 +9,11 @@
 		FullscreenControl,
 		TerrainControl
 	} from 'maplibre-gl';
+	import 'maplibre-gl/dist/maplibre-gl.css';
 	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '$config';
-	import MapboxAreaSwitcherControl from '@watergis/mapbox-gl-area-switcher';
+	import MaplibreAreaSwitcherControl from '@watergis/maplibre-gl-area-switcher';
+	import '@watergis/maplibre-gl-area-switcher/dist/maplibre-gl-area-switcher.css';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
 	import { MapExportControl } from '@watergis/svelte-maplibre-export';
 	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
@@ -67,9 +69,7 @@
 			}
 
 			if (config.areaSwitcher) {
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				$map.addControl(new MapboxAreaSwitcherControl(config.areaSwitcher.areas), 'bottom-right');
+				$map.addControl(new MaplibreAreaSwitcherControl(config.areaSwitcher.areas), 'bottom-right');
 			}
 
 			$map.addControl(
@@ -168,9 +168,6 @@
 </MenuControl>
 
 <style>
-	@import 'maplibre-gl/dist/maplibre-gl.css';
-	@import '@watergis/mapbox-gl-area-switcher/css/styles.css';
-
 	.map {
 		position: absolute;
 		top: 0;
