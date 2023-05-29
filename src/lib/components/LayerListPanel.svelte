@@ -8,7 +8,6 @@
 	let onlyRelative = true;
 	let enableLayerOrder = false;
 	let relativeLayers = {};
-	export let isLayersTabVisible = false;
 
 	if (config.legend && config.legend.targets) {
 		relativeLayers = config.legend.targets;
