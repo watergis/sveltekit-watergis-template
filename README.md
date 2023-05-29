@@ -45,6 +45,14 @@ open [http://localhost:3000](http://localhost:3000).
 
 The path of URL can be changed at [svelte.config.js](./svelte.config.js).
 
+## Lefthook
+
+When you clone the repository from Github for the first time, please install `lefthook` in your local machine manually by following commands. So, `lint`, `format` and `build` command will be automatically executed when you commit or push.
+
+```bash
+pnpm lefthook install
+```
+
 ## Building
 
 To create a production version of your app:
