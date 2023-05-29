@@ -43,6 +43,9 @@ devDependencies:
   '@watergis/svelte-maplibre-attribute-popup':
     specifier: ^1.0.0
     version: 1.0.0(svelte@3.59.1)
+  '@watergis/svelte-maplibre-attribute-table':
+    specifier: ^0.0.4
+    version: 0.0.4(svelte@3.59.1)
   '@watergis/svelte-maplibre-export':
     specifier: ^1.0.0
     version: 1.0.0(svelte@3.59.1)
@@ -53,8 +56,8 @@ devDependencies:
     specifier: ^1.0.0
     version: 1.0.0(svelte@3.59.1)
   '@watergis/svelte-maplibre-menu':
-    specifier: ^1.0.0
-    version: 1.0.0(svelte@3.59.1)
+    specifier: ^1.0.2
+    version: 1.0.2(svelte@3.59.1)
   '@watergis/svelte-maplibre-share':
     specifier: ^1.0.0
     version: 1.0.0(svelte@3.59.1)
@@ -862,6 +865,19 @@ packages:
       svelte: 3.59.1
     dev: true
 
+  /@watergis/svelte-maplibre-attribute-table@0.0.4(svelte@3.59.1):
+    resolution: {integrity: sha512-l1xLemaA0zCqM/fflVujDM2iPoMpY7TuQhPknRJLjCJ4XAnvQPwNCBc9fIK8AlbG8EG1fSRBe+UE98pj3G31TQ==}
+    peerDependencies:
+      svelte: ^3.54.0
+    dependencies:
+      '@fortawesome/free-solid-svg-icons': 6.4.0
+      '@watergis/svelte-maplibre-menu': 1.0.2(svelte@3.59.1)
+      maplibre-gl: 3.0.0
+      svelte: 3.59.1
+      svelte-fa: 3.0.4
+      svelte-simple-datatables: 0.3.1
+    dev: true
+
   /@watergis/svelte-maplibre-export@1.0.0(svelte@3.59.1):
     resolution: {integrity: sha512-MRFRXFEjkWI0C+w62H5Rh1EQoFhqdVwMxUbhbDLuZvdaOFEQDp5wBZYv2ntklGP9biogp6OCaA4mu9i8OXlSeg==}
     peerDependencies:
@@ -914,8 +930,8 @@ packages:
       - debug
     dev: true
 
-  /@watergis/svelte-maplibre-menu@1.0.0(svelte@3.59.1):
-    resolution: {integrity: sha512-WzmvXiSbhtVBlMgcx0BW8XIpQkiUEZxm3D8Bvox8RMLeO7kUl6cD/16upb2ya/3GmbHPW8ZbEAGLBUL4LybdYw==}
+  /@watergis/svelte-maplibre-menu@1.0.2(svelte@3.59.1):
+    resolution: {integrity: sha512-Rt+iMvWpOZBB3i11Y/wtmueRz3r95pkhayd9VcDpNtLkKqBj1fDqtg6s4HzN3Hp7XMK+v9/Zz2EkNxZc2/kYmg==}
     peerDependencies:
       svelte: ^3.54.0
     dependencies:
@@ -2612,6 +2628,10 @@ packages:
 
   /svelte-range-slider-pips@2.1.1:
     resolution: {integrity: sha512-fLkhfnyEc4uMOCZCl8IPyC0e9lujrjqdSyrKw28Y8j99YUPZR+pHnSxde7PqhM0ST6eyO4ugh2nFnLZTIoG9aQ==}
+    dev: true
+
+  /svelte-simple-datatables@0.3.1:
+    resolution: {integrity: sha512-6T+8FLgeBxXWJkLbaiFJ8H009dzeboZNHGS3E4XpvIUWYmDJhrXLSid94/Sy3YXr0hYUt/27Q7X0/QJ2kbJ3QQ==}
     dev: true
 
   /svelte-tippy@1.3.2:

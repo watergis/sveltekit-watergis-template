@@ -167,5 +167,9 @@ export const config: Config = {
 	terrain: {
 		source: 'narok-dem',
 		exaggeration: 1
+	},
+	attributeTable: {
+		rowsPerPage: 25,
+		minZoom: 14
 	}
 };

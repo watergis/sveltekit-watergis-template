@@ -54,4 +54,8 @@ export type Config = {
 		routingOptions: ValhallaRoutingOptions;
 	};
 	terrain?: TerrainSpecification;
+	attributeTable?: {
+		rowsPerPage: number;
+		minZoom: number;
+	};
 };
