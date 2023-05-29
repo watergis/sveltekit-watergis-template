@@ -6,7 +6,6 @@
 		"build": "rimraf build && vite build",
 		"package": "svelte-kit package",
 		"preview": "vite preview",
-		"prepare": "lefthook install",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --ignore-path .prettierignore --check --plugin-search-dir=. . && eslint --ignore-path .prettierignore .",
