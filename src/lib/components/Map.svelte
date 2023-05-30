@@ -23,10 +23,13 @@
 	import CenterIconManager from '@watergis/maplibre-center-icon';
 	import MaplibreGeocoder from '@maplibre/maplibre-gl-geocoder';
 	import '@maplibre/maplibre-gl-geocoder/lib/maplibre-gl-geocoder.css';
+	import AttributeTableControl from '@watergis/svelte-maplibre-attribute-table';
 
 	let mapContainer: HTMLDivElement;
 	let isMenuShown = false;
 	let isInitialising: Promise<void>;
+	let mapContainerWidth: number;
+	let mapContainerHeight: number;
 
 	const styleUrlObj = new StyleUrl();
 	const initialStyle = styleUrlObj.getInitialStyle(config.styles);
@@ -146,14 +149,29 @@
 	onMount(() => {
 		isInitialising = initialise();
 	});
+
+	const onChange = (e: { detail: { secondarySize: number } }) => {
+		mapContainerWidth = e.detail.secondarySize;
+	};
 </script>
 
-<MenuControl bind:map={$map} position={'top-right'} bind:isMenuShown>
+<svelte:window bind:innerHeight={mapContainerHeight} />
+
+<MenuControl bind:map={$map} position={'top-right'} bind:isMenuShown on:changed={onChange}>
 	<div slot="sidebar">
 		<DrawerContent />
 	</div>
 	<div slot="map">
-		<div class="map" id="map" bind:this={mapContainer} />
+		<AttributeTableControl
+			bind:map={$map}
+			position="top-right"
+			rowsPerPage={config.attributeTable.rowsPerPage}
+			minZoom={config.attributeTable.minZoom}
+			bind:width={mapContainerWidth}
+			bind:height={mapContainerHeight}
+		>
+			<div class="map" id="map" bind:this={mapContainer} />
+		</AttributeTableControl>
 		{#await isInitialising then}
 			<AttributePopupControl bind:map={$map} bind:targetLayers={config.popup.target} />
 			<ShareURLControl bind:map={$map} bind:customiseUrl position="top-right" />
