@@ -44,8 +44,8 @@ devDependencies:
     specifier: ^1.0.0
     version: 1.0.0(svelte@3.59.1)
   '@watergis/svelte-maplibre-attribute-table':
-    specifier: ^0.0.5
-    version: 0.0.5(svelte@3.59.1)
+    specifier: ^0.0.6
+    version: 0.0.6(svelte@3.59.1)
   '@watergis/svelte-maplibre-export':
     specifier: ^1.0.0
     version: 1.0.0(svelte@3.59.1)
@@ -865,8 +865,8 @@ packages:
       svelte: 3.59.1
     dev: true
 
-  /@watergis/svelte-maplibre-attribute-table@0.0.5(svelte@3.59.1):
-    resolution: {integrity: sha512-4YSqclgFPjn7fJPgYGN1CPyDE3ZUoEbRAju9Z6jwI/v5+ro86RW58XIV4rJ76h1FTEJQpGrHwtvpyTpPjuri1w==}
+  /@watergis/svelte-maplibre-attribute-table@0.0.6(svelte@3.59.1):
+    resolution: {integrity: sha512-L/4uUgeuKPYTHSB8j+Ul6FBocMu9wjxabM1MdMUdIF38lZX40mlKlEQcfocxDc5jEqxNr7C+7ziMEtxy1XmDow==}
     peerDependencies:
       svelte: ^3.54.0
     dependencies:
