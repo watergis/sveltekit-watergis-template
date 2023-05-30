@@ -9,7 +9,7 @@ devDependencies:
     version: 6.4.0
   '@maplibre/maplibre-gl-geocoder':
     specifier: github:maplibre/maplibre-gl-geocoder
-    version: github.com/maplibre/maplibre-gl-geocoder/e775c9ddb58526c589e3d4f3e65f21515f6d6ea4(maplibre-gl@3.0.0)
+    version: github.com/maplibre/maplibre-gl-geocoder/e775c9ddb58526c589e3d4f3e65f21515f6d6ea4(maplibre-gl@3.0.1)
   '@popperjs/core':
     specifier: ^2.11.8
     version: 2.11.8
@@ -26,11 +26,11 @@ devDependencies:
     specifier: ^20.2.5
     version: 20.2.5
   '@typescript-eslint/eslint-plugin':
-    specifier: ^5.59.7
-    version: 5.59.7(@typescript-eslint/parser@5.59.7)(eslint@8.41.0)(typescript@5.0.4)
+    specifier: ^5.59.8
+    version: 5.59.8(@typescript-eslint/parser@5.59.8)(eslint@8.41.0)(typescript@5.0.4)
   '@typescript-eslint/parser':
-    specifier: ^5.59.7
-    version: 5.59.7(eslint@8.41.0)(typescript@5.0.4)
+    specifier: ^5.59.8
+    version: 5.59.8(eslint@8.41.0)(typescript@5.0.4)
   '@watergis/maplibre-center-icon':
     specifier: ^1.0.0
     version: 1.0.0(svelte@3.59.1)
@@ -44,8 +44,8 @@ devDependencies:
     specifier: ^1.0.0
     version: 1.0.0(svelte@3.59.1)
   '@watergis/svelte-maplibre-attribute-table':
-    specifier: ^0.0.4
-    version: 0.0.4(svelte@3.59.1)
+    specifier: ^0.0.5
+    version: 0.0.5(svelte@3.59.1)
   '@watergis/svelte-maplibre-export':
     specifier: ^1.0.0
     version: 1.0.0(svelte@3.59.1)
@@ -86,8 +86,8 @@ devDependencies:
     specifier: ^3.3.0
     version: 3.3.0
   maplibre-gl:
-    specifier: ^3.0.0
-    version: 3.0.0
+    specifier: ^3.0.1
+    version: 3.0.1
   prettier:
     specifier: ^2.8.8
     version: 2.8.8
@@ -694,8 +694,8 @@ packages:
     resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==}
     dev: true
 
-  /@typescript-eslint/eslint-plugin@5.59.7(@typescript-eslint/parser@5.59.7)(eslint@8.41.0)(typescript@5.0.4):
-    resolution: {integrity: sha512-BL+jYxUFIbuYwy+4fF86k5vdT9lT0CNJ6HtwrIvGh0PhH8s0yy5rjaKH2fDCrz5ITHy07WCzVGNvAmjJh4IJFA==}
+  /@typescript-eslint/eslint-plugin@5.59.8(@typescript-eslint/parser@5.59.8)(eslint@8.41.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-JDMOmhXteJ4WVKOiHXGCoB96ADWg9q7efPWHRViT/f09bA8XOMLAVHHju3l0MkZnG1izaWXYmgvQcUjTRcpShQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       '@typescript-eslint/parser': ^5.0.0
@@ -706,10 +706,10 @@ packages:
         optional: true
     dependencies:
       '@eslint-community/regexpp': 4.5.1
-      '@typescript-eslint/parser': 5.59.7(eslint@8.41.0)(typescript@5.0.4)
-      '@typescript-eslint/scope-manager': 5.59.7
-      '@typescript-eslint/type-utils': 5.59.7(eslint@8.41.0)(typescript@5.0.4)
-      '@typescript-eslint/utils': 5.59.7(eslint@8.41.0)(typescript@5.0.4)
+      '@typescript-eslint/parser': 5.59.8(eslint@8.41.0)(typescript@5.0.4)
+      '@typescript-eslint/scope-manager': 5.59.8
+      '@typescript-eslint/type-utils': 5.59.8(eslint@8.41.0)(typescript@5.0.4)
+      '@typescript-eslint/utils': 5.59.8(eslint@8.41.0)(typescript@5.0.4)
       debug: 4.3.4
       eslint: 8.41.0
       grapheme-splitter: 1.0.4
@@ -722,8 +722,8 @@ packages:
       - supports-color
     dev: true
 
-  /@typescript-eslint/parser@5.59.7(eslint@8.41.0)(typescript@5.0.4):
-    resolution: {integrity: sha512-VhpsIEuq/8i5SF+mPg9jSdIwgMBBp0z9XqjiEay+81PYLJuroN+ET1hM5IhkiYMJd9MkTz8iJLt7aaGAgzWUbQ==}
+  /@typescript-eslint/parser@5.59.8(eslint@8.41.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-AnR19RjJcpjoeGojmwZtCwBX/RidqDZtzcbG3xHrmz0aHHoOcbWnpDllenRDmDvsV0RQ6+tbb09/kyc+UT9Orw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
@@ -732,9 +732,9 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@typescript-eslint/scope-manager': 5.59.7
-      '@typescript-eslint/types': 5.59.7
-      '@typescript-eslint/typescript-estree': 5.59.7(typescript@5.0.4)
+      '@typescript-eslint/scope-manager': 5.59.8
+      '@typescript-eslint/types': 5.59.8
+      '@typescript-eslint/typescript-estree': 5.59.8(typescript@5.0.4)
       debug: 4.3.4
       eslint: 8.41.0
       typescript: 5.0.4
@@ -742,16 +742,16 @@ packages:
       - supports-color
     dev: true
 
-  /@typescript-eslint/scope-manager@5.59.7:
-    resolution: {integrity: sha512-FL6hkYWK9zBGdxT2wWEd2W8ocXMu3K94i3gvMrjXpx+koFYdYV7KprKfirpgY34vTGzEPPuKoERpP8kD5h7vZQ==}
+  /@typescript-eslint/scope-manager@5.59.8:
+    resolution: {integrity: sha512-/w08ndCYI8gxGf+9zKf1vtx/16y8MHrZs5/tnjHhMLNSixuNcJavSX4wAiPf4aS5x41Es9YPCn44MIe4cxIlig==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
-      '@typescript-eslint/types': 5.59.7
-      '@typescript-eslint/visitor-keys': 5.59.7
+      '@typescript-eslint/types': 5.59.8
+      '@typescript-eslint/visitor-keys': 5.59.8
     dev: true
 
-  /@typescript-eslint/type-utils@5.59.7(eslint@8.41.0)(typescript@5.0.4):
-    resolution: {integrity: sha512-ozuz/GILuYG7osdY5O5yg0QxXUAEoI4Go3Do5xeu+ERH9PorHBPSdvD3Tjp2NN2bNLh1NJQSsQu2TPu/Ly+HaQ==}
+  /@typescript-eslint/type-utils@5.59.8(eslint@8.41.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-+5M518uEIHFBy3FnyqZUF3BMP+AXnYn4oyH8RF012+e7/msMY98FhGL5SrN29NQ9xDgvqCgYnsOiKp1VjZ/fpA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: '*'
@@ -760,8 +760,8 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@typescript-eslint/typescript-estree': 5.59.7(typescript@5.0.4)
-      '@typescript-eslint/utils': 5.59.7(eslint@8.41.0)(typescript@5.0.4)
+      '@typescript-eslint/typescript-estree': 5.59.8(typescript@5.0.4)
+      '@typescript-eslint/utils': 5.59.8(eslint@8.41.0)(typescript@5.0.4)
       debug: 4.3.4
       eslint: 8.41.0
       tsutils: 3.21.0(typescript@5.0.4)
@@ -770,13 +770,13 @@ packages:
       - supports-color
     dev: true
 
-  /@typescript-eslint/types@5.59.7:
-    resolution: {integrity: sha512-UnVS2MRRg6p7xOSATscWkKjlf/NDKuqo5TdbWck6rIRZbmKpVNTLALzNvcjIfHBE7736kZOFc/4Z3VcZwuOM/A==}
+  /@typescript-eslint/types@5.59.8:
+    resolution: {integrity: sha512-+uWuOhBTj/L6awoWIg0BlWy0u9TyFpCHrAuQ5bNfxDaZ1Ppb3mx6tUigc74LHcbHpOHuOTOJrBoAnhdHdaea1w==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@typescript-eslint/typescript-estree@5.59.7(typescript@5.0.4):
-    resolution: {integrity: sha512-4A1NtZ1I3wMN2UGDkU9HMBL+TIQfbrh4uS0WDMMpf3xMRursDbqEf1ahh6vAAe3mObt8k3ZATnezwG4pdtWuUQ==}
+  /@typescript-eslint/typescript-estree@5.59.8(typescript@5.0.4):
+    resolution: {integrity: sha512-Jy/lPSDJGNow14vYu6IrW790p7HIf/SOV1Bb6lZ7NUkLc2iB2Z9elESmsaUtLw8kVqogSbtLH9tut5GCX1RLDg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       typescript: '*'
@@ -784,8 +784,8 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@typescript-eslint/types': 5.59.7
-      '@typescript-eslint/visitor-keys': 5.59.7
+      '@typescript-eslint/types': 5.59.8
+      '@typescript-eslint/visitor-keys': 5.59.8
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
@@ -796,8 +796,8 @@ packages:
       - supports-color
     dev: true
 
-  /@typescript-eslint/utils@5.59.7(eslint@8.41.0)(typescript@5.0.4):
-    resolution: {integrity: sha512-yCX9WpdQKaLufz5luG4aJbOpdXf/fjwGMcLFXZVPUz3QqLirG5QcwwnIHNf8cjLjxK4qtzTO8udUtMQSAToQnQ==}
+  /@typescript-eslint/utils@5.59.8(eslint@8.41.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-Tr65630KysnNn9f9G7ROF3w1b5/7f6QVCJ+WK9nhIocWmx9F+TmCAcglF26Vm7z8KCTwoKcNEBZrhlklla3CKg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
@@ -805,9 +805,9 @@ packages:
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.41.0)
       '@types/json-schema': 7.0.12
       '@types/semver': 7.5.0
-      '@typescript-eslint/scope-manager': 5.59.7
-      '@typescript-eslint/types': 5.59.7
-      '@typescript-eslint/typescript-estree': 5.59.7(typescript@5.0.4)
+      '@typescript-eslint/scope-manager': 5.59.8
+      '@typescript-eslint/types': 5.59.8
+      '@typescript-eslint/typescript-estree': 5.59.8(typescript@5.0.4)
       eslint: 8.41.0
       eslint-scope: 5.1.1
       semver: 7.5.1
@@ -816,11 +816,11 @@ packages:
       - typescript
     dev: true
 
-  /@typescript-eslint/visitor-keys@5.59.7:
-    resolution: {integrity: sha512-tyN+X2jvMslUszIiYbF0ZleP+RqQsFVpGrKI6e0Eet1w8WmhsAtmzaqm8oM8WJQ1ysLwhnsK/4hYHJjOgJVfQQ==}
+  /@typescript-eslint/visitor-keys@5.59.8:
+    resolution: {integrity: sha512-pJhi2ms0x0xgloT7xYabil3SGGlojNNKjK/q6dB3Ey0uJLMjK2UDGJvHieiyJVW/7C3KI+Z4Q3pEHkm4ejA+xQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
-      '@typescript-eslint/types': 5.59.7
+      '@typescript-eslint/types': 5.59.8
       eslint-visitor-keys: 3.4.1
     dev: true
 
@@ -835,14 +835,14 @@ packages:
     peerDependencies:
       svelte: ^3.54.0
     dependencies:
-      maplibre-gl: 3.0.0
+      maplibre-gl: 3.0.1
       svelte: 3.59.1
     dev: true
 
   /@watergis/maplibre-gl-area-switcher@1.0.0:
     resolution: {integrity: sha512-kP5SMvxoMtCuKBlCRwZFPMxJh4qdNng42tzGmPCCL0dl7k3/atRADw7a2isgUsPRpRUBRaIjaauYZXQrItJfzw==}
     dependencies:
-      maplibre-gl: 3.0.0
+      maplibre-gl: 3.0.1
     dev: true
 
   /@watergis/svelte-collapsible-panel@0.0.16(svelte@3.59.1):
@@ -861,18 +861,18 @@ packages:
     peerDependencies:
       svelte: ^3.54.0
     dependencies:
-      maplibre-gl: 3.0.0
+      maplibre-gl: 3.0.1
       svelte: 3.59.1
     dev: true
 
-  /@watergis/svelte-maplibre-attribute-table@0.0.4(svelte@3.59.1):
-    resolution: {integrity: sha512-l1xLemaA0zCqM/fflVujDM2iPoMpY7TuQhPknRJLjCJ4XAnvQPwNCBc9fIK8AlbG8EG1fSRBe+UE98pj3G31TQ==}
+  /@watergis/svelte-maplibre-attribute-table@0.0.5(svelte@3.59.1):
+    resolution: {integrity: sha512-4YSqclgFPjn7fJPgYGN1CPyDE3ZUoEbRAju9Z6jwI/v5+ro86RW58XIV4rJ76h1FTEJQpGrHwtvpyTpPjuri1w==}
     peerDependencies:
       svelte: ^3.54.0
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.4.0
       '@watergis/svelte-maplibre-menu': 1.0.2(svelte@3.59.1)
-      maplibre-gl: 3.0.0
+      maplibre-gl: 3.0.1
       svelte: 3.59.1
       svelte-fa: 3.0.4
       svelte-simple-datatables: 0.3.1
@@ -886,7 +886,7 @@ packages:
       '@fortawesome/free-solid-svg-icons': 6.4.0
       '@neodrag/svelte': 2.0.3
       jspdf: 2.5.1
-      maplibre-gl: 3.0.0
+      maplibre-gl: 3.0.1
       svelte: 3.59.1
       svelte-fa: 3.0.4
     dev: true
@@ -902,7 +902,7 @@ packages:
       detect-touch-device: 1.1.6
       js-yaml: 4.1.0
       lodash-es: 4.17.21
-      maplibre-gl: 3.0.0
+      maplibre-gl: 3.0.1
       svelte: 3.59.1
       svelte-awesome-color-picker: 2.4.3
       svelte-fa: 3.0.4
@@ -923,7 +923,7 @@ packages:
       '@fortawesome/free-solid-svg-icons': 6.4.0
       '@turf/distance': 6.5.0
       '@watergis/terrain-rgb': 1.1.12
-      maplibre-gl: 3.0.0
+      maplibre-gl: 3.0.1
       svelte: 3.59.1
       svelte-fa: 3.0.4
     transitivePeerDependencies:
@@ -937,7 +937,7 @@ packages:
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.4.0
       '@geoffcox/svelte-splitter': 1.0.1
-      maplibre-gl: 3.0.0
+      maplibre-gl: 3.0.1
       svelte: 3.59.1
       svelte-fa: 3.0.4
     dev: true
@@ -948,7 +948,7 @@ packages:
       svelte: ^3.54.0
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.4.0
-      maplibre-gl: 3.0.0
+      maplibre-gl: 3.0.1
       svelte: 3.59.1
       svelte-copy: 1.3.2
       svelte-fa: 3.0.4
@@ -960,7 +960,7 @@ packages:
       svelte: ^3.54.0
     dependencies:
       debounce: 1.2.1
-      maplibre-gl: 3.0.0
+      maplibre-gl: 3.0.1
       svelte: 3.59.1
     dev: true
 
@@ -970,7 +970,7 @@ packages:
       svelte: ^3.54.0
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.4.0
-      maplibre-gl: 3.0.0
+      maplibre-gl: 3.0.1
       svelte: 3.59.1
       svelte-fa: 3.0.4
     dev: true
@@ -1954,8 +1954,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /maplibre-gl@3.0.0:
-    resolution: {integrity: sha512-Yvtd36FJQWYymVNRG0Wv4uJfhvlVRR9GZQEBtMbubdH5NUOKqxt8A/OKVtzGPM+MVedTicg56pVxlRq643Hjuw==}
+  /maplibre-gl@3.0.1:
+    resolution: {integrity: sha512-OdFpejEkvaDwwVT9qAn6oA2h7093VlemaenF2/ssfD3TadNPz5oIVPzywn3cgso5i1D7IMKvEpba0A8A5qvXow==}
     engines: {node: '>=16.14.0', npm: '>=8.1.0'}
     dependencies:
       '@mapbox/geojson-rewind': 0.5.2
@@ -2884,7 +2884,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/maplibre/maplibre-gl-geocoder/e775c9ddb58526c589e3d4f3e65f21515f6d6ea4(maplibre-gl@3.0.0):
+  github.com/maplibre/maplibre-gl-geocoder/e775c9ddb58526c589e3d4f3e65f21515f6d6ea4(maplibre-gl@3.0.1):
     resolution: {tarball: https://codeload.github.com/maplibre/maplibre-gl-geocoder/tar.gz/e775c9ddb58526c589e3d4f3e65f21515f6d6ea4}
     id: github.com/maplibre/maplibre-gl-geocoder/e775c9ddb58526c589e3d4f3e65f21515f6d6ea4
     name: '@maplibre/maplibre-gl-geocoder'
@@ -2894,7 +2894,7 @@ packages:
       maplibre-gl: '>=1.14.0'
     dependencies:
       lodash.debounce: 4.0.8
-      maplibre-gl: 3.0.0
+      maplibre-gl: 3.0.1
       subtag: 0.5.0
       suggestions-list: 0.0.2
       xtend: 4.0.2
