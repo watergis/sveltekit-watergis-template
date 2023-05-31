@@ -44,8 +44,8 @@ devDependencies:
     specifier: ^1.0.0
     version: 1.0.0(svelte@3.59.1)
   '@watergis/svelte-maplibre-attribute-table':
-    specifier: ^0.0.6
-    version: 0.0.6(svelte@3.59.1)
+    specifier: ^0.0.7
+    version: 0.0.7(svelte@3.59.1)
   '@watergis/svelte-maplibre-export':
     specifier: ^1.0.0
     version: 1.0.0(svelte@3.59.1)
@@ -824,6 +824,10 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: true
 
+  /@vincjo/datatables@1.7.2:
+    resolution: {integrity: sha512-BVbLvdr0DLn7D4qYijcABVi9spoRJOYn1HnJJpS+uYoYvv7B4mXfxmI3Y/5qEE4I7gOtC5aRAu3nPJIxgoJ3+g==}
+    dev: true
+
   /@watergis/legend-symbol@0.2.3:
     resolution: {integrity: sha512-bxW2nGUvL80/iLTAstvP0QRcpprKKyTOLFueDW+dD0g9PDIFYx4De6MrKp4QJPx9SmrlidPxslOB0mXZrENmUg==}
     dependencies:
@@ -865,17 +869,17 @@ packages:
       svelte: 3.59.1
     dev: true
 
-  /@watergis/svelte-maplibre-attribute-table@0.0.6(svelte@3.59.1):
-    resolution: {integrity: sha512-L/4uUgeuKPYTHSB8j+Ul6FBocMu9wjxabM1MdMUdIF38lZX40mlKlEQcfocxDc5jEqxNr7C+7ziMEtxy1XmDow==}
+  /@watergis/svelte-maplibre-attribute-table@0.0.7(svelte@3.59.1):
+    resolution: {integrity: sha512-on20//mUQvRrK6af2xwcH6wGc40w699XdDQtRcMwOIVfMafoWX/hllfVtfOMXDx8IKsN2n8HztF62FEN5qjCNw==}
     peerDependencies:
       svelte: ^3.54.0
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.4.0
+      '@vincjo/datatables': 1.7.2
       '@watergis/svelte-maplibre-menu': 1.0.2(svelte@3.59.1)
       maplibre-gl: 3.0.1
       svelte: 3.59.1
       svelte-fa: 3.0.4
-      svelte-simple-datatables: 0.3.1
     dev: true
 
   /@watergis/svelte-maplibre-export@1.0.0(svelte@3.59.1):
@@ -2628,10 +2632,6 @@ packages:
 
   /svelte-range-slider-pips@2.1.1:
     resolution: {integrity: sha512-fLkhfnyEc4uMOCZCl8IPyC0e9lujrjqdSyrKw28Y8j99YUPZR+pHnSxde7PqhM0ST6eyO4ugh2nFnLZTIoG9aQ==}
-    dev: true
-
-  /svelte-simple-datatables@0.3.1:
-    resolution: {integrity: sha512-6T+8FLgeBxXWJkLbaiFJ8H009dzeboZNHGS3E4XpvIUWYmDJhrXLSid94/Sy3YXr0hYUt/27Q7X0/QJ2kbJ3QQ==}
     dev: true
 
   /svelte-tippy@1.3.2:
