@@ -27,7 +27,7 @@
 		"@watergis/maplibre-gl-area-switcher": "^1.0.0",
 		"@watergis/svelte-collapsible-panel": "^0.0.16",
 		"@watergis/svelte-maplibre-attribute-popup": "^1.0.0",
-		"@watergis/svelte-maplibre-attribute-table": "^0.0.6",
+		"@watergis/svelte-maplibre-attribute-table": "^0.0.7",
 		"@watergis/svelte-maplibre-export": "^1.0.0",
 		"@watergis/svelte-maplibre-legend": "^1.0.0",
 		"@watergis/svelte-maplibre-measure": "^1.0.0",
