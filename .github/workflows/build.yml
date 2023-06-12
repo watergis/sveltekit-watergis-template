@@ -23,6 +23,10 @@ jobs:
       # refer to https://github.com/pnpm/action-setup
       - name: pnpm setup
         uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8
+          run_install: false
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
