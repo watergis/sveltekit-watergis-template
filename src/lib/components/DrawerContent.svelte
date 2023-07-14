@@ -31,6 +31,7 @@
 		<div class="tabs is-centered is-small mb-0">
 			<ul>
 				{#each tabs as tab}
+					<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<li
 						class={activeTab.label === tab.label ? 'is-active' : ''}
