@@ -3,7 +3,9 @@
 	import { ValhallaIsochronePanel, ValhallaRoutingPanel } from '@watergis/svelte-maplibre-valhalla';
 	import { CollapsiblePanel } from '@watergis/svelte-collapsible-panel';
 	import { map } from '$lib/stores';
-	import { config } from '$config';
+	import { config as defaultConfig } from '$config';
+
+	const config = defaultConfig;
 
 	let panelColor:
 		| ''
