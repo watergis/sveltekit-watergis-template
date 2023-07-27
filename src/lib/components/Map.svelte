@@ -10,6 +10,7 @@
 		TerrainControl
 	} from 'maplibre-gl';
 	import 'maplibre-gl/dist/maplibre-gl.css';
+	import * as pmtiles from 'pmtiles';
 	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '$config';
 	import MaplibreAreaSwitcherControl from '@watergis/maplibre-gl-area-switcher';
@@ -24,6 +25,9 @@
 	import MaplibreGeocoder from '@maplibre/maplibre-gl-geocoder';
 	import '@maplibre/maplibre-gl-geocoder/lib/maplibre-gl-geocoder.css';
 	import AttributeTableControl from '@watergis/svelte-maplibre-attribute-table';
+
+	let protocol = new pmtiles.Protocol();
+	maplibregl.addProtocol('pmtiles', protocol.tile);
 
 	let mapContainer: HTMLDivElement;
 	let isMenuShown = false;
