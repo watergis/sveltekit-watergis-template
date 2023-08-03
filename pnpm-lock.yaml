@@ -93,8 +93,8 @@ devDependencies:
     specifier: ^3.2.1
     version: 3.2.1
   pmtiles:
-    specifier: 2.10.0-beta.0
-    version: 2.10.0-beta.0
+    specifier: 2.10.0
+    version: 2.10.0
   prettier:
     specifier: ^3.0.0
     version: 3.0.0
@@ -2315,8 +2315,8 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /pmtiles@2.10.0-beta.0:
-    resolution: {integrity: sha512-gj3dPkyijfxwUc1BDI+t63JrvSJUN0W4xOXi2mEbptEfZZdZyJ1n/NbUd2alzpVnKPU2+K+rYKM8qpNKrtRwDg==}
+  /pmtiles@2.10.0:
+    resolution: {integrity: sha512-X+s6JyperpcAkKwv55MKx72ckOUB0ZjcfK4929iM0SS0MkLydEi2FSW1E8YTE1E2XaZ2TVk/MIUrbsZuXV7K2g==}
     dependencies:
       fflate: 0.8.0
     dev: true
