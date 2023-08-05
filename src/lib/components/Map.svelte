@@ -44,6 +44,7 @@
 	selectedStyle.update(() => initialStyle);
 
 	let tourOptions: TourGuideOptions;
+	let mapTourName = 'mapTour';
 
 	const initialise = () => {
 		if (!mapContainer) return;
@@ -168,6 +169,7 @@
 							title: 'Welcome to sveltekit watergis template!',
 							content: `This tutorial is going to take you around the main features of the application. <br> Let's begin!`,
 							target: document.body,
+							group: mapTourName,
 							order: 1
 						},
 						{
@@ -175,6 +177,7 @@
 							content:
 								'Click this button to start analysing the datasets.<br><br>In the Layers tab, you can switch base maps either OSM or aerial, and can toggle layer visibility. <br><br>In Advanced tab, there are line measuring tool, routing tool and isochrone analysis tool.',
 							target: menuButton,
+							group: mapTourName,
 							order: 2
 						},
 						{
@@ -182,6 +185,7 @@
 							content:
 								'Click this button to start exploring attributes data of selected layer. You can also filter the data by keyword, and sort them, zoom and pan it.',
 							target: attributeTableButton,
+							group: mapTourName,
 							order: 3
 						},
 						{
@@ -189,6 +193,7 @@
 							content:
 								'This button enables you to copy and share URL of current map with your colleagues.',
 							target: shareButton,
+							group: mapTourName,
 							order: 4
 						},
 						{
@@ -196,18 +201,21 @@
 							content:
 								'This button enables you to query details information of selected features on the map',
 							target: queryButton,
+							group: mapTourName,
 							order: 5
 						},
 						{
 							title: 'Export tool',
 							content: `This button enables you to export images with your preferences.<br>You can choose file size, image format (png, jpeg, pdf and svg), and DPI resolution, orientation of the exported image`,
 							target: exportButton,
+							group: mapTourName,
 							order: 6
 						},
 						{
 							title: 'Search features',
 							content: `You can search features by typing keywords from here.`,
 							target: searchButton,
+							group: mapTourName,
 							order: 7
 						}
 					];
@@ -216,6 +224,7 @@
 						title: 'Done!',
 						content: `The tour has been completed now. Click Finish button to start using it! Thank you for taking your time to use this tool!<br><br>You can come back to this tour anytime by clicking the question mark button.`,
 						target: document.body,
+						group: mapTourName,
 						order: steps.length + 1
 					});
 
@@ -268,7 +277,7 @@
 			/>
 
 			{#if tourOptions}
-				<TourControl bind:map={$map} bind:tourguideOptions={tourOptions} />
+				<TourControl bind:map={$map} bind:tourguideOptions={tourOptions} bind:group={mapTourName} />
 			{/if}
 		{/await}
 	</div>

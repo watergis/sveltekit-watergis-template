@@ -2,12 +2,13 @@
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 	import type { Map, ControlPosition } from 'maplibre-gl';
-	import '@sjmc11/tourguidejs/src/scss/tour.scss'; // Styles
+	import '@sjmc11/tourguidejs/src/scss/tour.scss';
 	import { TourGuideClient, type TourGuideOptions } from '@sjmc11/tourguidejs';
 
 	export let map: Map;
 	export let position: ControlPosition = 'top-right';
 	export let tourguideOptions: TourGuideOptions;
+	export let group = 'maptour';
 
 	const tourguide = writable<TourGuideClient>(null);
 
@@ -26,7 +27,17 @@
 			this.tourStart();
 		});
 		this.controlContainer.appendChild(this.button);
-		this.button.dispatchEvent(new Event('click'));
+
+		if (!$tourguide) {
+			const tg = new TourGuideClient(tourguideOptions);
+			tourguide.update(() => tg);
+		}
+		const isFinished = $tourguide.isFinished(group);
+		console.log(isFinished);
+		if (!isFinished) {
+			$tourguide.start(group);
+		}
+
 		return this.controlContainer;
 	};
 
@@ -40,11 +51,11 @@
 	};
 
 	TourControl.prototype.tourStart = () => {
-		if (!$tourguide) {
-			const tg = new TourGuideClient(tourguideOptions);
-			tourguide.update(() => tg);
-		}
-		$tourguide.start();
+		$tourguide?.start(group);
+
+		// $tourguide?.onFinish(() => {
+		// 	$tourGuideFinished = true;
+		// });
 	};
 
 	/*global TourControl */
