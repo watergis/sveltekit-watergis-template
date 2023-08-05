@@ -17,6 +17,7 @@
 		"@fortawesome/free-solid-svg-icons": "^6.4.0",
 		"@maplibre/maplibre-gl-geocoder": "github:maplibre/maplibre-gl-geocoder",
 		"@popperjs/core": "^2.11.8",
+		"@sjmc11/tourguidejs": "^0.0.10",
 		"@sveltejs/adapter-static": "^2.0.2",
 		"@sveltejs/kit": "^1.22.3",
 		"@types/events": "^3.0.0",

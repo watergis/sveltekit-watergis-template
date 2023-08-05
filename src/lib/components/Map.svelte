@@ -25,6 +25,10 @@
 	import MaplibreGeocoder from '@maplibre/maplibre-gl-geocoder';
 	import '@maplibre/maplibre-gl-geocoder/lib/maplibre-gl-geocoder.css';
 	import AttributeTableControl from '@watergis/svelte-maplibre-attribute-table';
+	import type TourGuideOptions from '@sjmc11/tourguidejs/src/core/options';
+	import TourControl from './TourControl.svelte';
+	// import '@sjmc11/tourguidejs/src/scss/tour.scss'; // Styles
+	// import { TourGuideClient } from '@sjmc11/tourguidejs/src/Tour';
 
 	let protocol = new pmtiles.Protocol();
 	maplibregl.addProtocol('pmtiles', protocol.tile);
@@ -38,6 +42,8 @@
 	const styleUrlObj = new StyleUrl();
 	const initialStyle = styleUrlObj.getInitialStyle(config.styles);
 	selectedStyle.update(() => initialStyle);
+
+	let tourOptions: TourGuideOptions;
 
 	const initialise = () => {
 		if (!mapContainer) return;
@@ -140,6 +146,81 @@
 
 			$map.on('load', () => {
 				resolve();
+
+				setTimeout(() => {
+					const topRightTools = document.querySelectorAll(
+						'.maplibregl-ctrl-top-right .maplibregl-ctrl'
+					);
+
+					const menuButton = topRightTools.item(0);
+					const attributeTableButton = topRightTools.item(1);
+					const shareButton = topRightTools.item(2);
+					const queryButton = topRightTools.item(3);
+					const exportButton = topRightTools.item(4);
+
+					const topLeftTools = document.querySelectorAll(
+						'.maplibregl-ctrl-top-left .maplibregl-ctrl'
+					);
+					const searchButton = topLeftTools.item(0);
+
+					const steps = [
+						{
+							title: 'Welcome to sveltekit watergis template!',
+							content: `This tutorial is going to take you around the main features of the application. <br> Let's begin!`,
+							target: document.body,
+							order: 1
+						},
+						{
+							title: 'Geospatial analytics tools',
+							content:
+								'Click this button to start analysing the datasets.<br><br>In the Layers tab, you can switch base maps either OSM or aerial, and can toggle layer visibility. <br><br>In Advanced tab, there are line measuring tool, routing tool and isochrone analysis tool.',
+							target: menuButton,
+							order: 2
+						},
+						{
+							title: 'Attribute table tool',
+							content:
+								'Click this button to start exploring attributes data of selected layer. You can also filter the data by keyword, and sort them, zoom and pan it.',
+							target: attributeTableButton,
+							order: 3
+						},
+						{
+							title: 'Sharing tool',
+							content:
+								'This button enables you to copy and share URL of current map with your colleagues.',
+							target: shareButton,
+							order: 4
+						},
+						{
+							title: 'Query tool',
+							content:
+								'This button enables you to query details information of selected features on the map',
+							target: queryButton,
+							order: 5
+						},
+						{
+							title: 'Export tool',
+							content: `This button enables you to export images with your preferences.<br>You can choose file size, image format (png, jpeg, pdf and svg), and DPI resolution, orientation of the exported image`,
+							target: exportButton,
+							order: 6
+						},
+						{
+							title: 'Search features',
+							content: `You can search features by typing keywords from here.`,
+							target: searchButton,
+							order: 7
+						}
+					];
+
+					steps.push({
+						title: 'Done!',
+						content: `The tour has been completed now. Click Finish button to start using it! Thank you for taking your time to use this tool!<br><br>You can come back to this tour anytime by clicking the question mark button.`,
+						target: document.body,
+						order: steps.length + 1
+					});
+
+					tourOptions = { steps, rememberStep: true };
+				}, 300);
 			});
 		});
 	};
@@ -185,6 +266,10 @@
 				showCrosshair={true}
 				position="top-right"
 			/>
+
+			{#if tourOptions}
+				<TourControl bind:map={$map} bind:tourguideOptions={tourOptions} />
+			{/if}
 		{/await}
 	</div>
 </MenuControl>
