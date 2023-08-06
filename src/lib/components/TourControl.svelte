@@ -14,6 +14,7 @@
 	// change LocalStorageKey for your app.
 	export let localStorageKey = 'tourGuideFinished';
 
+	export let addDefaultLastStep = true;
 	export let finishTitle = 'Done!';
 	export let finishDescription = `The tour has been completed now. Click Finish button to start using it! Thank you for taking your time to use this tutorial!<br><br>You can always come back to this tour by clicking this button.`;
 
@@ -36,17 +37,19 @@
 	const tourguide = writable<TourGuideClient>(null);
 
 	const initialiseTourguide = () => {
-		const lastStep = tourguideOptions.steps[tourguideOptions.steps.length - 1];
-		if (lastStep.target === '.maplibre-tour-icon') {
-			lastStep.title = finishTitle;
-			lastStep.content = finishDescription;
-		} else {
-			tourguideOptions.steps.push({
-				title: finishTitle,
-				content: finishDescription,
-				target: '.maplibre-tour-icon',
-				order: tourguideOptions.steps.length + 1
-			});
+		if (addDefaultLastStep) {
+			const lastStep = tourguideOptions.steps[tourguideOptions.steps.length - 1];
+			if (lastStep.target === '.maplibre-tour-icon') {
+				lastStep.title = finishTitle;
+				lastStep.content = finishDescription;
+			} else {
+				tourguideOptions.steps.push({
+					title: finishTitle,
+					content: finishDescription,
+					target: '.maplibre-tour-icon',
+					order: tourguideOptions.steps.length + 1
+				});
+			}
 		}
 
 		if (!$tourguide) {
