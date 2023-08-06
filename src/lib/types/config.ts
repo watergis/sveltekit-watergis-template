@@ -14,6 +14,12 @@ export type Config = {
 	styles: StyleSwitcherOption[];
 	center: LngLatLike;
 	zoom: number;
+	tourguide: {
+		welcome: {
+			title: string;
+			content: string;
+		};
+	};
 	search?: {
 		url: string;
 		target: string[];

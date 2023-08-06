@@ -25,8 +25,7 @@
 	import MaplibreGeocoder from '@maplibre/maplibre-gl-geocoder';
 	import '@maplibre/maplibre-gl-geocoder/lib/maplibre-gl-geocoder.css';
 	import AttributeTableControl from '@watergis/svelte-maplibre-attribute-table';
-	import type TourGuideOptions from '@sjmc11/tourguidejs/src/core/options';
-	import TourControl from './TourControl.svelte';
+	import TourControl, { type TourGuideOptions } from '@watergis/svelte-maplibre-tour';
 
 	let protocol = new pmtiles.Protocol();
 	maplibregl.addProtocol('pmtiles', protocol.tile);
@@ -156,11 +155,6 @@
 					const queryButton = topRightTools.item(3);
 					const exportButton = topRightTools.item(4);
 
-					const topLeftTools = document.querySelectorAll(
-						'.maplibregl-ctrl-top-left .maplibregl-ctrl'
-					);
-					const searchButton = topLeftTools.item(0);
-
 					const steps = [
 						{
 							title: 'Welcome to sveltekit watergis template!',
@@ -170,15 +164,68 @@
 						},
 						{
 							title: 'Geospatial analytics tools',
-							content:
-								'Click this button to start analysing the datasets.<br><br>In the Layers tab, you can switch base maps either OSM or aerial, and can toggle layer visibility. <br><br>In Advanced tab, there are line measuring tool, routing tool and isochrone analysis tool.',
+							content: `
+								<div style="max-height: 300px; overflow-y: auto">
+								Click this button to start analysing the datasets.
+								<br><br>
+								In the <b>Layers</b> tab, 
+								<br>
+								<img src="/assets/tutorial/style-switcher.png" height="32px"/>
+								firstly you can switch base maps either OSM or aerial from the below select box.
+								<br>
+								<img src="/assets/tutorial/eye-solid.svg" width="24px"/>
+								<br>
+								You can also switch layer visibility by clicking this button.
+								<br>
+								<img src="/assets/tutorial/palette-solid.svg" width="24px"/>
+								<br>
+								From the above palette button, you can edit layer style as you want.
+								<br><br>
+								In <b>Advanced</b> tab, there are three main features:
+								<br>
+								<b>1) measuring tool</b>: 
+								<br>
+								<img src="/assets/tutorial/measure-tool.png" width="100%"/>
+								<br>
+								Click "Start measure" button, then click locations on the map to query the distance and altitude.
+								<br>
+								<br>
+								<b>2) routing tool</b>;
+								<br>
+								<img src="/assets/tutorial/routing-tool.png" width="100%"/>
+								<br>
+								Click "Start routing" button, then you can calculate the shortest route by clicking on the route on the map with your prefered means of transport.
+								<br>
+								<br>
+								<b>3)isochrone analysis tool</b>.
+								<br>
+								<img src="/assets/tutorial/isochrone-tool.png" width="100%"/>
+								<br>Isochrone is a very powerful tool to estimate contours by certain time or distance by selected transport option. It can be used for some SDG indicator such as "Water access within 30 minute round trip".
+								<br>
+								<img src="/assets/tutorial/isochrone-example.png" width="100%"/>
+								</div>
+								`,
 							target: menuButton,
 							order: 2
 						},
 						{
 							title: 'Attribute table tool',
-							content:
-								'Click this button to start exploring attributes data of selected layer. You can also filter the data by keyword, and sort them, zoom and pan it.',
+							content: `<div style="max-height: 300px; overflow-y: auto">
+								Click this button to start exploring attributes data of selected layer. 
+								You can also filter the data by keyword, and sort them, zoom to the select feature.
+								<br>
+								<img src="/assets/tutorial/attr-table-selectbox.png" width="100%"/>
+								<br>
+								Firstly, select a layer to show attribute table. The table will show all records within current map extent. Please refresh table if you move map.
+								<br>
+								<img src="/assets/tutorial/magnifying-glass-plus-solid.svg" width="24px"/>
+								<br>
+								You can zoom to selected feature by clicking the above button.
+								<br>
+								<img src="/assets/tutorial/up-down-left-right-solid.svg" width="24px"/>
+								<br>
+								You can pan to selected feature by clicking the above button.
+								</div>`,
 							target: attributeTableButton,
 							order: 3
 						},
@@ -191,8 +238,7 @@
 						},
 						{
 							title: 'Query tool',
-							content:
-								'This button enables you to query details information of selected features on the map',
+							content: `This button enables you to query details information of selected features on the map. If the tool is enabled, you can click the feature on the map to enquiry details information.`,
 							target: queryButton,
 							order: 5
 						},
@@ -204,13 +250,40 @@
 						},
 						{
 							title: 'Search features',
-							content: `You can search features by typing keywords from here.`,
-							target: searchButton,
+							content: `You can search features by typing keywords from the searching box.`,
+							target: '.maplibregl-ctrl-geocoder',
 							order: 7
 						}
 					];
 
-					tourOptions = { steps, rememberStep: true };
+					const areaSwitcher = document.getElementsByClassName('maplibregl-area-switcher');
+					if (areaSwitcher.length > 0) {
+						steps.push({
+							title: 'Area switching tool',
+							content: `You can switch the map to the selected area instantly.`,
+							target: '.maplibregl-area-switcher',
+							order: steps.length + 1
+						});
+					}
+
+					const terrainControl = document.getElementsByClassName('maplibregl-ctrl-terrain');
+					if (terrainControl.length > 0) {
+						steps.push({
+							title: 'Terrain tool',
+							content: `If this is enabled, 3D terrain landscape will be shown. In order to use this, you can tilt the map by holding right-click (mouse) or two fingers (smartphone or tablet)`,
+							target: '.maplibregl-ctrl-terrain',
+							order: steps.length + 1
+						});
+					}
+
+					steps.push({
+						title: 'GNSS positioning tool',
+						content: `GNSS positioning your current location is available by clicking this button.`,
+						target: '.maplibregl-ctrl-geolocate',
+						order: steps.length + 1
+					});
+
+					tourOptions = { steps, rememberStep: true, autoScroll: false };
 				}, 300);
 			});
 		});

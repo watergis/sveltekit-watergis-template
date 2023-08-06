@@ -17,9 +17,6 @@ devDependencies:
   '@popperjs/core':
     specifier: ^2.11.8
     version: 2.11.8
-  '@sjmc11/tourguidejs':
-    specifier: ^0.0.10
-    version: 0.0.10
   '@sveltejs/adapter-static':
     specifier: ^2.0.2
     version: 2.0.2(@sveltejs/kit@1.22.3)
@@ -71,6 +68,9 @@ devDependencies:
   '@watergis/svelte-maplibre-style-switcher':
     specifier: ^2.0.1
     version: 2.0.1(svelte@4.0.5)
+  '@watergis/svelte-maplibre-tour':
+    specifier: ^0.0.2
+    version: 0.0.2(svelte@4.0.5)
   '@watergis/svelte-maplibre-valhalla':
     specifier: ^2.0.1
     version: 2.0.1(svelte@4.0.5)
@@ -1041,6 +1041,16 @@ packages:
       svelte: ^4.0.0
     dependencies:
       debounce: 1.2.1
+      maplibre-gl: 3.2.1
+      svelte: 4.0.5
+    dev: true
+
+  /@watergis/svelte-maplibre-tour@0.0.2(svelte@4.0.5):
+    resolution: {integrity: sha512-y6k99H5MVvVJYkU/98fKBK5rnGxjyoNXzHob5XP6gx1nR/Qy53HY2ayW30jYXhsl5V5mK4Qpg6brkUBMj0GWsA==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      '@sjmc11/tourguidejs': 0.0.10
       maplibre-gl: 3.2.1
       svelte: 4.0.5
     dev: true
