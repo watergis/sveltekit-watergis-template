@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { writable } from 'svelte/store';
 	import type { Map, ControlPosition } from 'maplibre-gl';
 	import '@sjmc11/tourguidejs/src/scss/tour.scss'; // Styles
@@ -13,6 +13,12 @@
 	export let tourguideOptions: TourGuideOptions;
 	// change LocalStorageKey for your app.
 	export let localStorageKey = 'tourGuideFinished';
+
+	export let finishTitle = 'Done!';
+	export let finishDescription = `The tour has been completed now. Click Finish button to start using it! Thank you for taking your time to use this tutorial!<br><br>You can always come back to this tour by clicking this button.`;
+
+	// update tour options reactively
+	$: tourguideOptions, initialiseTourguide();
 
 	// configulation of localstorage to store the state of tour completion
 	const initialValue = browser
@@ -28,6 +34,28 @@
 	});
 
 	const tourguide = writable<TourGuideClient>(null);
+
+	const initialiseTourguide = () => {
+		const lastStep = tourguideOptions.steps[tourguideOptions.steps.length - 1];
+		if (lastStep.target === '.maplibre-tour-icon') {
+			lastStep.title = finishTitle;
+			lastStep.content = finishDescription;
+		} else {
+			tourguideOptions.steps.push({
+				title: finishTitle,
+				content: finishDescription,
+				target: '.maplibre-tour-icon',
+				order: tourguideOptions.steps.length + 1
+			});
+		}
+
+		if (!$tourguide) {
+			const tg = new TourGuideClient(tourguideOptions);
+			tourguide.update(() => tg);
+		} else {
+			!$tourguide.setOptions(tourguideOptions);
+		}
+	};
 
 	// eslint-disable-next-line
 	function TourControl() {}
@@ -45,11 +73,7 @@
 		});
 		this.controlContainer.appendChild(this.button);
 
-		if (!$tourguide) {
-			const tg = new TourGuideClient(tourguideOptions);
-			tourguide.update(() => tg);
-		}
-
+		initialiseTourguide();
 		if (!$tourGuideFinished) {
 			$tourguide.start();
 
@@ -66,7 +90,6 @@
 			return;
 		}
 		this.controlContainer.parentNode.removeChild(this.controlContainer);
-		this.map.off('click', this.onClick.bind(this));
 		this.map = undefined;
 	};
 
@@ -84,18 +107,19 @@
 	// @ts-ignore
 	let tourControl: TourControl = null;
 
-	$: {
+	onMount(() => {
+		if (!(tourControl && map.hasControl(tourControl))) {
+			tourControl = new TourControl();
+			map.addControl(tourControl, position);
+		}
+	});
+
+	onDestroy(() => {
 		if (map) {
-			if (tourControl !== null && map.hasControl(tourControl) === false) {
-				map.addControl(tourControl, position);
+			if (tourControl && map.hasControl(tourControl)) {
+				map.removeControl(tourControl);
 			}
 		}
-	}
-
-	onMount(async () => {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		tourControl = new TourControl();
 	});
 </script>
 
@@ -105,5 +129,9 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: 70%;
+	}
+
+	:global(button.tg-dialog-btn) {
+		cursor: pointer;
 	}
 </style>

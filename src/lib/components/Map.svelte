@@ -210,13 +210,6 @@
 						}
 					];
 
-					steps.push({
-						title: 'Done!',
-						content: `The tour has been completed now. Click Finish button to start using it! Thank you for taking your time to use this tool!<br><br>You can come back to this tour anytime by clicking the question mark button.`,
-						target: document.body,
-						order: steps.length + 1
-					});
-
 					tourOptions = { steps, rememberStep: true };
 				}, 300);
 			});
