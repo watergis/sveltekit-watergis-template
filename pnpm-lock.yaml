@@ -69,8 +69,8 @@ devDependencies:
     specifier: ^2.0.1
     version: 2.0.1(svelte@4.0.5)
   '@watergis/svelte-maplibre-tour':
-    specifier: ^0.0.2
-    version: 0.0.2(svelte@4.0.5)
+    specifier: ^0.0.3
+    version: 0.0.3(svelte@4.0.5)
   '@watergis/svelte-maplibre-valhalla':
     specifier: ^2.0.1
     version: 2.0.1(svelte@4.0.5)
@@ -1045,8 +1045,8 @@ packages:
       svelte: 4.0.5
     dev: true
 
-  /@watergis/svelte-maplibre-tour@0.0.2(svelte@4.0.5):
-    resolution: {integrity: sha512-y6k99H5MVvVJYkU/98fKBK5rnGxjyoNXzHob5XP6gx1nR/Qy53HY2ayW30jYXhsl5V5mK4Qpg6brkUBMj0GWsA==}
+  /@watergis/svelte-maplibre-tour@0.0.3(svelte@4.0.5):
+    resolution: {integrity: sha512-8VfOcHH9OMecj8dwuqc0I2eNBpJI+DNBuv8eC8BNWTIHVCJn40tZwGI9LXlvD+2WIAdYPVNkvGOmCW8NHfK8Nw==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
