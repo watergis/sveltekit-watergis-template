@@ -145,16 +145,6 @@
 				resolve();
 
 				setTimeout(() => {
-					const topRightTools = document.querySelectorAll(
-						'.maplibregl-ctrl-top-right .maplibregl-ctrl'
-					);
-
-					const menuButton = topRightTools.item(0);
-					const attributeTableButton = topRightTools.item(1);
-					const shareButton = topRightTools.item(2);
-					const queryButton = topRightTools.item(3);
-					const exportButton = topRightTools.item(4);
-
 					const steps = [
 						{
 							title: 'Welcome to sveltekit watergis template!',
@@ -205,7 +195,7 @@
 								<img src="/assets/tutorial/isochrone-example.png" width="100%"/>
 								</div>
 								`,
-							target: menuButton,
+							target: '.maplibregl-ctrl-menu',
 							order: 2
 						},
 						{
@@ -226,26 +216,26 @@
 								<br>
 								You can pan to selected feature by clicking the above button.
 								</div>`,
-							target: attributeTableButton,
+							target: '.maplibregl-ctrl-attribute-table',
 							order: 3
 						},
 						{
 							title: 'Sharing tool',
 							content:
 								'This button enables you to copy and share URL of current map with your colleagues.',
-							target: shareButton,
+							target: '.maplibregl-ctrl-share',
 							order: 4
 						},
 						{
 							title: 'Query tool',
 							content: `This button enables you to query details information of selected features on the map. If the tool is enabled, you can click the feature on the map to enquiry details information.`,
-							target: queryButton,
+							target: '.maplibregl-ctrl-identify',
 							order: 5
 						},
 						{
 							title: 'Export tool',
 							content: `This button enables you to export images with your preferences.<br>You can choose file size, image format (png, jpeg, pdf and svg), and DPI resolution, orientation of the exported image`,
-							target: exportButton,
+							target: '.maplibregl-ctrl-export',
 							order: 6
 						},
 						{
@@ -283,7 +273,7 @@
 						order: steps.length + 1
 					});
 
-					tourOptions = { steps, rememberStep: true, autoScroll: false };
+					tourOptions = { steps, rememberStep: true };
 				}, 300);
 			});
 		});
