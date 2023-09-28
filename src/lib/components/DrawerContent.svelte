@@ -1,6 +1,4 @@
 <script lang="ts">
-	import Fa from 'svelte-fa';
-	import { faLayerGroup, faChartSimple } from '@fortawesome/free-solid-svg-icons';
 	import LayerListPanel from './LayerListPanel.svelte';
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { config } from '$config';
@@ -12,11 +10,11 @@
 
 	let tabs = [
 		{
-			icon: faLayerGroup,
+			icon: 'fa-solid fa-layer-group',
 			label: TabNames.LAYERS
 		},
 		{
-			icon: faChartSimple,
+			icon: 'fa-solid fa-chart-simple',
 			label: TabNames.ADVANCED
 		}
 	];
@@ -28,7 +26,7 @@
 		<a class="icon is-medium logo" href={config.url}>
 			<img src={config.logo} alt="logo" />
 		</a>
-		<div class="tabs is-centered is-small mb-0">
+		<div class="tabs is-centered">
 			<ul>
 				{#each tabs as tab}
 					<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
@@ -39,7 +37,7 @@
 					>
 						<!-- svelte-ignore a11y-missing-attribute -->
 						<a>
-							<span class="icon ml-2"><Fa icon={tab.icon} size="2x" aria-hidden="true" /></span>
+							<span class="icon is-small"><i class={tab.icon} aria-hidden="true"></i></span>
 							<span>{tab.label}</span>
 						</a>
 					</li>
@@ -56,23 +54,17 @@
 </div>
 
 <style lang="scss">
-	@import 'bulma/bulma.sass';
-
 	.drawer-content {
 		display: flex;
 		flex-direction: column;
 
 		.header {
-			display: flex;
-			flex-direction: row;
+			position: relative;
 
 			.logo {
-				margin: 3px;
-			}
-
-			.tabs {
-				margin-left: 0.5rem;
-				width: 100%;
+				position: absolute;
+				top: 5px;
+				left: 5px;
 			}
 		}
 	}
