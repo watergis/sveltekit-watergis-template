@@ -17,7 +17,7 @@
 		"@maplibre/maplibre-gl-geocoder": "github:maplibre/maplibre-gl-geocoder",
 		"@popperjs/core": "^2.11.8",
 		"@sveltejs/adapter-static": "^2.0.3",
-		"@sveltejs/kit": "^1.22.3",
+		"@sveltejs/kit": "^1.25.1",
 		"@typescript-eslint/eslint-plugin": "^6.7.3",
 		"@typescript-eslint/parser": "^6.7.3",
 		"@watergis/maplibre-center-icon": "^2.0.1",
