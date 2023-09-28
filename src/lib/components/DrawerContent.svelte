@@ -59,16 +59,12 @@
 		flex-direction: column;
 
 		.header {
-			display: flex;
-			flex-direction: row;
+			position: relative;
 
 			.logo {
-				margin: 3px;
-			}
-
-			.tabs {
-				// margin-left: 0.5rem;
-				width: 100%;
+				position: absolute;
+				top: 5px;
+				left: 5px;
 			}
 		}
 	}
