@@ -23,9 +23,6 @@ devDependencies:
   '@types/events':
     specifier: ^3.0.0
     version: 3.0.0
-  '@types/node':
-    specifier: ^20.4.2
-    version: 20.4.2
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.0.0
     version: 6.0.0(@typescript-eslint/parser@6.0.0)(eslint@8.45.0)(typescript@5.2.2)
@@ -118,7 +115,7 @@ devDependencies:
     version: 5.2.2
   vite:
     specifier: ^4.4.4
-    version: 4.4.4(@types/node@20.4.2)(sass@1.63.6)
+    version: 4.4.4(sass@1.63.6)
 
 packages:
 
@@ -586,7 +583,7 @@ packages:
       sirv: 2.0.3
       svelte: 4.0.5
       undici: 5.22.1
-      vite: 4.4.4(@types/node@20.4.2)(sass@1.63.6)
+      vite: 4.4.4(sass@1.63.6)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -602,7 +599,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 2.4.5(svelte@4.0.5)(vite@4.4.4)
       debug: 4.3.4
       svelte: 4.0.5
-      vite: 4.4.4(@types/node@20.4.2)(sass@1.63.6)
+      vite: 4.4.4(sass@1.63.6)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -621,7 +618,7 @@ packages:
       magic-string: 0.30.2
       svelte: 4.0.5
       svelte-hmr: 0.15.3(svelte@4.0.5)
-      vite: 4.4.4(@types/node@20.4.2)(sass@1.63.6)
+      vite: 4.4.4(sass@1.63.6)
       vitefu: 0.2.4(vite@4.4.4)
     transitivePeerDependencies:
       - supports-color
@@ -674,10 +671,6 @@ packages:
       '@types/geojson': 7946.0.10
       '@types/mapbox__point-geometry': 0.1.2
       '@types/pbf': 3.0.2
-    dev: true
-
-  /@types/node@20.4.2:
-    resolution: {integrity: sha512-Dd0BYtWgnWJKwO1jkmTrzofjK2QXXcai0dmtzvIBhcA+RsG5h8R3xlyta0kGOZRNfL9GuRtb1knmPEhQrePCEw==}
     dev: true
 
   /@types/pbf@3.0.2:
@@ -2843,7 +2836,7 @@ packages:
     dev: true
     optional: true
 
-  /vite@4.4.4(@types/node@20.4.2)(sass@1.63.6):
+  /vite@4.4.4(sass@1.63.6):
     resolution: {integrity: sha512-4mvsTxjkveWrKDJI70QmelfVqTm+ihFAb6+xf4sjEU2TmUCTlVX87tmg/QooPEMQb/lM9qGHT99ebqPziEd3wg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -2871,7 +2864,6 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.4.2
       esbuild: 0.18.20
       postcss: 8.4.28
       rollup: 3.28.0
@@ -2888,7 +2880,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.4(@types/node@20.4.2)(sass@1.63.6)
+      vite: 4.4.4(sass@1.63.6)
     dev: true
 
   /vt-pbf@3.1.3:

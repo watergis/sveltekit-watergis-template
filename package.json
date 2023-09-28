@@ -19,7 +19,6 @@
 		"@sveltejs/adapter-static": "^2.0.2",
 		"@sveltejs/kit": "^1.22.3",
 		"@types/events": "^3.0.0",
-		"@types/node": "^20.4.2",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
 		"@watergis/maplibre-center-icon": "^2.0.1",
