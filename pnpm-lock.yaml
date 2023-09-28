@@ -8,9 +8,6 @@ devDependencies:
   '@evilmartians/lefthook':
     specifier: ^1.4.5
     version: 1.4.5
-  '@fortawesome/free-solid-svg-icons':
-    specifier: ^6.4.0
-    version: 6.4.0
   '@maplibre/maplibre-gl-geocoder':
     specifier: github:maplibre/maplibre-gl-geocoder
     version: github.com/maplibre/maplibre-gl-geocoder/9a9f184014cdbe0722728dffd8a6d317026449ad(maplibre-gl@3.2.1)
@@ -48,8 +45,8 @@ devDependencies:
     specifier: ^2.0.2
     version: 2.0.2(svelte@4.0.5)
   '@watergis/svelte-maplibre-attribute-table':
-    specifier: ^1.0.5
-    version: 1.0.5(svelte@4.0.5)
+    specifier: ^1.1.1
+    version: 1.1.1(svelte@4.0.5)
   '@watergis/svelte-maplibre-export':
     specifier: ^2.0.2
     version: 2.0.2(svelte@4.0.5)
@@ -60,8 +57,8 @@ devDependencies:
     specifier: ^2.0.1
     version: 2.0.1(svelte@4.0.5)
   '@watergis/svelte-maplibre-menu':
-    specifier: ^2.0.5
-    version: 2.0.5(svelte@4.0.5)
+    specifier: ^2.1.1
+    version: 2.1.1(svelte@4.0.5)
   '@watergis/svelte-maplibre-share':
     specifier: ^2.0.2
     version: 2.0.2(svelte@4.0.5)
@@ -113,9 +110,6 @@ devDependencies:
   svelte-check:
     specifier: ^3.4.6
     version: 3.4.6(postcss@8.4.28)(sass@1.63.6)(svelte@4.0.5)
-  svelte-fa:
-    specifier: ^3.0.4
-    version: 3.0.4
   svelte-preprocess:
     specifier: ^5.0.4
     version: 5.0.4(postcss@8.4.28)(sass@1.63.6)(svelte@4.0.5)(typescript@5.2.2)
@@ -915,17 +909,15 @@ packages:
       svelte: 4.0.5
     dev: true
 
-  /@watergis/svelte-maplibre-attribute-table@1.0.5(svelte@4.0.5):
-    resolution: {integrity: sha512-ZO01HZFg4Z4oi0gSrINFHxtExusFYjzLuO/H5d4EOJd3FOGEkuYAPJkI/l3Hno5BPUKeZGQFWnWHe0AykJclMw==}
+  /@watergis/svelte-maplibre-attribute-table@1.1.1(svelte@4.0.5):
+    resolution: {integrity: sha512-HYFhs289T2eMbYCH9IkYKd2tu4LP0O/EEwQnI8P1f2A7tQ8jIAxmVDOnoNptACxTp8fcd3aoGfcleQKW0TELUw==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@fortawesome/free-solid-svg-icons': 6.4.0
       '@vincjo/datatables': 1.12.3(svelte@4.0.5)
-      '@watergis/svelte-maplibre-menu': 2.0.5(svelte@4.0.5)
+      '@watergis/svelte-maplibre-menu': 2.1.1(svelte@4.0.5)
       maplibre-gl: 3.2.1
       svelte: 4.0.5
-      svelte-fa: 3.0.4
     dev: true
 
   /@watergis/svelte-maplibre-export@2.0.2(svelte@4.0.5):
@@ -980,16 +972,14 @@ packages:
       - debug
     dev: true
 
-  /@watergis/svelte-maplibre-menu@2.0.5(svelte@4.0.5):
-    resolution: {integrity: sha512-/9ZtI+YQDswei7tf678AmEDlM34l82idGerQHh6F/CmckrS2JLhq6Lyc06Rq29fVx8t2RJ4igPPALI8F3Yizlw==}
+  /@watergis/svelte-maplibre-menu@2.1.1(svelte@4.0.5):
+    resolution: {integrity: sha512-tQQ//lmzBCeyhCXEkv3gK+OSrQ+dzsH/xQUCo5pfGyToCys07yjBpPLxDH2sYGUAKFYtcw3J4pnkj8LRZxMEqA==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@fortawesome/free-solid-svg-icons': 6.4.0
       '@geoffcox/svelte-splitter': 1.0.1
       maplibre-gl: 3.2.1
       svelte: 4.0.5
-      svelte-fa: 3.0.4
     dev: true
 
   /@watergis/svelte-maplibre-share@2.0.2(svelte@4.0.5):
