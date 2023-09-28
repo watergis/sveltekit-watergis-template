@@ -13,7 +13,7 @@
 		"preinstall": "npx only-allow pnpm"
 	},
 	"devDependencies": {
-		"@evilmartians/lefthook": "^1.4.5",
+		"@evilmartians/lefthook": "^1.5.0",
 		"@maplibre/maplibre-gl-geocoder": "github:maplibre/maplibre-gl-geocoder",
 		"@popperjs/core": "^2.11.8",
 		"@sveltejs/adapter-static": "^2.0.2",
@@ -34,20 +34,20 @@
 		"@watergis/svelte-maplibre-valhalla": "^2.0.1",
 		"buffer": "^6.0.3",
 		"bulma": "^0.9.4",
-		"eslint": "^8.45.0",
+		"eslint": "^8.50.0",
 		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-svelte": "^2.32.2",
+		"eslint-plugin-svelte": "^2.33.2",
 		"maplibre-gl": "^3.3.1",
 		"pmtiles": "2.11.0",
-		"prettier": "^3.0.0",
-		"prettier-plugin-svelte": "^3.0.0",
-		"sass": "^1.63.6",
+		"prettier": "^3.0.3",
+		"prettier-plugin-svelte": "^3.0.3",
+		"sass": "^1.68.0",
 		"svelte": "^4.0.5",
 		"svelte-check": "^3.4.6",
 		"svelte-preprocess": "^5.0.4",
-		"tslib": "^2.6.0",
-		"typescript": "~5.2.0",
-		"vite": "^4.4.4"
+		"tslib": "^2.6.2",
+		"typescript": "~5.2.2",
+		"vite": "^4.4.9"
 	},
 	"type": "module"
 }
