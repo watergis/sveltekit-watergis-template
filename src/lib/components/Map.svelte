@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import maplibregl, {
 		Map,
@@ -179,7 +180,7 @@
 			config.tour.tourControlOptions.localStorageKey.replace('{url}', config.url);
 
 		return new MaplibreTourControl(config.tour.tourGuideOptions, {
-			localStorageKey: `watergis-${config.url}`
+			localStorageKey: `watergis-${config.url}-${$page.url.origin}`
 		});
 	};
 </script>
