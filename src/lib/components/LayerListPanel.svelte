@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { map, selectedStyle } from '$lib/stores';
 	import { config } from '$config';
-	import { LegendPanel, LegendHeader } from '@watergis/svelte-maplibre-legend';
+	import { map, selectedStyle } from '$lib/stores';
+	import { LegendHeader, LegendPanel } from '@watergis/svelte-maplibre-legend';
 	import { StyleSwitcher } from '@watergis/svelte-maplibre-style-switcher';
 
 	let onlyRendered = true;

@@ -14,6 +14,9 @@ devDependencies:
   '@popperjs/core':
     specifier: ^2.11.8
     version: 2.11.8
+  '@sjmc11/tourguidejs':
+    specifier: ^0.0.10
+    version: 0.0.10
   '@sveltejs/adapter-static':
     specifier: ^2.0.3
     version: 2.0.3(@sveltejs/kit@1.25.1)
@@ -38,6 +41,9 @@ devDependencies:
   '@watergis/maplibre-gl-area-switcher':
     specifier: ^1.0.0
     version: 1.0.0
+  '@watergis/maplibre-gl-tour':
+    specifier: ^1.0.1
+    version: 1.0.1(svelte@4.0.5)
   '@watergis/svelte-collapsible-panel':
     specifier: ^1.0.1
     version: 1.0.1(svelte@4.0.5)
@@ -389,6 +395,23 @@ packages:
     requiresBuild: true
     dev: true
 
+  /@floating-ui/core@1.5.0:
+    resolution: {integrity: sha512-kK1h4m36DQ0UHGj5Ah4db7R0rHemTqqO0QLvUqi1/mUUp3LuAWbWxdxSIf/XsnH9VS6rRVPLJCncjRzUvyCLXg==}
+    dependencies:
+      '@floating-ui/utils': 0.1.4
+    dev: true
+
+  /@floating-ui/dom@1.5.3:
+    resolution: {integrity: sha512-ClAbQnEqJAKCJOEbbLo5IUlZHkNszqhuxS4fHAVxRPXPya6Ysf2G8KypnYcOTpx6I8xcgF9bbHb6g/2KpbV8qA==}
+    dependencies:
+      '@floating-ui/core': 1.5.0
+      '@floating-ui/utils': 0.1.4
+    dev: true
+
+  /@floating-ui/utils@0.1.4:
+    resolution: {integrity: sha512-qprfWkn82Iw821mcKofJ5Pk9wgioHicxcQMxx+5zt5GSKoqdWvgG5AxVmpmUUjzTLPVSH5auBrhI93Deayn/DA==}
+    dev: true
+
   /@fortawesome/fontawesome-common-types@6.4.0:
     resolution: {integrity: sha512-HNii132xfomg5QVZw0HwXXpN22s7VBHQBv9CeOu9tfJnhsWQNd2lmTNi8CSrnw5B+5YOmzu1UoPAyxaXsJ6RgQ==}
     engines: {node: '>=6'}
@@ -554,6 +577,13 @@ packages:
 
   /@popperjs/core@2.11.8:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+    dev: true
+
+  /@sjmc11/tourguidejs@0.0.10:
+    resolution: {integrity: sha512-TnEL+ygzv5W73McwzuIoWQNK9HJ1/Wk4/lLHYtQlNpP4kx/Pv9CieI+zakxkgouQAgQX7WL92fZU1p2KPLvvbA==}
+    dependencies:
+      '@floating-ui/dom': 1.5.3
+      sass: 1.68.0
     dev: true
 
   /@sveltejs/adapter-static@2.0.3(@sveltejs/kit@1.25.1):
@@ -863,6 +893,16 @@ packages:
     resolution: {integrity: sha512-kP5SMvxoMtCuKBlCRwZFPMxJh4qdNng42tzGmPCCL0dl7k3/atRADw7a2isgUsPRpRUBRaIjaauYZXQrItJfzw==}
     dependencies:
       maplibre-gl: 3.3.1
+    dev: true
+
+  /@watergis/maplibre-gl-tour@1.0.1(svelte@4.0.5):
+    resolution: {integrity: sha512-LeAH//Ida/iBWdLOAJeRstzMhsVK0WVOin9D+B39WRf2cfazYBiRfKLV7yfkxxPmMIUwHW8/Jq3oVv2DCzm+PA==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      '@sjmc11/tourguidejs': 0.0.10
+      maplibre-gl: 3.3.1
+      svelte: 4.0.5
     dev: true
 
   /@watergis/svelte-collapsible-panel@1.0.1(svelte@4.0.5):

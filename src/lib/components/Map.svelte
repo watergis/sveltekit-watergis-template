@@ -1,30 +1,32 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+	import { config } from '$config';
+	import { map, selectedStyle } from '$lib/stores';
+	import MaplibreGeocoder from '@maplibre/maplibre-gl-geocoder';
+	import '@maplibre/maplibre-gl-geocoder/lib/maplibre-gl-geocoder.css';
+	import CenterIconManager from '@watergis/maplibre-center-icon';
+	import MaplibreAreaSwitcherControl from '@watergis/maplibre-gl-area-switcher';
+	import '@watergis/maplibre-gl-area-switcher/dist/maplibre-gl-area-switcher.css';
+	import { MaplibreTourControl } from '@watergis/maplibre-gl-tour';
+	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
+	import AttributeTableControl from '@watergis/svelte-maplibre-attribute-table';
+	import { MapExportControl } from '@watergis/svelte-maplibre-export';
+	import { MenuControl } from '@watergis/svelte-maplibre-menu';
+	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
+	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
 	import maplibregl, {
-		Map,
-		NavigationControl,
-		GeolocateControl,
-		ScaleControl,
 		AttributionControl,
 		FullscreenControl,
+		GeolocateControl,
+		Map,
+		NavigationControl,
+		ScaleControl,
 		TerrainControl
 	} from 'maplibre-gl';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 	import * as pmtiles from 'pmtiles';
-	import { map, selectedStyle } from '$lib/stores';
-	import { config } from '$config';
-	import MaplibreAreaSwitcherControl from '@watergis/maplibre-gl-area-switcher';
-	import '@watergis/maplibre-gl-area-switcher/dist/maplibre-gl-area-switcher.css';
-	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
-	import { MapExportControl } from '@watergis/svelte-maplibre-export';
-	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
-	import { MenuControl } from '@watergis/svelte-maplibre-menu';
+	import { onMount } from 'svelte';
 	import DrawerContent from './DrawerContent.svelte';
-	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
-	import CenterIconManager from '@watergis/maplibre-center-icon';
-	import MaplibreGeocoder from '@maplibre/maplibre-gl-geocoder';
-	import '@maplibre/maplibre-gl-geocoder/lib/maplibre-gl-geocoder.css';
-	import AttributeTableControl from '@watergis/svelte-maplibre-attribute-table';
 
 	let protocol = new pmtiles.Protocol();
 	maplibregl.addProtocol('pmtiles', protocol.tile);
@@ -39,108 +41,104 @@
 	const initialStyle = styleUrlObj.getInitialStyle(config.styles);
 	selectedStyle.update(() => initialStyle);
 
-	const initialise = () => {
-		if (!mapContainer) return;
-		return new Promise<void>((resolve) => {
-			$map = new Map({
-				container: mapContainer,
-				style: initialStyle.uri,
-				center: config.center,
-				zoom: config.zoom,
-				hash: true,
-				attributionControl: false
-			});
+	const initialise = async () => {
+		$map = new Map({
+			container: mapContainer,
+			style: initialStyle.uri,
+			center: config.center,
+			zoom: config.zoom,
+			hash: true,
+			attributionControl: false
+		});
 
-			$map.addControl(new AttributionControl({ compact: true }), 'bottom-right');
+		$map.addControl(new AttributionControl({ compact: true }), 'bottom-right');
 
-			$map.addControl(
-				new GeolocateControl({
-					positionOptions: { enableHighAccuracy: true },
-					trackUserLocation: true
-				}),
-				'bottom-right'
-			);
+		$map.addControl(
+			new GeolocateControl({
+				positionOptions: { enableHighAccuracy: true },
+				trackUserLocation: true
+			}),
+			'bottom-right'
+		);
 
-			$map.addControl(
-				new NavigationControl({
-					visualizePitch: true,
-					showZoom: true,
-					showCompass: true
-				}),
-				'bottom-right'
-			);
+		$map.addControl(
+			new NavigationControl({
+				visualizePitch: true,
+				showZoom: true,
+				showCompass: true
+			}),
+			'bottom-right'
+		);
 
-			if (config.terrain) {
-				$map.setMaxPitch(85);
-				$map.addControl(new TerrainControl(config.terrain), 'bottom-right');
-			}
+		if (config.terrain) {
+			$map.setMaxPitch(85);
+			$map.addControl(new TerrainControl(config.terrain), 'bottom-right');
+		}
 
-			if (config.areaSwitcher) {
-				$map.addControl(new MaplibreAreaSwitcherControl(config.areaSwitcher.areas), 'bottom-right');
-			}
+		if (config.areaSwitcher) {
+			$map.addControl(new MaplibreAreaSwitcherControl(config.areaSwitcher.areas), 'bottom-right');
+		}
 
-			$map.addControl(
-				new FullscreenControl({ container: document.querySelector('body') }),
-				'bottom-right'
-			);
+		$map.addControl(
+			new FullscreenControl({ container: document.querySelector('body') }),
+			'bottom-right'
+		);
 
-			$map.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
+		$map.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
 
-			const centerIconManager = new CenterIconManager($map);
-			centerIconManager.create();
+		const centerIconManager = new CenterIconManager($map);
+		centerIconManager.create();
 
-			if (config.search) {
-				fetch(config.search.url)
-					.then((res) => res.json())
-					.then((data) => {
-						const forwardGeocoder = async (query) => {
-							var matchingFeatures = [];
-							for (var i = 0; i < data.features.length; i++) {
-								var feature = data.features[i];
-								config.search.target.forEach((v) => {
-									var target = feature.properties[v];
-									if (!target) {
-										return;
-									}
-									// handle queries with different capitalization than the source data by calling toLowerCase()
-									if (
-										target.toString().toLowerCase().search(query.toString().toLowerCase()) !== -1
-									) {
-										feature['place_name'] = config.search.format(feature.properties);
-										feature['center'] = feature.geometry.coordinates;
-										feature['place_type'] = config.search.place_type;
-										matchingFeatures.push(feature);
-									}
-								});
-							}
-							return matchingFeatures;
-						};
+		if (config.search) {
+			fetch(config.search.url)
+				.then((res) => res.json())
+				.then((data) => {
+					const forwardGeocoder = async (query) => {
+						var matchingFeatures = [];
+						for (var i = 0; i < data.features.length; i++) {
+							var feature = data.features[i];
+							config.search.target.forEach((v) => {
+								var target = feature.properties[v];
+								if (!target) {
+									return;
+								}
+								// handle queries with different capitalization than the source data by calling toLowerCase()
+								if (target.toString().toLowerCase().search(query.toString().toLowerCase()) !== -1) {
+									feature['place_name'] = config.search.format(feature.properties);
+									feature['center'] = feature.geometry.coordinates;
+									feature['place_type'] = config.search.place_type;
+									matchingFeatures.push(feature);
+								}
+							});
+						}
+						return matchingFeatures;
+					};
 
-						var geocoder_api = {
-							forwardGeocode: async ({ query }) => {
-								return {
-									features: await forwardGeocoder(query)
-								};
-							}
-						};
+					var geocoder_api = {
+						forwardGeocode: async ({ query }) => {
+							return {
+								features: await forwardGeocoder(query)
+							};
+						}
+					};
 
-						$map.addControl(
-							new MaplibreGeocoder(geocoder_api, {
-								zoom: config.search.zoom,
-								placeholder: config.search.placeholder,
-								limit: config.search.limit,
-								maplibregl: maplibregl,
-								collapsed: true,
-								showResultsWhileTyping: true
-							}),
-							'top-left'
-						);
-					});
-			}
+					$map.addControl(
+						new MaplibreGeocoder(geocoder_api, {
+							zoom: config.search.zoom,
+							placeholder: config.search.placeholder,
+							limit: config.search.limit,
+							maplibregl: maplibregl,
+							collapsed: true,
+							showResultsWhileTyping: true
+						}),
+						'top-left'
+					);
+				});
+		}
 
-			$map.on('load', () => {
-				resolve();
-			});
+		$map.once('load', () => {
+			const tourControl = getTourControl();
+			$map.addControl(tourControl, 'top-right');
 		});
 	};
 
@@ -156,6 +154,32 @@
 
 	const onChange = (e: { detail: { secondarySize: number } }) => {
 		mapContainerWidth = e.detail.secondarySize;
+	};
+
+	const getTourControl = () => {
+		const steps = config.tour.tourGuideOptions.steps;
+		if (!config.areaSwitcher) {
+			steps.splice(
+				steps.findIndex((s) => s.target === '.maplibregl-area-switcher'),
+				1
+			);
+		}
+
+		if (!config.terrain) {
+			steps.splice(
+				steps.findIndex((s) => s.target === '.maplibregl-ctrl-terrain'),
+				1
+			);
+		}
+
+		steps.forEach((step, index) => {
+			step.order = index + 1;
+		});
+
+		config.tour.tourControlOptions.localStorageKey =
+			config.tour.tourControlOptions.localStorageKey.replace('{url}', $page.url.origin);
+
+		return new MaplibreTourControl(config.tour.tourGuideOptions, config.tour.tourControlOptions);
 	};
 </script>
 
@@ -190,6 +214,9 @@
 </MenuControl>
 
 <style>
+	@import '@sjmc11/tourguidejs/dist/css/tour.min.css';
+	@import '@watergis/maplibre-gl-tour/dist/maplibre-tour-control.css';
+
 	.map {
 		position: absolute;
 		top: 0;
@@ -204,5 +231,9 @@
 	:global(.mapboxgl-ctrl-geocoder .suggestions) {
 		overflow-y: auto !important;
 		max-height: calc(85vh);
+	}
+
+	:global(button.tg-dialog-btn) {
+		cursor: pointer;
 	}
 </style>
