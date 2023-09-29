@@ -25,7 +25,7 @@
 	import MaplibreGeocoder from '@maplibre/maplibre-gl-geocoder';
 	import '@maplibre/maplibre-gl-geocoder/lib/maplibre-gl-geocoder.css';
 	import AttributeTableControl from '@watergis/svelte-maplibre-attribute-table';
-	import TourControl, { type TourGuideOptions } from '@watergis/svelte-maplibre-tour';
+	import { MaplibreTourControl } from '@watergis/maplibre-gl-tour';
 
 	let protocol = new pmtiles.Protocol();
 	maplibregl.addProtocol('pmtiles', protocol.tile);
@@ -40,242 +40,104 @@
 	const initialStyle = styleUrlObj.getInitialStyle(config.styles);
 	selectedStyle.update(() => initialStyle);
 
-	let tourOptions: TourGuideOptions;
+	const initialise = async () => {
+		$map = new Map({
+			container: mapContainer,
+			style: initialStyle.uri,
+			center: config.center,
+			zoom: config.zoom,
+			hash: true,
+			attributionControl: false
+		});
 
-	const initialise = () => {
-		if (!mapContainer) return;
-		return new Promise<void>((resolve) => {
-			$map = new Map({
-				container: mapContainer,
-				style: initialStyle.uri,
-				center: config.center,
-				zoom: config.zoom,
-				hash: true,
-				attributionControl: false
-			});
+		$map.addControl(new AttributionControl({ compact: true }), 'bottom-right');
 
-			$map.addControl(new AttributionControl({ compact: true }), 'bottom-right');
+		$map.addControl(
+			new GeolocateControl({
+				positionOptions: { enableHighAccuracy: true },
+				trackUserLocation: true
+			}),
+			'bottom-right'
+		);
 
-			$map.addControl(
-				new GeolocateControl({
-					positionOptions: { enableHighAccuracy: true },
-					trackUserLocation: true
-				}),
-				'bottom-right'
-			);
+		$map.addControl(
+			new NavigationControl({
+				visualizePitch: true,
+				showZoom: true,
+				showCompass: true
+			}),
+			'bottom-right'
+		);
 
-			$map.addControl(
-				new NavigationControl({
-					visualizePitch: true,
-					showZoom: true,
-					showCompass: true
-				}),
-				'bottom-right'
-			);
+		if (config.terrain) {
+			$map.setMaxPitch(85);
+			$map.addControl(new TerrainControl(config.terrain), 'bottom-right');
+		}
 
-			if (config.terrain) {
-				$map.setMaxPitch(85);
-				$map.addControl(new TerrainControl(config.terrain), 'bottom-right');
-			}
+		if (config.areaSwitcher) {
+			$map.addControl(new MaplibreAreaSwitcherControl(config.areaSwitcher.areas), 'bottom-right');
+		}
 
-			if (config.areaSwitcher) {
-				$map.addControl(new MaplibreAreaSwitcherControl(config.areaSwitcher.areas), 'bottom-right');
-			}
+		$map.addControl(
+			new FullscreenControl({ container: document.querySelector('body') }),
+			'bottom-right'
+		);
 
-			$map.addControl(
-				new FullscreenControl({ container: document.querySelector('body') }),
-				'bottom-right'
-			);
+		$map.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
 
-			$map.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
+		const centerIconManager = new CenterIconManager($map);
+		centerIconManager.create();
 
-			const centerIconManager = new CenterIconManager($map);
-			centerIconManager.create();
-
-			if (config.search) {
-				fetch(config.search.url)
-					.then((res) => res.json())
-					.then((data) => {
-						const forwardGeocoder = async (query) => {
-							var matchingFeatures = [];
-							for (var i = 0; i < data.features.length; i++) {
-								var feature = data.features[i];
-								config.search.target.forEach((v) => {
-									var target = feature.properties[v];
-									if (!target) {
-										return;
-									}
-									// handle queries with different capitalization than the source data by calling toLowerCase()
-									if (
-										target.toString().toLowerCase().search(query.toString().toLowerCase()) !== -1
-									) {
-										feature['place_name'] = config.search.format(feature.properties);
-										feature['center'] = feature.geometry.coordinates;
-										feature['place_type'] = config.search.place_type;
-										matchingFeatures.push(feature);
-									}
-								});
-							}
-							return matchingFeatures;
-						};
-
-						var geocoder_api = {
-							forwardGeocode: async ({ query }) => {
-								return {
-									features: await forwardGeocoder(query)
-								};
-							}
-						};
-
-						$map.addControl(
-							new MaplibreGeocoder(geocoder_api, {
-								zoom: config.search.zoom,
-								placeholder: config.search.placeholder,
-								limit: config.search.limit,
-								maplibregl: maplibregl,
-								collapsed: true,
-								showResultsWhileTyping: true
-							}),
-							'top-left'
-						);
-					});
-			}
-
-			$map.on('load', () => {
-				resolve();
-
-				setTimeout(() => {
-					const steps = [
-						{
-							title: 'Welcome to sveltekit watergis template!',
-							content: `This tutorial is going to take you around the main features of the application. <br> Let's begin!`,
-							target: document.body,
-							order: 1
-						},
-						{
-							title: 'Geospatial analytics tools',
-							content: `
-								<div style="max-height: 300px; overflow-y: auto">
-								Click this button to start analysing the datasets.
-								<br><br>
-								In the <b>Layers</b> tab, 
-								<br>
-								<img src="/assets/tutorial/style-switcher.png" height="32px"/>
-								firstly you can switch base maps either OSM or aerial from the below select box.
-								<br>
-								<img src="/assets/tutorial/eye-solid.svg" width="24px"/>
-								<br>
-								You can also switch layer visibility by clicking this button.
-								<br>
-								<img src="/assets/tutorial/palette-solid.svg" width="24px"/>
-								<br>
-								From the above palette button, you can edit layer style as you want.
-								<br><br>
-								In <b>Advanced</b> tab, there are three main features:
-								<br>
-								<b>1) measuring tool</b>: 
-								<br>
-								<img src="/assets/tutorial/measure-tool.png" width="100%"/>
-								<br>
-								Click "Start measure" button, then click locations on the map to query the distance and altitude.
-								<br>
-								<br>
-								<b>2) routing tool</b>;
-								<br>
-								<img src="/assets/tutorial/routing-tool.png" width="100%"/>
-								<br>
-								Click "Start routing" button, then you can calculate the shortest route by clicking on the route on the map with your prefered means of transport.
-								<br>
-								<br>
-								<b>3)isochrone analysis tool</b>.
-								<br>
-								<img src="/assets/tutorial/isochrone-tool.png" width="100%"/>
-								<br>Isochrone is a very powerful tool to estimate contours by certain time or distance by selected transport option. It can be used for some SDG indicator such as "Water access within 30 minute round trip".
-								<br>
-								<img src="/assets/tutorial/isochrone-example.png" width="100%"/>
-								</div>
-								`,
-							target: '.maplibregl-ctrl-menu',
-							order: 2
-						},
-						{
-							title: 'Attribute table tool',
-							content: `<div style="max-height: 300px; overflow-y: auto">
-								Click this button to start exploring attributes data of selected layer. 
-								You can also filter the data by keyword, and sort them, zoom to the select feature.
-								<br>
-								<img src="/assets/tutorial/attr-table-selectbox.png" width="100%"/>
-								<br>
-								Firstly, select a layer to show attribute table. The table will show all records within current map extent. Please refresh table if you move map.
-								<br>
-								<img src="/assets/tutorial/magnifying-glass-plus-solid.svg" width="24px"/>
-								<br>
-								You can zoom to selected feature by clicking the above button.
-								<br>
-								<img src="/assets/tutorial/up-down-left-right-solid.svg" width="24px"/>
-								<br>
-								You can pan to selected feature by clicking the above button.
-								</div>`,
-							target: '.maplibregl-ctrl-attribute-table',
-							order: 3
-						},
-						{
-							title: 'Sharing tool',
-							content:
-								'This button enables you to copy and share URL of current map with your colleagues.',
-							target: '.maplibregl-ctrl-share',
-							order: 4
-						},
-						{
-							title: 'Query tool',
-							content: `This button enables you to query details information of selected features on the map. If the tool is enabled, you can click the feature on the map to enquiry details information.`,
-							target: '.maplibregl-ctrl-identify',
-							order: 5
-						},
-						{
-							title: 'Export tool',
-							content: `This button enables you to export images with your preferences.<br>You can choose file size, image format (png, jpeg, pdf and svg), and DPI resolution, orientation of the exported image`,
-							target: '.maplibregl-ctrl-export',
-							order: 6
-						},
-						{
-							title: 'Search features',
-							content: `You can search features by typing keywords from the searching box.`,
-							target: '.maplibregl-ctrl-geocoder',
-							order: 7
+		if (config.search) {
+			fetch(config.search.url)
+				.then((res) => res.json())
+				.then((data) => {
+					const forwardGeocoder = async (query) => {
+						var matchingFeatures = [];
+						for (var i = 0; i < data.features.length; i++) {
+							var feature = data.features[i];
+							config.search.target.forEach((v) => {
+								var target = feature.properties[v];
+								if (!target) {
+									return;
+								}
+								// handle queries with different capitalization than the source data by calling toLowerCase()
+								if (target.toString().toLowerCase().search(query.toString().toLowerCase()) !== -1) {
+									feature['place_name'] = config.search.format(feature.properties);
+									feature['center'] = feature.geometry.coordinates;
+									feature['place_type'] = config.search.place_type;
+									matchingFeatures.push(feature);
+								}
+							});
 						}
-					];
+						return matchingFeatures;
+					};
 
-					const areaSwitcher = document.getElementsByClassName('maplibregl-area-switcher');
-					if (areaSwitcher.length > 0) {
-						steps.push({
-							title: 'Area switching tool',
-							content: `You can switch the map to the selected area instantly.`,
-							target: '.maplibregl-area-switcher',
-							order: steps.length + 1
-						});
-					}
+					var geocoder_api = {
+						forwardGeocode: async ({ query }) => {
+							return {
+								features: await forwardGeocoder(query)
+							};
+						}
+					};
 
-					const terrainControl = document.getElementsByClassName('maplibregl-ctrl-terrain');
-					if (terrainControl.length > 0) {
-						steps.push({
-							title: 'Terrain tool',
-							content: `If this is enabled, 3D terrain landscape will be shown. In order to use this, you can tilt the map by holding right-click (mouse) or two fingers (smartphone or tablet)`,
-							target: '.maplibregl-ctrl-terrain',
-							order: steps.length + 1
-						});
-					}
+					$map.addControl(
+						new MaplibreGeocoder(geocoder_api, {
+							zoom: config.search.zoom,
+							placeholder: config.search.placeholder,
+							limit: config.search.limit,
+							maplibregl: maplibregl,
+							collapsed: true,
+							showResultsWhileTyping: true
+						}),
+						'top-left'
+					);
+				});
+		}
 
-					steps.push({
-						title: 'GNSS positioning tool',
-						content: `GNSS positioning your current location is available by clicking this button.`,
-						target: '.maplibregl-ctrl-geolocate',
-						order: steps.length + 1
-					});
-
-					tourOptions = { steps, rememberStep: true };
-				}, 300);
-			});
+		$map.once('load', () => {
+			const tourControl = getTourControl();
+			$map.addControl(tourControl, 'top-right');
 		});
 	};
 
@@ -291,6 +153,34 @@
 
 	const onChange = (e: { detail: { secondarySize: number } }) => {
 		mapContainerWidth = e.detail.secondarySize;
+	};
+
+	const getTourControl = () => {
+		const steps = config.tour.tourGuideOptions.steps;
+		if (!config.areaSwitcher) {
+			steps.splice(
+				steps.findIndex((s) => s.target === '.maplibregl-area-switcher'),
+				1
+			);
+		}
+
+		if (!config.terrain) {
+			steps.splice(
+				steps.findIndex((s) => s.target === '.maplibregl-ctrl-terrain'),
+				1
+			);
+		}
+
+		steps.forEach((step, index) => {
+			step.order = index + 1;
+		});
+
+		config.tour.tourControlOptions.localStorageKey =
+			config.tour.tourControlOptions.localStorageKey.replace('{url}', config.url);
+
+		return new MaplibreTourControl(config.tour.tourGuideOptions, {
+			localStorageKey: `watergis-${config.url}`
+		});
 	};
 </script>
 
@@ -320,15 +210,14 @@
 				showCrosshair={true}
 				position="top-right"
 			/>
-
-			{#if tourOptions}
-				<TourControl bind:map={$map} bind:tourguideOptions={tourOptions} />
-			{/if}
 		{/await}
 	</div>
 </MenuControl>
 
 <style>
+	@import '@sjmc11/tourguidejs/dist/css/tour.min.css';
+	@import '@watergis/maplibre-gl-tour/dist/maplibre-tour-control.css';
+
 	.map {
 		position: absolute;
 		top: 0;
@@ -343,5 +232,9 @@
 	:global(.mapboxgl-ctrl-geocoder .suggestions) {
 		overflow-y: auto !important;
 		max-height: calc(85vh);
+	}
+
+	:global(button.tg-dialog-btn) {
+		cursor: pointer;
 	}
 </style>
