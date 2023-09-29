@@ -177,11 +177,9 @@
 		});
 
 		config.tour.tourControlOptions.localStorageKey =
-			config.tour.tourControlOptions.localStorageKey.replace('{url}', config.url);
+			config.tour.tourControlOptions.localStorageKey.replace('{url}', $page.url.origin);
 
-		return new MaplibreTourControl(config.tour.tourGuideOptions, {
-			localStorageKey: `watergis-${config.url}-${$page.url.origin}`
-		});
+		return new MaplibreTourControl(config.tour.tourGuideOptions, config.tour.tourControlOptions);
 	};
 </script>
 
