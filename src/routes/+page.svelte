@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { config } from '$config';
 	import Map from '$lib/components/Map.svelte';
 	import { selectedStyle } from '$lib/stores';
-	import { config } from '$config';
 	import { onMount } from 'svelte';
 
 	const defaultStyle = config.styles[0];

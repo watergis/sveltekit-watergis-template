@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { config as defaultConfig } from '$config';
+	import { map } from '$lib/stores';
+	import { CollapsiblePanel } from '@watergis/svelte-collapsible-panel';
 	import { MeasurePanel } from '@watergis/svelte-maplibre-measure';
 	import { ValhallaIsochronePanel, ValhallaRoutingPanel } from '@watergis/svelte-maplibre-valhalla';
-	import { CollapsiblePanel } from '@watergis/svelte-collapsible-panel';
-	import { map } from '$lib/stores';
-	import { config as defaultConfig } from '$config';
 
 	const config = defaultConfig;
 

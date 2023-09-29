@@ -1,32 +1,32 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
+	import { config } from '$config';
+	import { map, selectedStyle } from '$lib/stores';
+	import MaplibreGeocoder from '@maplibre/maplibre-gl-geocoder';
+	import '@maplibre/maplibre-gl-geocoder/lib/maplibre-gl-geocoder.css';
+	import CenterIconManager from '@watergis/maplibre-center-icon';
+	import MaplibreAreaSwitcherControl from '@watergis/maplibre-gl-area-switcher';
+	import '@watergis/maplibre-gl-area-switcher/dist/maplibre-gl-area-switcher.css';
+	import { MaplibreTourControl } from '@watergis/maplibre-gl-tour';
+	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
+	import AttributeTableControl from '@watergis/svelte-maplibre-attribute-table';
+	import { MapExportControl } from '@watergis/svelte-maplibre-export';
+	import { MenuControl } from '@watergis/svelte-maplibre-menu';
+	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
+	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
 	import maplibregl, {
-		Map,
-		NavigationControl,
-		GeolocateControl,
-		ScaleControl,
 		AttributionControl,
 		FullscreenControl,
+		GeolocateControl,
+		Map,
+		NavigationControl,
+		ScaleControl,
 		TerrainControl
 	} from 'maplibre-gl';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 	import * as pmtiles from 'pmtiles';
-	import { map, selectedStyle } from '$lib/stores';
-	import { config } from '$config';
-	import MaplibreAreaSwitcherControl from '@watergis/maplibre-gl-area-switcher';
-	import '@watergis/maplibre-gl-area-switcher/dist/maplibre-gl-area-switcher.css';
-	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
-	import { MapExportControl } from '@watergis/svelte-maplibre-export';
-	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
-	import { MenuControl } from '@watergis/svelte-maplibre-menu';
+	import { onMount } from 'svelte';
 	import DrawerContent from './DrawerContent.svelte';
-	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
-	import CenterIconManager from '@watergis/maplibre-center-icon';
-	import MaplibreGeocoder from '@maplibre/maplibre-gl-geocoder';
-	import '@maplibre/maplibre-gl-geocoder/lib/maplibre-gl-geocoder.css';
-	import AttributeTableControl from '@watergis/svelte-maplibre-attribute-table';
-	import { MaplibreTourControl } from '@watergis/maplibre-gl-tour';
 
 	let protocol = new pmtiles.Protocol();
 	maplibregl.addProtocol('pmtiles', protocol.tile);

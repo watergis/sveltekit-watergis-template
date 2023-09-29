@@ -1,7 +1,7 @@
 <script lang="ts">
-	import LayerListPanel from './LayerListPanel.svelte';
-	import AdvancedPanel from './AdvancedPanel.svelte';
 	import { config } from '$config';
+	import AdvancedPanel from './AdvancedPanel.svelte';
+	import LayerListPanel from './LayerListPanel.svelte';
 
 	enum TabNames {
 		LAYERS = 'Layers',
