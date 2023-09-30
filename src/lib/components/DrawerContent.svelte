@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { config } from '$config';
+	import { setContext } from 'svelte';
+	import { writable } from 'svelte/store';
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import LayerListPanel from './LayerListPanel.svelte';
 
@@ -19,14 +21,18 @@
 		}
 	];
 	let activeTab = tabs[0];
+
+	let tabHeight = writable<number>(0);
+
+	setContext('tab-height', tabHeight);
 </script>
 
 <div class="drawer-content">
-	<div class="header">
+	<div class="header" bind:clientHeight={$tabHeight}>
 		<a class="icon is-medium logo" href={config.url}>
 			<img src={config.logo} alt="logo" />
 		</a>
-		<div class="tabs is-centered">
+		<div class="tabs is-centered mb-0">
 			<ul>
 				{#each tabs as tab}
 					<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
