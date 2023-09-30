@@ -27,8 +27,8 @@ devDependencies:
     specifier: ^3.0.1
     version: 3.0.1
   '@types/node':
-    specifier: ^20.7.2
-    version: 20.7.2
+    specifier: ^20.8.0
+    version: 20.8.0
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.7.3
     version: 6.7.3(@typescript-eslint/parser@6.7.3)(eslint@8.50.0)(typescript@5.2.2)
@@ -42,8 +42,8 @@ devDependencies:
     specifier: ^1.0.0
     version: 1.0.0
   '@watergis/maplibre-gl-tour':
-    specifier: ^1.0.1
-    version: 1.0.1(svelte@4.0.5)
+    specifier: ^1.0.2
+    version: 1.0.2(svelte@4.0.5)
   '@watergis/svelte-collapsible-panel':
     specifier: ^1.0.1
     version: 1.0.1(svelte@4.0.5)
@@ -124,7 +124,7 @@ devDependencies:
     version: 5.2.2
   vite:
     specifier: ^4.4.9
-    version: 4.4.9(@types/node@20.7.2)(sass@1.68.0)
+    version: 4.4.9(@types/node@20.8.0)(sass@1.68.0)
 
 packages:
 
@@ -617,7 +617,7 @@ packages:
       svelte: 4.0.5
       tiny-glob: 0.2.9
       undici: 5.25.2
-      vite: 4.4.9(@types/node@20.7.2)(sass@1.68.0)
+      vite: 4.4.9(@types/node@20.8.0)(sass@1.68.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -633,7 +633,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 2.4.5(svelte@4.0.5)(vite@4.4.9)
       debug: 4.3.4
       svelte: 4.0.5
-      vite: 4.4.9(@types/node@20.7.2)(sass@1.68.0)
+      vite: 4.4.9(@types/node@20.8.0)(sass@1.68.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -652,7 +652,7 @@ packages:
       magic-string: 0.30.2
       svelte: 4.0.5
       svelte-hmr: 0.15.3(svelte@4.0.5)
-      vite: 4.4.9(@types/node@20.7.2)(sass@1.68.0)
+      vite: 4.4.9(@types/node@20.8.0)(sass@1.68.0)
       vitefu: 0.2.4(vite@4.4.9)
     transitivePeerDependencies:
       - supports-color
@@ -707,8 +707,8 @@ packages:
       '@types/pbf': 3.0.2
     dev: true
 
-  /@types/node@20.7.2:
-    resolution: {integrity: sha512-RcdC3hOBOauLP+r/kRt27NrByYtDjsXyAuSbR87O6xpsvi763WI+5fbSIvYJrXnt9w4RuxhV6eAXfIs7aaf/FQ==}
+  /@types/node@20.8.0:
+    resolution: {integrity: sha512-LzcWltT83s1bthcvjBmiBvGJiiUe84NWRHkw+ZV6Fr41z2FbIzvc815dk2nQ3RAKMuN2fkenM/z3Xv2QzEpYxQ==}
     dev: true
 
   /@types/pbf@3.0.2:
@@ -895,8 +895,8 @@ packages:
       maplibre-gl: 3.3.1
     dev: true
 
-  /@watergis/maplibre-gl-tour@1.0.1(svelte@4.0.5):
-    resolution: {integrity: sha512-LeAH//Ida/iBWdLOAJeRstzMhsVK0WVOin9D+B39WRf2cfazYBiRfKLV7yfkxxPmMIUwHW8/Jq3oVv2DCzm+PA==}
+  /@watergis/maplibre-gl-tour@1.0.2(svelte@4.0.5):
+    resolution: {integrity: sha512-DKK6ZR1+GaEs23jiO5qfXKt5QcUg08p0U59MWuqUKruvR/VJB1yq9tv0nTxS4asffFuxvo/IRr88TX9f4ewfEQ==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
@@ -2875,7 +2875,7 @@ packages:
     dev: true
     optional: true
 
-  /vite@4.4.9(@types/node@20.7.2)(sass@1.68.0):
+  /vite@4.4.9(@types/node@20.8.0)(sass@1.68.0):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -2903,7 +2903,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.7.2
+      '@types/node': 20.8.0
       esbuild: 0.18.20
       postcss: 8.4.28
       rollup: 3.28.0
@@ -2920,7 +2920,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.9(@types/node@20.7.2)(sass@1.68.0)
+      vite: 4.4.9(@types/node@20.8.0)(sass@1.68.0)
     dev: true
 
   /vt-pbf@3.1.3:
