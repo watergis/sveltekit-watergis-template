@@ -16,7 +16,6 @@
 	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
 	import maplibregl, {
 		AttributionControl,
-		FullscreenControl,
 		GeolocateControl,
 		Map,
 		NavigationControl,
@@ -78,11 +77,6 @@
 		if (config.areaSwitcher) {
 			$map.addControl(new MaplibreAreaSwitcherControl(config.areaSwitcher.areas), 'bottom-right');
 		}
-
-		$map.addControl(
-			new FullscreenControl({ container: document.querySelector('body') }),
-			'bottom-right'
-		);
 
 		$map.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
 
@@ -158,6 +152,8 @@
 
 	const getTourControl = () => {
 		const steps = config.tour.tourGuideOptions.steps;
+		steps[0].target = document.body;
+
 		if (!config.areaSwitcher) {
 			steps.splice(
 				steps.findIndex((s) => s.target === '.maplibregl-area-switcher'),

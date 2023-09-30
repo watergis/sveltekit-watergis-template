@@ -178,7 +178,6 @@ export const config: Config = {
 				{
 					title: 'Welcome to sveltekit watergis template!',
 					content: `This tutorial is going to take you around the main features of the application. <br> Let's begin!`,
-					target: document.body,
 					order: 1
 				},
 				{
