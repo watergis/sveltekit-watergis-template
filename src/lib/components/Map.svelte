@@ -152,6 +152,8 @@
 
 	const getTourControl = () => {
 		const steps = config.tour.tourGuideOptions.steps;
+		steps[0].target = document.body;
+
 		if (!config.areaSwitcher) {
 			steps.splice(
 				steps.findIndex((s) => s.target === '.maplibregl-area-switcher'),
