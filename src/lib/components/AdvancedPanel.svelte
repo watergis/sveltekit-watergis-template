@@ -4,8 +4,15 @@
 	import { CollapsiblePanel } from '@watergis/svelte-collapsible-panel';
 	import { MeasurePanel } from '@watergis/svelte-maplibre-measure';
 	import { ValhallaIsochronePanel, ValhallaRoutingPanel } from '@watergis/svelte-maplibre-valhalla';
+	import { getContext } from 'svelte';
+	import type { Writable } from 'svelte/store';
 
 	const config = defaultConfig;
+
+	let windowHeight: number;
+	let tabHeight: Writable<number> = getContext('tab-height');
+
+	$: contentHeight = windowHeight - $tabHeight - 20;
 
 	let panelColor:
 		| ''
@@ -55,7 +62,9 @@
 	};
 </script>
 
-<div class="panel-content">
+<svelte:window bind:innerHeight={windowHeight} />
+
+<div class="panel-content" style="height:{contentHeight}px;">
 	{#if config.elevation}
 		<CollapsiblePanel title="Measuring tool" bind:isPanelOpen={panelMeasureOpen} color={panelColor}>
 			<div class="accordion-content">
@@ -94,11 +103,8 @@
 </div>
 
 <style lang="scss">
-	$height: calc(100vh - 40px);
-
 	.panel-content {
 		overflow-y: auto;
-		height: $height;
 	}
 
 	.accordion-content {
