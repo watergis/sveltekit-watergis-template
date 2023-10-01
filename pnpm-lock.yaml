@@ -57,8 +57,8 @@ devDependencies:
     specifier: ^2.0.2
     version: 2.0.2(svelte@4.0.5)
   '@watergis/svelte-maplibre-legend':
-    specifier: ^2.0.2
-    version: 2.0.2(@popperjs/core@2.11.8)(svelte@4.0.5)
+    specifier: ^2.0.3
+    version: 2.0.3(@popperjs/core@2.11.8)(svelte@4.0.5)
   '@watergis/svelte-maplibre-measure':
     specifier: ^2.0.1
     version: 2.0.1(svelte@4.0.5)
@@ -949,8 +949,8 @@ packages:
       svelte-fa: 3.0.4
     dev: true
 
-  /@watergis/svelte-maplibre-legend@2.0.2(@popperjs/core@2.11.8)(svelte@4.0.5):
-    resolution: {integrity: sha512-YVOY/Hj8577mnABHgaKhc5t/zh9FWzD6PmfhVkoOD22v+Iucqm/cIezb+tmULfEQpJr7h3nJHtFBLbuXypi09Q==}
+  /@watergis/svelte-maplibre-legend@2.0.3(@popperjs/core@2.11.8)(svelte@4.0.5):
+    resolution: {integrity: sha512-+7mJeFhM6X/JAs4xNnfN40tUfppt5gZ+cIK0bmu9K4WWVkyOV8mzeSqNFDzqLN/ZaEkPqY3GzmTuU6rRl91KSg==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
