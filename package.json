@@ -16,7 +16,7 @@
 		"@evilmartians/lefthook": "^1.5.0",
 		"@maplibre/maplibre-gl-geocoder": "github:maplibre/maplibre-gl-geocoder",
 		"@popperjs/core": "^2.11.8",
-		"@sjmc11/tourguidejs": "^0.0.10",
+		"@sjmc11/tourguidejs": "^0.0.11",
 		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.25.1",
 		"@types/events": "^3.0.1",
