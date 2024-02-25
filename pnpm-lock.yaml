@@ -18,8 +18,8 @@ devDependencies:
     specifier: ^0.0.11
     version: 0.0.11
   '@sveltejs/adapter-static':
-    specifier: ^2.0.3
-    version: 2.0.3(@sveltejs/kit@1.25.1)
+    specifier: ^3.0.0
+    version: 3.0.1(@sveltejs/kit@1.25.1)
   '@sveltejs/kit':
     specifier: ^1.25.1
     version: 1.25.1(svelte@4.0.5)(vite@4.5.2)
@@ -593,10 +593,10 @@ packages:
       sass: 1.68.0
     dev: true
 
-  /@sveltejs/adapter-static@2.0.3(@sveltejs/kit@1.25.1):
-    resolution: {integrity: sha512-VUqTfXsxYGugCpMqQv1U0LIdbR3S5nBkMMDmpjGVJyM6Q2jHVMFtdWJCkeHMySc6mZxJ+0eZK3T7IgmUCDrcUQ==}
+  /@sveltejs/adapter-static@3.0.1(@sveltejs/kit@1.25.1):
+    resolution: {integrity: sha512-6lMvf7xYEJ+oGeR5L8DFJJrowkefTK6ZgA4JiMqoClMkKq0s6yvsd3FZfCFvX1fQ0tpCD7fkuRVHsnUVgsHyNg==}
     peerDependencies:
-      '@sveltejs/kit': ^1.5.0
+      '@sveltejs/kit': ^2.0.0
     dependencies:
       '@sveltejs/kit': 1.25.1(svelte@4.0.5)(vite@4.5.2)
     dev: true
