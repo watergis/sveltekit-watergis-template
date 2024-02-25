@@ -18,7 +18,7 @@
 		"@popperjs/core": "^2.11.8",
 		"@sjmc11/tourguidejs": "^0.0.11",
 		"@sveltejs/adapter-static": "^2.0.3",
-		"@sveltejs/kit": "^1.25.1",
+		"@sveltejs/kit": "^2.0.0",
 		"@types/events": "^3.0.1",
 		"@types/node": "^20.8.0",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
