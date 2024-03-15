@@ -96,8 +96,8 @@ devDependencies:
     specifier: ^3.3.1
     version: 3.3.1
   pmtiles:
-    specifier: 2.11.0
-    version: 2.11.0
+    specifier: 3.0.5
+    version: 3.0.5
   prettier:
     specifier: ^3.0.3
     version: 3.0.3
@@ -700,6 +700,12 @@ packages:
 
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
+    dev: true
+
+  /@types/leaflet@1.9.8:
+    resolution: {integrity: sha512-EXdsL4EhoUtGm2GC2ZYtXn+Fzc6pluVgagvo2VC1RHWToLGlTRwVYoDpqS/7QXa01rmDyBjJk3Catpf60VMkwg==}
+    dependencies:
+      '@types/geojson': 7946.0.10
     dev: true
 
   /@types/mapbox__point-geometry@0.1.2:
@@ -2238,9 +2244,10 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /pmtiles@2.11.0:
-    resolution: {integrity: sha512-dU9SzzaqmCGpdEuTnIba6bDHT6j09ZJFIXxwGpvkiEnce3ZnBB1VKt6+EOmJGueriweaZLAMTUmKVElU2CBe0g==}
+  /pmtiles@3.0.5:
+    resolution: {integrity: sha512-K6NxVvW/vXE3052VZKF2ppyjdyhLx41FidR5yV8L/+El+lcMJpXS0vHBSPFmjdag5zkYv2XGDdq+3VjB2K7l6w==}
     dependencies:
+      '@types/leaflet': 1.9.8
       fflate: 0.8.0
     dev: true
 
