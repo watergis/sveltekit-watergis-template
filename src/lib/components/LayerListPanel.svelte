@@ -30,7 +30,7 @@
 
 <svelte:window bind:innerHeight={windowHeight} />
 
-<div class="style-header mb-1 p-1" bind:clientHeight={styleHeaderHeight}>
+<div class="style-header mb-1 py-1" bind:clientHeight={styleHeaderHeight}>
 	<StyleSwitcher
 		bind:map={$map}
 		bind:selectedStyle={$selectedStyle}

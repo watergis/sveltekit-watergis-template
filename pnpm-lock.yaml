@@ -9,14 +9,14 @@ devDependencies:
     specifier: ^1.5.0
     version: 1.5.0
   '@maplibre/maplibre-gl-geocoder':
-    specifier: github:maplibre/maplibre-gl-geocoder
-    version: github.com/maplibre/maplibre-gl-geocoder/9a9f184014cdbe0722728dffd8a6d317026449ad(maplibre-gl@4.1.1)
+    specifier: ^1.5.0
+    version: 1.5.0(maplibre-gl@4.1.1)
   '@popperjs/core':
     specifier: ^2.11.8
     version: 2.11.8
   '@sjmc11/tourguidejs':
-    specifier: ^0.0.11
-    version: 0.0.11
+    specifier: ^0.0.16
+    version: 0.0.16
   '@sveltejs/adapter-static':
     specifier: ^3.0.0
     version: 3.0.1(@sveltejs/kit@2.5.4)
@@ -39,44 +39,44 @@ devDependencies:
     specifier: ^7.0.0
     version: 7.0.2(eslint@8.50.0)(typescript@5.3.2)
   '@watergis/maplibre-center-icon':
-    specifier: ^2.0.1
-    version: 2.0.1(svelte@4.0.5)
+    specifier: ^3.0.0
+    version: 3.0.0(svelte@4.0.5)
   '@watergis/maplibre-gl-area-switcher':
     specifier: ^1.0.0
     version: 1.0.0
   '@watergis/maplibre-gl-tour':
-    specifier: ^1.0.2
-    version: 1.0.2(svelte@4.0.5)
+    specifier: ^1.0.4
+    version: 1.0.4(svelte@4.0.5)
   '@watergis/svelte-collapsible-panel':
-    specifier: ^1.0.1
-    version: 1.0.1(svelte@4.0.5)
+    specifier: ^2.0.0
+    version: 2.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-attribute-popup':
-    specifier: ^2.0.2
-    version: 2.0.2(svelte@4.0.5)
+    specifier: ^3.0.0
+    version: 3.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-attribute-table':
-    specifier: ^1.1.1
-    version: 1.1.1(svelte@4.0.5)
+    specifier: ^2.0.0
+    version: 2.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-export':
-    specifier: ^2.0.2
-    version: 2.0.2(svelte@4.0.5)
+    specifier: ^3.0.0
+    version: 3.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-legend':
-    specifier: ^2.0.3
-    version: 2.0.3(@popperjs/core@2.11.8)(svelte@4.0.5)
+    specifier: ^3.0.0
+    version: 3.0.0(@popperjs/core@2.11.8)(svelte@4.0.5)
   '@watergis/svelte-maplibre-measure':
-    specifier: ^2.0.1
-    version: 2.0.1(svelte@4.0.5)
+    specifier: ^3.0.0
+    version: 3.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-menu':
-    specifier: ^2.1.1
-    version: 2.1.1(svelte@4.0.5)
+    specifier: ^3.0.0
+    version: 3.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-share':
-    specifier: ^2.0.2
-    version: 2.0.2(svelte@4.0.5)
+    specifier: ^3.0.0
+    version: 3.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-style-switcher':
-    specifier: ^2.0.1
-    version: 2.0.1(svelte@4.0.5)
+    specifier: ^3.0.2
+    version: 3.0.2(svelte@4.0.5)
   '@watergis/svelte-maplibre-valhalla':
-    specifier: ^2.0.1
-    version: 2.0.1(svelte@4.0.5)
+    specifier: ^3.0.0
+    version: 3.0.0(svelte@4.0.5)
   buffer:
     specifier: ^6.0.3
     version: 6.0.3
@@ -424,18 +424,18 @@ packages:
     resolution: {integrity: sha512-qprfWkn82Iw821mcKofJ5Pk9wgioHicxcQMxx+5zt5GSKoqdWvgG5AxVmpmUUjzTLPVSH5auBrhI93Deayn/DA==}
     dev: true
 
-  /@fortawesome/fontawesome-common-types@6.4.0:
-    resolution: {integrity: sha512-HNii132xfomg5QVZw0HwXXpN22s7VBHQBv9CeOu9tfJnhsWQNd2lmTNi8CSrnw5B+5YOmzu1UoPAyxaXsJ6RgQ==}
+  /@fortawesome/fontawesome-common-types@6.5.1:
+    resolution: {integrity: sha512-GkWzv+L6d2bI5f/Vk6ikJ9xtl7dfXtoRu3YGE6nq0p/FFqA1ebMOAWg3XgRyb0I6LYyYkiAo+3/KrwuBp8xG7A==}
     engines: {node: '>=6'}
     requiresBuild: true
     dev: true
 
-  /@fortawesome/free-solid-svg-icons@6.4.0:
-    resolution: {integrity: sha512-kutPeRGWm8V5dltFP1zGjQOEAzaLZj4StdQhWVZnfGFCvAPVvHh8qk5bRrU4KXnRRRNni5tKQI9PBAdI6MP8nQ==}
+  /@fortawesome/free-solid-svg-icons@6.5.1:
+    resolution: {integrity: sha512-S1PPfU3mIJa59biTtXJz1oI0+KAXW6bkAb31XKhxdxtuXDiUIFsih4JR1v5BbxY7hVHsD1RKq+jRkVRaf773NQ==}
     engines: {node: '>=6'}
     requiresBuild: true
     dependencies:
-      '@fortawesome/fontawesome-common-types': 6.4.0
+      '@fortawesome/fontawesome-common-types': 6.5.1
     dev: true
 
   /@geoffcox/svelte-splitter@1.0.1:
@@ -544,6 +544,19 @@ packages:
   /@mapbox/whoots-js@3.1.0:
     resolution: {integrity: sha512-Es6WcD0nO5l+2BOQS4uLfNPYQaNDfbot3X1XUoloz+x0mPDS3eeORZJl06HXjwBG1fOGwCRnzK88LMdxKRrd6Q==}
     engines: {node: '>=6.0.0'}
+    dev: true
+
+  /@maplibre/maplibre-gl-geocoder@1.5.0(maplibre-gl@4.1.1):
+    resolution: {integrity: sha512-PsAbV7WFIOu5QYZne95FiXoV7AV1/6ULMjQxgInhZ5DdB0hDLjciQPegnyDgkzI8JfeqoUMZVS/MglZnSZYhyQ==}
+    engines: {node: '>=6'}
+    peerDependencies:
+      maplibre-gl: '>=1.14.0'
+    dependencies:
+      lodash.debounce: 4.0.8
+      maplibre-gl: 4.1.1
+      subtag: 0.5.0
+      suggestions-list: 0.0.2
+      xtend: 4.0.2
     dev: true
 
   /@maplibre/maplibre-gl-style-spec@19.3.0:
@@ -707,15 +720,8 @@ packages:
     dev: true
     optional: true
 
-  /@sjmc11/tourguidejs@0.0.10:
-    resolution: {integrity: sha512-TnEL+ygzv5W73McwzuIoWQNK9HJ1/Wk4/lLHYtQlNpP4kx/Pv9CieI+zakxkgouQAgQX7WL92fZU1p2KPLvvbA==}
-    dependencies:
-      '@floating-ui/dom': 1.5.3
-      sass: 1.68.0
-    dev: true
-
-  /@sjmc11/tourguidejs@0.0.11:
-    resolution: {integrity: sha512-swebKbE6DOslhUCAe7EragVUIWE89NqoKZvXpvkRhqCZdtsC/HkgB2xoj92/spXwWTUbWmfulaCDpc6Pe/5FmQ==}
+  /@sjmc11/tourguidejs@0.0.16:
+    resolution: {integrity: sha512-NpK7OyW1l0R1XCajbWp+ibJAJbQK7dpBfqy+Etcy4fj/+qk3JPKY8RwoSX1UzzfBauuriNKJiv1KmTB3RHajQg==}
     dependencies:
       '@floating-ui/dom': 1.5.3
       sass: 1.68.0
@@ -1043,8 +1049,8 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
-  /@vincjo/datatables@1.12.3(svelte@4.0.5):
-    resolution: {integrity: sha512-ctQCVWIp4Wdvj1YNjAMaYT6A02QzbnG3/sB2WWmbKEvmr4bLAvkdnFIuLFxemPkFPZRxXllNUxlYSY5v81IFRg==}
+  /@vincjo/datatables@1.14.5(svelte@4.0.5):
+    resolution: {integrity: sha512-kvjr8ggRTRzwDTgOqK3bQPe5ZJo68h30SHcx0WS3daLVt/IUzN2132wtH2JZQkpxyjmh9EiblugOzUv/36Xpug==}
     peerDependencies:
       svelte: '>=3.54.0'
     dependencies:
@@ -1057,12 +1063,12 @@ packages:
       '@mapbox/mapbox-gl-style-spec': 13.28.0
     dev: true
 
-  /@watergis/maplibre-center-icon@2.0.1(svelte@4.0.5):
-    resolution: {integrity: sha512-0sDNpdqLabVoJ823MsSwaLv+4h0W4Z3UQ0TTdOKnt1yv66doyZTM4BUom7AUTn+Efqt5RJS39nPyg8o0bPxCig==}
+  /@watergis/maplibre-center-icon@3.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-eG3LfPY6xRorWbR89hAzz4MA/reZ2xJzkaNJQQtjwAjevt04QX9FL/3cHwwzxawdQBNC9lG7f18G+3BSVVD9Qw==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      maplibre-gl: 3.3.1
+      maplibre-gl: 4.1.1
       svelte: 4.0.5
     dev: true
 
@@ -1072,77 +1078,77 @@ packages:
       maplibre-gl: 3.3.1
     dev: true
 
-  /@watergis/maplibre-gl-tour@1.0.2(svelte@4.0.5):
-    resolution: {integrity: sha512-DKK6ZR1+GaEs23jiO5qfXKt5QcUg08p0U59MWuqUKruvR/VJB1yq9tv0nTxS4asffFuxvo/IRr88TX9f4ewfEQ==}
+  /@watergis/maplibre-gl-tour@1.0.4(svelte@4.0.5):
+    resolution: {integrity: sha512-ZYajNPsXrAfYMDS66dKssbfmB/sbpETBtWp9YCSePnYOy6BKFjqXagYV+du55fuBgwr4NZSXJkcglnr9BLfcPw==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@sjmc11/tourguidejs': 0.0.10
-      maplibre-gl: 3.3.1
+      '@sjmc11/tourguidejs': 0.0.16
+      maplibre-gl: 4.1.1
       svelte: 4.0.5
     dev: true
 
-  /@watergis/svelte-collapsible-panel@1.0.1(svelte@4.0.5):
-    resolution: {integrity: sha512-HkQqaNWo/U+sJ/mQpAC2Kh6IOsRKezsFtK/Hc3zKGJpsLlzuULVtCTJCJMFfBkxeMhlH1a7Ru0s1rg1zyD5New==}
+  /@watergis/svelte-collapsible-panel@2.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-MwnpM+g9OEqDNeMsR4FVDA0RcJ8lkvFZ5sALibx97yET9WMWLlxT3tqH9CIVBFhDWlqS8CVay4vF0QyUVoW6NQ==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@fortawesome/free-solid-svg-icons': 6.4.0
+      '@fortawesome/free-solid-svg-icons': 6.5.1
       bulma: 0.9.4
       svelte: 4.0.5
-      svelte-fa: 3.0.4
+      svelte-fa: 4.0.2(svelte@4.0.5)
     dev: true
 
-  /@watergis/svelte-maplibre-attribute-popup@2.0.2(svelte@4.0.5):
-    resolution: {integrity: sha512-rjoTMdlXOKyE8r8XyGKOnrtZ5vCzk4waMb/A2VGWL37vnvbAhtJE73Dx/Okfu29cZKY3mucqQVKU18hT9u5lqg==}
+  /@watergis/svelte-maplibre-attribute-popup@3.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-KFRvDi1gnrvHGLelKMAZ4FrBmq+efhPiaSREi+aESeYXvQ91wqLT4ylWXeTMK9JMfjqXh+wuOivnCQt8dYFmXQ==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      maplibre-gl: 3.3.1
+      maplibre-gl: 4.1.1
       svelte: 4.0.5
     dev: true
 
-  /@watergis/svelte-maplibre-attribute-table@1.1.1(svelte@4.0.5):
-    resolution: {integrity: sha512-HYFhs289T2eMbYCH9IkYKd2tu4LP0O/EEwQnI8P1f2A7tQ8jIAxmVDOnoNptACxTp8fcd3aoGfcleQKW0TELUw==}
+  /@watergis/svelte-maplibre-attribute-table@2.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-005bmGck0m+uPwwghEj7vEfZ45FgY+4SLFXJoSxFlNcKnzJtwj8xJoJ4oKHc09IzbpnCGGltqsTqmyC2EVXHAQ==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@vincjo/datatables': 1.12.3(svelte@4.0.5)
-      '@watergis/svelte-maplibre-menu': 2.1.1(svelte@4.0.5)
-      maplibre-gl: 3.3.1
+      '@vincjo/datatables': 1.14.5(svelte@4.0.5)
+      '@watergis/svelte-maplibre-menu': 3.0.0(svelte@4.0.5)
+      maplibre-gl: 4.1.1
       svelte: 4.0.5
     dev: true
 
-  /@watergis/svelte-maplibre-export@2.0.2(svelte@4.0.5):
-    resolution: {integrity: sha512-gDP9EN/lVq5x3gOczW4K1L5cnuoxs8qP2m5kykkmCsZemId95wKFB7l+rLLk0lZVckrVumc24LBUuK7XHOCnrg==}
+  /@watergis/svelte-maplibre-export@3.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-Wg5DhDQ7p2jMZHst4s/PqEtdacCGaqC4IbJqZlwJUAIrdaAn/wDJlr6l1qKHw8EIxHp0iCPIeozh8juRWEh6tg==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@fortawesome/free-solid-svg-icons': 6.4.0
+      '@fortawesome/free-solid-svg-icons': 6.5.1
       '@neodrag/svelte': 2.0.3
       jspdf: 2.5.1
-      maplibre-gl: 3.3.1
+      maplibre-gl: 4.1.1
       svelte: 4.0.5
-      svelte-fa: 3.0.4
+      svelte-fa: 4.0.2(svelte@4.0.5)
     dev: true
 
-  /@watergis/svelte-maplibre-legend@2.0.3(@popperjs/core@2.11.8)(svelte@4.0.5):
-    resolution: {integrity: sha512-+7mJeFhM6X/JAs4xNnfN40tUfppt5gZ+cIK0bmu9K4WWVkyOV8mzeSqNFDzqLN/ZaEkPqY3GzmTuU6rRl91KSg==}
+  /@watergis/svelte-maplibre-legend@3.0.0(@popperjs/core@2.11.8)(svelte@4.0.5):
+    resolution: {integrity: sha512-G2MVmTQc4guUCfawbrFsRA13kiz7fEohVMBT/L0430LJ2bj/Hlue/IVaH+zFna/ET7I3SIf2r4GV7xLHHJfbhA==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@fortawesome/free-solid-svg-icons': 6.4.0
+      '@fortawesome/free-solid-svg-icons': 6.5.1
       '@watergis/legend-symbol': 0.2.3
       chroma-js: 2.4.2
       detect-touch-device: 1.1.6
       js-yaml: 4.1.0
       lodash-es: 4.17.21
-      maplibre-gl: 3.3.1
+      maplibre-gl: 4.1.1
       svelte: 4.0.5
-      svelte-awesome-color-picker: 2.4.7
-      svelte-fa: 3.0.4
+      svelte-awesome-color-picker: 2.4.8
+      svelte-fa: 4.0.2(svelte@4.0.5)
       svelte-popperjs: 1.3.2(@popperjs/core@2.11.8)(svelte@4.0.5)
-      svelte-range-slider-pips: 2.2.2
+      svelte-range-slider-pips: 2.3.1
       svelte-tippy: 1.3.2
       svelte-use-click-outside: 1.0.0
       tippy.js: 6.3.7
@@ -1150,62 +1156,62 @@ packages:
       - '@popperjs/core'
     dev: true
 
-  /@watergis/svelte-maplibre-measure@2.0.1(svelte@4.0.5):
-    resolution: {integrity: sha512-wSOAmuclx8B8PmuckvtZybrWNrrIvu2Xg9q9mwC+E6jod7MZcmHYViV1nDeE8vp5mfDzLDePGGjPz63sr/mFVA==}
+  /@watergis/svelte-maplibre-measure@3.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-z8QBgTZu9wRgMGeaxnzs0JWnr5Zt8La7U6i9dgyYxoeslxMD1ambuDp05f1M8zPUppq642ItGu4nnOleO40XOg==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@fortawesome/free-solid-svg-icons': 6.4.0
+      '@fortawesome/free-solid-svg-icons': 6.5.1
       '@turf/distance': 6.5.0
       '@watergis/terrain-rgb': 1.1.12
-      maplibre-gl: 3.3.1
+      maplibre-gl: 4.1.1
       svelte: 4.0.5
-      svelte-fa: 3.0.4
+      svelte-fa: 4.0.2(svelte@4.0.5)
     transitivePeerDependencies:
       - debug
     dev: true
 
-  /@watergis/svelte-maplibre-menu@2.1.1(svelte@4.0.5):
-    resolution: {integrity: sha512-tQQ//lmzBCeyhCXEkv3gK+OSrQ+dzsH/xQUCo5pfGyToCys07yjBpPLxDH2sYGUAKFYtcw3J4pnkj8LRZxMEqA==}
+  /@watergis/svelte-maplibre-menu@3.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-UKBBWYxWyNe+RsFuFk/JnkP78IPjapZW94oje6yxn41lWLI9npA3cZ8o3lX/QPz/zncewUrPm2dLYBwy95rrJg==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
       '@geoffcox/svelte-splitter': 1.0.1
-      maplibre-gl: 3.3.1
+      maplibre-gl: 4.1.1
       svelte: 4.0.5
     dev: true
 
-  /@watergis/svelte-maplibre-share@2.0.2(svelte@4.0.5):
-    resolution: {integrity: sha512-oKTOaK/y6fsVuBMC4mVbvw7yr3lCVuIRtI2iV0SDNB1x2A/ktVIsuCpuem3LW6S8MtHx5EzuT7FrrLIm73Ht8w==}
+  /@watergis/svelte-maplibre-share@3.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-p9AbbMM87NN9mIV2S6WwZJGxTumVmr+UTUYCRzKR6S4zGVdjuQos+FVZU+wXPcz/5KQAVNCyYPwO6c79LV7U1w==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@fortawesome/free-solid-svg-icons': 6.4.0
-      maplibre-gl: 3.3.1
+      '@fortawesome/free-solid-svg-icons': 6.5.1
+      maplibre-gl: 4.1.1
       svelte: 4.0.5
       svelte-copy: 1.4.1(svelte@4.0.5)
-      svelte-fa: 3.0.4
+      svelte-fa: 4.0.2(svelte@4.0.5)
     dev: true
 
-  /@watergis/svelte-maplibre-style-switcher@2.0.1(svelte@4.0.5):
-    resolution: {integrity: sha512-YaP3MRUktDM5RPWbJGo8qIwpD5Jl0Ayp6qAU5Xu9o56GHdIRbXjU/mrJIpL2nWe/NDJ9pBPyYxXxcPev1phI3g==}
+  /@watergis/svelte-maplibre-style-switcher@3.0.2(svelte@4.0.5):
+    resolution: {integrity: sha512-5cZ45UYr121bf4aRmfjDkOYSX1/JIYdK1rlpA9BeeHB25fUwStS0bgOWKPWwTHFq/uz/aQr/49DJKwvLStJL/A==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      debounce: 1.2.1
-      maplibre-gl: 3.3.1
+      debounce: 2.0.0
+      maplibre-gl: 4.1.1
       svelte: 4.0.5
     dev: true
 
-  /@watergis/svelte-maplibre-valhalla@2.0.1(svelte@4.0.5):
-    resolution: {integrity: sha512-TEwUmuLi2fGgtU/AJ9hkrEAa3J9z9GuTw/VrkYGwxze298oJFfsdeRIIcNfIf3boX3u1Ft4/rVAzXtced6fmag==}
+  /@watergis/svelte-maplibre-valhalla@3.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-RTQzAIBvZQwIfhhi5smiE0amC6sYWoXNaayFr0v3NNZu1gYEI2fPYqOuNcx0exbyrkg1vKMs7vTglAyH8zveSg==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@fortawesome/free-solid-svg-icons': 6.4.0
-      maplibre-gl: 3.3.1
+      '@fortawesome/free-solid-svg-icons': 6.5.1
+      maplibre-gl: 4.1.1
       svelte: 4.0.5
-      svelte-fa: 3.0.4
+      svelte-fa: 4.0.2(svelte@4.0.5)
     dev: true
 
   /@watergis/terrain-rgb@1.1.12:
@@ -1505,8 +1511,9 @@ packages:
     hasBin: true
     dev: true
 
-  /debounce@1.2.1:
-    resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
+  /debounce@2.0.0:
+    resolution: {integrity: sha512-xRetU6gL1VJbs85Mc4FoEGSjQxzpdxRyFhe3lmWFyy2EzydIcD4xzUvRJMD+NPDfMwKNhxa3PvsIOU32luIWeA==}
+    engines: {node: '>=18'}
     dev: true
 
   /debug@4.3.4:
@@ -2833,8 +2840,8 @@ packages:
       has-flag: 4.0.0
     dev: true
 
-  /svelte-awesome-color-picker@2.4.7:
-    resolution: {integrity: sha512-LW9n16pR3V9vxFXdq0rmtBYJXv57zBZmLV/KNPtFqTo0kYwu7NsQhZZxFv6qoB/5PUXyPMfe3VCllyauFEY3SQ==}
+  /svelte-awesome-color-picker@2.4.8:
+    resolution: {integrity: sha512-p6yzMMeo/IjqKMYb8oXa2vGbbRvtEDvi8LejGpY8AsZsjNwXSR0WKxQplaz67u1eqZFIRLPX0+IknQrhT5gI+g==}
     dependencies:
       colord: 2.9.3
     dev: true
@@ -2891,8 +2898,12 @@ packages:
       svelte: 4.0.5
     dev: true
 
-  /svelte-fa@3.0.4:
-    resolution: {integrity: sha512-y04vEuAoV1wwVDItSCzPW7lzT6v1bj/y1p+W1V+NtIMpQ+8hj8MBkx7JFD7JHSnalPU1QiI8BVfguqheEA3nPg==}
+  /svelte-fa@4.0.2(svelte@4.0.5):
+    resolution: {integrity: sha512-lza8Jfii6jcpMQB73mBStONxaLfZsUS+rKJ/hH6WxsHUd+g68+oHIL9yQTk4a0uY9HQk78T/CPvQnED0msqJfg==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      svelte: 4.0.5
     dev: true
 
   /svelte-hmr@0.15.3(svelte@4.0.5):
@@ -2963,8 +2974,8 @@ packages:
       typescript: 5.3.2
     dev: true
 
-  /svelte-range-slider-pips@2.2.2:
-    resolution: {integrity: sha512-SsiIBpCkBnqvfaHLeIDolTfZlc8m7y93MhlxPKQ90YMZnE/rAxj+IoCrd7LTL/nXA2SCla4IJutSzfwdOtJddA==}
+  /svelte-range-slider-pips@2.3.1:
+    resolution: {integrity: sha512-P29PNqHld+SiaDuHzf98rLvhSYWXb3TVL9p7U5RG9UX8emUgypZgp9zuIIwpmIXysGQC6JG8duMc5FuaPnSVdg==}
     dev: true
 
   /svelte-tippy@1.3.2:
@@ -3209,20 +3220,4 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
-    dev: true
-
-  github.com/maplibre/maplibre-gl-geocoder/9a9f184014cdbe0722728dffd8a6d317026449ad(maplibre-gl@4.1.1):
-    resolution: {tarball: https://codeload.github.com/maplibre/maplibre-gl-geocoder/tar.gz/9a9f184014cdbe0722728dffd8a6d317026449ad}
-    id: github.com/maplibre/maplibre-gl-geocoder/9a9f184014cdbe0722728dffd8a6d317026449ad
-    name: '@maplibre/maplibre-gl-geocoder'
-    version: 1.5.0
-    engines: {node: '>=6'}
-    peerDependencies:
-      maplibre-gl: '>=1.14.0'
-    dependencies:
-      lodash.debounce: 4.0.8
-      maplibre-gl: 4.1.1
-      subtag: 0.5.0
-      suggestions-list: 0.0.2
-      xtend: 4.0.2
     dev: true
