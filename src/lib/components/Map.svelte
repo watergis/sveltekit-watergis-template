@@ -20,15 +20,13 @@
 		Map,
 		NavigationControl,
 		ScaleControl,
-		TerrainControl
+		TerrainControl,
+		addProtocol
 	} from 'maplibre-gl';
 	import 'maplibre-gl/dist/maplibre-gl.css';
-	import * as pmtiles from 'pmtiles';
+	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 	import DrawerContent from './DrawerContent.svelte';
-
-	let protocol = new pmtiles.Protocol();
-	maplibregl.addProtocol('pmtiles', protocol.tile);
 
 	let mapContainer: HTMLDivElement;
 	let isMenuShown = false;
@@ -41,6 +39,9 @@
 	selectedStyle.update(() => initialStyle);
 
 	const initialise = async () => {
+		const protocol = new Protocol();
+		addProtocol('pmtiles', protocol.tile);
+
 		$map = new Map({
 			container: mapContainer,
 			style: initialStyle.uri,
