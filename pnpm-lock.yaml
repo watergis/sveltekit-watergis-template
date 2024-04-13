@@ -48,20 +48,20 @@ devDependencies:
     specifier: ^1.0.4
     version: 1.0.4(svelte@4.0.5)
   '@watergis/svelte-collapsible-panel':
-    specifier: ^2.0.0
-    version: 2.0.0(svelte@4.0.5)
+    specifier: ^3.0.0
+    version: 3.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-attribute-popup':
     specifier: ^3.0.0
     version: 3.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-attribute-table':
-    specifier: ^2.0.0
-    version: 2.0.0(svelte@4.0.5)
-  '@watergis/svelte-maplibre-export':
     specifier: ^3.0.0
     version: 3.0.0(svelte@4.0.5)
+  '@watergis/svelte-maplibre-export':
+    specifier: ^4.0.0
+    version: 4.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-legend':
-    specifier: ^3.0.0
-    version: 3.0.0(@popperjs/core@2.11.8)(svelte@4.0.5)
+    specifier: ^4.0.0
+    version: 4.0.0(@popperjs/core@2.11.8)(svelte@4.0.5)
   '@watergis/svelte-maplibre-measure':
     specifier: ^3.0.0
     version: 3.0.0(svelte@4.0.5)
@@ -69,11 +69,11 @@ devDependencies:
     specifier: ^3.0.0
     version: 3.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-share':
-    specifier: ^3.0.0
-    version: 3.0.0(svelte@4.0.5)
+    specifier: ^4.0.0
+    version: 4.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-style-switcher':
-    specifier: ^3.0.2
-    version: 3.0.2(svelte@4.0.5)
+    specifier: ^4.0.0
+    version: 4.0.0(svelte@4.0.5)
   '@watergis/svelte-maplibre-valhalla':
     specifier: ^3.0.0
     version: 3.0.0(svelte@4.0.5)
@@ -81,8 +81,8 @@ devDependencies:
     specifier: ^6.0.3
     version: 6.0.3
   bulma:
-    specifier: ^0.9.4
-    version: 0.9.4
+    specifier: ^1.0.0
+    version: 1.0.0
   eslint:
     specifier: ^8.50.0
     version: 8.50.0
@@ -1061,6 +1061,15 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
+  /@undp-data/svelte-copy-to-clipboard@1.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-6zQMe2OTktihft0RgcFsc8cauIXvS3hmgsvAmjDq18Wk8Pfm3f6bGfviDrp9/HsHpMWk7QigweY+jpmX+nPkYA==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      svelte: 4.0.5
+      svelte-copy: 1.4.1(svelte@4.0.5)
+    dev: true
+
   /@vincjo/datatables@1.14.5(svelte@4.0.5):
     resolution: {integrity: sha512-kvjr8ggRTRzwDTgOqK3bQPe5ZJo68h30SHcx0WS3daLVt/IUzN2132wtH2JZQkpxyjmh9EiblugOzUv/36Xpug==}
     peerDependencies:
@@ -1100,13 +1109,13 @@ packages:
       svelte: 4.0.5
     dev: true
 
-  /@watergis/svelte-collapsible-panel@2.0.0(svelte@4.0.5):
-    resolution: {integrity: sha512-MwnpM+g9OEqDNeMsR4FVDA0RcJ8lkvFZ5sALibx97yET9WMWLlxT3tqH9CIVBFhDWlqS8CVay4vF0QyUVoW6NQ==}
+  /@watergis/svelte-collapsible-panel@3.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-+HiSUWwS6Cx+SBRJjTXxcAEr+u0fZ8cSHP2CME96OK8kTkyFPmw/3SFWy2oCFYwAWIIKwEf0Kzw2CkBsoeEyWg==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
       '@fortawesome/free-solid-svg-icons': 6.5.1
-      bulma: 0.9.4
+      bulma: 1.0.0
       svelte: 4.0.5
       svelte-fa: 4.0.2(svelte@4.0.5)
     dev: true
@@ -1120,8 +1129,8 @@ packages:
       svelte: 4.0.5
     dev: true
 
-  /@watergis/svelte-maplibre-attribute-table@2.0.0(svelte@4.0.5):
-    resolution: {integrity: sha512-005bmGck0m+uPwwghEj7vEfZ45FgY+4SLFXJoSxFlNcKnzJtwj8xJoJ4oKHc09IzbpnCGGltqsTqmyC2EVXHAQ==}
+  /@watergis/svelte-maplibre-attribute-table@3.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-37/n2zKzhXQwSaptkF8szm7bRm27kRCUF4dUys+9Nir42Keel5/ampYrz2Fa9kqJqzJvZaXcA4btvMUZ7883Bw==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
@@ -1131,8 +1140,8 @@ packages:
       svelte: 4.0.5
     dev: true
 
-  /@watergis/svelte-maplibre-export@3.0.0(svelte@4.0.5):
-    resolution: {integrity: sha512-Wg5DhDQ7p2jMZHst4s/PqEtdacCGaqC4IbJqZlwJUAIrdaAn/wDJlr6l1qKHw8EIxHp0iCPIeozh8juRWEh6tg==}
+  /@watergis/svelte-maplibre-export@4.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-jyDl8HqFMYdi6PpKIwzvJ5j0svKdXgvVRoYuQfNS2LO26Gsg9RS52yRivaItNjALguk8XCipJDcpQhohRtACpQ==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
@@ -1144,8 +1153,8 @@ packages:
       svelte-fa: 4.0.2(svelte@4.0.5)
     dev: true
 
-  /@watergis/svelte-maplibre-legend@3.0.0(@popperjs/core@2.11.8)(svelte@4.0.5):
-    resolution: {integrity: sha512-G2MVmTQc4guUCfawbrFsRA13kiz7fEohVMBT/L0430LJ2bj/Hlue/IVaH+zFna/ET7I3SIf2r4GV7xLHHJfbhA==}
+  /@watergis/svelte-maplibre-legend@4.0.0(@popperjs/core@2.11.8)(svelte@4.0.5):
+    resolution: {integrity: sha512-5Uh+FRLnPXpAVySfpQXqqgOFuFQ/99uy5m+6PmWAeD9/EnAXevdRIYBycmbqeD+CaW5WyukA3ZEX5Nyqcv9z+A==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
@@ -1193,20 +1202,18 @@ packages:
       svelte: 4.0.5
     dev: true
 
-  /@watergis/svelte-maplibre-share@3.0.0(svelte@4.0.5):
-    resolution: {integrity: sha512-p9AbbMM87NN9mIV2S6WwZJGxTumVmr+UTUYCRzKR6S4zGVdjuQos+FVZU+wXPcz/5KQAVNCyYPwO6c79LV7U1w==}
+  /@watergis/svelte-maplibre-share@4.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-20DzOLJCHQuiapgy8LJYDnN8PhVB1pNq5MSw5KnKVYxt5dqdhczVHYP0pXMf/BQGkmVTyd331KOjJ3Q9ZhGj0Q==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      '@fortawesome/free-solid-svg-icons': 6.5.1
+      '@undp-data/svelte-copy-to-clipboard': 1.0.0(svelte@4.0.5)
       maplibre-gl: 4.1.1
       svelte: 4.0.5
-      svelte-copy: 1.4.1(svelte@4.0.5)
-      svelte-fa: 4.0.2(svelte@4.0.5)
     dev: true
 
-  /@watergis/svelte-maplibre-style-switcher@3.0.2(svelte@4.0.5):
-    resolution: {integrity: sha512-5cZ45UYr121bf4aRmfjDkOYSX1/JIYdK1rlpA9BeeHB25fUwStS0bgOWKPWwTHFq/uz/aQr/49DJKwvLStJL/A==}
+  /@watergis/svelte-maplibre-style-switcher@4.0.0(svelte@4.0.5):
+    resolution: {integrity: sha512-Awsa0zz0In7zK+ToLtbSHackFRAr3xQgVTvINYuijzmha13v+pyWtYF9SgZkNhQA4PYdkwe4DvkID0K5dGIG/g==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
@@ -1383,8 +1390,10 @@ packages:
       ieee754: 1.2.1
     dev: true
 
-  /bulma@0.9.4:
-    resolution: {integrity: sha512-86FlT5+1GrsgKbPLRRY7cGDg8fsJiP/jzTqXXVqiUZZ2aZT8uemEOHlU1CDU+TxklPEZ11HZNNWclRBBecP4CQ==}
+  /bulma@1.0.0:
+    resolution: {integrity: sha512-7n49v/gdHXaHcU9fVobqGXO2OguiCoMh6CLbeX7jq00XrZ5vOSE4LNS0S/0Q6rlBbckY6kk6W7LwqxS0nu4bug==}
+    dependencies:
+      sass: 1.75.0
     dev: true
 
   /bytewise-core@1.2.3:
@@ -2686,6 +2695,16 @@ packages:
 
   /sass@1.68.0:
     resolution: {integrity: sha512-Lmj9lM/fef0nQswm1J2HJcEsBUba4wgNx2fea6yJHODREoMFnwRpZydBnX/RjyXw2REIwdkbqE4hrTo4qfDBUA==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+      immutable: 4.3.2
+      source-map-js: 1.0.2
+    dev: true
+
+  /sass@1.75.0:
+    resolution: {integrity: sha512-ShMYi3WkrDWxExyxSZPst4/okE9ts46xZmJDSawJQrnte7M1V9fScVB+uNXOVKRBt0PggHOwoZcn8mYX4trnBw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
