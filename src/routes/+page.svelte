@@ -2,16 +2,9 @@
 	import { config } from '$config';
 	import Map from '$lib/components/Map.svelte';
 	import { selectedStyle } from '$lib/stores';
-	import { onMount } from 'svelte';
 
 	const defaultStyle = config.styles[0];
 	selectedStyle.update(() => defaultStyle);
-
-	onMount(async () => {
-		window.global = window;
-		const Buffer = await (await import('buffer')).Buffer;
-		window.Buffer = Buffer;
-	});
 </script>
 
 <svelte:head>
@@ -27,5 +20,5 @@
 <Map />
 
 <style global lang="scss">
-	@import 'bulma/bulma.sass';
+	@import 'bulma/css/bulma.min.css';
 </style>
