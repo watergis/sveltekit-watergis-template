@@ -21,7 +21,7 @@
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/events": "^3.0.1",
-		"@types/node": "^20.8.0",
+		"@types/node": "^22.0.0",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
 		"@typescript-eslint/parser": "^7.0.0",
 		"@watergis/maplibre-center-icon": "^3.0.0",
