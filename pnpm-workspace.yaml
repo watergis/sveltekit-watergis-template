@@ -1,6 +1,0 @@
-onlyBuiltDependencies:
-  - '@evilmartians/lefthook'
-  - '@parcel/watcher'
-  - core-js
-  - esbuild
-  - svelte-preprocess
