@@ -1,22 +1,24 @@
 <script lang="ts">
-	import { config } from '$config';
 	import { map, selectedStyle } from '$lib/stores';
 	import { LegendPanel } from '@watergis/svelte-maplibre-legend';
 	import { StyleSwitcher } from '@watergis/svelte-maplibre-style-switcher';
 	import { getContext } from 'svelte';
 	import type { Writable } from 'svelte/store';
+	import { config } from '../../config';
 
-	let onlyRendered = true;
-	let onlyRelative = true;
-	let enableLayerOrder = false;
-	let relativeLayers = {};
+	let onlyRendered = $state(true);
+	let onlyRelative = $state(true);
+	let enableLayerOrder = $state(false);
+	let relativeLayers = $state({});
 
-	let windowHeight: number;
+	let windowHeight: number = $state();
 	let tabHeight: Writable<number> = getContext('tab-height');
-	let styleHeaderHeight: number;
-	let legendHeaderHeight: number;
+	let styleHeaderHeight: number = $state();
+	let legendHeaderHeight: number = $state();
 
-	$: contentHeight = windowHeight - $tabHeight - styleHeaderHeight - legendHeaderHeight - 20;
+	let contentHeight = $derived(
+		windowHeight - $tabHeight - styleHeaderHeight - legendHeaderHeight - 20
+	);
 
 	if (config.legend && config.legend.targets) {
 		relativeLayers = config.legend.targets;
@@ -34,14 +36,14 @@
 	<StyleSwitcher
 		bind:map={$map}
 		bind:selectedStyle={$selectedStyle}
-		bind:styles={config.styles}
-		on:change={onStyleChange}
+		styles={config.styles}
+		onchange={onStyleChange}
 	/>
 </div>
 <div class="mb-1 buttons has-addons is-centered" bind:clientHeight={legendHeaderHeight}>
 	<button
 		class="button {onlyRendered ? 'is-link' : 'is-light'}"
-		on:click={() => (onlyRendered = !onlyRendered)}
+		onclick={() => (onlyRendered = !onlyRendered)}
 	>
 		<span class="icon is-small">
 			<i class="fas fa-map"></i>
@@ -50,7 +52,7 @@
 	</button>
 	<button
 		class="button {onlyRelative ? 'is-link' : 'is-light'}"
-		on:click={() => (onlyRelative = !onlyRelative)}
+		onclick={() => (onlyRelative = !onlyRelative)}
 	>
 		<span class="icon is-small">
 			<i class="fas fa-droplet"></i>
@@ -58,8 +60,9 @@
 		<span>Show related</span>
 	</button>
 	<button
+		aria-label="sort layers"
 		class="button {enableLayerOrder ? 'is-link' : 'is-light'}"
-		on:click={() => (enableLayerOrder = !enableLayerOrder)}
+		onclick={() => (enableLayerOrder = !enableLayerOrder)}
 	>
 		<span class="icon is-small">
 			<i
@@ -71,14 +74,16 @@
 	</button>
 </div>
 <div class="legend-content" style="height: {contentHeight}px">
-	<LegendPanel
-		bind:map={$map}
-		bind:onlyRendered
-		bind:onlyRelative
-		bind:enableLayerOrder
-		{relativeLayers}
-		disableVisibleButton={false}
-	/>
+	{#if $map}
+		<LegendPanel
+			bind:map={$map}
+			bind:onlyRendered
+			bind:onlyRelative
+			bind:enableLayerOrder
+			{relativeLayers}
+			disableVisibleButton={false}
+		/>
+	{/if}
 </div>
 
 <style lang="scss">
