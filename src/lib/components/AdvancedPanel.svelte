@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { map } from '$lib/stores';
 	import { CollapsiblePanel } from '@watergis/svelte-collapsible-panel';
-	import { MeasurePanel } from '@watergis/svelte-maplibre-measure';
 	import { ValhallaIsochronePanel, ValhallaRoutingPanel } from '@watergis/svelte-maplibre-valhalla';
 	import { getContext, untrack } from 'svelte';
 	import type { Writable } from 'svelte/store';
@@ -75,17 +74,6 @@
 <svelte:window bind:innerHeight={windowHeight} />
 
 <div class="panel-content" style="height:{contentHeight}px;">
-	{#if config.elevation}
-		<CollapsiblePanel title="Measuring tool" bind:isPanelOpen={panelMeasureOpen} color={panelColor}>
-			<div class="accordion-content">
-				<MeasurePanel
-					bind:map={$map}
-					measureOption={config.elevation.options}
-					terrainRgbUrl={config.elevation.url}
-				/>
-			</div>
-		</CollapsiblePanel>
-	{/if}
 	{#if config.valhalla}
 		<CollapsiblePanel title="Routing tool" bind:isPanelOpen={panelRoutingOpen} color={panelColor}>
 			<div class="accordion-content">

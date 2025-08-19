@@ -5,6 +5,7 @@ import type {
 	ValhallaRoutingOptions
 } from '@watergis/svelte-maplibre-valhalla';
 import type { TourGuideOptions, MaplibreTourControlOptions } from '@watergis/maplibre-gl-tour';
+import type { AreaUnit, DistanceUnit, TerrainSource } from '@watergis/maplibre-gl-terradraw';
 
 export type Config = {
 	title: string;
@@ -37,17 +38,13 @@ export type Config = {
 	legend?: {
 		targets: { [key: string]: string };
 	};
-	elevation?: {
-		url: string;
-		options?: {
-			tileSize?: number;
-			font?: string[];
-			fontSize?: number;
-			fontHalo?: number;
-			mainColor?: string;
-			haloColor?: string;
-			units?: string;
-		};
+	measureOptions?: {
+		distanceUnit?: DistanceUnit;
+		distancePrecision?: number;
+		areaUnit?: AreaUnit;
+		areaPrecision?: number;
+		fontGlyphs?: string[];
+		terrainSource?: TerrainSource;
 	};
 	valhalla?: {
 		url: string;

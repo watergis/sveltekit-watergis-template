@@ -14,6 +14,8 @@
 		Size
 	} from '@watergis/maplibre-gl-export';
 	import '@watergis/maplibre-gl-export/dist/maplibre-gl-export.css';
+	import { MaplibreMeasureControl } from '@watergis/maplibre-gl-terradraw';
+	import '@watergis/maplibre-gl-terradraw/dist/maplibre-gl-terradraw.css';
 	import { MaplibreTourControl } from '@watergis/maplibre-gl-tour';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
 	import AttributeTableControl from '@watergis/svelte-maplibre-attribute-table';
@@ -99,6 +101,30 @@
 			Local: 'en'
 		});
 		map.addControl(exportControl, 'bottom-right');
+
+		if (config.measureOptions) {
+			const draw = new MaplibreMeasureControl({
+				modes: [
+					'render',
+					'point',
+					'linestring',
+					'polygon',
+					'select',
+					'delete-selection',
+					'delete',
+					'download'
+				],
+				open: false,
+				distanceUnit: config.measureOptions.distanceUnit,
+				distancePrecision: config.measureOptions.distancePrecision,
+				areaUnit: config.measureOptions.areaUnit,
+				areaPrecision: config.measureOptions.areaPrecision,
+				computeElevation: true,
+				terrainSource: config.measureOptions.terrainSource
+			});
+			draw.fontGlyphs = config.measureOptions.fontGlyphs;
+			map.addControl(draw, 'bottom-right');
+		}
 
 		const centerIconManager = new CenterIconManager(map);
 		centerIconManager.create();
