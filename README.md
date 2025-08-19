@@ -1,7 +1,6 @@
 # svelte-maplibre-boilerplate
 
 [![build](https://github.com/watergis/sveltekit-watergis-template/actions/workflows/build.yml/badge.svg)](https://github.com/watergis/sveltekit-watergis-template/actions/workflows/build.yml)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d92c4eb3-79a0-4e2e-aba4-f5fbc14bb469/deploy-status)](https://app.netlify.com/sites/demo-watergis/deploys)
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
