@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { config } from '$config';
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
+	import { config } from '../../config';
 	import AdvancedPanel from './AdvancedPanel.svelte';
 	import LayerListPanel from './LayerListPanel.svelte';
 
@@ -20,7 +20,7 @@
 			label: TabNames.ADVANCED
 		}
 	];
-	let activeTab = tabs[0];
+	let activeTab = $state(tabs[0]);
 
 	let tabHeight = writable<number>(0);
 
@@ -34,20 +34,20 @@
 		</a>
 		<div class="tabs is-centered mb-0">
 			<ul>
-				{#each tabs as tab}
-					<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-					<!-- svelte-ignore a11y-click-events-have-key-events -->
+				{#each tabs as tab (tab.label)}
+					<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
 					<li
 						class={activeTab.label === tab.label ? 'is-active' : ''}
-						on:click={() => (activeTab = tab)}
+						onclick={() => (activeTab = tab)}
 					>
-						<!-- svelte-ignore a11y-missing-attribute -->
+						<!-- svelte-ignore a11y_missing_attribute -->
 						<a>
 							<span class="icon is-small"><i class={tab.icon} aria-hidden="true"></i></span>
 							<span>{tab.label}</span>
 						</a>
 					</li>
-					<li />{/each}
+					<li></li>{/each}
 			</ul>
 		</div>
 	</div>

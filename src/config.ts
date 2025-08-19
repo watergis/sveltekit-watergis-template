@@ -109,16 +109,19 @@ export const config: Config = {
 			sewer_treatment_plant: 'Wastewater treatment plant'
 		}
 	},
-	elevation: {
-		url: 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png',
-		options: {
+	measureOptions: {
+		distanceUnit: 'kilometers',
+		distancePrecision: 2,
+		areaUnit: 'metric',
+		areaPrecision: 2,
+		fontGlyphs: ['Roboto Regular'],
+		terrainSource: {
+			url: 'https://narwassco.github.io/narok-terrain/tiles/{z}/{x}/{y}.png',
+			encoding: 'mapbox',
 			tileSize: 512,
-			font: ['Roboto Medium'],
-			fontSize: 12,
-			fontHalo: 1,
-			mainColor: '#263238',
-			haloColor: '#fff',
-			units: 'kilometers'
+			minzoom: 5,
+			maxzoom: 15,
+			tms: false
 		}
 	},
 	valhalla: {
@@ -201,21 +204,14 @@ export const config: Config = {
 							<br><br>
 							In <b>Advanced</b> tab, there are three main features:
 							<br>
-							<b>1) measuring tool</b>: 
-							<br>
-							<img src="/assets/tutorial/measure-tool.png" width="100%"/>
-							<br>
-							Click "Start measure" button, then click locations on the map to query the distance and altitude.
-							<br>
-							<br>
-							<b>2) routing tool</b>;
+							<b>1) routing tool</b>;
 							<br>
 							<img src="/assets/tutorial/routing-tool.png" width="100%"/>
 							<br>
 							Click "Start routing" button, then you can calculate the shortest route by clicking on the route on the map with your prefered means of transport.
 							<br>
 							<br>
-							<b>3)isochrone analysis tool</b>.
+							<b>2)isochrone analysis tool</b>.
 							<br>
 							<img src="/assets/tutorial/isochrone-tool.png" width="100%"/>
 							<br>Isochrone is a very powerful tool to estimate contours by certain time or distance by selected transport option. It can be used for some SDG indicator such as "Water access within 30 minute round trip".
@@ -260,35 +256,42 @@ export const config: Config = {
 					target: '.maplibregl-ctrl-identify',
 					order: 5
 				},
-				{
-					title: 'Export tool',
-					content: `This button enables you to export images with your preferences.<br>You can choose file size, image format (png, jpeg, pdf and svg), and DPI resolution, orientation of the exported image`,
-					target: '.maplibregl-ctrl-export',
-					order: 6
-				},
+
 				{
 					title: 'Search features',
 					content: `You can search features by typing keywords from the searching box.`,
 					target: '.maplibregl-ctrl-geocoder',
+					order: 6
+				},
+				{
+					title: 'Measure tool',
+					content: `This button enables you to distance (line) and area (polygon) measurement on the map. You can also query elevation of the point or each node of the line.`,
+					target: '.maplibregl-terradraw-measure-render-button',
 					order: 7
+				},
+				{
+					title: 'Export tool',
+					content: `This button enables you to export images with your preferences.<br>You can choose file size, image format (png, jpeg, pdf and svg), and DPI resolution, orientation of the exported image`,
+					target: '.maplibregl-export-control',
+					order: 8
 				},
 				{
 					title: 'Area switching tool',
 					content: `You can switch the map to the selected area instantly.`,
 					target: '.maplibregl-area-switcher',
-					order: 8
+					order: 0
 				},
 				{
 					title: 'Terrain tool',
 					content: `If this is enabled, 3D terrain landscape will be shown. In order to use this, you can tilt the map by holding right-click (mouse) or two fingers (smartphone or tablet)`,
 					target: '.maplibregl-ctrl-terrain',
-					order: 9
+					order: 10
 				},
 				{
 					title: 'GNSS positioning tool',
 					content: `GNSS positioning your current location is available by clicking this button.`,
 					target: '.maplibregl-ctrl-geolocate',
-					order: 10
+					order: 11
 				}
 			],
 			rememberStep: true

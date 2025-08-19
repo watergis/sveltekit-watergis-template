@@ -1,18 +1,15 @@
 <script lang="ts">
-	import { config as defaultConfig } from '$config';
 	import { map } from '$lib/stores';
 	import { CollapsiblePanel } from '@watergis/svelte-collapsible-panel';
-	import { MeasurePanel } from '@watergis/svelte-maplibre-measure';
 	import { ValhallaIsochronePanel, ValhallaRoutingPanel } from '@watergis/svelte-maplibre-valhalla';
-	import { getContext } from 'svelte';
+	import { getContext, untrack } from 'svelte';
 	import type { Writable } from 'svelte/store';
+	import { config as defaultConfig } from '../../config';
 
-	const config = defaultConfig;
+	const config = $state(defaultConfig);
 
-	let windowHeight: number;
+	let windowHeight: number = $state();
 	let tabHeight: Writable<number> = getContext('tab-height');
-
-	$: contentHeight = windowHeight - $tabHeight - 20;
 
 	let panelColor:
 		| ''
@@ -22,23 +19,12 @@
 		| 'is-success'
 		| 'is-warning'
 		| 'is-danger' = 'is-link';
-	let expandedPanel: 'measure' | 'routing' | 'isochrone' = 'measure';
+	let expandedPanel: 'measure' | 'routing' | 'isochrone' = $state('measure');
 
-	let panelMeasureOpen = false;
-	let panelRoutingOpen = false;
-	let panelTimeIsochroneOpen = false;
+	let panelMeasureOpen = $state(false);
+	let panelRoutingOpen = $state(false);
+	let panelTimeIsochroneOpen = $state(false);
 
-	$: if (panelMeasureOpen) {
-		expandedPanel = 'measure';
-	}
-	$: if (panelRoutingOpen) {
-		expandedPanel = 'routing';
-	}
-	$: if (panelTimeIsochroneOpen) {
-		expandedPanel = 'isochrone';
-	}
-
-	$: expandedPanel, initialisePanels();
 	const initialisePanels = () => {
 		switch (expandedPanel) {
 			case 'measure':
@@ -60,29 +46,41 @@
 				break;
 		}
 	};
+	let contentHeight = $derived(windowHeight - $tabHeight - 20);
+	$effect(() => {
+		if (panelMeasureOpen) {
+			expandedPanel = 'measure';
+		}
+	});
+	$effect(() => {
+		if (panelRoutingOpen) {
+			expandedPanel = 'routing';
+		}
+	});
+	$effect(() => {
+		if (panelTimeIsochroneOpen) {
+			expandedPanel = 'isochrone';
+		}
+	});
+	$effect(() => {
+		if (expandedPanel) {
+			untrack(() => {
+				initialisePanels();
+			});
+		}
+	});
 </script>
 
 <svelte:window bind:innerHeight={windowHeight} />
 
 <div class="panel-content" style="height:{contentHeight}px;">
-	{#if config.elevation}
-		<CollapsiblePanel title="Measuring tool" bind:isPanelOpen={panelMeasureOpen} color={panelColor}>
-			<div class="accordion-content">
-				<MeasurePanel
-					bind:map={$map}
-					bind:measureOption={config.elevation.options}
-					bind:terrainRgbUrl={config.elevation.url}
-				/>
-			</div>
-		</CollapsiblePanel>
-	{/if}
 	{#if config.valhalla}
 		<CollapsiblePanel title="Routing tool" bind:isPanelOpen={panelRoutingOpen} color={panelColor}>
 			<div class="accordion-content">
 				<ValhallaRoutingPanel
 					bind:map={$map}
-					bind:url={config.valhalla.url}
-					bind:options={config.valhalla.routingOptions}
+					url={config.valhalla.url}
+					options={config.valhalla.routingOptions}
 				/>
 			</div>
 		</CollapsiblePanel>
@@ -94,8 +92,8 @@
 			<div class="accordion-content">
 				<ValhallaIsochronePanel
 					bind:map={$map}
-					bind:url={config.valhalla.url}
-					bind:options={config.valhalla.isoChroneOptions}
+					url={config.valhalla.url}
+					options={config.valhalla.isoChroneOptions}
 				/>
 			</div>
 		</CollapsiblePanel>
