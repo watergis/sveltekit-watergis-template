@@ -47,6 +47,9 @@ importers:
       '@watergis/maplibre-gl-area-switcher':
         specifier: ^1.0.0
         version: 1.0.0
+      '@watergis/maplibre-gl-export':
+        specifier: ^4.0.1
+        version: 4.0.1
       '@watergis/maplibre-gl-tour':
         specifier: ^1.0.6
         version: 1.0.6(svelte@5.38.1)
@@ -59,9 +62,6 @@ importers:
       '@watergis/svelte-maplibre-attribute-table':
         specifier: ^4.0.0
         version: 4.0.0(svelte@5.38.1)
-      '@watergis/svelte-maplibre-export':
-        specifier: ^5.0.0
-        version: 5.0.0(svelte@5.38.1)
       '@watergis/svelte-maplibre-legend':
         specifier: ^5.0.0
         version: 5.0.0(@popperjs/core@2.11.8)(svelte@5.38.1)
@@ -452,11 +452,6 @@ packages:
   '@maplibre/vt-pbf@4.0.3':
     resolution: {integrity: sha512-YsW99BwnT+ukJRkseBcLuZHfITB4puJoxnqPVjo72rhW/TaawVYsgQHcqWLzTxqknttYoDpgyERzWSa/XrETdA==}
 
-  '@neodrag/svelte@2.3.3':
-    resolution: {integrity: sha512-avXzhrilsBsnMFljhVAQ7h+6hbSIrvRCJ61GCiGbGISkC1QOhjDCNvPZo2+7KVwiYrnUBx4NRH0kTIqrcxv9Lg==}
-    peerDependencies:
-      svelte: ^3.0.0 || ^4.0.0 || ^5.0.0
-
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -824,6 +819,9 @@ packages:
   '@watergis/maplibre-gl-area-switcher@1.0.0':
     resolution: {integrity: sha512-kP5SMvxoMtCuKBlCRwZFPMxJh4qdNng42tzGmPCCL0dl7k3/atRADw7a2isgUsPRpRUBRaIjaauYZXQrItJfzw==}
 
+  '@watergis/maplibre-gl-export@4.0.1':
+    resolution: {integrity: sha512-9wMbB6N9J/PUPG4Akw7y7FCFy8WAZdBdWOVp5R87NL0rLFqq0C1RGz+H7kt+vEW+l0s6aIaJyFpSX9JCT5YI6A==}
+
   '@watergis/maplibre-gl-tour@1.0.6':
     resolution: {integrity: sha512-HKdAfOB4YD5E9zTSI9FOP1oJL6MQ3wEG+wXcA3FnMbjWdxZp33AVI39w8MaP1kNE/B9MviloXA3tMAAkNDx2bA==}
     peerDependencies:
@@ -841,11 +839,6 @@ packages:
 
   '@watergis/svelte-maplibre-attribute-table@4.0.0':
     resolution: {integrity: sha512-Sitp+wUwxYXHcffMqiSfQFN2ndHa1BvhTqHMn6i57/HaV5167Yo5WrP5aU8KsvqBelb3FH/nPkQEAPS3L1B8Dg==}
-    peerDependencies:
-      svelte: ^5.0.0
-
-  '@watergis/svelte-maplibre-export@5.0.0':
-    resolution: {integrity: sha512-I/n7GQmDKAwdELDPMDBhD+MenkQE4Ll1CnYIKhLM7eNXzyfM8JiR3MKdRmYelW5Ame4UfPU1lMLwXSuJxnWjrw==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -2206,10 +2199,6 @@ snapshots:
       pbf: 4.0.1
       supercluster: 8.0.1
 
-  '@neodrag/svelte@2.3.3(svelte@5.38.1)':
-    dependencies:
-      svelte: 5.38.1
-
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -2569,6 +2558,11 @@ snapshots:
     dependencies:
       maplibre-gl: 3.6.2
 
+  '@watergis/maplibre-gl-export@4.0.1':
+    dependencies:
+      jspdf: 3.0.1
+      maplibre-gl: 5.6.2
+
   '@watergis/maplibre-gl-tour@1.0.6(svelte@5.38.1)':
     dependencies:
       '@sjmc11/tourguidejs': 0.0.27
@@ -2593,15 +2587,6 @@ snapshots:
       '@watergis/svelte-maplibre-menu': 4.0.0(svelte@5.38.1)
       maplibre-gl: 5.6.2
       svelte: 5.38.1
-
-  '@watergis/svelte-maplibre-export@5.0.0(svelte@5.38.1)':
-    dependencies:
-      '@fortawesome/free-solid-svg-icons': 7.0.0
-      '@neodrag/svelte': 2.3.3(svelte@5.38.1)
-      jspdf: 3.0.1
-      maplibre-gl: 5.6.2
-      svelte: 5.38.1
-      svelte-fa: 4.0.4(svelte@5.38.1)
 
   '@watergis/svelte-maplibre-legend@5.0.0(@popperjs/core@2.11.8)(svelte@5.38.1)':
     dependencies:

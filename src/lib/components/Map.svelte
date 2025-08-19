@@ -6,10 +6,17 @@
 	import CenterIconManager from '@watergis/maplibre-center-icon';
 	import MaplibreAreaSwitcherControl from '@watergis/maplibre-gl-area-switcher';
 	import '@watergis/maplibre-gl-area-switcher/dist/maplibre-gl-area-switcher.css';
+	import {
+		DPI,
+		Format,
+		MaplibreExportControl,
+		PageOrientation,
+		Size
+	} from '@watergis/maplibre-gl-export';
+	import '@watergis/maplibre-gl-export/dist/maplibre-gl-export.css';
 	import { MaplibreTourControl } from '@watergis/maplibre-gl-tour';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
 	import AttributeTableControl from '@watergis/svelte-maplibre-attribute-table';
-	import { MapExportControl } from '@watergis/svelte-maplibre-export';
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
 	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
@@ -81,6 +88,17 @@
 		}
 
 		map.addControl(new ScaleControl({ maxWidth: 80, unit: 'metric' }), 'bottom-left');
+
+		const exportControl = new MaplibreExportControl({
+			PageSize: Size.A4,
+			PageOrientation: PageOrientation.Portrait,
+			Format: Format.PNG,
+			DPI: DPI[200],
+			Crosshair: true,
+			PrintableArea: true,
+			Local: 'en'
+		});
+		map.addControl(exportControl, 'bottom-right');
 
 		const centerIconManager = new CenterIconManager(map);
 		centerIconManager.create();
@@ -205,12 +223,6 @@
 			{#if map}
 				<AttributePopupControl bind:map targetLayers={config.popup.target} />
 				<ShareURLControl bind:map {customiseUrl} position="top-right" />
-				<MapExportControl
-					bind:map
-					showPrintableArea={true}
-					showCrosshair={true}
-					position="top-right"
-				/>
 			{/if}
 		{/await}
 	{/snippet}
