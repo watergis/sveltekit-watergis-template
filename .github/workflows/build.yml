@@ -17,7 +17,7 @@ jobs:
         node-version: [22.x]
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       # pnpm setup
       # refer to https://github.com/pnpm/action-setup
