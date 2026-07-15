@@ -22,7 +22,7 @@ jobs:
       # pnpm setup
       # refer to https://github.com/pnpm/action-setup
       - name: pnpm setup
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
           version: 10
 
