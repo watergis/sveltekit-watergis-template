@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@evilmartians/lefthook':
-        specifier: ^1.12.3
-        version: 1.12.3
+        specifier: ^2.0.0
+        version: 2.1.12
       '@maplibre/maplibre-gl-geocoder':
         specifier: ^1.9.0
         version: 1.9.0(maplibre-gl@5.6.2)
@@ -335,8 +335,8 @@ packages:
     resolution: {integrity: sha512-Z5kJ+wU3oA7MMIqVR9tyZRtjYPr4OC004Q4Rw7pgOKUOKkJfZ3O24nz3WYfGRpMDNmcOi3TwQOmgm7B7Tpii0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@evilmartians/lefthook@1.12.3':
-    resolution: {integrity: sha512-MtXIt8h+EVTv5tCGLzh9UwbA/LRv6esdPJOHlxr8NDKHbFnbo8PvU5uVQcm3PAQTd4DZN3HoyokqrwGwntoq6w==}
+  '@evilmartians/lefthook@2.1.12':
+    resolution: {integrity: sha512-y/QRYkKeuJSSebsxt3COI3HIyc7mgWAwTXQLVdVFpprBb5XIC8jV20DLDYcbkmUHoQUq8yHkkGfkMDSR34xjbw==}
     cpu: [x64, arm64, ia32]
     os: [darwin, linux, win32]
     hasBin: true
@@ -1160,6 +1160,7 @@ packages:
   eslint@9.34.0:
     resolution: {integrity: sha512-RNCHRX5EwdrESy3Jc9o8ie8Bog+PeYvvSR8sDGoZxNFTvZ4dlxUB3WzQ3bQMztFrSRODGrLLj8g6OFuGY/aiQg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -2143,7 +2144,7 @@ snapshots:
       '@eslint/core': 0.15.2
       levn: 0.4.1
 
-  '@evilmartians/lefthook@1.12.3': {}
+  '@evilmartians/lefthook@2.1.12': {}
 
   '@floating-ui/core@1.7.3':
     dependencies:
