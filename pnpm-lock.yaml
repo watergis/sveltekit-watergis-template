@@ -48,8 +48,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@watergis/maplibre-gl-export':
-        specifier: ^4.0.1
-        version: 4.0.1
+        specifier: ^5.0.0
+        version: 5.0.0(maplibre-gl@5.6.2)
       '@watergis/maplibre-gl-terradraw':
         specifier: ^1.6.1
         version: 1.7.1(maplibre-gl@5.6.2)(terra-draw@1.12.0)
@@ -139,6 +139,10 @@ packages:
 
   '@babel/runtime@7.28.3':
     resolution: {integrity: sha512-9uIQ10o0WGdpP6GDhXcdOJPJuDgFtIDtN/9+ArJQ2NAfAmiuhTQdzkaTGR33v43GYS2UrSA0eX2pPPHoFVvpxA==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/runtime@7.29.7':
+    resolution: {integrity: sha512-Nq8OhGWiZIZGV6hLHoyAKLLcJihP/xFeBMGJoUrxTX2psI8dCifzLhZISFb+VWS3wFMRDmCGw5R+dOySCqPLhw==}
     engines: {node: '>=6.9.0'}
 
   '@esbuild/aix-ppc64@0.27.7':
@@ -781,6 +785,9 @@ packages:
   '@types/node@24.3.0':
     resolution: {integrity: sha512-aPTXCrfwnDLj4VvXrm+UUCQjNEvJgNA8s5F1cvwQU+3KNltTOkBm1j30uNLyqqPNe7gE3KFzImYoZEfLhp4Yow==}
 
+  '@types/pako@2.0.4':
+    resolution: {integrity: sha512-VWDCbrLeVXJM9fihYodcLiIv0ku+AlOa/TQ1SvYOaBuyrSKgEcro95LJyIsJ4vSo6BXIxOKxiJAat04CmST9Fw==}
+
   '@types/pbf@3.0.5':
     resolution: {integrity: sha512-j3pOPiEcWZ34R6a6mN07mUkM4o4Lwf6hPNt8eilOeZhTFbxFXmKhvXl9Y28jotFPaI1bpPDJsbCprUoNke6OrA==}
 
@@ -868,8 +875,10 @@ packages:
   '@watergis/maplibre-gl-area-switcher@1.0.0':
     resolution: {integrity: sha512-kP5SMvxoMtCuKBlCRwZFPMxJh4qdNng42tzGmPCCL0dl7k3/atRADw7a2isgUsPRpRUBRaIjaauYZXQrItJfzw==}
 
-  '@watergis/maplibre-gl-export@4.0.1':
-    resolution: {integrity: sha512-9wMbB6N9J/PUPG4Akw7y7FCFy8WAZdBdWOVp5R87NL0rLFqq0C1RGz+H7kt+vEW+l0s6aIaJyFpSX9JCT5YI6A==}
+  '@watergis/maplibre-gl-export@5.0.0':
+    resolution: {integrity: sha512-nXQ+PWWENJwiuQBbCC/vfRumrMlnaXJSkGdcOzoKMIqhS6gCCarFNK3xD1nKZScA98YVK+WyfXrH/5k90sXudA==}
+    peerDependencies:
+      maplibre-gl: ^5.21.1 || >=6.0.0-0 <7.0.0
 
   '@watergis/maplibre-gl-terradraw@1.7.1':
     resolution: {integrity: sha512-zXC5LGFqRx23jWmusNGm4m8B8h/W8Vl0yKEVK6kvqj9ee4WbL6NzmCEGh+h9pGfHWl3T9WB5TxK8VhVxvnxTkA==}
@@ -973,11 +982,6 @@ packages:
     resolution: {integrity: sha512-Q+JC7Whu8HhmTdBph/Tq59IoRtoy6KAm5zzPv00WdujX82lbAL8K7WVjne7vdCsAmbF4AYaDOPyO3k0kl8qIrw==}
     engines: {node: '>=0.10.0'}
 
-  atob@2.1.2:
-    resolution: {integrity: sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==}
-    engines: {node: '>= 4.5.0'}
-    hasBin: true
-
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
     engines: {node: '>= 0.4'}
@@ -1001,11 +1005,6 @@ packages:
   braces@3.0.3:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
-
-  btoa@1.2.1:
-    resolution: {integrity: sha512-SB4/MIGlsiVkMcHmT+pSmIPoNDoHg+7cMzmt3Uxt628MTz2487DKSqK/fuhFBrkuqrYv5UCEnACpF4dTFNKc/g==}
-    engines: {node: '>= 0.4.0'}
-    hasBin: true
 
   buffer@6.0.3:
     resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
@@ -1111,8 +1110,8 @@ packages:
   devalue@5.8.2:
     resolution: {integrity: sha512-DObPPAfdtFbXjxLqK8s2Xk9ZuWz5+ZoFEhC7J76es4GU/rEiXwHTmbImoCdyoCOcBH1UF3+Cz6Z2sYD4hyl5TA==}
 
-  dompurify@3.2.6:
-    resolution: {integrity: sha512-/2GogDQlohXPZe6D6NOgQvXLPSYBqIWMnZ8zzOhn09REE4eyAzb+Hed3jhoM9OkuaJ8P6ZGTTVWQKAi8ieIzfQ==}
+  dompurify@3.4.15:
+    resolution: {integrity: sha512-EUBjM+B+lkDE41iE82DDSCfkoPGfXx8IxFxPMjNzm/Uk4xDet77rTN9wqlxlVg71kK7XGuUMv6wUxJUwwv+Xyw==}
 
   earcut@2.2.4:
     resolution: {integrity: sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==}
@@ -1160,6 +1159,7 @@ packages:
   eslint@9.34.0:
     resolution: {integrity: sha512-RNCHRX5EwdrESy3Jc9o8ie8Bog+PeYvvSR8sDGoZxNFTvZ4dlxUB3WzQ3bQMztFrSRODGrLLj8g6OFuGY/aiQg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -1222,6 +1222,9 @@ packages:
 
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
+
+  fast-png@6.4.0:
+    resolution: {integrity: sha512-kAqZq1TlgBjZcLr5mcN6NP5Rv4V2f22z00c3g8vRrwkcqjerx7BEhPbOnWCPqaHUl2XWQBJQvOT/FQhdMT7X/Q==}
 
   fastq@1.19.1:
     resolution: {integrity: sha512-GwLTyxkCXjXbxqIhTsMI2Nui8huMPtnxg7krajPJAjnEG/iiOS7i+zCtWGZR9G0NBKbXKh6X9m9UIsYX/N6vvQ==}
@@ -1314,6 +1317,9 @@ packages:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
 
+  html-to-image@1.11.13:
+    resolution: {integrity: sha512-cuOPoI7WApyhBElTTb9oqsawRvZ0rHhaHwghRLlTuffoD1B2aDemlCruLeZrUIIdvG7gs9xeELEPm6PhuASqrg==}
+
   html2canvas@1.4.1:
     resolution: {integrity: sha512-fPU6BHNpsyIhr8yyMpTLLxAbkaK8ArIBcmZIRiBLiDhjeqvXolaEmDGmELFuX9I4xDcaKKcJl+TKZLqruBbmWA==}
     engines: {node: '>=8.0.0'}
@@ -1346,6 +1352,9 @@ packages:
   ini@4.1.3:
     resolution: {integrity: sha512-X7rqawQBvfdjS10YU1y1YVreA3SsLrW9dX2CewP2EbBJM4ypVNLDkO5y04gejPwKIY9lR+7r9gn3rFPt/kmWFg==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+
+  iobuffer@5.4.0:
+    resolution: {integrity: sha512-DRebOWuqDvxunfkNJAlc3IzWIPD5xVxwUNbHr7xKB8E6aLJxIPfNX3CoMJghcFjpv6RWQsrcJbghtEwSPoJqMA==}
 
   is-extendable@0.1.1:
     resolution: {integrity: sha512-5BMULNob1vgFX6EjQw5izWDxrecWK9AM72rugNr0TFldMOi0fj6Jk+zeKIt0xGj4cEfQIJth4w3OKWOJ4f+AFw==}
@@ -1407,8 +1416,8 @@ packages:
   json-stringify-pretty-compact@4.0.0:
     resolution: {integrity: sha512-3CNZ2DnrpByG9Nqj6Xo8vqbjT4F6N+tb4Gb28ESAZjYZ5yqvmc56J+/kuIwkaAMOyblTQhUW7PxMkUb8Q36N3Q==}
 
-  jspdf@3.0.1:
-    resolution: {integrity: sha512-qaGIxqxetdoNnFQQXxTKUD9/Z7AloLaw94fFsOiJMxbfYdBbrBuhWmbzI8TVjrw7s3jBY1PFHofBKMV/wZPapg==}
+  jspdf@4.2.1:
+    resolution: {integrity: sha512-YyAXyvnmjTbR4bHQRLzex3CuINCDlQnBqoSYyjJwTP2x9jDLuKDzy7aKUl0hgx3uhcl7xzg32agn5vlie6HIlQ==}
 
   kdbush@4.0.2:
     resolution: {integrity: sha512-WbCVYJ27Sz8zi9Q7Q0xHC+05iwkm3Znipc2XTlrnJbsHMYktW4hPhXUE8Ys1engBrvffoSCqbil1JQAa7clRpA==}
@@ -1528,6 +1537,9 @@ packages:
   p-locate@5.0.0:
     resolution: {integrity: sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==}
     engines: {node: '>=10'}
+
+  pako@2.2.0:
+    resolution: {integrity: sha512-zJq6RP/5q+TO2OpFV3FHzlPnFjmkb7Nc99a5SNjJE+uu/PkpChs+NIZSSzbBoD+6kjiISXjfYdwj1ZRQ81dz/w==}
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -2019,7 +2031,10 @@ packages:
 
 snapshots:
 
-  '@babel/runtime@7.28.3': {}
+  '@babel/runtime@7.28.3':
+    optional: true
+
+  '@babel/runtime@7.29.7': {}
 
   '@esbuild/aix-ppc64@0.27.7':
     optional: true
@@ -2528,6 +2543,8 @@ snapshots:
     dependencies:
       undici-types: 7.10.0
 
+  '@types/pako@2.0.4': {}
+
   '@types/pbf@3.0.5': {}
 
   '@types/raf@3.4.3':
@@ -2649,9 +2666,10 @@ snapshots:
     dependencies:
       maplibre-gl: 3.6.2
 
-  '@watergis/maplibre-gl-export@4.0.1':
+  '@watergis/maplibre-gl-export@5.0.0(maplibre-gl@5.6.2)':
     dependencies:
-      jspdf: 3.0.1
+      html-to-image: 1.11.13
+      jspdf: 4.2.1
       maplibre-gl: 5.6.2
 
   '@watergis/maplibre-gl-terradraw@1.7.1(maplibre-gl@5.6.2)(terra-draw@1.12.0)':
@@ -2760,8 +2778,6 @@ snapshots:
 
   assign-symbols@1.0.0: {}
 
-  atob@2.1.2: {}
-
   axobject-query@4.1.0: {}
 
   balanced-match@1.0.2: {}
@@ -2783,8 +2799,6 @@ snapshots:
   braces@3.0.3:
     dependencies:
       fill-range: 7.1.1
-
-  btoa@1.2.1: {}
 
   buffer@6.0.3:
     dependencies:
@@ -2880,7 +2894,7 @@ snapshots:
 
   devalue@5.8.2: {}
 
-  dompurify@3.2.6:
+  dompurify@3.4.15:
     optionalDependencies:
       '@types/trusted-types': 2.0.7
     optional: true
@@ -3042,6 +3056,12 @@ snapshots:
 
   fast-levenshtein@2.0.6: {}
 
+  fast-png@6.4.0:
+    dependencies:
+      '@types/pako': 2.0.4
+      iobuffer: 5.4.0
+      pako: 2.2.0
+
   fastq@1.19.1:
     dependencies:
       reusify: 1.1.0
@@ -3115,6 +3135,8 @@ snapshots:
 
   has-flag@4.0.0: {}
 
+  html-to-image@1.11.13: {}
+
   html2canvas@1.4.1:
     dependencies:
       css-line-break: 2.1.0
@@ -3139,6 +3161,8 @@ snapshots:
   ini@1.3.8: {}
 
   ini@4.1.3: {}
+
+  iobuffer@5.4.0: {}
 
   is-extendable@0.1.1: {}
 
@@ -3184,16 +3208,15 @@ snapshots:
 
   json-stringify-pretty-compact@4.0.0: {}
 
-  jspdf@3.0.1:
+  jspdf@4.2.1:
     dependencies:
-      '@babel/runtime': 7.28.3
-      atob: 2.1.2
-      btoa: 1.2.1
+      '@babel/runtime': 7.29.7
+      fast-png: 6.4.0
       fflate: 0.8.2
     optionalDependencies:
       canvg: 3.0.11
       core-js: 3.45.1
-      dompurify: 3.2.6
+      dompurify: 3.4.15
       html2canvas: 1.4.1
 
   kdbush@4.0.2: {}
@@ -3367,6 +3390,8 @@ snapshots:
   p-locate@5.0.0:
     dependencies:
       p-limit: 3.1.0
+
+  pako@2.2.0: {}
 
   parent-module@1.0.1:
     dependencies:
