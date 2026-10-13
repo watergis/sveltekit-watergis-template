@@ -19,7 +19,7 @@
 		"@sjmc11/tourguidejs": "^0.0.27",
 		"@sveltejs/adapter-static": "^3.0.9",
 		"@sveltejs/kit": "^2.33.0",
-		"@sveltejs/vite-plugin-svelte": "^6.1.2",
+		"@sveltejs/vite-plugin-svelte": "^7.0.0",
 		"@types/events": "^3.0.3",
 		"@types/node": "^24.3.0",
 		"@typescript-eslint/eslint-plugin": "^8.40.0",
