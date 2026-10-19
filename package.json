@@ -26,7 +26,7 @@
 		"@typescript-eslint/parser": "^8.40.0",
 		"@watergis/maplibre-center-icon": "^3.0.1",
 		"@watergis/maplibre-gl-area-switcher": "^1.0.0",
-		"@watergis/maplibre-gl-export": "^4.0.1",
+		"@watergis/maplibre-gl-export": "^5.0.0",
 		"@watergis/maplibre-gl-terradraw": "^1.6.1",
 		"@watergis/maplibre-gl-tour": "^1.0.6",
 		"@watergis/svelte-collapsible-panel": "^4.0.0",
