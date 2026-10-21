@@ -1,0 +1,12 @@
+allowBuilds:
+  '@evilmartians/lefthook': true
+  '@parcel/watcher': true
+  core-js: true
+  esbuild: true
+  svelte-preprocess: true
+engineStrict: true
+nodeLinker: hoisted
+minimumReleaseAgeExclude:
+  - '@watergis/maplibre-gl-export@6.0.0'
+overrides:
+  maplibre-gl: ^6.15.0

@@ -1,12 +1,15 @@
 /// <reference types="@sveltejs/kit" />
-import { build, files, version } from '$service-worker';
+import { version } from '$app/env';
+import { assets, immutable } from '$app/manifest';
+import { resolve } from '$app/paths';
 
 // Create a unique cache name for this deployment
 const CACHE = `cache-${version}`;
 
+// paths from `$app/manifest` are relative to the base path, so resolve them to absolute pathnames
 const ASSETS = [
-	...build, // the app itself
-	...files // everything in `static`
+	...immutable.map((asset) => resolve(asset.path)), // the app itself
+	...assets.map((asset) => resolve(asset.path)) // everything in `static`
 ];
 
 self.addEventListener('install', (event) => {

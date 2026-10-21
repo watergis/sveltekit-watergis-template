@@ -42,7 +42,7 @@ pnpm dev -- --open
 
 open [http://localhost:3000](http://localhost:3000).
 
-The path of URL can be changed at [svelte.config.js](./svelte.config.js).
+The path of URL can be changed at [vite.config.ts](./vite.config.ts).
 
 ## Lefthook
 

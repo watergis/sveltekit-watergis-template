@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Map from '$lib/components/Map.svelte';
-	import { selectedStyle } from '$lib/stores';
+	import Map from '#lib/components/Map.svelte';
+	import { selectedStyle } from '#lib/stores/index.js';
 	import { config } from '../config';
 
 	const defaultStyle = config.styles[0];
