@@ -110,9 +110,9 @@ export const config: Config = {
 		}
 	},
 	measureOptions: {
-		distanceUnit: 'kilometers',
+		measureUnitType: 'metric',
+		distanceUnit: 'kilometer',
 		distancePrecision: 2,
-		areaUnit: 'metric',
 		areaPrecision: 2,
 		fontGlyphs: ['Roboto Regular'],
 		terrainSource: {
@@ -126,46 +126,21 @@ export const config: Config = {
 	},
 	valhalla: {
 		url: 'https://valhalla.water-gis.com',
-		isoChroneOptions: {
-			Contours: [
-				{
-					time: 3,
-					distance: 1,
-					color: 'ff0000'
-				},
-				{
-					time: 5,
-					distance: 2,
-					color: 'ffff00'
-				},
-				{
-					time: 10,
-					distance: 3,
-					color: '0000ff'
-				},
-				{
-					time: 15,
-					distance: 4,
-					color: 'ff00ff'
-				}
-			],
-			isochrone: {
-				font: ['Roboto Medium'],
-				fontSize: 14,
-				fontHalo: 3,
-				fontColor: '#263238',
-				fontHaloColor: '#fff'
-			}
-		},
 		routingOptions: {
-			font: ['Roboto Medium'],
-			fontSize: 14,
-			fontHalo: 3,
-			fontColor: '#263238',
-			fontHaloColor: '#fff',
-			iconImage: 'marker',
-			iconSize: 1
-		}
+			costingModel: 'pedestrian',
+			distanceUnit: 'kilometers'
+		},
+		isochroneOptions: {
+			timeCostingModel: 'pedestrian',
+			distanceCostingModel: 'pedestrian',
+			contours: [
+				{ time: 3, distance: 1, color: '#ff0000' },
+				{ time: 5, distance: 2, color: '#ffff00' },
+				{ time: 10, distance: 3, color: '#0000ff' },
+				{ time: 15, distance: 4, color: '#ff00ff' }
+			]
+		},
+		fontGlyphs: ['Roboto Medium']
 	},
 	terrain: {
 		source: 'narok-dem',
@@ -201,22 +176,6 @@ export const config: Config = {
 							<img src="/assets/tutorial/palette-solid.svg" width="24px"/>
 							<br>
 							From the above palette button, you can edit layer style as you want.
-							<br><br>
-							In <b>Advanced</b> tab, there are three main features:
-							<br>
-							<b>1) routing tool</b>;
-							<br>
-							<img src="/assets/tutorial/routing-tool.png" width="100%"/>
-							<br>
-							Click "Start routing" button, then you can calculate the shortest route by clicking on the route on the map with your prefered means of transport.
-							<br>
-							<br>
-							<b>2)isochrone analysis tool</b>.
-							<br>
-							<img src="/assets/tutorial/isochrone-tool.png" width="100%"/>
-							<br>Isochrone is a very powerful tool to estimate contours by certain time or distance by selected transport option. It can be used for some SDG indicator such as "Water access within 30 minute round trip".
-							<br>
-							<img src="/assets/tutorial/isochrone-example.png" width="100%"/>
 							</div>
 							`,
 					target: '.maplibregl-ctrl-menu',
@@ -270,10 +229,26 @@ export const config: Config = {
 					order: 7
 				},
 				{
-					title: 'Export tool',
-					content: `This button enables you to export images with your preferences.<br>You can choose file size, image format (png, jpeg, pdf and svg), and DPI resolution, orientation of the exported image`,
-					target: '.maplibregl-export-control',
+					title: 'Routing and isochrone tool',
+					content: `<div style="max-height: 300px; overflow-y: auto">
+							This button enables you to use Valhalla routing and isochrone analysis tools.
+							<br>
+							<b>1) Routing tool</b>: click points on the map to calculate the shortest route with your preferred means of transport.
+							<br>
+							<b>2) Isochrone analysis tool</b>: click a point on the map to estimate contours by certain time or distance with the selected transport option. It can be used for some SDG indicators such as "Water access within 30 minute round trip".
+							<br>
+							<img src="/assets/tutorial/isochrone-example.png" width="100%"/>
+							<br>
+							You can change the means of transport and contours from the settings button.
+							</div>`,
+					target: '.maplibregl-terradraw-valhalla-render-button',
 					order: 8
+				},
+				{
+					title: 'Export tool',
+					content: `This button enables you to export images with your preferences.<br>The export dialog shows a preview of the page, and you can choose page size, orientation, image format (png, jpeg, webp, pdf, svg and GeoTIFF) and DPI resolution. Click "Adjust area on map" to change the area to be exported.`,
+					target: '.maplibregl-export-control',
+					order: 9
 				},
 				{
 					title: 'Area switching tool',

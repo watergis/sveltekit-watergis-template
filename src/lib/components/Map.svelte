@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { map as mapStore, selectedStyle } from '#lib/stores/index.js';
 	import { page } from '$app/state';
-	import { map as mapStore, selectedStyle } from '$lib/stores';
 	import MaplibreGeocoder from '@maplibre/maplibre-gl-geocoder';
 	import '@maplibre/maplibre-gl-geocoder/dist/maplibre-gl-geocoder.css';
 	import CenterIconManager from '@watergis/maplibre-center-icon';
@@ -14,7 +14,14 @@
 		Size
 	} from '@watergis/maplibre-gl-export';
 	import '@watergis/maplibre-gl-export/dist/maplibre-gl-export.css';
-	import { MaplibreMeasureControl } from '@watergis/maplibre-gl-terradraw';
+	import {
+		defaultValhallaControlOptions,
+		MaplibreMeasureControl,
+		MaplibreValhallaControl,
+		TerraDrawValhallaDistanceIsochroneMode,
+		TerraDrawValhallaRoutingMode,
+		TerraDrawValhallaTimeIsochroneMode
+	} from '@watergis/maplibre-gl-terradraw';
 	import '@watergis/maplibre-gl-terradraw/dist/maplibre-gl-terradraw.css';
 	import { MaplibreTourControl } from '@watergis/maplibre-gl-tour';
 	import AttributePopupControl from '@watergis/svelte-maplibre-attribute-popup';
@@ -22,16 +29,21 @@
 	import { MenuControl } from '@watergis/svelte-maplibre-menu';
 	import { ShareURLControl } from '@watergis/svelte-maplibre-share';
 	import { StyleUrl } from '@watergis/svelte-maplibre-style-switcher';
-	import maplibregl, {
+	import * as maplibregl from 'maplibre-gl';
+	import {
+		addProtocol,
 		AttributionControl,
 		GeolocateControl,
 		Map,
 		NavigationControl,
 		ScaleControl,
+		setWorkerUrl,
 		TerrainControl,
-		addProtocol
+		type SymbolLayerSpecification
 	} from 'maplibre-gl';
 	import 'maplibre-gl/dist/maplibre-gl.css';
+	// maplibre-gl v6 needs the worker URL to be set explicitly when bundled by Vite
+	import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 	import { Protocol } from 'pmtiles';
 	import { onMount } from 'svelte';
 	import { config } from '../../config';
@@ -49,6 +61,7 @@
 	selectedStyle.update(() => initialStyle);
 
 	const initialise = async () => {
+		setWorkerUrl(workerUrl);
 		const protocol = new Protocol();
 		addProtocol('pmtiles', protocol.tile);
 
@@ -96,8 +109,6 @@
 			PageOrientation: PageOrientation.Portrait,
 			Format: Format.PNG,
 			DPI: DPI[200],
-			Crosshair: true,
-			PrintableArea: true,
 			Local: 'en'
 		});
 		map.addControl(exportControl, 'bottom-right');
@@ -124,6 +135,60 @@
 			});
 			draw.fontGlyphs = config.measureOptions.fontGlyphs;
 			map.addControl(draw, 'bottom-right');
+		}
+
+		if (config.valhalla) {
+			const { url, routingOptions, isochroneOptions, fontGlyphs } = config.valhalla;
+			// fontGlyphs of the control is applied only to routing labels, so set the font of isochrone labels here
+			const withFont = (spec: SymbolLayerSpecification): SymbolLayerSpecification => {
+				const cloned = structuredClone(spec);
+				if (fontGlyphs) cloned.layout = { ...cloned.layout, 'text-font': fontGlyphs };
+				return cloned;
+			};
+			const valhalla = new MaplibreValhallaControl({
+				modes: [
+					'render',
+					'routing',
+					'time-isochrone',
+					'distance-isochrone',
+					'select',
+					'delete-selection',
+					'delete',
+					'download',
+					'settings'
+				],
+				open: false,
+				modeOptions: {
+					routing: new TerraDrawValhallaRoutingMode({
+						url,
+						costingModel: routingOptions?.costingModel,
+						distanceUnit: routingOptions?.distanceUnit
+					}),
+					'time-isochrone': new TerraDrawValhallaTimeIsochroneMode({
+						url,
+						costingModel: isochroneOptions?.timeCostingModel,
+						contours: isochroneOptions?.contours
+					}),
+					'distance-isochrone': new TerraDrawValhallaDistanceIsochroneMode({
+						url,
+						costingModel: isochroneOptions?.distanceCostingModel,
+						contours: isochroneOptions?.contours
+					})
+				},
+				timeIsochroneLabelLayerSpec: withFont(
+					defaultValhallaControlOptions.timeIsochroneLabelLayerSpec
+				),
+				distanceIsochroneLabelLayerSpec: withFont(
+					defaultValhallaControlOptions.distanceIsochroneLabelLayerSpec
+				),
+				adapterOptions: {
+					prefixId: 'td-valhalla'
+				}
+			});
+			if (fontGlyphs) {
+				valhalla.fontGlyphs = fontGlyphs;
+			}
+			map.addControl(valhalla, 'bottom-right');
 		}
 
 		const centerIconManager = new CenterIconManager(map);
@@ -157,6 +222,7 @@
 					var geocoder_api = {
 						forwardGeocode: async ({ query }) => {
 							return {
+								type: 'FeatureCollection' as const,
 								features: await forwardGeocoder(query)
 							};
 						}
@@ -204,6 +270,13 @@
 		if (!config.areaSwitcher) {
 			steps.splice(
 				steps.findIndex((s) => s.target === '.maplibregl-area-switcher'),
+				1
+			);
+		}
+
+		if (!config.valhalla) {
+			steps.splice(
+				steps.findIndex((s) => s.target === '.maplibregl-terradraw-valhalla-render-button'),
 				1
 			);
 		}

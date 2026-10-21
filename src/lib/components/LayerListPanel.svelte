@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { map, selectedStyle } from '$lib/stores';
+	import { map, selectedStyle } from '#lib/stores/index.js';
 	import { LegendPanel } from '@watergis/svelte-maplibre-legend';
 	import { StyleSwitcher } from '@watergis/svelte-maplibre-style-switcher';
 	import { getContext } from 'svelte';
@@ -26,7 +26,8 @@
 
 	const onStyleChange = () => {
 		if (!$map) return;
-		$map.fire('style:change');
+		// custom event listened by svelte-maplibre-legend; maplibre v6 only types its own event names
+		($map as unknown as { fire: (type: string) => void }).fire('style:change');
 	};
 </script>
 

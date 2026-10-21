@@ -1,11 +1,13 @@
 import type { LngLatLike, TerrainSpecification } from 'maplibre-gl';
 import type { StyleSwitcherOption } from '@watergis/svelte-maplibre-style-switcher';
-import type {
-	ValhallaIsochroneOptions,
-	ValhallaRoutingOptions
-} from '@watergis/svelte-maplibre-valhalla';
 import type { TourGuideOptions, MaplibreTourControlOptions } from '@watergis/maplibre-gl-tour';
-import type { AreaUnit, DistanceUnit, TerrainSource } from '@watergis/maplibre-gl-terradraw';
+import type {
+	areaUnitType,
+	distanceUnitType,
+	MeasureUnitType,
+	TerrainSource,
+	ValhallaOptions
+} from '@watergis/maplibre-gl-terradraw';
 
 export type Config = {
 	title: string;
@@ -39,17 +41,16 @@ export type Config = {
 		targets: { [key: string]: string };
 	};
 	measureOptions?: {
-		distanceUnit?: DistanceUnit;
+		measureUnitType?: MeasureUnitType;
+		distanceUnit?: distanceUnitType;
 		distancePrecision?: number;
-		areaUnit?: AreaUnit;
+		areaUnit?: areaUnitType;
 		areaPrecision?: number;
 		fontGlyphs?: string[];
 		terrainSource?: TerrainSource;
 	};
-	valhalla?: {
-		url: string;
-		isoChroneOptions: ValhallaIsochroneOptions;
-		routingOptions: ValhallaRoutingOptions;
+	valhalla?: ValhallaOptions & {
+		fontGlyphs?: string[];
 	};
 	terrain?: TerrainSpecification;
 	attributeTable?: {
