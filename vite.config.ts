@@ -4,6 +4,11 @@ import preprocess from 'svelte-preprocess';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+	build: {
+		// keep CSS light-dark() as is (used by the maplibre-gl-export dialog);
+		// lowering it for older browsers makes the dialog colors invalid
+		cssTarget: ['chrome123', 'edge123', 'firefox120', 'safari17.5']
+	},
 	plugins: [
 		sveltekit({
 			// Consult https://github.com/sveltejs/svelte-preprocess
