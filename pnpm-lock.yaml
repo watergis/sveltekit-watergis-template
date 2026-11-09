@@ -177,7 +177,7 @@ importers:
         version: 2.2.2
       '@maplibre/maplibre-gl-geocoder':
         specifier: ^1.9.4
-        version: 1.9.4(maplibre-gl@6.16.0)
+        version: 1.9.4(maplibre-gl@6.17.0)
       '@popperjs/core':
         specifier: ^2.11.8
         version: 2.11.8
@@ -186,13 +186,13 @@ importers:
         version: 0.0.27
       '@sveltejs/adapter-static':
         specifier: ^4.0.0
-        version: 4.0.1(@sveltejs/kit@3.1.1(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1)))(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1)))
+        version: 4.0.1(@sveltejs/kit@3.1.1(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1)))(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1)))
       '@sveltejs/kit':
         specifier: ^3.1.0
-        version: 3.1.1(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1)))(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1))
+        version: 3.1.1(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1)))(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1))
       '@sveltejs/vite-plugin-svelte':
         specifier: ^7.3.1
-        version: 7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1))
+        version: 7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1))
       '@types/events':
         specifier: ^3.0.3
         version: 3.0.3
@@ -213,10 +213,10 @@ importers:
         version: 1.0.0
       '@watergis/maplibre-gl-export':
         specifier: ^6.0.0
-        version: 6.0.0(maplibre-gl@6.16.0)
+        version: 6.0.0(maplibre-gl@6.17.0)
       '@watergis/maplibre-gl-terradraw':
         specifier: ^1.17.0
-        version: 1.17.0(maplibre-gl@6.16.0)(terra-draw-maplibre-gl-adapter@1.5.0(maplibre-gl@6.16.0)(terra-draw@1.39.0))(terra-draw@1.39.0)
+        version: 1.17.0(maplibre-gl@6.17.0)(terra-draw-maplibre-gl-adapter@1.5.0(maplibre-gl@6.17.0)(terra-draw@1.39.0))(terra-draw@1.39.0)
       '@watergis/maplibre-gl-tour':
         specifier: ^1.0.6
         version: 1.0.6(svelte@5.57.3(@typescript-eslint/types@8.72.1))
@@ -255,16 +255,16 @@ importers:
         version: 10.1.8(eslint@10.14.0)
       eslint-plugin-svelte:
         specifier: ^3.23.1
-        version: 3.23.1(eslint@10.14.0)(svelte@5.57.3(@typescript-eslint/types@8.72.1))
+        version: 3.24.1(eslint@10.14.0)(svelte@5.57.3(@typescript-eslint/types@8.72.1))
       events:
         specifier: ^3.3.0
         version: 3.3.0
       globals:
         specifier: ^17.13.0
-        version: 17.13.0
+        version: 17.14.0
       maplibre-gl:
         specifier: ^6.15.0
-        version: 6.16.0
+        version: 6.17.0
       pmtiles:
         specifier: ^4.5.0
         version: 4.5.0
@@ -276,22 +276,22 @@ importers:
         version: 4.1.1(prettier@3.9.10)(svelte@5.57.3(@typescript-eslint/types@8.72.1))
       sass:
         specifier: ^1.105.2
-        version: 1.107.1
+        version: 1.108.1
       svelte:
         specifier: ^5.57.2
         version: 5.57.3(@typescript-eslint/types@8.72.1)
       svelte-check:
         specifier: ^4.7.7
-        version: 4.7.7(picomatch@4.0.7)(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)
+        version: 4.7.8(picomatch@4.0.7)(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)
       svelte-preprocess:
         specifier: ^6.0.5
-        version: 6.0.5(postcss-load-config@3.1.4(postcss@8.5.32))(postcss@8.5.32)(sass@1.107.1)(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)
+        version: 6.0.5(postcss-load-config@3.1.4(postcss@8.5.32))(postcss@8.5.32)(sass@1.108.1)(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)
       terra-draw:
         specifier: ^1.38.0
         version: 1.39.0
       terra-draw-maplibre-gl-adapter:
         specifier: ^1.5.0
-        version: 1.5.0(maplibre-gl@6.16.0)(terra-draw@1.39.0)
+        version: 1.5.0(maplibre-gl@6.17.0)(terra-draw@1.39.0)
       tslib:
         specifier: ^2.8.1
         version: 2.9.1
@@ -303,12 +303,12 @@ importers:
         version: 8.72.1(eslint@10.14.0)(typescript@6.0.3)
       vite:
         specifier: ^8.3.4
-        version: 8.3.5(@types/node@26.6.6)(sass@1.107.1)
+        version: 8.3.6(@types/node@26.6.6)(sass@1.108.1)
 
 packages:
 
-  '@babel/runtime@7.29.10':
-    resolution: {integrity: sha512-NpugTzbKgGrNe45Ui32cN8vCFFMxVtP/9rtfwv0nP5FRDAjvYBxJcLVpYA9mr1jxP6cnIT7x9LUzuDTbWYYNRA==}
+  '@babel/runtime@7.29.13':
+    resolution: {integrity: sha512-v+oN26xP4YIlQsbQ/CbTH1WG5m/l/DjKKZNy/Kp3f/AFvbgt7Em/D0FeMM3O2hX0YzeN2M16W8lOpyhIkfCBcQ==}
     engines: {node: '>=6.9.0'}
 
   '@cacheable/memory@2.2.0':
@@ -459,8 +459,8 @@ packages:
     peerDependencies:
       maplibre-gl: ^6.15.0
 
-  '@maplibre/maplibre-gl-style-spec@26.5.0':
-    resolution: {integrity: sha512-Tli0Mi9rF3117uVFkqsysXu9TPLx3AODPmWklUjbDhR4jJ849vGT5/EqWM3dBjIQgU6xxj5SZQ9ONjibqjEP+Q==}
+  '@maplibre/maplibre-gl-style-spec@26.5.1':
+    resolution: {integrity: sha512-9ufQ5LR+Ldn87SILPVyRNz4wVm/sBrM2ZRv9VfjLRKYKIGAcvC1VFw/DEkJLAHqfMV8m03zDz1DUNTIUj/GvdA==}
     hasBin: true
 
   '@maplibre/mlt@1.3.0':
@@ -942,8 +942,8 @@ packages:
   colord@2.10.0:
     resolution: {integrity: sha512-AidJptpBJmjTclAp9BkLwJi0T93fo5epJnbaZslpg6QVzpHjAiveF55mE9AcUJiGMqRHgMDY8soMsQtuNYMHfw==}
 
-  cookie@2.0.1:
-    resolution: {integrity: sha512-yuToqVvRrj6pfDXREyQAAv8SkAEk/8GS3jQRTiUMm66TVtBYmqQeoEjL2Lmq8Rpo6271vH76InTChTitEAm65w==}
+  cookie@2.0.2:
+    resolution: {integrity: sha512-SL0cVuEdETEp7pN0FuZb01toc3vnODEfVUCooxG1SJN0yIirh7JMb9X9bvfCFf0vzzbT68RdbKDHYTiWy7a7iw==}
     engines: {node: '>=22'}
 
   core-js@3.51.0:
@@ -1010,8 +1010,8 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-plugin-svelte@3.23.1:
-    resolution: {integrity: sha512-+w86Jlx4IRUuuvtqD6j4njql+akx+81JnpvbN5de3AV5iq2SexvST/Jr51CiTlKeY0i+vhoKjPO/ywFKIP75sA==}
+  eslint-plugin-svelte@3.24.1:
+    resolution: {integrity: sha512-XYzp318u8UkDH4ZdRkdSomOYnwMTeJP2Zw9u6DuBj3mViFZD8zS+mhfTYq34plm3SH9eF7ZaiYJfQYq2xMhPHg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.1 || ^9.0.0 || ^10.0.0
@@ -1149,8 +1149,8 @@ packages:
     resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
     engines: {node: '>=18'}
 
-  globals@17.13.0:
-    resolution: {integrity: sha512-RwMTC61u7hrG3ZJMkZQOK4JLJrKS8QtoTii63EmWvFXHqycY9FObBJQCbsLxSO8kjKhWE5kV1GC+Vb1g3RI0Zg==}
+  globals@17.14.0:
+    resolution: {integrity: sha512-UtdkTVyAJePQv0J2M9Xe4L0ruNSDV314XiIJsADI2Zf40bcdAonE/D/OhAU8AT99oij9mhLByb+NvA3QWZYgCg==}
     engines: {node: '>=18'}
 
   hashery@1.5.1:
@@ -1334,8 +1334,8 @@ packages:
   magic-string@1.4.5:
     resolution: {integrity: sha512-oLLC2+YvQUfAa+vxoufE/yc1icb87M9iXIRqAoR/2EhE/8cb3SF/+Gi0c2By1B+5Vz2e2vQtUvHiu1+63Znh+w==}
 
-  maplibre-gl@6.16.0:
-    resolution: {integrity: sha512-gApO66EMtoDZuio680RUBvskR7ahFd/NNhLN4tBAs+Y7FeT4gQV8zVFgYVMRmFxQznOEzecW19w6xOd9XjZjiA==}
+  maplibre-gl@6.17.0:
+    resolution: {integrity: sha512-2chIZwpLGenoUQOcnm9Pk4SLbA8ppNFq8jlpXiq9vcYm3Y1wJ3fc82FL0GLwBaPYJCLzPv/mC46KEupVov75rQ==}
     engines: {node: '>=16.14.0', npm: '>=8.1.0'}
 
   minimatch@10.2.6:
@@ -1516,13 +1516,13 @@ packages:
     resolution: {integrity: sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==}
     engines: {node: '>=6'}
 
-  sass@1.107.1:
-    resolution: {integrity: sha512-aJ1/LvxOOb04YhmiBjzZn3jVwdHKol+OVhoMV6fFl02fF9T3i+5Mg9l/CnzqtM+NX5Jn5o3lAbs/ZJivTCLHfQ==}
+  sass@1.108.1:
+    resolution: {integrity: sha512-sIYgSvOPeD9wABwDS/ofNjHASSck+7h3jLkk7wG1NPFL3XeS6vOQjBlAFSmRV09kZr1yt/Tuayt6kKtBbLjHNQ==}
     engines: {node: '>=20.19.0'}
     hasBin: true
 
-  semver@7.8.5:
-    resolution: {integrity: sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==}
+  semver@7.8.6:
+    resolution: {integrity: sha512-9lpSSU4Mly3mrtruwLs1eLK6+gzbzqeBFwRNjIjE+9LuDpWdYctrQlQ3ej1Ilgi7gknpsTRnPoLP8DpCHqHIJw==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -1578,8 +1578,8 @@ packages:
     peerDependencies:
       svelte: ^3.54.0 || ^4.0.0 || ^5.0.0
 
-  svelte-check@4.7.7:
-    resolution: {integrity: sha512-Ge2IMdeTpbJuzNFGRiiMg0RWgbScysKQu7xwcyFJ22+DU9F5nPX51+Q3gHmGqRxYQMx2knreVWt5oCtfe0vf2g==}
+  svelte-check@4.7.8:
+    resolution: {integrity: sha512-laZ49GFHZ3b0z2PWinJWL0syehc/PTR8aHaUaTiBkWJ+4Y38nhxjmXsSz7CbGa3VdKopViVbrBH3bGNqIAI0bQ==}
     engines: {node: '>= 18.0.0'}
     hasBin: true
     peerDependencies:
@@ -1591,8 +1591,8 @@ packages:
     peerDependencies:
       svelte: ^5.0.0
 
-  svelte-eslint-parser@1.10.0:
-    resolution: {integrity: sha512-1bNtsoGwEx/J1qNz1xa5dSt/Ue5+C7+WpV92cCPZDbF6dx/YXHKzC9yTP25vFvAK40yd/mHXi1WACZO7FGf0Bw==}
+  svelte-eslint-parser@1.10.1:
+    resolution: {integrity: sha512-owYBhrNRp/m+hDaQCH0S683kc0TMFy2bB+qvsMQQZRsjSFD9xp/3FYgI8FZoOKA3xk62gwkUj1HpVek0p6WgNw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0, pnpm: 10.34.6}
     peerDependencies:
       svelte: ^3.37.0 || ^4.0.0 || ^5.0.0
@@ -1739,8 +1739,8 @@ packages:
   utrie@1.0.2:
     resolution: {integrity: sha512-1MLa5ouZiOmQzUbjbu9VmjLzn1QLXBhwpUa7kdLUQK+KQ5KA9I1vk5U4YHe/X2Ch7PYnJfWuWT+VbuxbGwljhw==}
 
-  vite@8.3.5:
-    resolution: {integrity: sha512-z1YpjieJ9g0ebTmQpLBv/oq9E3F9EIlOe+7LahW8SrE3LTiG3udBRUXQOlYXP9b+IC2q2phHeVxj9xGlw34OEQ==}
+  vite@8.3.6:
+    resolution: {integrity: sha512-UI7dK29NnS54Fk+mmo7o+jI6U8Fp7hDl+X5Q1k45WH+d4dSlbLVUETGQ+hfkNgvLQGyoElPj837nZyv4MBc0VA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -1816,7 +1816,7 @@ packages:
 
 snapshots:
 
-  '@babel/runtime@7.29.10': {}
+  '@babel/runtime@7.29.13': {}
 
   '@cacheable/memory@2.2.0':
     dependencies:
@@ -1959,16 +1959,16 @@ snapshots:
     dependencies:
       kdbush: 4.1.0
 
-  '@maplibre/maplibre-gl-geocoder@1.9.4(maplibre-gl@6.16.0)':
+  '@maplibre/maplibre-gl-geocoder@1.9.4(maplibre-gl@6.17.0)':
     dependencies:
       events: 3.3.0
       lodash.debounce: 4.0.8
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
       subtag: 0.5.0
       suggestions-list: 0.0.2
       xtend: 4.0.2
 
-  '@maplibre/maplibre-gl-style-spec@26.5.0':
+  '@maplibre/maplibre-gl-style-spec@26.5.1':
     dependencies:
       '@mapbox/jsonlint-lines-primitives': 2.0.3
       '@mapbox/unitbezier': 1.0.0
@@ -2100,7 +2100,7 @@ snapshots:
   '@sjmc11/tourguidejs@0.0.27':
     dependencies:
       '@floating-ui/dom': 1.8.0
-      sass: 1.107.1
+      sass: 1.108.1
 
   '@standard-schema/spec@1.1.0': {}
 
@@ -2108,36 +2108,36 @@ snapshots:
     dependencies:
       acorn: 8.19.0
 
-  '@sveltejs/adapter-static@4.0.1(@sveltejs/kit@3.1.1(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1)))(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1)))':
+  '@sveltejs/adapter-static@4.0.1(@sveltejs/kit@3.1.1(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1)))(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1)))':
     dependencies:
-      '@sveltejs/kit': 3.1.1(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1)))(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1))
+      '@sveltejs/kit': 3.1.1(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1)))(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1))
 
-  '@sveltejs/kit@3.1.1(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1)))(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1))':
+  '@sveltejs/kit@3.1.1(@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1)))(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3)(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
       '@standard-schema/spec': 1.1.0
-      '@sveltejs/vite-plugin-svelte': 7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1))
-      cookie: 2.0.1
+      '@sveltejs/vite-plugin-svelte': 7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1))
+      cookie: 2.0.2
       devalue: 5.9.4
       esm-env: 1.2.2
       magic-string: 1.4.5
       mrmime: 2.0.1
       sirv: 3.0.2
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
-      vite: 8.3.5(@types/node@26.6.6)(sass@1.107.1)
+      vite: 8.3.6(@types/node@26.6.6)(sass@1.108.1)
     optionalDependencies:
       typescript: 6.0.3
 
   '@sveltejs/load-config@0.2.3': {}
 
-  '@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1))':
+  '@sveltejs/vite-plugin-svelte@7.3.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1))':
     dependencies:
       deepmerge: 4.3.1
       magic-string: 1.4.5
       obug: 2.2.1
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
-      vite: 8.3.5(@types/node@26.6.6)(sass@1.107.1)
-      vitefu: 1.1.3(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1))
+      vite: 8.3.6(@types/node@26.6.6)(sass@1.108.1)
+      vitefu: 1.1.3(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1))
 
   '@types/esrecurse@4.3.1': {}
 
@@ -2229,7 +2229,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 8.72.1
       debug: 4.4.3
       minimatch: 10.2.6
-      semver: 7.8.5
+      semver: 7.8.6
       tinyglobby: 0.2.17
       ts-api-utils: 2.5.0(typescript@6.0.3)
       typescript: 6.0.3
@@ -2262,31 +2262,31 @@ snapshots:
 
   '@watergis/maplibre-center-icon@3.0.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))':
     dependencies:
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
 
   '@watergis/maplibre-gl-area-switcher@1.0.0':
     dependencies:
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
 
-  '@watergis/maplibre-gl-export@6.0.0(maplibre-gl@6.16.0)':
+  '@watergis/maplibre-gl-export@6.0.0(maplibre-gl@6.17.0)':
     dependencies:
       html-to-image: 1.11.13
       jspdf: 4.2.1
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
       svg2pdf.js: 2.9.0(jspdf@4.2.1)
 
-  '@watergis/maplibre-gl-terradraw@1.17.0(maplibre-gl@6.16.0)(terra-draw-maplibre-gl-adapter@1.5.0(maplibre-gl@6.16.0)(terra-draw@1.39.0))(terra-draw@1.39.0)':
+  '@watergis/maplibre-gl-terradraw@1.17.0(maplibre-gl@6.17.0)(terra-draw-maplibre-gl-adapter@1.5.0(maplibre-gl@6.17.0)(terra-draw@1.39.0))(terra-draw@1.39.0)':
     dependencies:
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
       terra-draw: 1.39.0
     optionalDependencies:
-      terra-draw-maplibre-gl-adapter: 1.5.0(maplibre-gl@6.16.0)(terra-draw@1.39.0)
+      terra-draw-maplibre-gl-adapter: 1.5.0(maplibre-gl@6.17.0)(terra-draw@1.39.0)
 
   '@watergis/maplibre-gl-tour@1.0.6(svelte@5.57.3(@typescript-eslint/types@8.72.1))':
     dependencies:
       '@sjmc11/tourguidejs': 0.0.27
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
 
   '@watergis/svelte-collapsible-panel@4.0.0(svelte@5.57.3(@typescript-eslint/types@8.72.1))':
@@ -2298,14 +2298,14 @@ snapshots:
 
   '@watergis/svelte-maplibre-attribute-popup@4.0.0(svelte@5.57.3(@typescript-eslint/types@8.72.1))':
     dependencies:
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
 
   '@watergis/svelte-maplibre-attribute-table@4.0.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))':
     dependencies:
       '@vincjo/datatables': 2.8.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))
       '@watergis/svelte-maplibre-menu': 4.0.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
 
   '@watergis/svelte-maplibre-legend@5.0.0(@popperjs/core@2.11.8)(svelte@5.57.3(@typescript-eslint/types@8.72.1))':
@@ -2316,7 +2316,7 @@ snapshots:
       detect-touch-device: 1.1.6
       js-yaml: 4.3.2
       lodash-es: 4.18.1
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
       svelte-awesome-color-picker: 3.1.4(svelte@5.57.3(@typescript-eslint/types@8.72.1))
       svelte-fa: 4.0.4(svelte@5.57.3(@typescript-eslint/types@8.72.1))
@@ -2331,19 +2331,19 @@ snapshots:
   '@watergis/svelte-maplibre-menu@4.0.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))':
     dependencies:
       '@watergis/svelte-splitter': 2.0.0(svelte@5.57.3(@typescript-eslint/types@8.72.1))
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
 
   '@watergis/svelte-maplibre-share@5.0.0(svelte@5.57.3(@typescript-eslint/types@8.72.1))':
     dependencies:
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
       svelte-copy: 2.0.0(svelte@5.57.3(@typescript-eslint/types@8.72.1))
 
   '@watergis/svelte-maplibre-style-switcher@5.0.0(svelte@5.57.3(@typescript-eslint/types@8.72.1))':
     dependencies:
       debounce: 2.2.0
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
 
   '@watergis/svelte-splitter@2.0.0(svelte@5.57.3(@typescript-eslint/types@8.72.1))':
@@ -2401,7 +2401,7 @@ snapshots:
 
   canvg@3.0.11:
     dependencies:
-      '@babel/runtime': 7.29.10
+      '@babel/runtime': 7.29.13
       '@types/raf': 3.4.3
       core-js: 3.51.0
       raf: 3.4.1
@@ -2425,7 +2425,7 @@ snapshots:
 
   colord@2.10.0: {}
 
-  cookie@2.0.1: {}
+  cookie@2.0.2: {}
 
   core-js@3.51.0:
     optional: true
@@ -2474,7 +2474,7 @@ snapshots:
     dependencies:
       eslint: 10.14.0
 
-  eslint-plugin-svelte@3.23.1(eslint@10.14.0)(svelte@5.57.3(@typescript-eslint/types@8.72.1)):
+  eslint-plugin-svelte@3.24.1(eslint@10.14.0)(svelte@5.57.3(@typescript-eslint/types@8.72.1)):
     dependencies:
       '@eslint-community/eslint-utils': 4.10.1(eslint@10.14.0)
       '@jridgewell/sourcemap-codec': 1.6.0
@@ -2485,8 +2485,8 @@ snapshots:
       postcss: 8.5.32
       postcss-load-config: 3.1.4(postcss@8.5.32)
       postcss-safe-parser: 7.1.0(postcss@8.5.32)
-      semver: 7.8.5
-      svelte-eslint-parser: 1.10.0(svelte@5.57.3(@typescript-eslint/types@8.72.1))
+      semver: 7.8.6
+      svelte-eslint-parser: 1.10.1(svelte@5.57.3(@typescript-eslint/types@8.72.1))
     optionalDependencies:
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
     transitivePeerDependencies:
@@ -2629,7 +2629,7 @@ snapshots:
 
   globals@16.5.0: {}
 
-  globals@17.13.0: {}
+  globals@17.14.0: {}
 
   hashery@1.5.1:
     dependencies:
@@ -2685,7 +2685,7 @@ snapshots:
 
   jspdf@4.2.1:
     dependencies:
-      '@babel/runtime': 7.29.10
+      '@babel/runtime': 7.29.13
       fast-png: 6.4.0
       fflate: 0.8.3
     optionalDependencies:
@@ -2776,14 +2776,14 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  maplibre-gl@6.16.0:
+  maplibre-gl@6.17.0:
     dependencies:
       '@mapbox/point-geometry': 1.1.0
       '@mapbox/tiny-sdf': 2.3.0
       '@mapbox/unitbezier': 1.0.0
       '@mapbox/vector-tile': 3.0.0
       '@maplibre/geojson-vt': 6.3.0
-      '@maplibre/maplibre-gl-style-spec': 26.5.0
+      '@maplibre/maplibre-gl-style-spec': 26.5.1
       '@maplibre/mlt': 1.3.0
       '@maplibre/vt-pbf': 4.3.3
       '@types/geojson': 7946.0.16
@@ -2953,7 +2953,7 @@ snapshots:
     dependencies:
       mri: 1.2.0
 
-  sass@1.107.1:
+  sass@1.108.1:
     dependencies:
       chokidar: 5.0.0
       immutable: 5.1.9
@@ -2961,7 +2961,7 @@ snapshots:
     optionalDependencies:
       '@parcel/watcher': 2.6.0
 
-  semver@7.8.5: {}
+  semver@7.8.6: {}
 
   shebang-command@2.0.0:
     dependencies:
@@ -3008,7 +3008,7 @@ snapshots:
     dependencies:
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
 
-  svelte-check@4.7.7(picomatch@4.0.7)(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3):
+  svelte-check@4.7.8(picomatch@4.0.7)(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       '@sveltejs/load-config': 0.2.3
@@ -3025,7 +3025,7 @@ snapshots:
     dependencies:
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
 
-  svelte-eslint-parser@1.10.0(svelte@5.57.3(@typescript-eslint/types@8.72.1)):
+  svelte-eslint-parser@1.10.1(svelte@5.57.3(@typescript-eslint/types@8.72.1)):
     dependencies:
       eslint-scope: 8.4.0
       eslint-visitor-keys: 4.2.1
@@ -3033,7 +3033,7 @@ snapshots:
       postcss: 8.5.32
       postcss-scss: 4.0.9(postcss@8.5.32)
       postcss-selector-parser: 7.1.7
-      semver: 7.8.5
+      semver: 7.8.6
     optionalDependencies:
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
 
@@ -3046,13 +3046,13 @@ snapshots:
       '@popperjs/core': 2.11.8
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
 
-  svelte-preprocess@6.0.5(postcss-load-config@3.1.4(postcss@8.5.32))(postcss@8.5.32)(sass@1.107.1)(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3):
+  svelte-preprocess@6.0.5(postcss-load-config@3.1.4(postcss@8.5.32))(postcss@8.5.32)(sass@1.108.1)(svelte@5.57.3(@typescript-eslint/types@8.72.1))(typescript@6.0.3):
     dependencies:
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)
     optionalDependencies:
       postcss: 8.5.32
       postcss-load-config: 3.1.4(postcss@8.5.32)
-      sass: 1.107.1
+      sass: 1.108.1
       typescript: 6.0.3
 
   svelte-range-slider-pips@4.1.1(svelte@5.57.3(@typescript-eslint/types@8.72.1)):
@@ -3098,9 +3098,9 @@ snapshots:
 
   svgpath@2.6.0: {}
 
-  terra-draw-maplibre-gl-adapter@1.5.0(maplibre-gl@6.16.0)(terra-draw@1.39.0):
+  terra-draw-maplibre-gl-adapter@1.5.0(maplibre-gl@6.17.0)(terra-draw@1.39.0):
     dependencies:
-      maplibre-gl: 6.16.0
+      maplibre-gl: 6.17.0
       terra-draw: 1.39.0
 
   terra-draw@1.39.0: {}
@@ -3159,7 +3159,7 @@ snapshots:
       base64-arraybuffer: 1.0.2
     optional: true
 
-  vite@8.3.5(@types/node@26.6.6)(sass@1.107.1):
+  vite@8.3.6(@types/node@26.6.6)(sass@1.108.1):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
@@ -3169,11 +3169,11 @@ snapshots:
     optionalDependencies:
       '@types/node': 26.6.6
       fsevents: 2.3.3
-      sass: 1.107.1
+      sass: 1.108.1
 
-  vitefu@1.1.3(vite@8.3.5(@types/node@26.6.6)(sass@1.107.1)):
+  vitefu@1.1.3(vite@8.3.6(@types/node@26.6.6)(sass@1.108.1)):
     optionalDependencies:
-      vite: 8.3.5(@types/node@26.6.6)(sass@1.107.1)
+      vite: 8.3.6(@types/node@26.6.6)(sass@1.108.1)
 
   which@2.0.2:
     dependencies:
